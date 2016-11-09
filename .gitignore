@@ -1,0 +1,8 @@
+# Folders
+db-dump
+!wp-content/themes/sage
+wp-content/themes
+wp-content/uploads
+
+# Files
+wp-config.php
