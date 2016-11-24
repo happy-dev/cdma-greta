@@ -1,6 +1,18 @@
 <header class="banner">
   <div class="container">
-    <!-- <a class="brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a> -->
+  <!-- LOGO HEADER -->
+  <?php $image = get_field('logo_header', 'option');
+              if( !empty($image) ): 
+                $url = $image['url'];
+                $title = $image['title'];
+                $alt = $image['alt'];
+                $size = 'thumbnail';
+                $thumb = $image['sizes'][ $size ]; ?>
+
+      <a class="brand" href="<?= esc_url(home_url('/')); ?>">
+      <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+      </a>
+    <?php endif; ?>
     <nav class="nav-primary">
       <?php
       if (has_nav_menu('primary_navigation')) :
