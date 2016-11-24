@@ -1,5 +1,6 @@
 <header class="banner">
   <div class="container">
+  
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');
               if( !empty($image) ): 

@@ -4,16 +4,12 @@
 	<!-- IMAGE/VIDEO -->
 	<?php $image = get_field('post_image');
 					if( !empty($image) ): 
-
 						$url = $image['url'];
 						$title = $image['title'];
 						$alt = $image['alt'];
 						$size = 'thumbnail';
 						$thumb = $image['sizes'][ $size ]; ?>
-
-						<a href="<?php echo $url; ?>" title="<?php echo $title; ?>">
 							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-						</a>
 					<?php endif; ?>
 
 	<!-- TEXTE -->
