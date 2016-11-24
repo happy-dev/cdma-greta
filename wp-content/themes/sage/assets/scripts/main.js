@@ -28,6 +28,24 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
+         var initHomeSlider = function() {
+                    if ($(".body").hasClass('home')) {
+                        $('.js--main-gallery').flickity({
+                            imagesLoaded: true,
+                            setGallerySize: false,
+                            wrapAround: true,
+                            autoPlay: 6000,
+                            pauseAutoPlayOnHover: false
+                        });
+                    }
+                    var $gallery = $('.js--main-gallery').flickity();
+
+                    $gallery.on('settle click cellSelect', function() {
+                        $('.js--hp-carousel__number__index').html($gallery.data('flickity').selectedIndex + 1);
+                        $('.js--hp-carousel__number__total').html($gallery.data('flickity').cells.length);
+                    })
+
+                }
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
