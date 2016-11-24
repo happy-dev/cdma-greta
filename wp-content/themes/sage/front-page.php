@@ -2,7 +2,7 @@
 
 <!-- OPENING IMAGE/VIDEO -->
 
-<?php the_content(); ?>
+<?php the_field('titre_slider'); ?>
 
 <?php if ( have_rows('slider_home') ): ?>
 	<div class="main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
