@@ -1,6 +1,6 @@
 # Folders
+wp-content/themes/*
 !wp-content/themes/sage
-wp-content/themes
 wp-content/uploads
 
 
