@@ -1,0 +1,115 @@
+.home {
+    .container {
+        padding: 66px 0;
+        
+        position: relative;
+        
+        h3 {
+            font-family: $basic-fonts;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 20px;
+            color: black;
+            text-transform: none;
+        }
+        
+        .see-all {
+            font-size: 15px;
+            line-height: 20px;
+            color: $cdma-brown;
+            
+            position: absolute;
+            top: 66px;
+            right: 0;
+            font-weight: bold;
+        }
+    }
+    
+    .search {
+        position: relative;
+
+        h1 {
+            color: white;
+            font-size: 3.3vw;
+            line-height: 4vw; 
+            text-align: center;
+            font-family: Arial;
+            font-weight: normal;
+            text-transform: none;
+
+            width: 100%;
+            padding: 11vw 17vw;
+            position: absolute;
+            left: 0;
+            z-index: 3;
+        }
+
+        .carousel {
+            position: relative;
+            z-index: 1;
+        }
+
+        .layer {
+            background-color: #424040;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=47)"; // IE8
+            filter: alpha(opacity=47); // IE 5-7
+            opacity: 0.47;
+
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+    }
+    
+    .presentation {
+        background-color: #b3a095;
+
+        overflow: auto;
+        .video {
+            position: relative;
+            width: 50%;
+            float: left;
+            
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        
+        .greta {
+            color: white;
+            width: 50%;
+            float: left;
+            
+            padding: 6vw 6.5vw 6vw 3.5vw;
+            h2 {
+                color: white;
+                font-family: $title-fonts;
+                font-size: 38px;
+                padding-bottom: 21px;
+                text-transform: none;
+            }
+            
+            p {
+                font-family: $basic-light-fonts;
+                font-size: 24px;
+                line-height: 30px;
+                letter-spacing: 1px;
+                padding-bottom: 21px;
+            }
+            
+            .note {
+                font-family: $basic-light-fonts;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 1px;
+                text-indent: 14px;
+                background: transparent url(../../assets/images/icon-arrow-right-white.gif) 0 center no-repeat;
+                display: block;
+                background-size: 5px;
+            }
+        }
+    }
+}
