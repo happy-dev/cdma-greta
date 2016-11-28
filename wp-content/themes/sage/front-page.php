@@ -1,8 +1,16 @@
 <?php while (have_posts()) : the_post(); ?>
 
-<!-- OPENING IMAGE/VIDEO -->
+<!-- TEXTE/LIENS SLIDER -->
 
 <?php the_field('titre_slider'); ?>
+
+<?php while ( have_rows('liens_header') ) : the_row(); ?>
+	<a href="<?php the_sub_field('lien'); ?>">
+	    <?php the_sub_field('texte_lien'); ?>
+	</a>
+<?php endwhile; ?>
+
+<!-- OPENING SLIDER/VIDEO -->
 
 <?php if ( have_rows('slider_home') ): ?>
 	<div class="main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
@@ -34,16 +42,11 @@ endif ?>
 			        <div>
 			        	<?php $image = get_field('post_image');
 							if( !empty($image) ): 
-
-								$url = $image['url'];
-								$title = $image['title'];
 								$alt = $image['alt'];
 								$size = 'thumbnail';
 								$thumb = $image['sizes'][ $size ]; ?>
 
-								<a href="<?php echo $url; ?>" title="<?php echo $title; ?>">
-									<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-								</a>
+								<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
 							<?php endif; ?>
 
 			            <a href="<?php the_permalink(); ?>">

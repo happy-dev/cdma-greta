@@ -3,12 +3,10 @@
   
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');
-              if( !empty($image) ): 
-                $url = $image['url'];
-                $title = $image['title'];
-                $alt = $image['alt'];
-                $size = 'thumbnail';
-                $thumb = $image['sizes'][ $size ]; ?>
+    if( !empty($image) ): 
+      $alt = $image['alt'];
+      $size = 'thumbnail';
+      $thumb = $image['sizes'][ $size ]; ?>
 
       <a class="brand" href="<?= esc_url(home_url('/')); ?>">
       <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
