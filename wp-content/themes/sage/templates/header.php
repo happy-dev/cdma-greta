@@ -4,7 +4,7 @@
                 $url = $image['url'];
                 $title = $image['title'];
                 $alt = $image['alt'];
-                $size = 'thumbnail';
+                $size = 'large';
                 $thumb = $image['sizes'][ $size ]; ?>
 
       <a class="brand" href="<?= esc_url(home_url('/')); ?>">
