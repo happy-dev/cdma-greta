@@ -4,7 +4,7 @@
                 $url = $image['url'];
                 $title = $image['title'];
                 $alt = $image['alt'];
-                $size = 'large';
+                $size = 'thumbnail';
                 $thumb = $image['sizes'][ $size ]; ?>
 
 <header class="banner">
