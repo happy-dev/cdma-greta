@@ -1,5 +1,16 @@
 <header class="navbar">
-    <a class="brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+    <?php $image = get_field('logo_header', 'option');
+              if( !empty($image) ): 
+                $url = $image['url'];
+                $title = $image['title'];
+                $alt = $image['alt'];
+                $size = 'thumbnail';
+                $thumb = $image['sizes'][ $size ]; ?>
+
+      <a class="brand" href="<?= esc_url(home_url('/')); ?>">
+      <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+      </a>
+    <?php endif; ?>
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" href="#collapse-nav-primary" aria-expanded="false" aria-controls="collapse-nav-primary">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
