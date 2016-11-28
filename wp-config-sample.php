@@ -17,6 +17,8 @@
  * @package WordPress
  */
 
+define('WP_HOME',     'http://greta-cdma.dev');
+define('WP_SITEURL',  'http://greta-cdma.dev');
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
 define('DB_NAME', 'Database name');

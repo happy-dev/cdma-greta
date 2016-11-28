@@ -99,6 +99,56 @@ function setup() {
               'hierarchical'    => true
           )
    );
+
+  register_post_type( 'stages',
+
+          array(
+
+              'labels' => array(
+              'name' => __( 'Offres de stage' ),
+              'singular_name' => __( 'Offre de stage' ),
+              'add_new' => __( 'Add New Offre de stage' ),
+              'add_new_item' => __( 'Add New Offre de stage' ),
+              'edit_item' => __( 'Edit Offre de stage' ),
+              'new_item' => __( 'Add New Offre de stage' ),
+              'view_item' => __( 'View Offre de stage' ),
+              'search_items' => __( 'Search Offre de stage' ),
+              'not_found' => __( 'No Offre de stage found' ),
+              'not_found_in_trash' => __( 'No Offre de stage found in trash' )
+              ),
+
+              'public'      => true,
+              'supports'      => array( 'title','editor','revisions'),
+              'capability_type'   => 'post',
+              'menu_position'   => 6,
+              'hierarchical'    => true
+          )
+   );
+
+  register_post_type( 'temoignages',
+
+          array(
+
+              'labels' => array(
+              'name' => __( 'Témoignages' ),
+              'singular_name' => __( 'Témoignage' ),
+              'add_new' => __( 'Add New Témoignage' ),
+              'add_new_item' => __( 'Add New Témoignage' ),
+              'edit_item' => __( 'Edit Témoignage' ),
+              'new_item' => __( 'Add New Témoignage' ),
+              'view_item' => __( 'View Témoignage' ),
+              'search_items' => __( 'Search Témoignage' ),
+              'not_found' => __( 'No Témoignage found' ),
+              'not_found_in_trash' => __( 'No Témoignage found in trash' )
+              ),
+
+              'public'      => true,
+              'supports'      => array( 'title','editor','revisions'),
+              'capability_type'   => 'post',
+              'menu_position'   => 7,
+              'hierarchical'    => true
+          )
+   );
   
 }
 

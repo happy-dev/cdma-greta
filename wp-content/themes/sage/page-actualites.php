@@ -6,7 +6,7 @@
 			<!-- THE QUERY -->
 			<?php 
 			$args=( array( 	'post_type' => 'post' ,
-							'posts_per_page' => 6  ) );  
+							'posts_per_page' => 12  ) );  
 			$the_query = new WP_Query( $args ); 
 				while ( $the_query->have_posts()) : $the_query->the_post(); ?>
 					<div>

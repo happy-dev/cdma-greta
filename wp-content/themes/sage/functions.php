@@ -43,3 +43,12 @@ function create_formations_tax() {
     )
   );
 }
+
+if( function_exists('acf_add_options_page') ) { 
+  acf_add_options_page();
+}
+
+// Test if neither null not empty string
+function isNotNull($str) {
+  return isset($s->SSDateCommentaire) AND $s->SSDateCommentaire != '';
+}
