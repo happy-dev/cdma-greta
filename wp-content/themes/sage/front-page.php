@@ -1,9 +1,9 @@
 <?php while (have_posts()) : the_post(); ?>
 
-<!-- OPENING IMAGE/VIDEO -->
 <div id="home-search">
     <h1><?php the_field('titre_slider'); ?></h1>
 
+    <!-- OPENING SLIDER/VIDEO -->
     <?php if ( have_rows('slider_home') ): ?>
         <div class="carousel main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
             <?php while ( have_rows('slider_home') ) : the_row(); ?>
@@ -16,6 +16,13 @@
         </div>
         <div class="layer"></div>
     <?php endif ?>
+    
+    <!-- TEXTE/LIENS SLIDER -->
+    <?php while ( have_rows('liens_header') ) : the_row(); ?>
+        <a href="<?php the_sub_field('lien'); ?>">
+            <?php the_sub_field('texte_lien'); ?>
+        </a>
+    <?php endwhile; ?>
 </div>
 
 
