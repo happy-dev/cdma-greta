@@ -1,57 +1,60 @@
 <?php while (have_posts()) : the_post(); ?>
 
 <!-- OPENING IMAGE/VIDEO -->
-<<<<<<< HEAD
 <div id="home-search">
     <h1><?php the_field('titre_slider'); ?></h1>
+
     <?php if ( have_rows('slider_home') ): ?>
         <div class="carousel main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
-		<?php while ( have_rows('slider_home') ) : the_row(); ?>
-     		<?php
-			$imageArray = get_sub_field('slides_home');
-			$image = $imageArray['url']; ?>
-			<div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
-			</div>
-		<?php endwhile; ?>
-	</div>
+            <?php while ( have_rows('slider_home') ) : the_row(); ?>
+                <?php
+                $imageArray = get_sub_field('slides_home');
+                $image = $imageArray['url']; ?>
+                <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
+                </div>
+            <?php endwhile; ?>
+        </div>
+        <div class="layer"></div>
     <?php endif ?>
-    <div class="layer"></div>
 </div>
-    
+
+
 <?php if ( get_field('video_home') ): 
 the_field('video_home');
 endif ?>
+
+<!-- FORMATIONS -->
 
 <div class="container">
     <h2>Formations à la une</h2>
     <a class="see-all" href="">Voir toutes les formations</a>
 
     <div class="row">
-            <!-- THE QUERY -->
-	<?php $posts = get_field('formations_une');
-		if( $posts ): ?>
-		    <?php foreach( $posts as $post): ?>
-		        <?php setup_postdata($post); ?>
-			        <article class="formation col-md-4">
-			        	<?php $image = get_field('post_image');
-							if( !empty($image) ): 
+    <!-- THE QUERY -->
+    <?php $posts = get_field('formations_une');
+        if( $posts ): ?>
+            <?php foreach( $posts as $post): ?>
+                <?php setup_postdata($post); ?>
+                    <article class="formation col-md-4">
+                        <?php $image = get_field('post_image');
+                            if( !empty($image) ): 
 
-								$url = $image['url'];
-								$title = $image['title'];
-								$alt = $image['alt'];
-								$size = 'thumbnail';
-								$thumb = $image['sizes'][ $size ]; ?>
+                                $url = $image['url'];
+                                $title = $image['title'];
+                                $alt = $image['alt'];
+                                $size = 'thumbnail';
+                                $thumb = $image['sizes'][ $size ]; ?>
 
-								<a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-									<img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
+                                <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                                    <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
                                     <h3><?php the_title(); ?></h3>
-								</a>
-							<?php endif; ?>
-			            <?php //the_excerpt(); ?>
-			        </article>
-		    <?php endforeach; ?>
-		    <?php wp_reset_postdata(); ?>
-		<?php endif; ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php //the_excerpt(); ?>
+                    </article>
+            <?php endforeach; ?>
+            <?php wp_reset_postdata(); ?>
+        <?php endif; ?>
     </div><!-- row end -->
 </div><!-- container end -->
 
