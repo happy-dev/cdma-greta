@@ -1,20 +1,10 @@
 <header class="navbar">
-    <?php $image = get_field('logo_header', 'option');
-              if( !empty($image) ): 
-                $url = $image['url'];
-                $title = $image['title'];
-                $alt = $image['alt'];
-                $size = 'large';
-                $thumb = $image['sizes'][ $size ]; ?>
-
-<header class="banner">
-  <div class="container">
   
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');
     if( !empty($image) ): 
       $alt = $image['alt'];
-      $size = 'thumbnail';
+      $size = 'large';
       $thumb = $image['sizes'][ $size ]; ?>
 
       <a class="brand" href="<?= esc_url(home_url('/')); ?>">
