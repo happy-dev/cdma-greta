@@ -1,8 +1,9 @@
 # Folders
+wp-content/themes/*
 !wp-content/themes/sage
-wp-content/themes
 wp-content/uploads
 
 
 # Files
+wp-content/themes/sage/diogenConfig.php
 wp-config.php

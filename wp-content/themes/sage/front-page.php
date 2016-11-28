@@ -1,18 +1,19 @@
 <?php while (have_posts()) : the_post(); ?>
 
 <!-- OPENING IMAGE/VIDEO -->
+<<<<<<< HEAD
 <div id="home-search">
-    <h1><?php the_content(); ?></h1>
+    <h1><?php the_field('titre_slider'); ?></h1>
     <?php if ( have_rows('slider_home') ): ?>
         <div class="carousel main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
-            <?php while ( have_rows('slider_home') ) : the_row(); ?>
-                <?php
-                $imageArray = get_sub_field('slides_home');
-                $image = $imageArray['url']; ?>
-                <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
-                </div>
-            <?php endwhile; ?>
-        </div>
+		<?php while ( have_rows('slider_home') ) : the_row(); ?>
+     		<?php
+			$imageArray = get_sub_field('slides_home');
+			$image = $imageArray['url']; ?>
+			<div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
+			</div>
+		<?php endwhile; ?>
+	</div>
     <?php endif ?>
     <div class="layer"></div>
 </div>
