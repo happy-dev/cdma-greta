@@ -1,6 +1,7 @@
 .home {
     .container {
-        padding: 66px 0;
+        padding-top: 66px;
+        padding-bottom: 40px;
         
         position: relative;
         
@@ -70,8 +71,14 @@
         overflow: auto;
         .video {
             position: relative;
-            width: 50%;
-            float: left;
+           // width: 50%;
+        //    float: left;
+            
+            overflow: hidden;
+            
+            img {
+                float: middle;
+            }
             
             &:hover {
                 cursor: pointer;
@@ -80,8 +87,8 @@
         
         .greta {
             color: white;
-            width: 50%;
-            float: left;
+         //   width: 50%;
+        //    float: left;
             
             padding: 6vw 6.5vw 6vw 3.5vw;
             h2 {
@@ -109,6 +116,20 @@
                 background: transparent url(../../assets/images/icon-arrow-right-white.gif) 0 center no-repeat;
                 display: block;
                 background-size: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1049px) {
+    .home {
+        .container {
+            h2 {
+                text-align: center;
+            }
+            
+            .see-all {
+                display: none;
             }
         }
     }

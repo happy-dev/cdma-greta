@@ -69,13 +69,13 @@ endif ?>
     </div><!-- row end -->
 </div><!-- container end -->
 
-<div class="presentation">
-    <div class="video">
+<div class="presentation row">
+    <div class="video col-md-6">
         <?php //the_field('prez_video'); ?>
         <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
         <span class="icon-play"></span>
     </div>
-    <div class="greta">
+    <div class="greta col-md-6">
         <h2><?php the_field('prez_titre'); ?></h2>
         <?php the_field('prez_texte'); ?>
         <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>

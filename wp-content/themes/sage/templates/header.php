@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Extras\Custom_Walker; ?>
+
 <header class="navbar">
   
   <!-- LOGO HEADER -->
@@ -16,10 +18,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <nav class="nav-primary collapse" id="collapse-nav-primary">
+    <nav class="collapse" id="collapse-nav-primary">
       <?php
       if (has_nav_menu('primary_navigation')) :
-        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav']);
+        wp_nav_menu(['theme_location'   => 'primary_navigation',
+                     'walker'           => new Custom_Walker]);
       endif;
       ?>
     </nav>

@@ -46,6 +46,9 @@
                     })
 
                 }
+         $(".collapse").mouseleave(function(){
+             $(".collapse").removeClass("in");
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
