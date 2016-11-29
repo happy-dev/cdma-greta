@@ -1,0 +1,32 @@
+.domaine {
+    .presentation {
+        .intro {
+            h1 {
+                font-family: $title-bold-fonts;
+            }
+            p {
+                font-family: $basic-fonts;
+                font-size: 14px;
+                line-height: 21px;
+                
+            }
+            
+            a.note {
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                text-decoration: underline;
+                background-size: 5px;
+            }
+        }
+    }
+    
+    .presentation-annexe {
+        .note {
+            font-family: $title-fonts;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }   
+    }
+}

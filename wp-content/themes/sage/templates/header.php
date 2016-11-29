@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Extras\Custom_Walker; ?>
 
-<header class="navbar">
+<header class="navbar primary-navbar">
   
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');
