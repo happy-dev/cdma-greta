@@ -33,11 +33,11 @@ endif ?>
 
 <!-- FORMATIONS -->
 
-<div class="container">
+<section class="container">
     <h2>Formations à la une</h2>
     <a class="see-all" href="">Voir toutes les formations</a>
 
-    <div class="row">
+    <div class="content row">
     <!-- THE QUERY -->
     <?php $posts = get_field('formations_une');
         if( $posts ): ?>
@@ -67,27 +67,27 @@ endif ?>
             <?php wp_reset_postdata(); ?>
         <?php endif; ?>
     </div><!-- row end -->
-</div><!-- container end -->
+</section><!-- container end -->
 
-<div class="presentation row">
+<section class="presentation row">
     <div class="video col-md-6">
         <?php //the_field('prez_video'); ?>
         <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
         <span class="icon-play"></span>
     </div>
-    <div class="greta col-md-6">
+    <div class="intro greta col-md-6">
         <h2><?php the_field('prez_titre'); ?></h2>
         <?php the_field('prez_texte'); ?>
         <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
     </div>
     
-</div><!-- container end -->
+</section><!-- container end -->
 
-<div class="container">
+<section class="container">
     <h2>Actualités</h2>
     <a class="see-all" href="/actualites">Voir toute l'actualité</a>
 
-    <div class="row">
+    <div class="content row">
         <!-- THE QUERY -->
         <?php 
         $args=( array( 	'post_type' => 'post' ,
@@ -105,11 +105,11 @@ endif ?>
             <?php endwhile; ?>
         <?php wp_reset_postdata();?>
     </div><!-- row end -->
-</div><!-- container end -->
+</section><!-- container end -->
 
 
 <!-- LIEUX DE FORMATION -->
-<div class="container">
+<section class="container">
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
@@ -123,6 +123,6 @@ endif ?>
 		<?php endwhile; ?>
 	</div>
 <?php endif ?>
-</div><!-- container end -->
+</section><!-- container end -->
 
 <?php endwhile; ?>

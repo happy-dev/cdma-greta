@@ -1,19 +1,17 @@
-.formation {
-    margin-bottom: 20px;
-    
-    img {
-        width: 100%;
-    }
-    
-    p {
-        color: #5d5d5d;
-        font-size: 14px;
-        line-height: 18px;
-        
-        span {
-            color: #0956a1;
-            font-family: $basic-fonts;
-            font-weight: bold;
+section {
+    .content {
+        article.formation {
+            font-size: 14px;
+
+            img {
+                width: 100%;
+            }
+
+            p {        
+                span {
+                    font-weight: bold;
+                }
+            }
         }
     }
 }
