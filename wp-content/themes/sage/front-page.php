@@ -1,6 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
 
-<div id="home-search">
+<!-- OPENING IMAGE/VIDEO -->
+<div class="search">
     <h1><?php the_field('titre_slider'); ?></h1>
 
     <!-- OPENING SLIDER/VIDEO -->
@@ -55,6 +56,9 @@ endif ?>
                                 <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                                     <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
                                     <h3><?php the_title(); ?></h3>
+                                    <p>38h - Temps plein sur 5 jours<br/>
+                                    Cours du jour, Formation en présentiel<br/>
+                                    <span>Ecole Estienne</span></p>
                                 </a>
                             <?php endif; ?>
                         <?php //the_excerpt(); ?>
@@ -65,16 +69,23 @@ endif ?>
     </div><!-- row end -->
 </div><!-- container end -->
 
-<div class="container">
-    <!-- PREZ GRETA -->
-    <h2><?php the_field('prez_titre'); ?></h2>
-    <?php the_field('prez_texte'); ?>
-    <?php the_field('prez_video'); ?>
+<div class="presentation row">
+    <div class="video col-md-6">
+        <?php //the_field('prez_video'); ?>
+        <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
+        <span class="icon-play"></span>
+    </div>
+    <div class="greta col-md-6">
+        <h2><?php the_field('prez_titre'); ?></h2>
+        <?php the_field('prez_texte'); ?>
+        <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+    </div>
+    
 </div><!-- container end -->
 
 <div class="container">
     <h2>Actualités</h2>
-    <a href="/actualites">Voir toute l'actualité</a>
+    <a class="see-all" href="/actualites">Voir toute l'actualité</a>
 
     <div class="row">
         <!-- THE QUERY -->
@@ -84,13 +95,13 @@ endif ?>
                         'posts_per_page' => 3  ) );  
         $the_query = new WP_Query( $args ); 
             while ( $the_query->have_posts()) : $the_query->the_post(); ?>
-                <div>
-                    <?php the_post_thumbnail('thumbnail'); ?>
-                    <a href= <?php the_permalink(); ?> >
-                        <?php the_title(); ?>
+                <article class="col-md-4">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('thumbnail'); ?>
+                        <h3><?php the_title(); ?></h3>
+                        <?php //the_excerpt(); ?>
                     </a>
-                    <?php //the_excerpt(); ?>
-                </div>	
+                </article>
             <?php endwhile; ?>
         <?php wp_reset_postdata();?>
     </div><!-- row end -->

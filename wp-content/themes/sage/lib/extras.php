@@ -31,3 +31,99 @@ function excerpt_more() {
   //return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+use Walker_Nav_Menu;
+
+class Custom_Walker extends Walker_Nav_Menu {
+
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+        
+        $atts = array();
+        $atts['id']            = 'sub-menu-'.$this->parent_item->ID;
+        $atts['class']         = 'collapse';
+        
+        $attributes = '';
+		foreach ( $atts as $attr => $value ) {
+			if ( ! empty( $value ) ) {
+				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+				$attributes .= ' ' . $attr . '="' . $value . '"';
+			}
+		}
+        
+        $output .= "\n$indent<span $attributes>\n";
+        $output .= "\n$indent<span class='decoration'></span>\n";
+		$output .= "\n$indent<ul>\n";
+        
+        $this->children_cpt = 0;
+        
+	}
+
+    function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
+        $this->parent_item = $item;
+        if ($depth > 0) {
+            if ($this->children_cpt > 5) {
+                $this->children_cpt = 0;
+                $output .= '<ul>';
+            }
+        }
+        
+        $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+        $output .= $indent . '<li>';
+
+        $atts = array();
+		$atts['title']            = ! empty( $item->attr_title ) ? $item->attr_title : '';
+    
+        if ($args->walker->has_children) {
+            $href = '#sub-menu-'. $item->ID;
+            $atts['class']            = 'toggle';
+            $atts['data-toggle']      = 'collapse';
+            $atts['aria-expanded']    = 'false';
+            $atts['aria-controls']    = 'sub-menu-'. $item->ID;
+        } else {
+            $href = $item->url;
+            $atts['target']           = ! empty( $item->target )     ? $item->target     : '';
+            $atts['rel']              = ! empty( $item->xfn )        ? $item->xfn        : '';
+        }
+        
+		$atts['href']             = ! empty( $href )             ? $href             : '';
+		
+        $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
+        
+        $attributes = '';
+		foreach ( $atts as $attr => $value ) {
+			if ( ! empty( $value ) ) {
+				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+				$attributes .= ' ' . $attr . '="' . $value . '"';
+			}
+		}
+        
+        $item_output = $args->before;
+		$item_output .= '<a'. $attributes .'>';
+		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		$item_output .= '</a>';
+		$item_output .= $args->after;
+        
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
+    
+    public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+        $output .= "</li>\n";
+        
+        if ($depth > 0) {
+            if ($this->children_cpt >= 5) {
+                $output .= '</ul>';
+            }
+
+            $this->children_cpt++;
+        }
+    }
+    
+    public function end_lvl( &$output, $depth = 0, $args = array() ) {
+        if ($this->children_cpt < 5) {
+            $indent = str_repeat("\t", $depth);
+            $output .= "$indent</ul></span>\n";
+        }
+    }
+}

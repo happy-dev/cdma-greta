@@ -10,7 +10,8 @@ $cdma-brown:            #6a584d;
 $cdma-light-brown:      #b3a095;
 
 // Fonts
-$basic-fonts:            Helvetica, Arial, sans-serif;
+$basic-fonts:            'HelveticaNeueLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'HelveticaNeue', 'Helvetica Neue', 'TeXGyreHerosRegular', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
+$basic-light-fonts:      'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 $title-fonts:            UniversCondensed, $basic-fonts;
 $title-bold-fonts:       UniversCondensedBold, $basic-fonts;
 
