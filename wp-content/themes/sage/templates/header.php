@@ -1,10 +1,11 @@
-<header class="navbar">
-   
+<?php use Roots\Sage\Extras\Custom_Walker; ?>
+
+<header class="navbar primary-navbar">
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');
     if( !empty($image) ): 
       $alt = $image['alt'];
-      $size = 'thumbnail';
+      $size = 'large';
       $thumb = $image['sizes'][ $size ]; ?>
 
       <a class="brand" href="<?= esc_url(home_url('/')); ?>">
@@ -16,10 +17,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <nav class="nav-primary collapse" id="collapse-nav-primary">
+    <nav class="collapse" id="collapse-nav-primary">
       <?php
       if (has_nav_menu('primary_navigation')) :
-        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav']);
+        wp_nav_menu(['theme_location'   => 'primary_navigation',
+                     'walker'           => new Custom_Walker]);
       endif;
       ?>
     </nav>

@@ -26,8 +26,8 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
+    font: inherit;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -59,7 +59,9 @@ button, input {
         outline: 0;   
     }
 }
-
+p {
+    padding-bottom: 1vw;
+}
 
 /*******************************************/
 
@@ -88,8 +90,6 @@ button, input {
 	font-style: normal;
 }
 
-
-
 /*******************************************/
 
 /*                GLOBAL                   */
@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1 { font-size: 40px;}
-h2 { font-size: 23px; padding-bottom: 35px;}
+h2 { font-size: 23px;}
 h3 { font-size: 22px; color: $cdma-light-brown;}
 h4 { font-size: 18px;}
 h5 { font-size: 14px;}

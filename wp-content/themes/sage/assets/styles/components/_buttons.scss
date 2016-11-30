@@ -1,0 +1,13 @@
+.icon-play {
+    background-image: url(../../assets/images/icon-play.png);       background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+    display: block;
+    width: 148px;
+    height: 148px;
+    position: absolute;
+    top: calc(50% - 74px);
+    left: calc(50% - 74px);
+    z-index: 9;
+}

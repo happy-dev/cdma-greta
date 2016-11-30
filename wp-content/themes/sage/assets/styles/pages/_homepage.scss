@@ -1,0 +1,66 @@
+.home {
+    section {
+        padding: 0;    
+    }
+    
+    .container {
+        padding-top: 66px;
+        padding-bottom: 40px;
+        
+        position: relative;
+        
+        h2 {
+            padding-bottom: 35px;
+        }
+        
+        .see-all {
+            font-size: 15px;
+            line-height: 20px;
+            color: $cdma-brown;
+            
+            position: absolute;
+            top: 66px;
+            right: 0;
+            font-weight: bold;
+        }
+    }
+    
+    .search {
+        position: relative;
+
+        h1 {
+            color: white;
+            font-size: 3.3vw;
+            line-height: 4vw; 
+            text-align: center;
+            font-family: Arial;
+            font-weight: normal;
+            text-transform: none;
+
+            width: 100%;
+            padding: 11vw 17vw;
+            position: absolute;
+            left: 0;
+            z-index: 3;
+        }
+
+        .carousel {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+@media (max-width: 1049px) {
+    .home {
+        .container {
+            h2 {
+                text-align: center;
+            }
+            
+            .see-all {
+                display: none;
+            }
+        }
+    }
+}

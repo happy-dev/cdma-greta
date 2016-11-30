@@ -1,64 +1,131 @@
-<?php while (have_posts()) : the_post(); ?>
 
+
+<?php while (have_posts()) : the_post(); ?>
+<div class="domaine">
 <!-- LE DOMAINE -->
 	<!-- IMAGE/VIDEO -->
-	<?php $image = get_field('post_image');
-					if( !empty($image) ): 
-						$url = $image['url'];
-						$title = $image['title'];
-						$alt = $image['alt'];
-						$size = 'thumbnail';
-						$thumb = $image['sizes'][ $size ]; ?>
-							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-					<?php endif; ?>
+    
+    <aside>
+        <article>
+            <div class="presentation">
+                <figure>
+                    <?php $image = get_field('post_image');
+                    if( !empty($image) ): 
+                        $url = $image['url'];
+                        $title = $image['title'];
+                        $alt = $image['alt'];
+                        $size = 'large';
+                        $thumb = $image['sizes'][ $size ]; ?>
+                            <img class="image-background" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                    <?php endif; ?>
+                </figure>
 
-	<!-- TEXTE -->
-	<h1><?php the_title(); ?></h1>
-	<?php the_content(); ?>
+               <!-- TEXTE -->
+                <div class="layer"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="intro col-md-6 col-sm-12 col-xs-12">
+                            <h1><?php the_title(); ?></h1>
+                            <?php the_content(); ?>
+                            <a class="note"
+                               href="#presentation-pannel"
+                               data-toggle="collapse"
+                               aria-expanded="false"
+                               aria-controls="presentation-pannel">Lire la suite</a>
+                            <span class="note">Cliquez sur le bouton lecture pour découvrir la video des Arts du bois</span>
+                        </div>
+                        <div class="video col-md-6 col-sm-12 col-xs-12">
+                            &nbsp;<span class="icon-play"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="presentation-annexe container collapse" id="presentation-pannel">
+                <p>
+                    Développez vos compétences techniques métiers avec nos formations professionnelles en ébénisterie, marqueterie, sculpture ornementale, finitions traditionnelles ou contemporaines, D.A.O., C.A.O.</p>
+
+<p>Nous mobilisons pour vous l’expertise des professionnels et les ateliers de l’École Boulle.</p>
+
+<p>Ébénisterie : L’ébéniste fabrique des meubles, en bois massif ou plaqué. Pour assurer la réalisation d’un produit de qualité (de style ou de création contemporaine), le professionnel opère des choix fonctionnels et culturels étayés par sa culture artistique, ses connaissances et ses savoir-faire techniques.</p>
+
+<p>Marqueterie : Le marqueteur crée des motifs ornementaux (floraux, géométriques ou figuratifs) en utilisant des morceaux de placage (bois précieux de différentes essences, bois teints, écaille, corne, nacre, métaux…) juxtaposés ou incrustés sur un même plan. La marqueterie s’applique au mobilier, aux instruments de musique, aux tableaux, aux panneaux décoratifs…</p>
+
+<p>Sculpture ornementale sur bois : Le sculpteur ornemaniste réalise l’ornementation de meubles, des éléments de décoration pour l’architecture intérieure, boiseries, manteaux de cheminées, portes, balustrades, sièges.  Le sculpteur ornemaniste dessine d’abord le modèle qu’il va reproduire, en tenant compte de tous les détails. Les travaux préparatoires à la sculpture peuvent également être faits en volume, notamment en modelage. Le travail de sculpture peut alors commencer.</p>
+
+<p>Nous proposons également des formations sur mesure à destination des entreprises.
+                </p>
+                <a class="note up"
+                   href="#presentation-pannel"
+                   data-toggle="collapse"
+                   aria-expanded="false"
+                   aria-controls="presentation-pannel">X Fermer</a>
+            </div>
+        </article>
+    </aside>
+    
 
 <!-- LISTE DOMAINES -->
 	<!-- THE QUERY -->
-	<?php 
-	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) );  
+    
+<section class="container">
+    <div class="row">
+	<?php
+	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
 	$the_query = new WP_Query( $args ); ?>
 
-	<h2>Domaines de formation</h2>
-	<ul>
-		<?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
-			<li>
-				<a href= <?php the_permalink(); ?> >
-					<?php the_title(); ?>
-				</a>
-			</li>	
-		<?php endwhile; ?>
-	<?php wp_reset_postdata();?>
-	</ul>
+        <div class="column col-md-3">
+            <h3>Domaines</h3>
+            <ul>
+                <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
+                    <li>
+                        <a href= <?php the_permalink(); ?> >
+                            <?php the_title(); ?>
+                        </a>
+                    </li>	
+                <?php endwhile; ?>
+            <?php wp_reset_postdata();?>
+            </ul>
+        </div>
 
-<!-- LISTE FORMATIONS -->
-	<!-- THE QUERY -->
-	<h2>Formations</h2>
-	<?php $posts = get_field('formations_dom');
-	if( $posts ): ?>
-	    <?php foreach( $posts as $post): ?>
-	        <?php setup_postdata($post); ?>
-	        <div>
-	        	<?php $image = get_field('post_image');
-					if( !empty($image) ): 
-
-						$url = $image['url'];
-						$title = $image['title'];
-						$alt = $image['alt'];
-						$size = 'thumbnail';
-						$thumb = $image['sizes'][ $size ]; ?>
-
-						<a href="<?php echo $url; ?>" title="<?php echo $title; ?>">
-							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-						</a>
-					<?php endif; ?>
-	            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-	        </div>
-	    <?php endforeach; ?>
-	    <?php wp_reset_postdata(); ?>
+        <!-- LISTE FORMATIONS -->
+        <div class="content col-md-9 row">
+            <!-- THE QUERY -->
+            <h2>128 Formations Arts du bois</h2>
+            <?php $posts = get_field('formations_dom');
+            if( $posts ): ?>
+                <?php foreach( $posts as $post): ?>
+                    <?php setup_postdata($post); ?>
+                    <article class="formation col-md-12">
+                        <a class="row" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                            <div class="col-md-4">
+                            <?php $image = get_field('post_image');
+                                if( !empty($image) ): 
+                                    $url = $image['url'];
+                                    $title = $image['title'];
+                                    $alt = $image['alt'];
+                                    $size = 'thumbnail';
+                                    $thumb = $image['sizes'][ $size ]; ?>
+                                    <img
+                                         src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                         alt="<?php echo $alt; ?>" />
+                            <?php endif; ?>
+                            </div>
+                            <div class="col-md-8">
+                                <h3><?php the_title(); ?></h3>
+                                <span>Du 03/11/2016 au 31/01/2017
+    Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                                <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+    Identifier et respecter les contraintes du cahier des charges.
+    Respecter l'utilisation des images au regard du Droit.</p>
+                            </div>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+                <?php wp_reset_postdata(); ?>
+        </div>
+    </div>
+</section>
+    
 	<?php endif; ?>
-
+</div>
 <?php endwhile; ?>

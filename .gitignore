@@ -7,3 +7,4 @@ wp-content/uploads
 # Files
 wp-content/themes/sage/diogenConfig.php
 wp-config.php
+.htaccess
