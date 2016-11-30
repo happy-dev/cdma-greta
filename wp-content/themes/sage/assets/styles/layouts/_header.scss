@@ -1,5 +1,28 @@
-.primary-navbar {
-    background-color: #eee;
+.navbar {
+    ul {
+        > li {
+            a {
+                font-family: $title-fonts;
+            }
+       }
+    }
+    
+    input[type=text] {
+        border: 0;
+        vertical-align: middle;
+        font-size: 13px;
+        width: 25vw;
+        height: 40px;
+        line-height: 40px;
+    }
+    
+    .form-inline {
+        float: right;
+    }
+}
+
+.header {
+    background-color: white;
     height: $header-height;
     border-radius: 0;
     
@@ -22,7 +45,7 @@
         }
     }
     
-    nav {
+    .navbar {
         background-color: $cdma-blue;
         
         ul.menu {
@@ -40,9 +63,46 @@
     }
 }
 
+.secondary-navbar {
+    background-color: #eee;
+    
+    .navbar {
+        ul {
+            > li {
+                a {
+                    color: $cdma-light-brown;
+                    font-family: $title-fonts;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+                
+                &.nav-item {
+                    margin-right: 22px;
+                    
+                    &.active {
+                        a {
+                            color: $cdma-brown;
+                        }
+                    }
+                    
+                    &.dropdown {
+                        border-bottom: 3px solid $cdma-blue;
+                    }
+                }
+           }
+        }
+        
+        .btn {
+            background-color: $cdma-light-brown;
+        }
+    }
+    
+
+}
+
 @media (max-width: 1049px) {
     
-    .primary-navbar {
+    .header {
         //sdsdsdbackground-color: #eee;
 
         .brand {
@@ -77,7 +137,7 @@
             }
         }
 
-        nav {
+        .navbar {
             width: 100%;
             position: absolute;
             top: $header-height;
@@ -105,7 +165,7 @@
 
 @media (min-width: 1050px) {
 
-    .primary-navbar {
+    .header {
     
         .brand {
             margin-left: 5vw;
@@ -115,11 +175,12 @@
             display: none !important;
         }
 
-        nav {
+        .navbar {
             background-color: $cdma-blue;
             width: 77vw;
 
             display: block !important;
+            padding: 0;
             padding-right: 5vw;
             float: right;
             
@@ -203,9 +264,9 @@
 
 
 @media (min-width: 1170px) {
-    .primary-navbar {
-        nav {
-            background-image: url(../../assets/images/header-decoration-grey.gif);
+    .header {
+        .navbar {
+            background-image: url(../../assets/images/header-decoration.gif);
             background-position: top left;
             background-repeat: no-repeat;
 
