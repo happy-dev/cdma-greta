@@ -69,18 +69,19 @@ endif ?>
     </div><!-- row end -->
 </section><!-- container end -->
 
-<section class="presentation row">
-    <div class="video col-md-6">
-        <?php //the_field('prez_video'); ?>
-        <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
-        <span class="icon-play"></span>
+<section class="presentation">
+    <div class="row">
+        <div class="video col-md-6">
+            <?php //the_field('prez_video'); ?>
+            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
+            <span class="icon-play"></span>
+        </div>
+        <div class="intro greta col-md-6">
+            <h2><?php the_field('prez_titre'); ?></h2>
+            <?php the_field('prez_texte'); ?>
+            <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+        </div>
     </div>
-    <div class="intro greta col-md-6">
-        <h2><?php the_field('prez_titre'); ?></h2>
-        <?php the_field('prez_texte'); ?>
-        <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
-    </div>
-    
 </section><!-- container end -->
 
 <section class="container">

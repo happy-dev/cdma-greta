@@ -38,10 +38,10 @@ class Custom_Walker extends Walker_Nav_Menu {
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
-        
+  
         $atts = array();
-        $atts['id']            = 'sub-menu-'.$this->parent_item->ID;
-        $atts['class']         = 'collapse';
+        $atts['aria-labelledby']    = 'dropdown-'.$this->parent_item->ID;
+        $atts['class']              = 'dropdown-menu';
         
         $attributes = '';
 		foreach ( $atts as $attr => $value ) {
@@ -53,7 +53,8 @@ class Custom_Walker extends Walker_Nav_Menu {
         
         $output .= "\n$indent<span $attributes>\n";
         $output .= "\n$indent<span class='decoration'></span>\n";
-		$output .= "\n$indent<ul>\n";
+        $output .= "\n$indent<div class=\"row\">\n";
+		$output .= "\n$indent<ul class=\"col-md-4\">\n";
         
         $this->children_cpt = 0;
         
@@ -64,30 +65,35 @@ class Custom_Walker extends Walker_Nav_Menu {
         if ($depth > 0) {
             if ($this->children_cpt > 5) {
                 $this->children_cpt = 0;
-                $output .= '<ul>';
+                $output .= '<ul class="col-md-4">';
             }
         }
         
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-        $output .= $indent . '<li>';
+        if ($depth > 0) {
+            $output .= $indent . '<li class="dropdown">';
+        } else {
+            $output .= $indent . '<li>';
+        }
 
         $atts = array();
 		$atts['title']            = ! empty( $item->attr_title ) ? $item->attr_title : '';
     
         if ($args->walker->has_children) {
-            $href = '#sub-menu-'. $item->ID;
-            $atts['class']            = 'toggle';
-            $atts['data-toggle']      = 'collapse';
+          //  $href = 'dropdown'. $item->ID;
+            $atts['id']         = 'dropdown-'. $item->ID;
+            $atts['class']            = 'dropdown-toggle';
+            $atts['data-toggle']      = 'dropdown';
+            $atts['aria-haspopup']    = 'true';
             $atts['aria-expanded']    = 'false';
-            $atts['aria-controls']    = 'sub-menu-'. $item->ID;
         } else {
-            $href = $item->url;
+            //$href = $item->url;
             $atts['target']           = ! empty( $item->target )     ? $item->target     : '';
             $atts['rel']              = ! empty( $item->xfn )        ? $item->xfn        : '';
         }
         
-		$atts['href']             = ! empty( $href )             ? $href             : '';
+		$atts['href']             = ! empty( $item->url )             ? $item->url             : '';
 		
         $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
         
