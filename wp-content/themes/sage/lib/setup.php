@@ -71,7 +71,8 @@ function setup() {
               'supports'      => array( 'title','editor','revisions'),
               'capability_type'   => 'post',
               'menu_position'   => 4,
-              'hierarchical'    => true
+              'hierarchical'    => true,
+              'menu_icon'   => 'dashicons-art'
           )
    );
         
@@ -96,7 +97,8 @@ function setup() {
               'supports'      => array( 'title','editor','revisions'),
               'capability_type'   => 'post',
               'menu_position'   => 5,
-              'hierarchical'    => true
+              'hierarchical'    => true,
+              'menu_icon'   => 'dashicons-welcome-learn-more'
           )
    );
 
@@ -121,7 +123,8 @@ function setup() {
               'supports'      => array( 'title','editor','revisions'),
               'capability_type'   => 'post',
               'menu_position'   => 6,
-              'hierarchical'    => true
+              'hierarchical'    => true,
+              'menu_icon'   => 'dashicons-businessman'
           )
    );
 
@@ -146,7 +149,8 @@ function setup() {
               'supports'      => array( 'title','editor','revisions'),
               'capability_type'   => 'post',
               'menu_position'   => 7,
-              'hierarchical'    => true
+              'hierarchical'    => true,
+              'menu_icon'   => 'dashicons-format-chat'
           )
    );
   

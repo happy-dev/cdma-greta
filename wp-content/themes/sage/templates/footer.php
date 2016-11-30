@@ -1,5 +1,4 @@
 <footer class="content-info">
-<<<<<<< HEAD
   <div class="wrapper">
     <?php dynamic_sidebar('sidebar-footer'); ?>
 
