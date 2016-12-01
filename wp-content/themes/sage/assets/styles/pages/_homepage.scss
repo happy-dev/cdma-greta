@@ -38,10 +38,66 @@
             text-transform: none;
 
             width: 100%;
-            padding: 11vw 17vw;
+            padding: 6vw 9vw 2vw 9vw;
+        }
+        
+        .container {
+            padding-bottom: 0;
+        }
+        
+        .search-form {
+            width: 100%;
             position: absolute;
+            top: 0;
             left: 0;
             z-index: 3;
+            
+            input[type=text] {
+                width: 100%;
+                border: 0;
+            }
+            
+            label {
+                color: white;
+                font-size: 13.5px;
+                letter-spacing: 0.5px;
+                margin-right: 12px;
+                
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            
+            
+            .row-input {
+                margin-bottom: 10px;
+            }
+            
+            .row-checkbox {
+                div {
+                    text-align: center;
+                }
+            }
+        }
+        
+        .search-links {
+            position: absolute;
+            bottom: 25px;
+            right: 6vw;
+            z-index: 3;
+            
+            a {
+                color: white;
+                font-size: 14px;
+                font-family: $title-fonts;
+                text-decoration: underline;
+                background-color: rgba(0, 0 , 0,.4);
+                
+                display: block;
+                padding: 8px 15px;
+                margin-left: 20px;
+                float: right;
+            }
         }
 
         .carousel {

@@ -2,7 +2,43 @@
 
 <!-- OPENING IMAGE/VIDEO -->
 <div class="search">
-    <h1><?php the_field('titre_slider'); ?></h1>
+    <div class="search-form">
+            <form>
+                <div class="container">
+                    <h1><?php the_field('titre_slider'); ?></h1>
+                    <div class="row row-input">
+                        <div class="col-md-3 col-lg-4"></div>
+                        <div class="col-md-6 col-lg-4">
+                            <input class="form-control input-lg"
+                                   type="text"
+                                   placeholder="Chercher une formation" />
+                        </div>
+                        <div class="col-md-3 col-lg-4"></div>
+                    </div>
+                    <div class="row row-checkbox">
+                        <div class="col-lg-3 col-sm-2"></div>
+                        <div class="col-lg-6 col-sm-8">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1">
+                            Formations diplomantes
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2">
+                            Formations éligibles au CPF
+                            </label>
+                        </div>
+                        <div class="col-lg-3 col-sm-2"></div>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class="search-links">
+        <a href="#">E-Learning</a>
+        <a href="#">Relations internationales</a>
+        <a href="#">Cours du soir</a>
+        <a href="#">Relations internationales</a>
+        <a href="#">Cours du soir</a>
+    </div>
 
     <!-- OPENING SLIDER/VIDEO -->
     <?php if ( have_rows('slider_home') ): ?>

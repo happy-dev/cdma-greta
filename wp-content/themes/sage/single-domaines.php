@@ -27,8 +27,7 @@
                     <div class="col-sm-11 col-xs-10">
                         <input class="form-control"
                                type="text"
-                               placeholder="Search"
-                               value="Chercher une formation" />
+                               placeholder="Chercher une formation" />
                     </div>
                     <div class="col-sm-1 col-xs-2">
                         <button class="btn btn-outline-success" type="submit">OK</button>
@@ -133,7 +132,7 @@
             
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
+                    <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
                     <h2>128 Formations Arts du bois</h2>
                 </div>
             </div>

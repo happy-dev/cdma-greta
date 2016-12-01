@@ -32,10 +32,21 @@ section {
             font-family: $title-fonts;
             text-transform: none;
             width: 100%;
+            padding-bottom: 3vw;
         }
         
         article {
             line-height: 18px;
+            padding-bottom: 2vw;
+            
+            a:hover {
+                background-color: #fefefe;
+                text-decoration: none;
+                
+                h3 {
+                    text-decoration: underline;
+                }
+            }
             
             img {
                 width: 100%;
@@ -177,6 +188,20 @@ section {
 }
 
 @media (max-width: 767px) {
+    
+    section {
+        .content {
+            h2 {
+                padding-top: 4vw;
+            }
+            
+            article {
+                
+                
+            }
+        }
+    }
+    
     .presentation {
         .layer {
             width: 100%;
@@ -186,8 +211,4 @@ section {
             padding-bottom: 0;
         }
     }
-}
-
-.formations-list {
-    
 }
