@@ -13,15 +13,22 @@ section {
             padding-bottom: 25px;
         }
         
-        a {
-            color: black;
-            font-family: $title-fonts;
-        }
-        
         ul {
             li {
                 a {
+                    color: black;
+                    font-family: $title-fonts;
                     line-height: 26px;
+                    
+                    &.active {
+                        font-weight: bold;
+                    }
+
+                    &:hover {
+                        color: $cdma-blue;
+                        font-weight: bold;
+                        text-decoration: none;
+                    }
                 }
             }
         }
@@ -36,15 +43,20 @@ section {
         }
         
         article {
+            font-size: 14px;
             line-height: 18px;
-            padding-bottom: 2vw;
+            //padding-bottom: 1vw;
             
-            a:hover {
-                background-color: #fefefe;
-                text-decoration: none;
+            a {
+                padding: 15px 0;
                 
-                h3 {
-                    text-decoration: underline;
+                &:hover {
+                    background-color: #f4f4f4;
+                    text-decoration: none;
+
+                    h3 {
+                        text-decoration: underline;
+                    }
                 }
             }
             
@@ -192,12 +204,11 @@ section {
     section {
         .content {
             h2 {
-                padding-top: 4vw;
+                padding-top: 7vw;
             }
             
             article {
-                
-                
+           //     padding-bottom: 7vw; 
             }
         }
     }

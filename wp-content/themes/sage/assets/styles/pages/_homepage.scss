@@ -1,6 +1,12 @@
 .home {
     section {
-        padding: 0;    
+        padding: 0;
+        
+        .content {
+            article {
+                padding-bottom: 2vw;
+            }
+        }
     }
     
     .container {
@@ -112,10 +118,6 @@
         .container {
             h2 {
                 text-align: center;
-            }
-            
-            .see-all {
-                display: none;
             }
         }
     }

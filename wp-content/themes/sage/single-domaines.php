@@ -143,7 +143,7 @@
                 <?php foreach( $posts as $post): ?>
                     <?php setup_postdata($post); ?>
                     <article class="formation col-md-12">
-                        <a class="row" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                        <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
                             <?php $image = get_field('post_image');
                                 if( !empty($image) ): 
