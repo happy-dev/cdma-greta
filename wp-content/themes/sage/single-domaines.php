@@ -107,12 +107,13 @@
 	<!-- THE QUERY -->
     
 <section class="container">
-    <div class="row">
+    <div class="row row-offcanvas row-offcanvas-left">
+    <!--div class="row"-->
 	<?php
 	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
 	$the_query = new WP_Query( $args ); ?>
 
-        <div class="column col-md-3">
+        <div class="column col-md-3 sidebar-offcanvas" id="sidebar">
             <h3>Domaines</h3>
             <ul>
                 <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
@@ -127,9 +128,17 @@
         </div>
 
         <!-- LISTE FORMATIONS -->
-        <div class="content col-md-9 row">
+        <div class="content col-md-9">
             <!-- THE QUERY -->
-            <h2>128 Formations Arts du bois</h2>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
+                    <h2>128 Formations Arts du bois</h2>
+                </div>
+            </div>
+            
+            <div class="row">
             <?php $posts = get_field('formations_dom');
             if( $posts ): ?>
                 <?php foreach( $posts as $post): ?>
@@ -160,7 +169,9 @@
                         </a>
                     </article>
                 <?php endforeach; ?>
-                <?php wp_reset_postdata(); ?>
+            </div>
+            
+            <?php wp_reset_postdata(); ?>
         </div>
     </div>
 </section>

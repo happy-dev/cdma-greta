@@ -43,12 +43,9 @@
                     $gallery.on('settle click cellSelect', function() {
                         $('.js--hp-carousel__number__index').html($gallery.data('flickity').selectedIndex + 1);
                         $('.js--hp-carousel__number__total').html($gallery.data('flickity').cells.length);
-                    })
+                    });
 
-                }
-         $(".collapse").mouseleave(function(){
-             $(".collapse").removeClass("in");
-        });
+                };
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
@@ -94,5 +91,14 @@
 
   // Load Events
   $(document).ready(UTIL.loadEvents);
+    
 
+//Offcanvas
+    $(document).ready(function () {
+      $('[data-toggle="offcanvas"]').click(function () {
+        $('.row-offcanvas').toggleClass('active');
+      });
+    });
+
+    
 })(jQuery); // Fully reference jQuery after this point.
