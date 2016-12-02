@@ -63,6 +63,11 @@ p {
     line-height: 130%;
     padding-bottom: 1vw;
 }
+pre {
+    white-space: pre-wrap;
+    line-height: 130%;
+    padding-bottom: 1vw;
+}
 
 /*******************************************/
 
@@ -118,3 +123,23 @@ h5 { font-size: 14px;}
 h6 { font-size: 12px;}
 
 a { color: black;}
+
+.breadcrumb {
+    font-size: 11.5px;
+    background-color: transparent;
+    letter-spacing: 0.4px;
+    
+    .breadcrumb-item {
+        a {
+            color: white;
+        }
+        +.breadcrumb-item {
+            color: white;
+            
+            &:before {
+                color: white;
+                content: ">";
+            }
+        }
+    }
+}
