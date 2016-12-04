@@ -42,7 +42,7 @@
 
     <!-- OPENING SLIDER/VIDEO -->
     <?php if ( have_rows('slider_home') ): ?>
-        <div class="carousel main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+        <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
             <?php while ( have_rows('slider_home') ) : the_row(); ?>
                 <?php
                 $imageArray = get_sub_field('slides_home');
@@ -150,7 +150,7 @@ endif ?>
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
-	<div class="main-carousel js-flickity" data-flickity-options='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
 		<?php while ( have_rows('lieux_formation') ) : the_row(); ?>
      		<?php
 			$imageArray = get_sub_field('logos_lieux');

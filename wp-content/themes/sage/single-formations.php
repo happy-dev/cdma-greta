@@ -245,8 +245,8 @@ Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier
   $ss = DiogenHelper::getSessions($fi);// Sessions
   $ms = count($ss) > 1;// Multiple Sessions ? true or false
 
-  //print_r( $fs ); 
-  //print_r( $ss ); 
+  print_r( $fs ); 
+  print_r( $ss ); 
 
   // Iterating through each session
   foreach ($ss as $s) {
@@ -257,32 +257,13 @@ Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier
       $dc = Diogen::removeApostrophe($dc);
     } 
 }
-    //print_r($dc);
+    print_r($dc);
 
 
    
 
 	// SYLVIA
 
-    // DATES DE SESSION
- // If multiple sessions
-    if ($ms) {
-    	foreach ($ss as $s) {
-    		$sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-    		$ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-    		echo '<div>' ;
-    		echo 'Du '.$sd.' au '.$ed ; 	// dates de session
-			echo $dc ;						// commentaire de date
-			echo '</div>' ;
-    	}
-    }
-// If single session
-    else { 
-		if ($sd) {
-		echo 'Du '.$sd.' au '.$ed ; 	// dates de session
-		}
-		echo $dc ;						// commentaire de date
-    }
-    
-    */
-?>
+ include(locate_template('templates/formations-listing.php')); ?>
+
+ */
