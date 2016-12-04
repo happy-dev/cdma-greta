@@ -44,6 +44,34 @@ function create_formations_tax() {
   );
 }
 
+add_action( 'init', 'create_types_form_tax' );
+
+function create_types_form_tax() {
+  register_taxonomy(
+    'type_form',
+    'formations',
+    array(
+      'label' => __( 'Type de formation' ),
+      'rewrite' => array( 'slug' => 'type_form' ),
+      'hierarchical' => true,
+    )
+  );
+}
+
+add_action( 'init', 'create_stages_tax' );
+
+function create_stages_tax() {
+  register_taxonomy(
+    'contrat',
+    'stages',
+    array(
+      'label' => __( 'Type de contrat' ),
+      'rewrite' => array( 'slug' => 'contrat' ),
+      'hierarchical' => true,
+    )
+  );
+}
+
 if( function_exists('acf_add_options_page') ) { 
   acf_add_options_page();
 }
