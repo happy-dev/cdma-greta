@@ -9,7 +9,7 @@
     },
     "main.css": {
       "files": [
-        "../node_modules/flickity/dist/flickity.pkgd.css",
+        "../node_modules/flickity/dist/flickity.css",
         "styles/main.scss"
       ],
       "main": true
