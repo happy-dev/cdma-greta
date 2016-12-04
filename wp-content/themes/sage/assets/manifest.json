@@ -2,12 +2,14 @@
   "dependencies": {
     "main.js": {
       "files": [
-        "scripts/main.js", "scripts/vendor/flickity.pkgd.min.js"
+        "../node_modules/flickity/dist/flickity.pkgd.js",
+        "scripts/main.js"
       ],
       "main": true
     },
     "main.css": {
       "files": [
+        "../node_modules/flickity/dist/flickity.pkgd.css",
         "styles/main.scss"
       ],
       "main": true
