@@ -3,9 +3,14 @@
         text-transform: none;
     }
     
+    p, pre {
+        font-size: 14px;
+    }
+    
     button {
+        width: 100%;
         font-size: 18px;
-        padding: 1vw 4vw;
+        padding: 1vw 3vw;
     }
     
     section {
@@ -30,18 +35,39 @@
         
         h1 {
             font-size: 26px;
-            padding-bottom: 2vw;
-        }
-        
-        h2 {
-            text-decoration: underline;
+            padding-bottom: 1vw;
         }
         
         p {
+            margin-bottom: 1.5vw;
+        }
+        
+        button {
             margin: 1.5vw 0;
         }
         
-        .media {
+        .introduction-label {
+            color: $cdma-blue;
+            font-family: $title-fonts;
+            font-size: 14px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px #888;
+            
+            padding: 2px 8px;
+        }
+        
+        .introduction-success {
+            font-size: 20px;
+            text-decoration: underline;
+            text-indent: 28px;
+            background: transparent url(../images/icon-success.png) top left no-repeat;
+            
+            height: 26px;
+            line-height: 31px;
+        }
+        
+        .introduction-media {
             padding-bottom: 3vw;
             figure {
                 max-height: 300px;

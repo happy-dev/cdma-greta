@@ -51,45 +51,49 @@
                 <li class="breadcrumb-item"><a href="#">Art du bois</a></li>
                 <li class="breadcrumb-item active">Dessin d'ornement lié au patrimoine</li>
             </ol>
-            <aside>
-                <article>
-                    <div class="row">
-                        <div class="media col-md-6 col-sm-12">
-                            <figure>
-                                <?php
-                                  // IMAGE / VIDEO
-                                  $image = get_field('post_image');
+            <article>
+                <div class="row">
+                    <div class="introduction-media col-md-6 col-sm-12">
+                        <figure>
+                            <?php
+                              // IMAGE / VIDEO
+                              $image = get_field('post_image');
 
-                                  if( !empty($image) ): 
-                                    $url = $image['url'];
-                                    $title = $image['title'];
-                                    $alt = $image['alt'];
-                                    $size = 'large';
-                                    $thumb = $image['sizes'][ $size ]; 
-                                ?>
-                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                                <?php endif; ?>
-                            </figure>
-                            <span class="icon-play"></span>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <!-- TEXTE -->
-                            <h1><?php the_title(); ?></h1>
-                            <button class="btn">Candidater</button>
-                            <button class="btn">Demander plus d'informations</button>
-                            <p>Développer vos compétences techniques en dessin d'ornement dans divers domaines avec un sculpteur professionnel à l'Ecole Boulle.
-        Formation adaptée aux sculpteurs, staffeur, graveurs, tailleur de pierre, ... Cours du soir</p>
-                            <h2>Taux de réussite</h2>
-
-                            
-                            <a href="#">Télécharger la fiche en format PDF</a>
-                            <span>Formation éligible au CPF</span>
-                            
-                            <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
-                        </div>
+                              if( !empty($image) ): 
+                                $url = $image['url'];
+                                $title = $image['title'];
+                                $alt = $image['alt'];
+                                $size = 'large';
+                                $thumb = $image['sizes'][ $size ]; 
+                            ?>
+                            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                            <?php endif; ?>
+                        </figure>
+                        <span class="icon-play"></span>
                     </div>
-                </article>
-            </aside>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- TEXTE -->
+                        <h1><?php the_title(); ?></h1>
+                        <span class="introduction-label">Formation éligible au CPF</span>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <button class="btn btn-action">Candidater</button>
+                            </div>
+                            <div class="col-md-7">
+                                <button class="btn">Demander plus d'informations</button>
+                            </div>
+                        </div>
+                        <p>Développer vos compétences techniques en dessin d'ornement dans divers domaines avec un sculpteur professionnel à l'Ecole Boulle.
+    Formation adaptée aux sculpteurs, staffeur, graveurs, tailleur de pierre, ... Cours du soir</p>
+                        <h2 class="introduction-success">Taux de réussite</h2>
+
+
+                        <a href="#">Télécharger la fiche en format PDF</a>
+
+                        <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 
