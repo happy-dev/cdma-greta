@@ -10,13 +10,12 @@
     button {
         width: 100%;
         font-size: 18px;
-        padding: 1vw 3vw;
     }
     
     section {
         h1, h2 {
             text-transform: none;
-            padding-bottom: 1vw !important;
+            //padding-bottom: 1vw !important;
         }
     
         pre~h2, p~h2 {
@@ -24,9 +23,15 @@
         }
     }
     
+    .btn-candidate {
+        margin-bottom: 1.5vw;
+    }
+    
     .introduction {
         color: white;
         background-color: $cdma-light-brown;
+        
+        padding-bottom: 3vw;
         
         h1, h2 {
             color: white;
@@ -38,42 +43,46 @@
             padding-bottom: 1vw;
         }
         
-        p {
-            margin-bottom: 1.5vw;
-        }
-        
-        button {
-            margin: 1.5vw 0;
-        }
-        
         .introduction-label {
             color: $cdma-blue;
-            font-family: $title-fonts;
-            font-size: 14px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 1px 1px 2px #888;
+            font-family: $title-bold-fonts;
+            font-size: 15px;
             
-            padding: 2px 8px;
+            background-color: transparent;
+            background-image: url(../images/icon-accept.png);
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            text-indent: 19px;
+            display: block;
+            height: 14px;
+            line-height: 17px;
         }
         
         .introduction-success {
-            font-size: 20px;
-            text-decoration: underline;
+            font-size: 17px;
             text-indent: 28px;
             background: transparent url(../images/icon-success.png) top left no-repeat;
             
             height: 26px;
             line-height: 31px;
+            margin: 1vw 0;
         }
         
         .introduction-media {
-            padding-bottom: 3vw;
             figure {
-                max-height: 300px;
-                width: 95%;
+                height: 100%;
                 overflow: hidden;
+                position: relative;
+                
+                img {
+                    height: 100%;
+                }
             }
+        }
+        
+        .link-pdf {
+            float: right;
         }
     }
     
@@ -108,6 +117,60 @@
             img {
                 max-height: 100%;
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .formation {
+        button {
+            margin-bottom: 15px;
+        }
+        section {
+            h2 {
+                padding-bottom: 8px;
+            }
+            
+            pre~h2, p~h2 {
+                padding-top: 25px;
+            }
+            
+            .content, .column {
+                h2 {
+                    padding-bottom: 8px;
+                }
+            }
+        }
+        
+        .introduction {
+            padding-bottom: 30px;
+            
+            .introduction-media {
+                margin-bottom: 25px;
+            }
+
+            .introduction-success {
+                margin: 20px 0;
+            }
+        }
+        
+        .formation-detail {
+            padding: 20px 0;
+            
+            .column {
+                padding-left: 30px;
+            }
+            
+            .btn-more {
+                margin: 20px 0;
+            }
+        }
+        
+        .formation-temoignage {
+            h2 {
+                padding-top: 25px;
+                padding-bottom: 10px;
+            }   
         }
     }
 }

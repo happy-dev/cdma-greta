@@ -44,7 +44,7 @@
 
 <div class="formation">
     <div class="introduction">
-        <div class="container">
+        <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Accueil</a></li>
                 <li class="breadcrumb-item"><a href="#">Formations</a></li>
@@ -68,29 +68,34 @@
                             ?>
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                             <?php endif; ?>
-                        </figure>
-                        <span class="icon-play"></span>
+                            <span class="icon-play"></span>
+                        </figure>  
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <!-- TEXTE -->
                         <h1><?php the_title(); ?></h1>
                         <span class="introduction-label">Formation éligible au CPF</span>
+                        <hr/>
                         <div class="row">
-                            <div class="col-md-5">
-                                <button class="btn btn-action">Candidater</button>
+                            <div class="col-lg-5">
+                                <button class="btn btn-action btn-candidate">Candidater</button>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-lg-7">
                                 <button class="btn">Demander plus d'informations</button>
                             </div>
                         </div>
+                        <hr/>
                         <p>Développer vos compétences techniques en dessin d'ornement dans divers domaines avec un sculpteur professionnel à l'Ecole Boulle.
     Formation adaptée aux sculpteurs, staffeur, graveurs, tailleur de pierre, ... Cours du soir</p>
                         <h2 class="introduction-success">Taux de réussite</h2>
-
-
-                        <a href="#">Télécharger la fiche en format PDF</a>
-
-                        <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="link-pdf" href="#">Télécharger la fiche en format PDF</a>
+                            </div>
+                        </div>
+                        <hr/>
+                        <span class="note hidden-sm-down">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
                     </div>
                 </div>
             </article>
@@ -140,7 +145,7 @@ j.bogard@cdma.greta.fr</pre>
                 <div class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
+                            <button type="button" class="btn btn-more hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
                         </div>
                     </div>
                     <pre>Contenu de la formation préparatoire à la sculpture ornementale et pédagogie adaptés au stagiaire.
@@ -196,7 +201,8 @@ Meilleur Ouvrier de France 1997 MOF</pre>
 ROME B1302 - Décoration d'objets d'art et artisanaux ROME K1602 - Gestion de patrimoine culturel
 IMPRIMER
 </pre>
-                    <button class="btn">Candidater</button>
+                    <hr/>
+                    <button class="btn btn-action btn-candidate">Candidater</button>
                     <button class="btn">Demander plus d'informations</button>
                 </div>
             </div>
