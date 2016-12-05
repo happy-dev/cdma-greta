@@ -1,0 +1,61 @@
+.presentation-page {
+    position: relative;
+    
+    .breadcrumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 4;
+    }
+    
+    .image-background {
+        height: 100%;
+    }
+    
+    .row-intro {
+        min-height: 493px;
+    }
+    
+    .intro {
+        background-color: rgba(0, 0, 0, 0.4);
+        text-align: center;
+        
+        padding-top: 10vw;
+        
+        p {
+            font-size: 18px;
+            font-family: $basic-fonts;
+            line-height: 24px;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.page-greta {
+    padding: 7vw 14vw;
+}
+
+.article {
+    .breadcrumb {
+        .breadcrumb-item+.breadcrumb-item {
+            color: $cdma-blue;
+            &:before {
+                color: $cdma-blue;
+            }
+        }
+        .breadcrumb-item a {
+            color: $cdma-blue;
+        }
+    }
+    
+    h2 {
+        font-family: $title-fonts;
+        font-size: 30px;
+        text-transform: none;
+    }
+    
+    p {
+        font-family: $basic-thick-fonts;
+        line-height: 140%;
+    }
+}

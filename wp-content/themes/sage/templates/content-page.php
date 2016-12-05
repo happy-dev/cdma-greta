@@ -1,2 +1,4 @@
-<?php the_content(); ?>
-<?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
+<div class="page-greta article container">
+    <?php the_content(); ?>
+</div>
+<?php //wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
