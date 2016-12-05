@@ -20,9 +20,10 @@
 @import "layouts/posts";
 @import "layouts/tinymce";
 
+@import "components/_block";
+@import "components/_offcanvas";
+
 @import "pages/_homepage";
 @import "pages/_domaine";
 @import "pages/_formation";
-
-@import "components/_block";
-@import "components/_offcanvas";
+@import "pages/_page";
