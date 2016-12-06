@@ -1,0 +1,87 @@
+.formation {
+    h1, h2 {
+        text-transform: none;
+    }
+    
+    button {
+        font-size: 18px;
+        padding: 1vw 4vw;
+    }
+    
+    section {
+        h1, h2 {
+            text-transform: none;
+            padding-bottom: 1vw !important;
+        }
+    
+        pre~h2, p~h2 {
+            padding-top: 2vw;
+        }
+    }
+    
+    .introduction {
+        color: white;
+        background-color: $cdma-light-brown;
+        
+        h1, h2 {
+            color: white;
+            font-weight: normal;
+        }
+        
+        h1 {
+            font-size: 26px;
+            padding-bottom: 2vw;
+        }
+        
+        h2 {
+            text-decoration: underline;
+        }
+        
+        p {
+            margin: 1.5vw 0;
+        }
+        
+        .media {
+            padding-bottom: 3vw;
+            figure {
+                max-height: 300px;
+                width: 95%;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    .formation-detail {
+        h2 {
+            font-family: $title-fonts;
+            font-weight: bold;
+        }
+        
+        .column {
+            h2 {
+                color: black;
+                font-size: 22px;
+            }
+        }
+    }
+    
+    .formation-temoignage {
+        color: black;
+        background-color: #f5f5f5;
+        
+        h2 {
+            color: black;
+        }
+        
+        .img-circle {
+            overflow: hidden;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            
+            img {
+                max-height: 100%;
+            }
+        }
+    }
+}

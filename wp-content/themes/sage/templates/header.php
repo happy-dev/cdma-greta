@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <nav class="collapse" id="collapse-nav-primary">
+    <nav class="navbar navbar-full primary-navbar collapse" id="collapse-nav-primary">
       <?php
       if (has_nav_menu('primary_navigation')) :
         wp_nav_menu(['theme_location'   => 'primary_navigation',

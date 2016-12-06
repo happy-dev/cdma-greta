@@ -1,25 +1,239 @@
+<div class="secondary-navbar">
+    <nav class="navbar container">
+        <!-- button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button -->
+        <div class="row">
+            <ul class="nav navbar-nav col-lg-8 hidden-md-down">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="formations-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formations</a>
+                    <div class="dropdown-menu" aria-labelledby="formations-dropdown">
+                        
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Certifications et VAE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Financez votre formation</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="entreprise-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entreprise</a>
+                    <div class="dropdown-menu" aria-labelledby="entreprise-dropdown">
+                       
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
+                <div class="row">
+                    <div class="col-sm-11 col-xs-10">
+                        <input class="form-control"
+                               type="text"
+                               placeholder="Chercher une formation" />
+                    </div>
+                    <div class="col-sm-1 col-xs-2">
+                        <button class="btn btn-outline-success" type="submit">OK</button>
+                    </div>
+                </div>
+            </form>
+      </div>
+    </nav>
+</div>
+
 <?php
-  require_once('DiogenHelper.php');
+  //require_once('DiogenHelper.php');
+  the_post(); ?>
 
-  the_post();
+<div class="formation">
+    <div class="introduction">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="#">Formations</a></li>
+                <li class="breadcrumb-item"><a href="#">Art du bois</a></li>
+                <li class="breadcrumb-item active">Dessin d'ornement lié au patrimoine</li>
+            </ol>
+            <aside>
+                <article>
+                    <div class="row">
+                        <div class="media col-md-6 col-sm-12">
+                            <figure>
+                                <?php
+                                  // IMAGE / VIDEO
+                                  $image = get_field('post_image');
 
-  // IMAGE / VIDEO
-  $image = get_field('post_image');
+                                  if( !empty($image) ): 
+                                    $url = $image['url'];
+                                    $title = $image['title'];
+                                    $alt = $image['alt'];
+                                    $size = 'large';
+                                    $thumb = $image['sizes'][ $size ]; 
+                                ?>
+                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                                <?php endif; ?>
+                            </figure>
+                            <span class="icon-play"></span>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- TEXTE -->
+                            <h1><?php the_title(); ?></h1>
+                            <button class="btn">Candidater</button>
+                            <button class="btn">Demander plus d'informations</button>
+                            <p>Développer vos compétences techniques en dessin d'ornement dans divers domaines avec un sculpteur professionnel à l'Ecole Boulle.
+        Formation adaptée aux sculpteurs, staffeur, graveurs, tailleur de pierre, ... Cours du soir</p>
+                            <h2>Taux de réussite</h2>
 
-  if( !empty($image) ): 
-    $url = $image['url'];
-    $title = $image['title'];
-    $alt = $image['alt'];
-    $size = 'thumbnail';
-    $thumb = $image['sizes'][ $size ]; 
-?>
-  <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-<?php endif; ?>
+                            
+                            <a href="#">Télécharger la fiche en format PDF</a>
+                            <span>Formation éligible au CPF</span>
+                            
+                            <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                        </div>
+                    </div>
+                </article>
+            </aside>
+        </div>
+    </div>
 
-  <!-- TEXTE -->
-<h1><?php the_title(); ?></h1>
+    <div class="container">
+        <section class="formation-detail">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
+                    <h2>Dates</h2>
+                    <pre>Du 22/09/2016 au 01/06/2017
 
-<?php the_content();
+Un parcours par an. Rentrée en septembre.
+Rentrée en cours d'année possible sur accord du formateur.</pre>
+                    <h2>Public</h2>
+                    <pre>Tout public, public en emploi, agent de la fonction publique, artisan, salarié, salarié dans le cadre du plan de formation, public sans emploi, demandeur d'emploi, autre public, particulier, individuel
+Débutants acceptés.</pre>
+                    <h2>Durée</h2>
+                    <pre>90 H (en centre)
+Les jeudis soir de 18 heures à 21 heures, sauf pendant les vacances scolaires, plus quelques mercredis soir de 18 heures à 21 heures.
+Cours du soir
+En 1 an</pre>
+                    <h2>Effectif</h2>
+                    <pre>Minimum : 8
+Maximum : 15</pre>
+                    <h2>Tarif(s)</h2>
+                    <pre>Tarif tout public : 945,00 €</pre>
+                    <h2>Lieu(x)</h2>
+                    <pre>ESAA-Ecole Boulle - Lycée des métiers d'art, de l'architecture intérieure et du design 
+9, rue Pierre Bourdan
+75012 PARIS</pre>
+                    <h2>Modalité de formation</h2>
+                    <pre>Collectif, Cours du soir, Formation en présentiel, Hors temps de travail</pre>
+                    <h2>Coordonnées</h2>
+                    <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
+Agence administrative et commerciale
+21 rue de Sambre et Meuse
+75010 PARIS
+info@cdma.greta.fr</pre>
+                    <h2>Contact(s)</h2>
+                    <pre>Julien BOGARD
+Tél 1. 01 45 43 20 90
+Tél 2. 
+j.bogard@cdma.greta.fr</pre>
+                </div>
+                <div class="content col-lg-8 col-md-8 ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
+                        </div>
+                    </div>
+                    <pre>Contenu de la formation préparatoire à la sculpture ornementale et pédagogie adaptés au stagiaire.
+En fonction du niveau du stagiaire, acquérir des compétences de sculpteur ornemaniste et possibilité de :
+- travailler différents projets, à partir de plâtres ou de modèles existants
+- Etudier le bas-relief, le haut-relief et la statuaire à partir de plâtres fournis et choisis par le formateur
+- Comprendre la chronologie des différents styles sur des ornements simples
+- Comprendre les refends
+- Savoir repérer des ornements simples de chaque style.
+- Comprendre les différentes compositions de chaque style
+- Information sur les différents styles et techniques de dessin.
+
+Toutes les productions réalisées par les stagiaires pendant leur formation sont conservées par les stagiaires.
+une session par an
+Document non contractuel</pre>
+                    <h2>Objectifs</h2>
+                    <pre>Développer le travail d'observation.
+Se former l'oeil à travers des plâtres.
+Exécuter un dessin ombré. 
+Acquérir la notion de volume à travers le dessin pour l'appliquer à la taille du bois, à la sculpture, à la reparure, à la gravure, à la ciselure, à la taille de la pierre ... et à tous les métiers qui touchent à l'ornement.
+Comprendre et analyser les compositions des différents styles. 
+Approcher la statuaire et la ronde-bosse.</pre>
+                    <h2>Prérequis</h2>
+                    <pre>Avoir le sens de l'observation ou aimer dessiner ou avoir un intérêt pour l'ornement.
+Sculpteurs, doreurs, repareurs, restaurateurs de mobilier, graveurs, staffeurs, tailleurs de pierre ... sont les bienvenus. </pre>
+                    <h2>Méthodes pédagogiques</h2>
+                    <pre>Exposés théoriques, démonstrations et mises en pratique des techniques.
+Travail personnalisé , progression individualisée, pédagogie adaptée au stagiaire.
+
+Papier et supports fournis.</pre>
+                    <h2>Moyens pédagogiques</h2>
+                    <pre>document pédagogique, étude de cas, travaux pratiques
+Lieu de formation : atelier de sculpture de l'Ecole Boulle
+Collection de moulages. Gypsothèque.
+Papier et supports fournis.
+Prévoir l'achat de matériel et de fournitures de dessin. Une liste vous sera remise lors de l'entretien de recrutement.
+</pre>
+                    <h2>Reconnaissance des acquis</h2>
+                    <pre>Attestation de fin de formation
+Relevé des acquis de la formation.</pre>
+                    <h2>Modalités d'admission et de recrutement</h2>
+                    <pre>admission après entretien, admission après test
+Envoyer votre candidature,CV + lettre de motivation détaillée, à Julien Bogard : j.bogard@cdma.greta.fr
+Vous pouvez joindre à votre candidature des photos de vos réalisations ou votre book présentant vos croquis et ou vos carnets de dessins le cas échéant.
+Test de positionnement pédagogique en dessin.
+Voir également nos formations de " modelage ornemental " et de " sculpture ornementale " .
+</pre>
+                    <h2>Internant(e)(s)</h2>
+                    <pre>Patrick BLANCHARD, professeur à l'école Boulle, sculpteur sur bois,
+Meilleur Ouvrier de France 1997 MOF</pre>
+                    <h2>Codification de l'offre</h2>
+                    <pre>Formacode : 45096 - sculpture bois, 45057 - dessin art, 45076 - sculpture, 45066 - art plastique, 45554 - artisanat art
+ROME B1302 - Décoration d'objets d'art et artisanaux ROME K1602 - Gestion de patrimoine culturel
+IMPRIMER
+</pre>
+                    <button class="btn">Candidater</button>
+                    <button class="btn">Demander plus d'informations</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="formation-temoignage">
+        <div class="container">
+            <article class="row">
+                <div class="col-md-3">
+                    <figure class="img-circle">
+                        <?php
+                          // IMAGE / VIDEO
+                          $image = get_field('post_image');
+
+                          if( !empty($image) ): 
+                            $url = $image['url'];
+                            $title = $image['title'];
+                            $alt = $image['alt'];
+                            $size = 'large';
+                            $thumb = $image['sizes'][ $size ]; 
+                        ?>
+                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                        <?php endif; ?>
+                    </figure>
+                </div>
+                <div class="col-md-9">
+                    <h2>Témoignage d’une stagiaire du Greta – formation CAP Tapisserie en 2013</h2>
+                    <p>C’est avec plaisir que je vous fais part de ma réussite au CAP crû 2013 ! 1er sésame décroché pour démarrer une jolie carrière de Tapissier.
+Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier sa coordinatrice Helen Fréard pour sa connaissance pointue du métier, son exigence quant aux respect des valeurs du métier et des méthodes traditionnelles et son énergie manifeste pour maintenir une formation de qualité. Remercier tous les professeurs (je n’ai pas l’adresse mail...</p>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+                     
+
+    
+    
+
+    
+<?php /* the_content();
 
 	// ALEX - DIOGEN
 
@@ -31,8 +245,8 @@
   $ss = DiogenHelper::getSessions($fi);// Sessions
   $ms = count($ss) > 1;// Multiple Sessions ? true or false
 
-  //print_r( $fs ); 
-  //print_r( $ss ); 
+  print_r( $fs ); 
+  print_r( $ss ); 
 
   // Iterating through each session
   foreach ($ss as $s) {
@@ -41,9 +255,9 @@
     $dc = $s->SSDateCommentaire;// Date Comment
     if (isNotNull($dc)) {
       $dc = Diogen::removeApostrophe($dc);
-    }
+    } 
 }
-    //print_r($dc);
+    print_r($dc);
 
 
    
@@ -51,3 +265,5 @@
 	// SYLVIA
 
  include(locate_template('templates/formations-listing.php')); ?>
+
+ */

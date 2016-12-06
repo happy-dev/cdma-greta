@@ -1,4 +1,42 @@
-
+<div class="secondary-navbar">
+    <nav class="navbar container">
+        <!-- button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button -->
+        <div class="row">
+            <ul class="nav navbar-nav col-lg-8 hidden-md-down">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="formations-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formations</a>
+                    <div class="dropdown-menu" aria-labelledby="formations-dropdown">
+                        
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Certifications et VAE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Financez votre formation</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="entreprise-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entreprise</a>
+                    <div class="dropdown-menu" aria-labelledby="entreprise-dropdown">
+                       
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
+                <div class="row">
+                    <div class="col-sm-11 col-xs-10">
+                        <input class="form-control"
+                               type="text"
+                               placeholder="Chercher une formation" />
+                    </div>
+                    <div class="col-sm-1 col-xs-2">
+                        <button class="btn btn-outline-success" type="submit">OK</button>
+                    </div>
+                </div>
+            </form>
+      </div>
+    </nav>
+</div>
 
 <?php while (have_posts()) : the_post(); ?>
 <div class="domaine">
@@ -68,12 +106,13 @@
 	<!-- THE QUERY -->
     
 <section class="container">
-    <div class="row">
+    <div class="row row-offcanvas row-offcanvas-left">
+    <!--div class="row"-->
 	<?php
 	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
 	$the_query = new WP_Query( $args ); ?>
 
-        <div class="column col-md-3">
+        <div class="column col-md-3 sidebar-offcanvas" id="sidebar">
             <h3>Domaines</h3>
             <ul>
                 <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
@@ -88,15 +127,23 @@
         </div>
 
         <!-- LISTE FORMATIONS -->
-        <div class="content col-md-9 row">
+        <div class="content col-md-9">
             <!-- THE QUERY -->
-            <h2>128 Formations Arts du bois</h2>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
+                    <h2>128 Formations Arts du bois</h2>
+                </div>
+            </div>
+            
+            <div class="row">
             <?php $posts = get_field('formations_dom');
             if( $posts ): ?>
                 <?php foreach( $posts as $post): ?>
                     <?php setup_postdata($post); ?>
                     <article class="formation col-md-12">
-                        <a class="row" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                        <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
                             <?php $image = get_field('post_image');
                                 if( !empty($image) ): 
@@ -121,7 +168,9 @@
                         </a>
                     </article>
                 <?php endforeach; ?>
-                <?php wp_reset_postdata(); ?>
+            </div>
+            
+            <?php wp_reset_postdata(); ?>
         </div>
     </div>
 </section>
