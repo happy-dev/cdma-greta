@@ -1,5 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
 
+           <?php get_search_form(); ?>
+
 <!-- OPENING IMAGE/VIDEO -->
 <div class="search">
     <div class="search-form">
