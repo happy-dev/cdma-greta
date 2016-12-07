@@ -16,7 +16,7 @@ else { ?>
 			elseif ( 'post' == get_post_type()){
 			}
 			else {
-					echo 'Aucune formation ne correspond à cette recherche';
+					echo 'Aucune formation ne correspond à la recherche';
 				}
 		endwhile; 
 	?>
@@ -30,7 +30,7 @@ else { ?>
 			elseif ( 'formations' == get_post_type()){
 			}
 			else {
-					echo 'Aucune actualité ne correspond à cette recherche';
+					echo 'Aucune actualité ne correspond à la recherche';
 			}
 		endwhile; 
 } ?>

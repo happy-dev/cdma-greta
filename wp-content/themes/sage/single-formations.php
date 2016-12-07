@@ -77,10 +77,10 @@
                             <h1><?php the_title(); ?></h1>
                             <button class="btn">Candidater</button>
                             <button class="btn">Demander plus d'informations</button>
-                            <p>Développer vos compétences techniques en dessin d'ornement dans divers domaines avec un sculpteur professionnel à l'Ecole Boulle.
-        Formation adaptée aux sculpteurs, staffeur, graveurs, tailleur de pierre, ... Cours du soir</p>
-                            <h2>Taux de réussite</h2>
-
+                            <p><?php the_content() ?></p>
+                            <?php if (get_field( 'taux_reussite' ) ) { ?> 
+                            <h2>Taux de réussite :  <?php echo get_field( 'taux_reussite' ) ?> </h2>
+                            <?php } ?>
                             
                             <a href="#">Télécharger la fiche en format PDF</a>
                             <span>Formation éligible au CPF</span>
