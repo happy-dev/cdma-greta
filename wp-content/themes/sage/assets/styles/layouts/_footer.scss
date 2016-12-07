@@ -1,0 +1,87 @@
+footer {
+    color: white;
+    font-family: $title-fonts;
+    background-color: $cdma-blue;
+    padding: 4vw 0 1vw;
+    
+    address {
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 1.2vw;
+        
+        .phone {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    }
+    
+    .norms {
+        img {
+            width: 100%;
+        }
+    }
+    
+    .socials {
+        text-align: center;
+        
+        .icon-social {
+            margin: 0 0.6vw;
+            float: left;
+        }
+        
+        .col-button {
+            padding: 0;
+            
+            button {
+                background-color: #b3a095;
+            }
+        }
+        
+        .row {
+            margin-bottom: 2vw;
+        }
+    }
+    
+    .content {
+        margin-bottom: 2vw;
+    }
+    
+    .trim {
+        background-image: url(../images/footer-trim.gif);
+        background-repeat: repeat-x;
+        background-position: bottom left;
+        
+        height: 81px;
+        
+        .trim-left {
+            background-image: url(../images/footer-trim-left.gif);
+            background-repeat: no-repeat;
+            background-position: top left;
+
+            width: 151px;
+            height: 81px;
+            float: left;
+        }
+        
+        .trim-right {
+            background-image: url(../images/footer-trim-right.gif);
+            background-repeat: no-repeat;
+            background-position: top left;
+
+            width: 240px;
+            height: 81px;
+            float: right;
+        }
+    }
+    
+    .links {
+        text-align: center;
+        padding: 2vw 0;
+        
+        a {
+            color: white;
+            text-decoration: underline;
+            margin-left: 1vw;
+        }
+    }
+}

@@ -79,20 +79,20 @@ pre {
 
 @font-face {
 	font-family: 'UniversCondensedBold';
-	src: url('../../assets/fonts/Univers-CondensedBold.eot');
-	src: url('../../assets/fonts/Univers-CondensedBold.eot?#iefix') format('embedded-opentype'),
-		url('../../assets/fonts/Univers-CondensedBold.woff') format('woff'),
-		url('../../assets/fonts/Univers-CondensedBold.ttf') format('truetype');
+	src: url('../fonts/Univers-CondensedBold.eot');
+	src: url('../fonts/Univers-CondensedBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Univers-CondensedBold.woff') format('woff'),
+		url('../fonts/Univers-CondensedBold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'UniversCondensed';
-	src: url('../../assets/fonts/Univers-Condensed.eot');
-	src: url('../../assets/fonts/Univers-Condensed.eot?#iefix') format('embedded-opentype'),
-		url('../../assets/fonts/Univers-Condensed.woff') format('woff'),
-		url('../../assets/fonts/Univers-Condensed.ttf') format('truetype');
+	src: url('../fonts/Univers-Condensed.eot');
+	src: url('../fonts/Univers-Condensed.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Univers-Condensed.woff') format('woff'),
+		url('../fonts/Univers-Condensed.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

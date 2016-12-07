@@ -30,7 +30,7 @@
     
     padding: 0;
     .brand {
-        /*background-image: url(../../assets/images/logo-greta-cdma.png);
+        /*background-image: url(../images/logo-greta-cdma.png);
         background-color: transparent;
         background-position: 0 5px;
         background-repeat: no-repeat;
@@ -202,14 +202,14 @@
                         padding: 0 1.5vw;
                         
                         &.toggle {
-                            background: transparent url(../../assets/images/icon-arrow-down-white.gif) right center no-repeat;                      
+                            background: transparent url(../images/icon-arrow-down-white.gif) right center no-repeat;                      
                             background-size: 9px;
                         }
                     }
                     
                     > span {
                         background-color: white;
-                        background-image: url(../../assets/images/menu-decoration-blue.gif);
+                        background-image: url(../images/menu-decoration-blue.gif);
                         background-position: top right;
                         background-repeat: no-repeat;
 
@@ -240,7 +240,7 @@
                         }
 
                         .decoration {
-                            background-image: url(../../assets/images/menu-decoration-brown.gif);
+                            background-image: url(../images/menu-decoration-brown.gif);
                             background-position: top left;
                             background-repeat: no-repeat;
                             display: block;
@@ -268,7 +268,7 @@
 @media (min-width: 1170px) {
     .header {
         .navbar {
-            background-image: url(../../assets/images/header-decoration.gif);
+            background-image: url(../images/header-decoration.gif);
             background-position: top left;
             background-repeat: no-repeat;
 
