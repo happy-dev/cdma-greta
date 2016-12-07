@@ -79,7 +79,7 @@ endif ?>
         if( $posts ): ?>
             <?php foreach( $posts as $post): ?>
                 <?php setup_postdata($post); ?>
-                    <article class="formation col-md-4">
+                    <article class="entry col-md-4">
                         <?php $image = get_field('post_image');
                             if( !empty($image) ): 
 
@@ -132,7 +132,7 @@ endif ?>
                         'posts_per_page' => 3  ) );  
         $the_query = new WP_Query( $args ); 
             while ( $the_query->have_posts()) : $the_query->the_post(); ?>
-                <article class="col-md-4">
+                <article class="entry col-md-4">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('thumbnail'); ?>
                         <h3><?php the_title(); ?></h3>
