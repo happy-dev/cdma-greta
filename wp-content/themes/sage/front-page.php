@@ -122,7 +122,7 @@ endif ?>
 
 <section class="container">
     <h2>Actualités</h2>
-    <a class="see-all" href="/actualites">Voir toute l'actualité</a>
+    <a class="see-all hidden-md-down" href="/actualites">Voir toute l'actualité</a>
 
     <div class="content row">
         <!-- THE QUERY -->

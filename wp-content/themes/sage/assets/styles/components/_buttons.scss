@@ -1,5 +1,6 @@
 .icon-play {
-    background-image: url(../../assets/images/icon-play.png);       background-position: top left;
+    background-image: url(../images/icon-play.png);
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: 100%;
     
@@ -10,6 +11,29 @@
     top: calc(50% - 74px);
     left: calc(50% - 74px);
     z-index: 9;
+}
+
+.icon-social {
+    text-indent: -3000px;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    display: block;
+    width: 49px;
+    height: 49px;
+    
+    &.icon-facebook {
+        background-image: url(../images/icon-facebook.png);
+    }
+    
+    &.icon-twitter {
+        background-image: url(../images/icon-twitter.png);
+    }
+    
+    &.icon-linkedin {
+        background-image: url(../images/icon-linkedin.png);
+    }
 }
 
 
