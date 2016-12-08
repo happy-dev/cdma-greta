@@ -198,41 +198,43 @@ IMPRIMER
             </div>
         </section>
     </div>
-    <section class="formation-temoignage">
-        <div class="container">
-            <article class="row">
-                <div class="col-md-3">
-                    <figure class="img-circle">
-                        <?php
-                          // IMAGE / VIDEO
-                          $image = get_field('post_image');
 
-                          if( !empty($image) ): 
-                            $url = $image['url'];
-                            $title = $image['title'];
-                            $alt = $image['alt'];
-                            $size = 'large';
-                            $thumb = $image['sizes'][ $size ]; 
-                        ?>
-                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                        <?php endif; ?>
-                    </figure>
+<!-- TEMOIGNAGE -->
+    <?php if (get_field ('temoignage') ) {
+        $posts = get_field('temoignage');
+        foreach( $posts as $post): 
+            setup_postdata($post); ?>
+            <section class="formation-temoignage">
+                <div class="container">
+                    <article class="row">
+                        <div class="col-md-3">
+                            <figure class="img-circle">
+                                <?php 
+                                  // IMAGE / VIDEO
+                                  $image = get_field('post_image');
+                                  if( !empty($image) ): 
+                                    $url = $image['url'];
+                                    $title = $image['title'];
+                                    $alt = $image['alt'];
+                                    $size = 'large';
+                                    $thumb = $image['sizes'][ $size ]; 
+                                ?>
+                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                                <?php endif; ?>
+                            </figure>
+                        </div>
+                        <div class="col-md-9">
+                            <h2><?php the_title() ?></h2>
+                            <p><?php the_content() ?></p>
+                        </div>
+                    </article>
                 </div>
-                <div class="col-md-9">
-                    <h2>Témoignage d’une stagiaire du Greta – formation CAP Tapisserie en 2013</h2>
-                    <p>C’est avec plaisir que je vous fais part de ma réussite au CAP crû 2013 ! 1er sésame décroché pour démarrer une jolie carrière de Tapissier.
-Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier sa coordinatrice Helen Fréard pour sa connaissance pointue du métier, son exigence quant aux respect des valeurs du métier et des méthodes traditionnelles et son énergie manifeste pour maintenir une formation de qualité. Remercier tous les professeurs (je n’ai pas l’adresse mail...</p>
-                </div>
-            </article>
-        </div>
-    </section>
+            </section>
+        <?php endforeach;
+    } ?>
 </div>
                      
 
-    
-    
-
-    
 <?php /* the_content();
 
 	// ALEX - DIOGEN
