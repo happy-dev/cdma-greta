@@ -34,40 +34,37 @@
                 </div>
             </form>
     </div>
-    <div class="search-links">
-        <a href="#">E-Learning</a>
-        <a href="#">Relations internationales</a>
-        <a href="#">Cours du soir</a>
-        <a href="#">Relations internationales</a>
-        <a href="#">Cours du soir</a>
-    </div>
-
-    <!-- OPENING SLIDER/VIDEO -->
-    <?php if ( have_rows('slider_home') ): ?>
-        <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
-            <?php while ( have_rows('slider_home') ) : the_row(); ?>
-                <?php
-                $imageArray = get_sub_field('slides_home');
-                $image = $imageArray['url']; ?>
-                <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
-                </div>
+    <!-- LIENS SLIDER -->
+    <?php if (have_rows ('liens_header') ) { ?>  
+        <div class="search-links">
+            <?php while ( have_rows('liens_header') ) : the_row(); ?>
+                <a href="<?php echo the_sub_field('lien_header'); ?>">
+                    <?php the_sub_field('texte_lien'); ?>
+                </a>
             <?php endwhile; ?>
         </div>
-        <div class="layer"></div>
-    <?php endif ?>
+    <?php } ?>
+
+    <?php if ( !get_field('video_home') ) {
+        if ( have_rows('slider_home') ): ?>
+            <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+                <?php while ( have_rows('slider_home') ) : the_row(); ?>
+                    <?php
+                    $imageArray = get_sub_field('slides_home');
+                    $image = $imageArray['url']; ?>
+                    <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
+                    </div>
+                <?php endwhile; ?>
+            </div>
+            <!-- <div class="layer"></div> -->
+        <?php endif ;
+    } else {
+        the_field('video_home');
+    } ?>
     
-    <!-- TEXTE/LIENS SLIDER -->
-    <?php while ( have_rows('liens_header') ) : the_row(); ?>
-        <a href="<?php the_sub_field('lien'); ?>">
-            <?php the_sub_field('texte_lien'); ?>
-        </a>
-    <?php endwhile; ?>
+
+    
 </div>
-
-
-<?php if ( get_field('video_home') ): 
-the_field('video_home');
-endif ?>
 
 <!-- FORMATIONS -->
 

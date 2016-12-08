@@ -72,7 +72,7 @@
                                aria-expanded="false"
                                aria-controls="presentation-pannel">Lire la suite</a>
                             <?php if (get_field ('post_video') ) { ?>
-                                <span class="note">Cliquez sur le bouton lecture pour découvrir la video <?php the_title(); ?></span>
+                                <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?php the_title(); ?></span>
                             <?php } ?>
                         </div>
                         <!-- VIDEO -->
@@ -137,7 +137,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
-                    <h2>128 Formations Arts du bois</h2>
+                    <h2>128 Formations <?php the_title(); ?></h2>
                 </div>
             </div>
             
