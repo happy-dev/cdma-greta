@@ -40,12 +40,12 @@
 
 <?php while (have_posts()) : the_post(); ?>
 <div class="domaine">
-<!-- LE DOMAINE -->
-	<!-- IMAGE/VIDEO -->
-    
+<!-- DOMAINE -->
     <aside>
         <article>
             <div class="presentation">
+                <!-- IMAGE -->
+                <?php if (!get_field ('post_video') ) { ?>
                 <figure>
                     <?php $image = get_field('post_image');
                     if( !empty($image) ): 
@@ -57,8 +57,9 @@
                             <img class="image-background" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                     <?php endif; ?>
                 </figure>
+                <?php } ?>
 
-               <!-- TEXTE -->
+                <!-- TEXTE -->
                 <div class="layer"></div>
                 <div class="container">
                     <div class="row">
@@ -70,11 +71,16 @@
                                data-toggle="collapse"
                                aria-expanded="false"
                                aria-controls="presentation-pannel">Lire la suite</a>
-                            <span class="note">Cliquez sur le bouton lecture pour découvrir la video des Arts du bois</span>
+                            <?php if (get_field ('post_video') ) { ?>
+                                <span class="note">Cliquez sur le bouton lecture pour découvrir la video <?php the_title(); ?></span>
+                            <?php } ?>
                         </div>
-                        <div class="video col-md-6 col-sm-12 col-xs-12">
-                            &nbsp;<span class="icon-play"></span>
-                        </div>
+                        <!-- VIDEO -->
+                        <?php if (get_field ('post_video') ) { ?>
+                            <div class="video col-md-6 col-sm-12 col-xs-12">
+                                &nbsp;<span class="icon-play"></span>
+                            </div>
+                         <?php } ?>
                     </div>
                 </div>
             </div>
@@ -128,8 +134,6 @@
 
         <!-- LISTE FORMATIONS -->
         <div class="content col-md-9">
-            <!-- THE QUERY -->
-            
             <div class="row">
                 <div class="col-md-12">
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>

@@ -55,22 +55,27 @@
                 <article>
                     <div class="row">
                         <div class="media col-md-6 col-sm-12">
-                            <figure>
-                                <?php
-                                  // IMAGE / VIDEO
-                                  $image = get_field('post_image');
-
-                                  if( !empty($image) ): 
-                                    $url = $image['url'];
-                                    $title = $image['title'];
-                                    $alt = $image['alt'];
-                                    $size = 'large';
-                                    $thumb = $image['sizes'][ $size ]; 
-                                ?>
-                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                                <?php endif; ?>
-                            </figure>
+                            <!-- IMAGE / VIDEO -->
+                            <?php if (!get_field ('post_video') ) { ?>
+                                <figure>
+                                    <?php 
+                                    $image = get_field('post_image');
+                                      if( !empty($image) ): 
+                                        $url = $image['url'];
+                                        $title = $image['title'];
+                                        $alt = $image['alt'];
+                                        $size = 'large';
+                                        $thumb = $image['sizes'][ $size ]; 
+                                    ?>
+                                    <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                                    <?php endif; ?>
+                                </figure>
+                            <?php } 
+                            else {
+                            the_field('video_home');
+                            ?>
                             <span class="icon-play"></span>
+                            <?php } ?>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- TEXTE -->
@@ -84,8 +89,9 @@
                             
                             <a href="#">Télécharger la fiche en format PDF</a>
                             <span>Formation éligible au CPF</span>
-                            
-                            <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                            <?php if (get_field ('post_video') ) { ?>
+                                <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                            <?php } ?>
                         </div>
                     </div>
                 </article>
