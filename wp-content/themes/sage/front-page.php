@@ -61,19 +61,13 @@
     } else {
         the_field('video_home');
     } ?>
-    
-
-    
 </div>
 
 <!-- FORMATIONS -->
-
 <section class="container">
     <h2>Formations à la une</h2>
     <a class="see-all hidden-md-down" href="">Voir toutes les formations</a>
-
     <div class="content row">
-    <!-- THE QUERY -->
     <?php $posts = get_field('formations_une');
         if( $posts ): ?>
             <?php foreach( $posts as $post): ?>
@@ -135,7 +129,7 @@
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('thumbnail'); ?>
                         <h3><?php the_title(); ?></h3>
-                        <?php //the_excerpt(); ?>
+                        <?php the_excerpt(); ?>
                     </a>
                 </article>
             <?php endwhile; ?>
