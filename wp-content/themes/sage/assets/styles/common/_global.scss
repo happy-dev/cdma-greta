@@ -130,13 +130,13 @@ a { color: black;}
     
     .breadcrumb-item {
         a {
-            color: white;
+            color: $cdma-blue;
         }
         +.breadcrumb-item {
-            color: white;
+            color: $cdma-blue;
             
             &:before {
-                color: white;
+                color: $cdma-blue;
                 content: ">";
             }
         }

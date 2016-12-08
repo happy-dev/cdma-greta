@@ -1,0 +1,30 @@
+.stage {
+    section {
+        padding-top: 2vw;
+
+        .content {
+            h1 {
+                padding-bottom: 2vw;
+            }
+
+            .entry {
+                margin-bottom: 20px;
+                a {
+                    background-color: #f4f4f4;
+                    height: 100%;
+                    padding: 3vw;
+                    border-radius: 10px;
+                    
+                    &:hover {
+                       background-color: #eee; 
+                    }
+                }
+            }
+        }
+    }
+    
+    .breadcrumb {
+        padding-left: 0;
+    }
+}
+                

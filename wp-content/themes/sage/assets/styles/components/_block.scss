@@ -48,6 +48,7 @@ section {
             //padding-bottom: 1vw;
             
             a {
+                display: block;
                 padding: 15px 0;
 
                 &:hover {
@@ -142,6 +143,20 @@ section {
 
     position: relative;
     overflow: hidden;
+    
+    .breadcrumb {
+        padding-left: 0;
+        
+        .breadcrumb-item+.breadcrumb-item {
+            color: white;
+            &:before {
+                color: white;
+            }
+        }
+        .breadcrumb-item a {
+            color: white;
+        }
+    }
     
     .image-background {
         position: absolute;

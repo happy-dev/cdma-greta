@@ -33,23 +33,23 @@
 
 .page-greta {
     padding: 7vw 14vw;
-}
-
-.article {
+    
     .breadcrumb {
         padding-left: 0;
         
         .breadcrumb-item+.breadcrumb-item {
-            color: $cdma-blue;
+            color: white;
             &:before {
-                color: $cdma-blue;
+                color: white;
             }
         }
         .breadcrumb-item a {
-            color: $cdma-blue;
+            color: white;
         }
     }
-    
+}
+
+.article {
     section {
         padding-top: 2vw;
         
