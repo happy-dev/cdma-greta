@@ -1,5 +1,6 @@
 .icon-play {
-    background-image: url(../../assets/images/icon-play.png);       background-position: top left;
+    background-image: url(../images/icon-play.png);
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: 100%;
     
@@ -12,6 +13,29 @@
     z-index: 9;
 }
 
+.icon-social {
+    text-indent: -3000px;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    display: block;
+    width: 49px;
+    height: 49px;
+    
+    &.icon-facebook {
+        background-image: url(../images/icon-facebook.png);
+    }
+    
+    &.icon-twitter {
+        background-image: url(../images/icon-twitter.png);
+    }
+    
+    &.icon-linkedin {
+        background-image: url(../images/icon-linkedin.png);
+    }
+}
+
 .btn {
     color: white;
     font-family: $title-fonts;
@@ -20,4 +44,27 @@
     background-color: $cdma-blue;
     border: 0;
     box-shadow: 0px 0px 6px #aaa;
+    
+    &.btn-action {
+        background-color: orange;
+    }
+}
+
+.link-pdf {
+    color: #aaa;
+    font-size: 15px;
+    text-indent: 20px;
+    text-align: center;
+    background-color: white;
+    background-image: url(../images/icon-pdf.png);
+    background-position: 40px;
+    background-repeat: no-repeat;
+    background-size: auto 78%;
+    
+    
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 6px;
 }

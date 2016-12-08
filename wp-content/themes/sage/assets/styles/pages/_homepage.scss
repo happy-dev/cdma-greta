@@ -9,14 +9,26 @@
         }
     }
     
-    .container {
+    section.container {
         padding-top: 66px;
         padding-bottom: 40px;
         
         position: relative;
         
         h2 {
+            text-transform: uppercase;
             padding-bottom: 35px;
+        }
+        
+        .content {
+            article {
+                h3 {
+                    padding-bottom: 0;
+                }
+                p {
+                    padding-top: 0;
+                }
+            }
         }
         
         .see-all {

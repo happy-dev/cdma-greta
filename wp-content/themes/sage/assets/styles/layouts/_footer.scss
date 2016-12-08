@@ -1,0 +1,130 @@
+footer {
+    color: white;
+    font-family: $title-fonts;
+    background-color: $cdma-blue;
+    padding: 4vw 0 1vw;
+    
+    img {
+        width: 100%;
+    }
+    
+    address {
+        margin-top: 1.2vw;
+        
+        * {
+            font-size: 17px;
+            line-height: 24px;
+        }
+        
+        .phone {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    }
+    
+    .logo {
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+    
+    .norms {
+        img {
+            max-width: 200px;
+        }
+    }
+    
+    .socials {
+        text-align: center;
+        
+        input[type=text] {
+            height: 40px;
+            line-height: 40px;
+        }
+        
+        .row-icons {
+            width: 210px;
+            margin: 0 auto;
+        }
+        
+        .icon-social {
+            margin: 0 10px;
+            float: left;
+        }
+        
+        .col-button {
+            padding: 0;
+            text-align: left;
+            
+            button {
+                background-color: #b3a095;
+            }
+        }
+        
+        .row {
+            margin-bottom: 2vw;
+        }
+    }
+    
+    .content {
+        margin-bottom: 2vw;
+    }
+    
+    .trim {
+        background-image: url(../images/footer-trim.gif);
+        background-repeat: repeat-x;
+        background-position: bottom left;
+        
+        height: 81px;
+        
+        .trim-left {
+            background-image: url(../images/footer-trim-left.gif);
+            background-repeat: no-repeat;
+            background-position: top left;
+
+            width: 149px;
+            height: 81px;
+            float: left;
+        }
+        
+        .trim-right {
+            background-image: url(../images/footer-trim-right.gif);
+            background-repeat: no-repeat;
+            background-position: top left;
+
+            width: 240px;
+            height: 81px;
+            float: right;
+        }
+    }
+    
+    .links {
+        text-align: center;
+        padding: 2vw 0;
+        
+        * {
+            font-size: 15px;
+        }
+        
+        a {
+            color: white;
+            text-decoration: underline;
+            margin-left: 1vw;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    footer {
+        text-align: center;
+        padding: 40px 0;
+        
+        hr {
+            margin: 2rem 0;
+        }
+        
+        .trim {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+    }
+}

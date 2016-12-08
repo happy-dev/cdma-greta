@@ -3,9 +3,14 @@
         text-transform: none;
     }
     
+    p, pre {
+        font-size: 16px;
+        font-family: $basic-fonts;
+    }
+    
     button {
+        width: 100%;
         font-size: 18px;
-        padding: 1vw 4vw;
     }
     
     section {
@@ -16,12 +21,18 @@
     
         pre~h2, p~h2 {
             padding-top: 2vw;
+            padding-bottom: 1vw;
         }
+    }
+    
+    .btn-candidate {
+        margin-bottom: 1.5vw;
     }
     
     .introduction {
         color: white;
         background-color: $cdma-light-brown;
+        padding-bottom: 3vw;
         
         h1, h2 {
             color: white;
@@ -30,24 +41,63 @@
         
         h1 {
             font-size: 26px;
-            padding-bottom: 2vw;
+            padding-bottom: 1vw;
         }
         
-        h2 {
-            text-decoration: underline;
-        }
-        
-        p {
-            margin: 1.5vw 0;
-        }
-        
-        .media {
-            padding-bottom: 3vw;
-            figure {
-                max-height: 300px;
-                width: 95%;
-                overflow: hidden;
+        .breadcrumb {
+            padding-left: 0;
+
+            .breadcrumb-item+.breadcrumb-item {
+                color: white;
+                &:before {
+                    color: white;
+                }
             }
+            .breadcrumb-item a {
+                color: white;
+            }
+        }
+        
+        .introduction-label {
+            color: $cdma-blue;
+            font-family: $title-bold-fonts;
+            font-size: 15px;
+            
+            background-color: transparent;
+            background-image: url(../images/icon-accept.png);
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            text-indent: 19px;
+            display: block;
+            height: 14px;
+            line-height: 17px;
+        }
+        
+        .introduction-success {
+            font-size: 17px;
+            text-indent: 28px;
+            background: transparent url(../images/icon-success.png) top left no-repeat;
+            
+            height: 26px;
+            line-height: 31px;
+            margin: 1vw 0;
+        }
+        
+        .introduction-media {
+            figure {
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+                
+                img {
+                    height: 100%;
+                }
+            }
+        }
+        
+        .link-pdf {
+            float: right;
         }
     }
     
@@ -82,6 +132,60 @@
             img {
                 max-height: 100%;
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .formation {
+        button {
+            margin-bottom: 15px;
+        }
+        section {
+            h2 {
+                padding-bottom: 8px;
+            }
+            
+            pre~h2, p~h2 {
+                padding-top: 25px;
+            }
+            
+            .content, .column {
+                h2 {
+                    padding-bottom: 8px;
+                }
+            }
+        }
+        
+        .introduction {
+            padding-bottom: 30px;
+            
+            .introduction-media {
+                margin-bottom: 25px;
+            }
+
+            .introduction-success {
+                margin: 20px 0;
+            }
+        }
+        
+        .formation-detail {
+            padding: 20px 0;
+            
+            .column {
+                padding-left: 30px;
+            }
+            
+            .btn-more {
+                margin: 20px 0;
+            }
+        }
+        
+        .formation-temoignage {
+            h2 {
+                padding-top: 25px;
+                padding-bottom: 10px;
+            }   
         }
     }
 }

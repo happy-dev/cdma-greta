@@ -26,7 +26,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-    font: inherit;
+ //   font: inherit;
 	font-size: 100%;
 	vertical-align: baseline;
 }
@@ -60,13 +60,14 @@ button, input {
     }
 }
 p {
-    line-height: 130%;
-    padding-bottom: 1vw;
+    line-height: 135%;
+    padding-bottom: 1.2vw;
 }
 pre {
+    font-family: $basic-fonts;
     white-space: pre-wrap;
-    line-height: 130%;
-    padding-bottom: 1vw;
+    line-height: 135%;
+    padding-bottom: 1.2vw;
 }
 
 /*******************************************/
@@ -78,20 +79,20 @@ pre {
 
 @font-face {
 	font-family: 'UniversCondensedBold';
-	src: url('../../assets/fonts/Univers-CondensedBold.eot');
-	src: url('../../assets/fonts/Univers-CondensedBold.eot?#iefix') format('embedded-opentype'),
-		url('../../assets/fonts/Univers-CondensedBold.woff') format('woff'),
-		url('../../assets/fonts/Univers-CondensedBold.ttf') format('truetype');
+	src: url('../fonts/Univers-CondensedBold.eot');
+	src: url('../fonts/Univers-CondensedBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Univers-CondensedBold.woff') format('woff'),
+		url('../fonts/Univers-CondensedBold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'UniversCondensed';
-	src: url('../../assets/fonts/Univers-Condensed.eot');
-	src: url('../../assets/fonts/Univers-Condensed.eot?#iefix') format('embedded-opentype'),
-		url('../../assets/fonts/Univers-Condensed.woff') format('woff'),
-		url('../../assets/fonts/Univers-Condensed.ttf') format('truetype');
+	src: url('../fonts/Univers-Condensed.eot');
+	src: url('../fonts/Univers-Condensed.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Univers-Condensed.woff') format('woff'),
+		url('../fonts/Univers-Condensed.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -105,13 +106,11 @@ pre {
 
 body {
     font-family: $basic-fonts;
-    
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $title-bold-fonts;
     color: $cdma-blue;
-    text-transform: uppercase;
 }
 
 
@@ -131,15 +130,21 @@ a { color: black;}
     
     .breadcrumb-item {
         a {
-            color: white;
+            color: $cdma-blue;
         }
         +.breadcrumb-item {
-            color: white;
+            color: $cdma-blue;
             
             &:before {
-                color: white;
+                color: $cdma-blue;
                 content: ">";
             }
         }
     }
+}
+
+.valign {
+    position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

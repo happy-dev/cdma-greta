@@ -146,7 +146,9 @@
             if( $posts ): ?>
                 <?php foreach( $posts as $post): ?>
                     <?php setup_postdata($post); ?>
-                    <article class="formation col-md-12">
+
+                    <article class="entry col-md-12">
+
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
                             <?php $image = get_field('post_image');
