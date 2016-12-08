@@ -13,7 +13,7 @@
                     $size = 'large';
                     $thumb = $image['sizes'][ $size ]; ?>
 
-                    <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                    <img class="logo" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                 <?php endif; ?>
 
             <!-- COORDONNEES -->
@@ -24,12 +24,13 @@
                 </div>
                 <div itemprop="telephone" class="phone"><?php the_field('telephone', 'option'); ?></div>
             </address>
+              <hr class="hidden-md-up" />
           </div>
-          
           <div class="norms col-md-4">
               <div class="row">
                 <!-- LOGOS QUALITE -->
-                  <div class="col-md-6">
+       
+                          <div class="col-lg-4 col-md-8">
                     <?php 
                     $image = get_field('logo_qualite_1', 'option');
                         if( !empty($image) ): 
@@ -39,8 +40,8 @@
 
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <?php endif; ?>
-                  </div>
-                  <div class="col-md-6">
+                          </div>
+                          <div class="col-lg-8 col-md-12">
                         <?php 
                     $image = get_field('logo_qualite_2', 'option');
                         if( !empty($image) ): 
@@ -50,25 +51,24 @@
 
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <?php endif; ?>
-                  </div>
-              </div>
-          </div>
+                          </div>
+                      
 
+              </div>
+              <hr class="hidden-md-up" />
+          </div>
+          
             <div class="socials col-md-4">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <a class="icon-social icon-facebook" href="#">Facebook</a>
-                        <a class="icon-social icon-twitter" href="#">Twitter</a>
-                        <a class="icon-social icon-linkedin" href="#">Linkedin</a>
-                    </div>
-                    <div class="col-md-2"></div>
+                <div class="row row-icons">
+                    <a class="icon-social icon-facebook" href="#">Facebook</a>
+                    <a class="icon-social icon-twitter" href="#">Twitter</a>
+                    <a class="icon-social icon-linkedin" href="#">Linkedin</a>
                 </div>
                 <div class="row">
-                    <div class="col-md-11">
+                    <div class="col-md-11 col-sm-11 col-xs-10">
                         <input type="text" class="form-control" placeholder="Recevez la Newsletter"/>
                     </div>
-                    <div class="col-button col-md-1">
+                    <div class="col-button col-md-1 col-sm-1 col-xs-2">
                         <button class="btn btn-outline-success">OK</button>
                     </div>
                 </div>
