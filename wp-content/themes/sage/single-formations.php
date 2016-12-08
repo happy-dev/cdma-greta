@@ -46,10 +46,10 @@
     <div class="introduction">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                <li class="breadcrumb-item"><a href="#">Formations</a></li>
-                <li class="breadcrumb-item"><a href="#">Art du bois</a></li>
-                <li class="breadcrumb-item active">Dessin d'ornement lié au patrimoine</li>
+                <li class="breadcrumb-item hidden-md-down"><a href="#">Accueil</a></li>
+                <li class="breadcrumb-item hidden-md-down"><a href="#">Formations</a></li>
+                <li class="breadcrumb-item hidden-md-down"><a href="#">Art du bois</a></li>
+                <li class="breadcrumb-item hidden-md-down active">Dessin d'ornement lié au patrimoine</li>
             </ol>
             <article>
                 <div class="row">
