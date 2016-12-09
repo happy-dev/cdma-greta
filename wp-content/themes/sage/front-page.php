@@ -56,7 +56,7 @@
                     </div>
                 <?php endwhile; ?>
             </div>
-            <!-- <div class="layer"></div> -->
+            <div class="layer"></div>
         <?php endif ;
     } else {
         the_field('video_home');
