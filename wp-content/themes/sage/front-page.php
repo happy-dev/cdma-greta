@@ -32,6 +32,7 @@
                 </div>
             </form>
     </div>
+    
     <div class="search-links">
         <a href="#">E-Learning</a>
         <a href="#">Relations internationales</a>
@@ -88,15 +89,14 @@ endif ?>
                                 $alt = $image['alt'];
                                 $size = 'thumbnail';
                                 $thumb = $image['sizes'][ $size ]; ?>
-
-                                <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                                    <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
-                                    <h3><?php the_title(); ?></h3>
-                                    <p>38h - Temps plein sur 5 jours<br/>
-                                    Cours du jour, Formation en présentiel<br/>
-                                    <span>Ecole Estienne</span></p>
-                                </a>
                             <?php endif; ?>
+                            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                                <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
+                                <h3><?php the_title(); ?></h3>
+                                <p>38h - Temps plein sur 5 jours<br/>
+                                Cours du jour, Formation en présentiel<br/>
+                                <span>Ecole Estienne</span></p>
+                            </a>
                         <?php //the_excerpt(); ?>
                     </article>
             <?php endforeach; ?>

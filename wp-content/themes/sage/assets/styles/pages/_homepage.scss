@@ -121,6 +121,10 @@
         .carousel {
             position: relative;
             z-index: 1;
+            
+            .flickity-prev-next-button {
+                display: none;
+            }
         }
     }
 }
