@@ -1,4 +1,4 @@
-footer {
+.footer {
     color: white;
     font-family: $title-fonts;
     background-color: $cdma-blue;
@@ -100,6 +100,7 @@ footer {
     .links {
         text-align: center;
         padding: 2vw 0;
+        margin: 0;
         
         * {
             font-size: 15px;
