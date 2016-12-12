@@ -116,9 +116,11 @@ endif ?>
             <span class="icon-play"></span>
         </div>
         <div class="intro greta col-md-6">
-            <h2><?php the_field('prez_titre'); ?></h2>
-            <?php the_field('prez_texte'); ?>
-            <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+            <div class="container">
+                <h2><?php the_field('prez_titre'); ?></h2>
+                <?php the_field('prez_texte'); ?>
+                <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+            </div>
         </div>
     </div>
 </section><!-- container end -->

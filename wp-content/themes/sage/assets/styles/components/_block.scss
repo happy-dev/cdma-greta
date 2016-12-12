@@ -185,7 +185,8 @@ section {
         color: white;
 
         z-index: 3;
-        padding: 6vw 5.5vw 6vw 3.5vw;
+        padding-top: 6vw;
+        padding-bottom: 6vw;
         h1, h2 {
             color: white;
             font-family: $title-fonts;
@@ -230,12 +231,14 @@ section {
     }
     
     .presentation {
+        text-align: center;
+        
         .layer {
             width: 100%;
         }
         
         .intro {
-            padding-bottom: 0;
+           // padding-bottom: 0;
         }
     }
 }
