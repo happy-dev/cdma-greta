@@ -33,6 +33,18 @@
                         <button class="btn btn-outline-success" type="submit">OK</button>
                     </div>
                 </div>
+                <div class="row row-checkbox">
+                    <div class="col-lg-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                        Formations diplomantes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                        Formations éligibles au CPF
+                        </label>
+                    </div>
+                </div>
             </form>
       </div>
     </nav>
