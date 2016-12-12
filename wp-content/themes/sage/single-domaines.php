@@ -1,6 +1,5 @@
 <div class="secondary-navbar">
     <nav class="navbar container">
-        <!-- button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button -->
         <div class="row">
             <ul class="nav navbar-nav col-lg-8 hidden-md-down">
                 <li class="nav-item dropdown">
@@ -85,7 +84,7 @@
                             <span class="note">Cliquez sur le bouton lecture pour découvrir la video des Arts du bois</span>
                         </div>
                         <div class="video col-md-6 col-sm-12 col-xs-12">
-                            &nbsp;<span class="icon-play"></span>
+                            &nbsp;<span class="icon-play" data-toggle="modal" data-target="#modalVideoDomaine"></span>
                         </div>
                     </div>
                 </div>
@@ -112,6 +111,25 @@
             </div>
         </article>
     </aside>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalVideoDomaine" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+        </div>
+    </div>
     
 
 <!-- LISTE DOMAINES -->

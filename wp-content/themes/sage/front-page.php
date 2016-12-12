@@ -66,10 +66,10 @@
     <?php endwhile; ?>
 </div>
 
-
 <?php if ( get_field('video_home') ): 
-the_field('video_home');
+    the_field('video_home');
 endif ?>
+
 
 <!-- FORMATIONS -->
 
@@ -113,7 +113,7 @@ endif ?>
         <div class="video col-md-6">
             <?php //the_field('prez_video'); ?>
             <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
-            <span class="icon-play"></span>
+            <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
             <div class="container">
@@ -124,6 +124,25 @@ endif ?>
         </div>
     </div>
 </section><!-- container end -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Le Greta CDMA</h4>
+        </div>
+        <div class="modal-body">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 <section class="container">
     <h2>Actualités</h2>
