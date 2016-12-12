@@ -16,8 +16,8 @@
                         <div class="col-md-3 col-lg-4"></div>
                     </div>
                     <div class="row row-checkbox">
-                        <div class="col-lg-3 col-sm-2"></div>
-                        <div class="col-lg-6 col-sm-8">
+                        <div class="col-lg-3 col-sm-0"></div>
+                        <div class="col-lg-6 col-sm-12">
                             <label class="checkbox-inline">
                                 <input type="checkbox" id="inlineCheckbox1" value="option1">
                             Formations diplomantes
@@ -27,18 +27,21 @@
                             Formations éligibles au CPF
                             </label>
                         </div>
-                        <div class="col-lg-3 col-sm-2"></div>
+                        <div class="col-lg-3 col-sm-0"></div>
                     </div>
                 </div>
             </form>
     </div>
     
-    <div class="search-links">
-        <a href="#">E-Learning</a>
-        <a href="#">Relations internationales</a>
-        <a href="#">Cours du soir</a>
-        <a href="#">Relations internationales</a>
-        <a href="#">Cours du soir</a>
+    <div class="container">
+        <div class="search-links row">
+            <div class="search-links-item col-md-2"></div>
+            <div class="search-links-item col-md-2 col-sm-6"><a href="#">E-Learning</a></div>
+            <div class="search-links-item col-md-2 col-sm-6"><a href="#">Relations internationales</a></div>
+            <div class="search-links-item col-md-2 col-sm-6"><a href="#">Cours du soir</a></div>
+            <div class="search-links-item col-md-2 col-sm-6"><a href="#">Relations internationales</a></div>
+            <div class="search-links-item col-md-2 col-sm-6"><a href="#">Cours du soir</a></div>
+        </div>
     </div>
 
     <!-- OPENING SLIDER/VIDEO -->
@@ -48,7 +51,7 @@
                 <?php
                 $imageArray = get_sub_field('slides_home');
                 $image = $imageArray['url']; ?>
-                <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
+                <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width: 100%; height:100%">
                 </div>
             <?php endwhile; ?>
         </div>
