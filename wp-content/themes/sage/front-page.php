@@ -5,36 +5,36 @@
 <!-- OPENING IMAGE/VIDEO -->
 <div class="search">
     <div class="search-form">
-            <form>
-                <div class="container">
-                    <h1><?php the_field('titre_slider'); ?></h1>
-                    <div class="row row-input">
-                        <div class="col-md-3 col-lg-4"></div>
-                        <div class="col-md-6 col-lg-4">
-                            <input class="form-control input-lg"
-                                   type="text"
-                                   placeholder="Chercher une formation" />
-                        </div>
-                        <div class="col-md-3 col-lg-4"></div>
+        <form>
+            <div class="container">
+                <h1><?php the_field('titre_slider'); ?></h1>
+                <div class="row row-input">
+                    <div class="col-md-3 col-lg-4"></div>
+                    <div class="col-md-6 col-lg-4">
+                        <input class="form-control input-lg"
+                               type="text"
+                               placeholder="Chercher une formation" />
                     </div>
-                    <div class="row row-checkbox">
-                        <div class="col-lg-3 col-sm-2"></div>
-                        <div class="col-lg-6 col-sm-8">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox1" value="option1">
-                            Formations diplomantes
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" value="option2">
-                            Formations éligibles au CPF
-                            </label>
-                        </div>
-                        <div class="col-lg-3 col-sm-2"></div>
-                    </div>
+                    <div class="col-md-3 col-lg-4"></div>
                 </div>
-            </form>
+                <div class="row row-checkbox">
+                    <div class="col-lg-3 col-sm-0"></div>
+                    <div class="col-lg-6 col-sm-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                        Formations diplomantes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                        Formations éligibles au CPF
+                        </label>
+                    </div>
+                    <div class="col-lg-3 col-sm-0"></div>
+                </div>
+            </div>
+        </form>
     </div>
-    
+
     <!-- LIENS SLIDER -->
     <?php if (have_rows ('liens_header') ) { ?>  
         <div class="search-links">
@@ -53,7 +53,7 @@
                     <?php
                     $imageArray = get_sub_field('slides_home');
                     $image = $imageArray['url']; ?>
-                    <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%">
+                    <div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); background-size:cover; padding-top:40%; width:100%; height:100%">
                     </div>
                 <?php endwhile; ?>
             </div>
@@ -103,15 +103,36 @@
         <div class="video col-md-6">
             <?php //the_field('prez_video'); ?>
             <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
-            <span class="icon-play"></span>
+            <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
-            <h2><?php the_field('prez_titre'); ?></h2>
-            <?php the_field('prez_texte'); ?>
-            <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+            <div class="container">
+                <h2><?php the_field('prez_titre'); ?></h2>
+                <?php the_field('prez_texte'); ?>
+                <span class="note">Cliquez sur le bouton lecture pour découvrir la video du Greta CDMA</span>
+            </div>
         </div>
     </div>
 </section><!-- container end -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Le Greta CDMA</h4>
+        </div>
+        <div class="modal-body">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 <section class="container">
     <h2>Actualités</h2>

@@ -1,6 +1,5 @@
 <div class="secondary-navbar">
     <nav class="navbar container">
-        <!-- button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button -->
         <div class="row">
             <ul class="nav navbar-nav col-lg-8 hidden-md-down">
                 <li class="nav-item dropdown">
@@ -31,6 +30,18 @@
                     </div>
                     <div class="col-sm-1 col-xs-2">
                         <button class="btn btn-outline-success" type="submit">OK</button>
+                    </div>
+                </div>
+                <div class="row row-checkbox">
+                    <div class="col-lg-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                        Formations diplomantes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                        Formations éligibles au CPF
+                        </label>
                     </div>
                 </div>
             </form>
@@ -78,7 +89,7 @@
                         <!-- VIDEO -->
                         <?php if (get_field ('post_video') ) { ?>
                             <div class="video col-md-6 col-sm-12 col-xs-12">
-                                &nbsp;<span class="icon-play"></span>
+                                &nbsp;<span class="icon-play" data-target="#modalVideoDomaine"></span>
                             </div>
                          <?php } ?>
                     </div>
@@ -106,6 +117,25 @@
             </div>
         </article>
     </aside>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalVideoDomaine" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+        </div>
+    </div>
     
 
 <!-- LISTE DOMAINES -->
@@ -139,6 +169,60 @@
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
                     <h2>128 Formations <?php the_title(); ?></h2>
                 </div>
+            </div>
+            
+            <div class="row row-mise-en-avant">
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
             </div>
             
             <div class="row">

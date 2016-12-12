@@ -1,8 +1,12 @@
 .domaine {
     section {
         .content {
-            h2 {
-               // padding-bottom: 3vw;
+            .row-mise-en-avant {
+                background-color: #f4f4f4;
+
+                a:hover {
+                    background-color: #f9f9f9;
+                }
             }
         }
     }

@@ -122,6 +122,10 @@
         
         h2 {
             color: black;
+            
+            &:hover {
+                cursor: pointer;
+            }
         }
         
         .img-circle {
@@ -129,6 +133,10 @@
             width: 160px;
             height: 160px;
             margin: 0 auto;
+            
+            &:hover {
+                cursor: pointer;
+            }
             
             img {
                 max-height: 100%;

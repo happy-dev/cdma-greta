@@ -1,6 +1,5 @@
 <div class="secondary-navbar">
     <nav class="navbar container">
-        <!-- button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button -->
         <div class="row">
             <ul class="nav navbar-nav col-lg-8 hidden-md-down">
                 <li class="nav-item dropdown">
@@ -31,6 +30,18 @@
                     </div>
                     <div class="col-sm-1 col-xs-2">
                         <button class="btn btn-outline-success" type="submit">OK</button>
+                    </div>
+                </div>
+                <div class="row row-checkbox">
+                    <div class="col-lg-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                        Formations diplomantes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                        Formations éligibles au CPF
+                        </label>
                     </div>
                 </div>
             </form>
@@ -73,7 +84,7 @@
                         else {
                         the_field('video_home');
                         ?>
-                        <span class="icon-play"></span>
+                        <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
                         <?php } ?>
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -107,6 +118,25 @@
                     </div>
                 </div>
             </article>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalVideoFormation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
         </div>
     </div>
 
@@ -226,7 +256,7 @@ IMPRIMER
                 <div class="container">
                     <article class="row">
                         <div class="col-md-3">
-                            <figure class="img-circle">
+                            <figure class="img-circle" data-toggle="modal" data-target="#modalVideoTemoignage">
                                 <?php 
                                   // IMAGE / VIDEO
                                   $image = get_field('post_image');
@@ -250,6 +280,47 @@ IMPRIMER
             </section>
         <?php endforeach;
     } ?>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalVideoTemoignage" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <hr/>
+                <div class="container">
+                    <h2>Témoignage d’une stagiaire du Greta – formation CAP Tapisserie en 2013</h2>
+                    <br/>
+                    <pre>C’est avec plaisir que je vous fais part de ma réussite au CAP crû 2013 ! 1er sésame décroché pour démarrer une jolie carrière de Tapissier.
+
+     Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier sa coordinatrice Helen Fréard pour sa connaissance pointue du métier, son exigence quant aux respect des valeurs du métier et des méthodes traditionnelles et son énergie manifeste pour maintenir une formation de qualité. Remercier tous les professeurs (je n’ai pas l’adresse mail de tout le monde) pour leurs qualités professionnelles, leur patience et leur capacité à s’adapter à chacun des stagiaires simultanément !
+
+     Merci à mon maître de stage Mr Bruno LASCAR, véritable maître d’apprentissage qui a la passion de son métier et de la transmission du savoir et du savoir faire, dans le respect des traditions, du produit et du client, tout en étant bien ancré dans le 21e siècle avec ses nouvelles techniques et ses contraintes économiques.
+
+     Remercier ma consultante Mme Amira Ouerhani du cabinet de reclassement BPI, qui croit fermement en mon projet de reconversion depuis le début et m’accompagne pleinement dans mon reclassement.
+
+     Et puis, merci à Micheline et Bernard de la chambre d’hôte de Joué les Tours près du centre d’examens, qui m’ont soutenu matin et soir durant ces 4 jours d’épreuves !
+
+     Me voici donc partie sur les routes de la Tapisserie et de l’Ameublement. Je ne manquerai pas de vous faire part de mes prochaines étapes et réalisations, et espère pouvoir continuer d’échanger avec vous sur cet univers fantastique !
+
+     Je vous souhaite de passer une très belle période estivale.
+
+     A bientôt.
+
+    Françoise Hervy</pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
                      
 

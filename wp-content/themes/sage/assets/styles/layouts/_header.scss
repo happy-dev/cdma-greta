@@ -94,8 +94,23 @@
            }
         }
         
-        .btn {
-            background-color: $cdma-light-brown;
+        .form-inline {
+            
+            .btn {
+                background-color: $cdma-light-brown;
+            }
+            
+            .row-checkbox {
+                label {
+                    font-size: 9.5px;
+                    letter-spacing: 0.5px;
+                    margin-right: 12px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
         }
     }
     
