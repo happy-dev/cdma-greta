@@ -137,6 +137,60 @@
                 </div>
             </div>
             
+            <div class="row row-mise-en-avant">
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="entry col-md-12">
+                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
+                        <div class="col-md-4">
+                                <img
+                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
+                                     alt="CAP Ébéniste (F/H)" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3>CAP Ébéniste (F/H)</h3>
+                            <span>Du 03/11/2016 au 31/01/2017
+Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
+                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
+Identifier et respecter les contraintes du cahier des charges.
+Respecter l'utilisation des images au regard du Droit.</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+            
             <div class="row">
             <?php $posts = get_field('formations_dom');
             if( $posts ): ?>
