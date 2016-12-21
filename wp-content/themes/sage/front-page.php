@@ -38,16 +38,20 @@
     
     <!-- LIENS SLIDER -->
     <div class="container">
-    <?php if (have_rows ('liens_header') ) { ?>  
+    <?php if (have_rows ('liens_header') ) {
+            $len = count( get_field('liens_header') );
+            $col = min(round(12 / $len, 0, PHP_ROUND_HALF_DOWN), 3);
+            $offset = max(12 - ($col * $len), 0);
+            $firstcol = true;
+        ?>
         <div class="search-links row">
-            <div class="search-links-item col-md-2"></div>
             <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <div class="search-links-item col-md-2 col-sm-6">
+                <div class="search-links-item col-md-<?php echo $col; ?> <?php if ($firstcol) : echo 'offset-md-'. $offset; endif; ?> col-sm-6">
                     <a href="<?php echo the_sub_field('lien_header'); ?>">
                         <?php the_sub_field('texte_lien'); ?>
                     </a>
                 </div>
-            <?php endwhile; ?>
+            <?php $firstcol = false; endwhile; ?>
         </div>
     <?php } ?>
     </div>
