@@ -11,7 +11,7 @@
                 <div class="row row-input">
                     <div class="col-md-3 col-lg-4"></div>
                     <div class="col-md-6 col-lg-4">
-                        <input class="form-control input-lg"
+                        <input class="form-control input-lg icon-search"
                                type="text"
                                placeholder="Chercher une formation" />
                     </div>
