@@ -35,16 +35,22 @@
         </form>
     </div>
 
+    
     <!-- LIENS SLIDER -->
+    <div class="container">
     <?php if (have_rows ('liens_header') ) { ?>  
-        <div class="search-links">
+        <div class="search-links row">
+            <div class="search-links-item col-md-2"></div>
             <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <a href="<?php echo the_sub_field('lien_header'); ?>">
-                    <?php the_sub_field('texte_lien'); ?>
-                </a>
+                <div class="search-links-item col-md-2 col-sm-6">
+                    <a href="<?php echo the_sub_field('lien_header'); ?>">
+                        <?php the_sub_field('texte_lien'); ?>
+                    </a>
+                </div>
             <?php endwhile; ?>
         </div>
     <?php } ?>
+    </div>
 
     <?php if ( !get_field('video_home') ) {
         if ( have_rows('slider_home') ): ?>
