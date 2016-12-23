@@ -60,7 +60,7 @@
             text-transform: none;
 
             width: 100%;
-            padding: 6vw 9vw 2vw 9vw;
+            padding: 10vw 9vw 2vw 9vw;
         }
         
         .container {
@@ -102,6 +102,7 @@
         
         .search-links {
             position: relative;
+            padding-top: 2vw; 
             z-index: 3;
             
             .search-links-item {
@@ -154,7 +155,7 @@
         }
         
         video { 
-            top: 100%;
+            top: 98%;
             left: 50%;
             min-width: 100%;
             min-height: 100%;

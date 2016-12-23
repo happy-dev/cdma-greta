@@ -1,4 +1,6 @@
 <footer class="footer" >
+    <a href="#" title="Haut de page" class="icon-arrow-up scroll-up"></a>
+    
   <div class="container">
     <?php //dynamic_sidebar('sidebar-footer'); ?>
 

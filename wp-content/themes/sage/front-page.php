@@ -1,7 +1,5 @@
 <?php while (have_posts()) : the_post(); ?>
 
-           <?php get_search_form(); ?>
-
 <!-- OPENING IMAGE/VIDEO -->
 <div class="search">
     <div class="search-form">
@@ -72,9 +70,9 @@
     } else {
     ?>
     <div class="embed-responsive embed-responsive-21by9 embed-video">
-        <video class="embed-responsive-item" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted loop>
+        <video class="embed-responsive-item" poster="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/2016/12/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-        <!-- source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm"-->
+        <!-- source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.webm" type="video/webm"-->
         <source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.mp4" type="video/mp4">
         </video>
         <div class="layer"></div>
@@ -83,6 +81,8 @@
         //the_field('video_home');
     } ?>
 </div>
+
+<?php get_search_form(); ?>
 
 <!-- FORMATIONS -->
 <section class="container">
