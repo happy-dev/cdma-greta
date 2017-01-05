@@ -19,11 +19,11 @@
                     <div class="col-lg-3 col-sm-0"></div>
                     <div class="col-lg-6 col-sm-12">
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                            <input type="checkbox" id="inlineCheckbox1b" value="option1">
                         Formations diplomantes
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                            <input type="checkbox" id="inlineCheckbox2b" value="option2">
                         Formations éligibles au CPF
                         </label>
                     </div>
@@ -122,7 +122,7 @@
     <div class="row">
         <div class="video col-md-6">
             <?php //the_field('prez_video'); ?>
-            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
+            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" alt="presentation" />
             <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
@@ -136,15 +136,15 @@
 </section><!-- container end -->
 
 <!-- Modal -->
-<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Le Greta CDMA</h4>
+            <h4 class="modal-title" id="modalLabel">Le Greta CDMA</h4>
         </div>
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
             </div>
         </div>
         <div class="modal-footer">

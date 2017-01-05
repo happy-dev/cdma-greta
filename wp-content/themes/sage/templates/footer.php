@@ -19,8 +19,8 @@
                 <?php endif; ?>
 
             <!-- COORDONNEES -->
-            <address itemscope itemtype="http://schema.org/ContactPoint">
-                <div itemscope itemtype="schema.org/PostalAddress">
+            <address itemscope itemtype="https://schema.org/ContactPoint">
+                <div itemscope itemtype="https://schema.org/PostalAddress">
                     <div itemprop="streetAddress"><?php the_field('address_1', 'option'); ?></div>
                     <div itemprop="addressLocality"><?php the_field('address_2', 'option'); ?></div>
                 </div>

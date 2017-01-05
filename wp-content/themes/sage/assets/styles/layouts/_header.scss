@@ -222,7 +222,7 @@
                         }
                     }
                     
-                    > span {
+                    .dropdown-menu {
                         background-color: white;
                         background-image: url(../images/menu-decoration-blue.gif);
                         background-position: top right;
@@ -278,7 +278,6 @@
         }
     }
 }
-
 
 @media (min-width: 1170px) {
     .header {
