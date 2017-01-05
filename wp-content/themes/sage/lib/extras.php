@@ -131,9 +131,7 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
     
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
-        if ($this->children_cpt < 5 || $this->children_total >= $item->_parent_children_count) {
-            $indent = str_repeat("\t", $depth);
-            $output .= "$indent</ul></div></div>\n";
-        }
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul></div></div>\n";
     }
 }
