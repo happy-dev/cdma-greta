@@ -29,8 +29,7 @@
 <?php while (have_posts()) : the_post(); ?>
 <div class="domaine">
 <!-- DOMAINE -->
-    <aside>
-        <article>
+        <section>
             <div class="presentation">
                 <!-- IMAGE -->
                 <?php if (!get_field ('post_video') ) { ?>
@@ -92,19 +91,18 @@
                    aria-expanded="false"
                    aria-controls="presentation-pannel">X Fermer</a>
             </div>
-        </article>
-    </aside>
+        </section>
     
     <!-- Modal -->
-    <div class="modal fade" id="modalVideoDomaine" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+    <div class="modal fade" id="modalVideoDomaine" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+                <h4 class="modal-title" id="modalLabel"><?php the_title(); ?></h4>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="modal-footer">
@@ -118,14 +116,14 @@
 <!-- LISTE DOMAINES -->
 	<!-- THE QUERY -->
     
-<section class="container">
+<div class="container">
     <div class="row row-offcanvas row-offcanvas-left">
     <!--div class="row"-->
 	<?php
 	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
 	$the_query = new WP_Query( $args ); ?>
 
-        <div class="column col-md-3 sidebar-offcanvas" id="sidebar">
+        <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
             <h3>Domaines</h3>
             <ul>
                 <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
@@ -137,16 +135,16 @@
                 <?php endwhile; ?>
             <?php wp_reset_postdata();?>
             </ul>
-        </div>
+        </aside>
 
         <!-- LISTE FORMATIONS -->
-        <div class="content col-md-9">
-            <div class="row">
+        <section class="articles col-md-9">
+            <header class="row">
                 <div class="col-md-12">
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
                     <h2>128 Formations <?php the_title(); ?></h2>
                 </div>
-            </div>
+            </header>
             
             <div class="row row-mise-en-avant">
                 <article class="entry col-md-12">
@@ -201,7 +199,7 @@ Respecter l'utilisation des images au regard du Droit.</p>
                     </a>
                 </article>
             </div>
-            
+
             <div class="row">
             <?php $posts = get_field('formations_dom');
             if( $posts ): ?>
@@ -238,9 +236,9 @@ Respecter l'utilisation des images au regard du Droit.</p>
             </div>
             
             <?php wp_reset_postdata(); ?>
-        </div>
+        </section>
     </div>
-</section>
+</div>
     
 	<?php endif; ?>
 </div>

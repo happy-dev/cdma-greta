@@ -54,7 +54,7 @@
   the_post(); ?>
 
 <div class="formation">
-    <div class="introduction">
+    <section class="introduction">
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item hidden-md-down"><a href="#">Accueil</a></li>
@@ -62,75 +62,73 @@
                 <li class="breadcrumb-item hidden-md-down"><a href="#">Art du bois</a></li>
                 <li class="breadcrumb-item hidden-md-down active">Dessin d'ornement lié au patrimoine</li>
             </ol>
-            <article>
-                <div class="row">
-                    <div class="introduction-media col-md-6 col-sm-12">
-                        <!-- IMAGE / VIDEO -->
-                        <?php if (!get_field ('post_video') ) { ?>
-                            <figure>
-                                <?php 
-                                $image = get_field('post_image');
-                                  if( !empty($image) ): 
-                                    $url = $image['url'];
-                                    $title = $image['title'];
-                                    $alt = $image['alt'];
-                                    $size = 'large';
-                                    $thumb = $image['sizes'][ $size ]; 
-                                ?>
-                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                                <?php endif; ?>
-                            </figure>
-                        <?php } 
-                        else {
-                        the_field('video_home');
-                        ?>
-                        <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
-                        <?php } ?>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <!-- TEXTE -->
-                        <h1><?php the_title(); ?></h1>
-                        <span class="introduction-label">Formation éligible au CPF</span>
-                        <hr/>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <button class="btn btn-action btn-candidate">Candidater</button>
-                            </div>
-                            <div class="col-lg-7">
-                                <button class="btn">Demander plus d'informations</button>
-                            </div>
-                        </div>
-                        <hr/>
-                        <p><?php the_content() ?></p>
-                        <?php if (get_field( 'taux_reussite' ) ) { ?> 
-                        <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
-                        <hr/>
-                        <?php } ?>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a class="link-pdf" href="#">Télécharger la fiche en format PDF</a>
-                            </div>
-                        </div>
-                        <hr/>
-                        <?php if (get_field ('post_video') ) { ?>
-                            <span class="note hidden-sm-down">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
-                        <?php } ?>
-                    </div>
+            <div class="row">
+                <div class="introduction-media col-md-6 col-sm-12">
+                    <!-- IMAGE / VIDEO -->
+                    <?php if (!get_field ('post_video') ) { ?>
+                        <figure>
+                            <?php 
+                            $image = get_field('post_image');
+                              if( !empty($image) ): 
+                                $url = $image['url'];
+                                $title = $image['title'];
+                                $alt = $image['alt'];
+                                $size = 'large';
+                                $thumb = $image['sizes'][ $size ]; 
+                            ?>
+                            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                            <?php endif; ?>
+                        </figure>
+                    <?php } 
+                    else {
+                    the_field('video_home');
+                    ?>
+                    <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
+                    <?php } ?>
                 </div>
-            </article>
+                <div class="col-md-6 col-sm-12">
+                    <!-- TEXTE -->
+                    <h1><?php the_title(); ?></h1>
+                    <span class="introduction-label">Formation éligible au CPF</span>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <button class="btn btn-action btn-candidate">Candidater</button>
+                        </div>
+                        <div class="col-lg-7">
+                            <button class="btn">Demander plus d'informations</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    <?php the_content() ?>
+                    <?php if (get_field( 'taux_reussite' ) ) { ?> 
+                    <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
+                    <hr/>
+                    <?php } ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="link-pdf" href="#">Télécharger la fiche en format PDF</a>
+                        </div>
+                    </div>
+                    <?php if (get_field ('post_video') ) { ?>
+                        <hr/>
+                        <span class="note hidden-sm-down">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalVideoFormation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+    <div class="modal fade" id="modalVideoFormation" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+                <h4 class="modal-title" id="modalLabel"><?php the_title(); ?></h4>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="modal-footer">
@@ -141,9 +139,9 @@
     </div>
 
     <div class="container">
-        <section class="formation-detail">
+        <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
-                <div class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
+                <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
                     <h2>Dates</h2>
                     <pre>Du 22/09/2016 au 01/06/2017
 
@@ -179,8 +177,8 @@ info@cdma.greta.fr</pre>
 Tél 1. 01 45 43 20 90
 Tél 2. 
 j.bogard@cdma.greta.fr</pre>
-                </div>
-                <div class="content col-lg-8 col-md-8 ">
+                </aside>
+                <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-more hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
@@ -242,9 +240,9 @@ IMPRIMER
                     <hr/>
                     <button class="btn btn-action btn-candidate">Candidater</button>
                     <button class="btn">Demander plus d'informations</button>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
     </div>
 
 <!-- TEMOIGNAGE -->
@@ -282,15 +280,15 @@ IMPRIMER
     } ?>
     
     <!-- Modal -->
-    <div class="modal fade" id="modalVideoTemoignage" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+    <div class="modal fade" id="modalVideoTemoignage" tabindex="-1" role="dialog" aria-labelledby="modalLabelTemoignage" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"><?php the_title(); ?></h4>
+                <h4 class="modal-title" id="modalLabelTemoignage"><?php the_title(); ?></h4>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
                 </div>
                 <hr/>
                 <div class="container">

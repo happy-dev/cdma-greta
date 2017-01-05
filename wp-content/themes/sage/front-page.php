@@ -1,7 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
 
 <!-- OPENING IMAGE/VIDEO -->
-<div class="search">
+<section class="search">
     <div class="search-form">
         <form>
             <div class="container">
@@ -80,12 +80,12 @@
     <?php
         //the_field('video_home');
     } ?>
-</div>
+</section>
 
 <?php get_search_form(); ?>
 
 <!-- FORMATIONS -->
-<section class="container">
+<section class="articles container">
     <h2>Formations à la une</h2>
     <a class="see-all hidden-md-down" href="">Voir toutes les formations</a>
     <div class="content row">
@@ -154,7 +154,7 @@
     </div>
 </div>
 
-<section class="container">
+<section class="articles container">
     <h2>Actualités</h2>
     <a class="see-all hidden-md-down" href="/actualites">Voir toute l'actualité</a>
 
@@ -180,7 +180,7 @@
 
 
 <!-- LIEUX DE FORMATION -->
-<section class="container">
+<section class="articles container">
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
