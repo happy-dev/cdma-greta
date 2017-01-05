@@ -65,6 +65,7 @@
             <div class="row">
                 <div class="introduction-media col-md-6 col-sm-12">
                     <!-- IMAGE / VIDEO -->
+                    <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
                     <?php if (!get_field ('post_video') ) { ?>
                         <figure>
                             <?php 
@@ -250,7 +251,7 @@ IMPRIMER
         $posts = get_field('temoignage');
         foreach( $posts as $post): 
             setup_postdata($post); ?>
-            <section class="formation-temoignage">
+            <aside class="formation-temoignage">
                 <div class="container">
                     <article class="row">
                         <div class="col-md-3">
@@ -275,7 +276,7 @@ IMPRIMER
                         </div>
                     </article>
                 </div>
-            </section>
+            </aside>
         <?php endforeach;
     } ?>
     

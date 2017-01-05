@@ -51,7 +51,7 @@
     </nav>
 </div>
 
-<div class="presentation presentation-page">
+<section class="presentation presentation-page">
     <div class="container">
         <figure>
             <img class="image-background" src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/2016/12/page-intro.jpg" alt="">
@@ -70,4 +70,4 @@
         <li class="breadcrumb-item"><a href="#">Accueil</a></li>
         <li class="breadcrumb-item active">Le Greta CDMA</li>
     </ol>
-</div>
+</section>
