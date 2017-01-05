@@ -50,7 +50,7 @@
 </div>
 
 <?php while (have_posts()) : the_post(); ?>
-<div class="presentation presentation-page">
+<article class="presentation presentation-page">
     <div class="container">
         <div class="row row-intro">
             <div class="col-md-3"></div>
@@ -61,12 +61,13 @@
                     Profil recherché : <?php the_field('profil_stage'); ?><br/>
                     Personne à contacter : <?php the_field('contact_stage'); ?><br/>
                     Email : <?php the_field('email_stage'); ?><br/>
-                    <?php the_excerpt(); ?></p>
+                </p>
+                <?php the_excerpt(); ?>
             </div>
             <div class="col-md-3"></div>
         </div>
     </div>
-</div>
+</article>
 
 <!-- SYLVIA -->
 
