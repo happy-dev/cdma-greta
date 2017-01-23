@@ -24,7 +24,8 @@ foreach ($ss as $s) {
   $cs   = DiogenHelper::getCounts($s);// Counts
   $pcs  = DiogenHelper::getPrices($s);// Prices 
   $ls   = DiogenHelper::getLocations($s);// Locations 
+  $cs   = DiogenHelper::getConditions($s);// Conditions 
 }
 
-print_r($ls);
+print_r($cs);
 

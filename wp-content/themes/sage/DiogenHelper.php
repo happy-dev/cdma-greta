@@ -286,4 +286,44 @@ Class DiogenHelper {
 
     return $lcs;
   }
+
+
+  // Get conditions of the formation
+  public static function getConditions($s) {// Session
+    $css  = '';// Conditions String
+    $csa  = [];// Conditions Array
+    $cs   = Diogen::runQuery(" 
+      SELECT 
+        offreorganisation.ORIntitule
+
+       FROM 	
+        offreorganisation,
+        offresession,
+        offreliaisonsessionorganisation
+       
+       WHERE	
+        offresession.SSNo = offreliaisonsessionorganisation.LSOSession				AND
+        offreliaisonsessionorganisation.LSOOrganisation = offreorganisation.ORNo	AND
+        offresession.SSNo = {$s->SSNo}	
+        
+       ORDER BY
+        offreorganisation.ORNo ASC
+    ");	
+
+    if (!is_string($cs)) {
+      foreach($cs as $c) {
+        $csa[] = $c->ORIntitule;
+      }
+      $css = implode(', ', $csa) .'<br/>';
+    } 
+    else {
+      $css = $cs .'<br/>';
+    }				
+
+    if (isset($s->SSModalitesFormation) AND  $s->SSModalitesFormation != '') {
+      $css .= DIOGEN::removeApostrophe($s->SSModalitesFormation);
+    }
+
+    return $css;
+  }
 }
