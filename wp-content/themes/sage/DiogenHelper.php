@@ -42,7 +42,7 @@ Class DiogenHelper {
 
 
     // If no error, and not empty
-    if (!is_string($f) AND !empty($f)) {		  
+    if (!is_string($f) && !empty($f)) {		  
       return $f;
     }
     else if (empty($f)) {
@@ -129,24 +129,42 @@ Class DiogenHelper {
     $ds = '';// Duration String
 
     if (isset($s->SSDureeCentre) && $s->SSDureeCentre != '' && $s->SSDureeCentre != '0') {
-      $ds .= $s->SSDureeCentre .'h (en centre) <br\>';
+      $ds .= $s->SSDureeCentre .'h (en centre) <br/>';
     }
     if (isset($s->SSDureeEntreprise) && $s->SSDureeEntreprise != '' && $s->SSDureeEntreprise != '0') {
-      $ds .= $s->SSDureeEntreprise .'h (en entreprise) <br\>';
+      $ds .= $s->SSDureeEntreprise .'h (en entreprise) <br/>';
     }
     if (isset($s->SSEn2) && $s->SSEn2 == 'V') {
-      $ds .= 'La formation se fait en 2 ans <br\>';
+      $ds .= 'La formation se fait en 2 ans <br/>';
     }
     elseif (isset($s->SSEn1Ou2) && $s->SSEn1Ou2 == 'V') {
-      $ds .= 'La formation se fait en 1 an <br\>';
+      $ds .= 'La formation se fait en 1 an <br/>';
     }
     elseif (isset($s->SSDureeP) && $s->SSDureeP == 'V') {
-      $ds .= 'La durée de la formation est personnalisée <br\>';
+      $ds .= 'La durée de la formation est personnalisée <br/>';
     }
-    if (isset($s->SSDureeCommentaire) AND $s->SSDureeCommentaire != '') {
+    if (isset($s->SSDureeCommentaire) && $s->SSDureeCommentaire != '') {
       $ds .= $s->SSDureeCommentaire;
     }
 
     return Diogen::removeApostrophe($ds);
+  }
+
+
+  // Get students counts
+  public static function getCounts($s) {// Session
+    $cs = '';
+
+    if (isset($s->SSEffectifMin) && $s->SSEffectifMin != '' && $s->SSEffectifMin != '0') {
+      $cs .= 'Minimum : '. DIOGEN::removeApostrophe($s->SSEffectifMin) .'<br/>';
+    }
+    if (isset($s->SSEffectifMax) && $s->SSEffectifMax != '' && $s->SSEffectifMax != '0') {
+      $cs .= 'Maximum : '. DIOGEN::removeApostrophe($s->SSEffectifMax) .'<br/>';
+    }
+    if (isset($s->SSEffectifCommentaire) && $s->SSEffectifCommentaire != '') {
+      $cs .= DIOGEN::removeApostrophe($s->SSEffectifCommentaire);
+    }
+
+    return $cs;
   }
 }
