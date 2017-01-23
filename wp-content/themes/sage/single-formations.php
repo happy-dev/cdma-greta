@@ -19,6 +19,9 @@ foreach ($ss as $s) {
   $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
   $dc = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
   $ps = DiogenHelper::getPublics($s->SSNo);// Publics
+  $pc = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
+  $ds = DiogenHelper::getDuration($s);// Durations
 }
 
-print_r($ps);
+print_r($ds);
+

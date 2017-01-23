@@ -122,4 +122,31 @@ Class DiogenHelper {
 
     return Diogen::removeApostrophe($publicStr);
   }
+
+
+  // Get duration
+  public static function getDuration($s) {// Session
+    $ds = '';// Duration String
+
+    if (isset($s->SSDureeCentre) && $s->SSDureeCentre != '' && $s->SSDureeCentre != '0') {
+      $ds .= $s->SSDureeCentre .'h (en centre) <br\>';
+    }
+    if (isset($s->SSDureeEntreprise) && $s->SSDureeEntreprise != '' && $s->SSDureeEntreprise != '0') {
+      $ds .= $s->SSDureeEntreprise .'h (en entreprise) <br\>';
+    }
+    if (isset($s->SSEn2) && $s->SSEn2 == 'V') {
+      $ds .= 'La formation se fait en 2 ans <br\>';
+    }
+    elseif (isset($s->SSEn1Ou2) && $s->SSEn1Ou2 == 'V') {
+      $ds .= 'La formation se fait en 1 an <br\>';
+    }
+    elseif (isset($s->SSDureeP) && $s->SSDureeP == 'V') {
+      $ds .= 'La durée de la formation est personnalisée <br\>';
+    }
+    if (isset($s->SSDureeCommentaire) AND $s->SSDureeCommentaire != '') {
+      $ds .= $s->SSDureeCommentaire;
+    }
+
+    return Diogen::removeApostrophe($ds);
+  }
 }
