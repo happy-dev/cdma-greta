@@ -92,7 +92,8 @@ Class DiogenHelper {
 
   // Retrieve publics 
   public static function getPublics($SSNo) {
-    $public = DIOGEN::run_query("	SELECT
+    $publicStr  = '';
+    $public     = DIOGEN::runQuery("	SELECT
         offrefcpublic.FPNomAcc
 
       FROM
@@ -108,5 +109,17 @@ Class DiogenHelper {
       ORDER BY 
         offrefcpublic.FPOrdre ASC
     ");
+
+    if (!is_string($public)) {
+      foreach($public as $a_public) {
+        $publicStr .= $a_public->FPNomAcc .', ';
+      }
+      $publicStr = substr($publicStr, 0, strlen($publicStr) - 2);	
+    } 
+    else {
+      $publicStr = $public;
+    }
+
+    return Diogen::removeApostrophe($publicStr);
   }
 }
