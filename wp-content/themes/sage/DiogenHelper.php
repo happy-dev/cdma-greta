@@ -9,7 +9,7 @@ Class DiogenHelper {
   // Retrieve a formation object as defined in Diogen
   public static function getFormation($formationId) {
     // Query Result
-    $qr = DIOGEN::runQuery("SELECT 
+    $qr = Diogen::runQuery("SELECT 
       offreformation.OFNo,
       offreformation.OFNoPermanent,
       offreformation.OFIntituleComplet,
@@ -56,7 +56,7 @@ Class DiogenHelper {
 
   // Retrieve sessions 
   public static function getSessions($formationId) {
-    $qr = DIOGEN::runQuery("SELECT 
+    $qr = Diogen::runQuery("SELECT 
       offresession.SSDateDeb,
       offresession.SSDateFin,
       offresession.SSDateCommentaire,
@@ -93,7 +93,7 @@ Class DiogenHelper {
   // Retrieve publics 
   public static function getPublics($SSNo) {
     $publicStr  = '';
-    $public     = DIOGEN::runQuery("	SELECT
+    $public     = Diogen::runQuery("	SELECT
         offrefcpublic.FPNomAcc
 
       FROM
@@ -156,13 +156,13 @@ Class DiogenHelper {
     $cs = '';
 
     if (isset($s->SSEffectifMin) && $s->SSEffectifMin != '' && $s->SSEffectifMin != '0') {
-      $cs .= 'Minimum : '. DIOGEN::removeApostrophe($s->SSEffectifMin) .'<br/>';
+      $cs .= 'Minimum : '. Diogen::removeApostrophe($s->SSEffectifMin) .'<br/>';
     }
     if (isset($s->SSEffectifMax) && $s->SSEffectifMax != '' && $s->SSEffectifMax != '0') {
-      $cs .= 'Maximum : '. DIOGEN::removeApostrophe($s->SSEffectifMax) .'<br/>';
+      $cs .= 'Maximum : '. Diogen::removeApostrophe($s->SSEffectifMax) .'<br/>';
     }
     if (isset($s->SSEffectifCommentaire) && $s->SSEffectifCommentaire != '') {
-      $cs .= DIOGEN::removeApostrophe($s->SSEffectifCommentaire);
+      $cs .= Diogen::removeApostrophe($s->SSEffectifCommentaire);
     }
 
     return $cs;
@@ -174,7 +174,7 @@ Class DiogenHelper {
     $ps = '';// Price String
     
     // Formation Price
-    $fp = DIOGEN::runQuery("	
+    $fp = Diogen::runQuery("	
       SELECT
         offreliaisonsessiontarif.LSTTarifTTC
 
@@ -189,12 +189,12 @@ Class DiogenHelper {
     ");
     if (!is_string($fp)) {								
       if ($fp = $fp->fetch()) {
-        $ps = DIOGEN::removeApostrophe($fp->LSTTarifTTC) .' € <br/>';
+        $ps = Diogen::removeApostrophe($fp->LSTTarifTTC) .' € <br/>';
       }
     }	
 
     // Hourly Price
-    $hp = DIOGEN::runQuery("	
+    $hp = Diogen::runQuery("	
       SELECT
         offreliaisonsessiontarifhoraire.LSHTarifTTC
 
@@ -209,14 +209,81 @@ Class DiogenHelper {
     ");
     if (!is_string($hp)) {
       if ($hp = $hp->fetch()) {
-        $ps .= DIOGEN::removeApostrophe($hp->LSHTarifTTC) .' €/h <br/>';
+        $ps .= Diogen::removeApostrophe($hp->LSHTarifTTC) .' €/h <br/>';
       }
     }									
 
     if (isset($s->SSTarifCommentaire) AND $s->SSTarifCommentaire != '') {
-      $ps .= DIOGEN::removeApostrophe($s->SSTarifCommentaire);
+      $ps .= Diogen::removeApostrophe($s->SSTarifCommentaire);
     }
 
     return $ps;
+  }
+
+
+  // Get location of the formation
+  public static function getLocations($s) {// Session
+    $lcs = '';// Localtion String
+
+    $ls = Diogen::runQuery("	
+      SELECT
+        structure.STNom,
+        structure.STLabelLycMet,
+        structure.STAdresse,
+        structure.STCP,
+        structure.STVille,
+        structure.STTel,
+        structure.STFax,
+        structure.STMel
+
+      FROM
+        structure, 
+        offresession,
+        offreliaisonsessionlieu
+        
+      WHERE
+        offreliaisonsessionlieu.LSLSession = offresession.SSNo	AND
+        offreliaisonsessionlieu.LSLLieu = structure.STNo		AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+
+    if (!is_string($ls) AND ($ls->rowCount() > 0)) {
+      foreach($ls->fetchAll() as $l) {
+        if (isset($l->STNom) AND $l->STNom != '') {
+          $lcs .= Diogen::removeApostrophe($l->STNom);
+          
+          if (isset($l->STLabelLycMet) AND $l->STLabelLycMet != '') {
+            $lcs .= ' : '. Diogen::removeApostrophe($l->STLabelLycMet);
+          }
+          $lcs .= '<br/>';
+        }
+        if (isset($l->STAdresse) AND $l->STAdresse != '') {
+          $lcs .= Diogen::removeApostrophe($l->STAdresse) .'<br/>';
+        }
+        if (isset($l->STCP) AND $l->STCP != '') {
+          $lcs .= Diogen::removeApostrophe($l->STCP);
+          
+          if (isset($l->STVille) AND $l->STVille != '') {
+            $lcs .= ' - '. Diogen::removeApostrophe($l->STVille);
+          }
+          $lcs .= '<br/>';
+        }
+        if (isset($l->STTel) AND $l->STTel != '') {
+          $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
+        }
+        if (isset($l->STFax) AND $l->STFax != '') {
+          $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
+        }
+        if (isset($l->STMel) AND $l->STMel != '') {
+          $lcs .= 'Email : '. Diogen::removeApostrophe($l->STMel) .'<br/>';
+        }
+      }
+    }
+
+    if (isset($s->SSLieuCommentaire) AND $s->SSLieuCommentaire != '') {
+      $lcs .= Diogen::removeApostrophe($s->SSLieuCommentaire) .'<br/>';
+    }
+
+    return $lcs;
   }
 }

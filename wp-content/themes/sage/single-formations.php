@@ -23,7 +23,8 @@ foreach ($ss as $s) {
   $ds   = DiogenHelper::getDuration($s);// Durations
   $cs   = DiogenHelper::getCounts($s);// Counts
   $pcs  = DiogenHelper::getPrices($s);// Prices 
+  $ls   = DiogenHelper::getLocations($s);// Locations 
 }
 
-print_r($pcs);
+print_r($ls);
 
