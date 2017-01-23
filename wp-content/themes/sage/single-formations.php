@@ -15,14 +15,15 @@ $ms = count($ss) > 1;// Multiple Sessions ? true or false
 
 // Iterating through each session
 foreach ($ss as $s) {
-  $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-  $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-  $dc = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-  $ps = DiogenHelper::getPublics($s->SSNo);// Publics
-  $pc = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
-  $ds = DiogenHelper::getDuration($s);// Durations
-  $cs = DiogenHelper::getCounts($s);// Counts
+  $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+  $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+  $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+  $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
+  $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
+  $ds   = DiogenHelper::getDuration($s);// Durations
+  $cs   = DiogenHelper::getCounts($s);// Counts
+  $pcs  = DiogenHelper::getPrices($s);// Prices 
 }
 
-print_r($ds);
+print_r($pcs);
 

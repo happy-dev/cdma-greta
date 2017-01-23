@@ -167,4 +167,56 @@ Class DiogenHelper {
 
     return $cs;
   }
+
+
+  // Get prices
+  public static function getPrices($s) {
+    $ps = '';// Price String
+    
+    // Formation Price
+    $fp = DIOGEN::runQuery("	
+      SELECT
+        offreliaisonsessiontarif.LSTTarifTTC
+
+      FROM
+        offreliaisonsessiontarif, 
+        offresession
+        
+      WHERE
+        offreliaisonsessiontarif.LSTSession = offresession.SSNo	AND
+        offreliaisonsessiontarif.LSTCategorieTarif = 1			    AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    if (!is_string($fp)) {								
+      if ($fp = $fp->fetch()) {
+        $ps = DIOGEN::removeApostrophe($fp->LSTTarifTTC) .' € <br/>';
+      }
+    }	
+
+    // Hourly Price
+    $hp = DIOGEN::runQuery("	
+      SELECT
+        offreliaisonsessiontarifhoraire.LSHTarifTTC
+
+      FROM
+        offreliaisonsessiontarifhoraire, 
+        offresession
+        
+      WHERE
+        offreliaisonsessiontarifhoraire.LSHSession = offresession.SSNo	AND
+        offreliaisonsessiontarifhoraire.LSHCategorieTarif = 1			      AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    if (!is_string($hp)) {
+      if ($hp = $hp->fetch()) {
+        $ps .= DIOGEN::removeApostrophe($hp->LSHTarifTTC) .' €/h <br/>';
+      }
+    }									
+
+    if (isset($s->SSTarifCommentaire) AND $s->SSTarifCommentaire != '') {
+      $ps .= DIOGEN::removeApostrophe($s->SSTarifCommentaire);
+    }
+
+    return $ps;
+  }
 }
