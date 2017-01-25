@@ -28,6 +28,12 @@ foreach ($ss as $s) {
   $ct   = DiogenHelper::getContact($fi, $s);// Contact
 }
 
+$ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
+$obj    = Diogen::removeApostrophe($fs->OFObjectif);// Objectifs
+$prm    = Diogen::removeApostrophe($fs->OFPrerequisMaxi);// Prérequis
+$metp   = Diogen::removeApostrophe($fs->OFMethode);// Méthodes pédagogiques
+$mop    = DiogenHelper::getMoyPeda($fs, $fi);// Moyens pédagogiques
 
-print_r($ct);
+print_r($mop);
+
 

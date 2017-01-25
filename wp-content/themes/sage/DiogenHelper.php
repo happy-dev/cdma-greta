@@ -42,9 +42,6 @@ Class DiogenHelper {
     if ($qr->rowCount() > 0) {		  
       return $qr->fetch();
     }
-    else {
-      return 'FORMATION_NOT_FOUND';
-    }
   }
 
 
@@ -83,9 +80,6 @@ Class DiogenHelper {
     if ($qr->rowCount() > 0) {		  
       return $qr->fetchAll();
     }
-    else {
-      return 'NO_SESSION';
-    }
   }
 
 
@@ -113,13 +107,8 @@ Class DiogenHelper {
       foreach($public->fetchAll() as $a_public) {
         $publicStr .= $a_public->FPNomAcc .', ';
       }
-      $publicStr = Diogen::removeApostrophe(substr($publicStr, 0, strlen($publicStr) - 2));
+      return Diogen::removeApostrophe(substr($publicStr, 0, strlen($publicStr) - 2));
     } 
-    else {
-      $publicStr = 'NO_PUBLIC';
-    }
-
-    return $publicStr;
   }
 
 
@@ -405,6 +394,39 @@ Class DiogenHelper {
     }
     if (isset($c->PEMel1) && $c->PEMel1 != '') {
       $o .= '<a href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
+    }
+
+    return $o;
+  }
+
+  // Get Moyens Pédagogiques
+  public static function getMoyPeda($f, $fID) {
+    $mps = Diogen::runQuery("
+      SELECT
+        offremoyenpedagogique.MPIntitule
+
+      FROM
+        offreformation,
+        offremoyenpedagogique,
+        offreliaisonformationmoyenpedagogique
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
+        offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPNo	AND
+        offreformation.OFNo = {$fID}
+    ");	
+
+    $o  = '';// Output
+    $oa = [];// Output Array
+    if ($mps->rowCount() > 0) {
+      foreach($mps as $mp) {
+        $oa[] = $mp->MPIntitule;
+      }
+      $o = implode(',', $oa) .'<br/>';
+    } 
+
+    if (isset($f->OFMoyens) AND $f->OFMoyens != '') {
+      $o .= Diogen::removeApostrophe($f->OFMoyens);
     }
 
     return $o;
