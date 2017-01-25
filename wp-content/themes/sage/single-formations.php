@@ -21,11 +21,13 @@ foreach ($ss as $s) {
   $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
   $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
   $ds   = DiogenHelper::getDuration($s);// Durations
-  $cs   = DiogenHelper::getCounts($s);// Counts
+  $cts  = DiogenHelper::getCounts($s);// Counts
   $pcs  = DiogenHelper::getPrices($s);// Prices 
-  $ls   = DiogenHelper::getLocations($s);// Locations 
   $cs   = DiogenHelper::getConditions($s);// Conditions 
+  $ls   = DiogenHelper::getLocations($s);// Locations 
+  $ct   = DiogenHelper::getContact($fi, $s);// Contact
 }
 
-print_r($cs);
+
+print_r($ct);
 

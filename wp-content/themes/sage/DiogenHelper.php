@@ -38,18 +38,12 @@ Class DiogenHelper {
       offreliaisonformationmotcle.LMCMotCle = offremotcle.MCNo						AND
       offreformation.OFNo = {$formationId}
     ");
-    $f = $qr->fetch();
 
-
-    // If no error, and not empty
-    if (!is_string($f) && !empty($f)) {		  
-      return $f;
-    }
-    else if (empty($f)) {
-      return 'Formation not found.';
+    if ($qr->rowCount() > 0) {		  
+      return $qr->fetch();
     }
     else {
-      return $f;
+      return 'FORMATION_NOT_FOUND';
     }
   }
 
@@ -86,7 +80,12 @@ Class DiogenHelper {
       offresession.SSPrestation = offreformation.OFNo					
     ");
 
-    return $qr->fetchAll();
+    if ($qr->rowCount() > 0) {		  
+      return $qr->fetchAll();
+    }
+    else {
+      return 'NO_SESSION';
+    }
   }
 
 
@@ -110,17 +109,17 @@ Class DiogenHelper {
         offrefcpublic.FPOrdre ASC
     ");
 
-    if (!is_string($public)) {
-      foreach($public as $a_public) {
+    if ($public->rowCount() > 0) {
+      foreach($public->fetchAll() as $a_public) {
         $publicStr .= $a_public->FPNomAcc .', ';
       }
-      $publicStr = substr($publicStr, 0, strlen($publicStr) - 2);	
+      $publicStr = Diogen::removeApostrophe(substr($publicStr, 0, strlen($publicStr) - 2));
     } 
     else {
-      $publicStr = $public;
+      $publicStr = 'NO_PUBLIC';
     }
 
-    return Diogen::removeApostrophe($publicStr);
+    return $publicStr;
   }
 
 
@@ -187,7 +186,7 @@ Class DiogenHelper {
         offreliaisonsessiontarif.LSTCategorieTarif = 1			    AND
         offresession.SSNo = {$s->SSNo}
     ");
-    if (!is_string($fp)) {								
+    if ($fp->rowCount() > 0) {								
       if ($fp = $fp->fetch()) {
         $ps = Diogen::removeApostrophe($fp->LSTTarifTTC) .' € <br/>';
       }
@@ -207,7 +206,7 @@ Class DiogenHelper {
         offreliaisonsessiontarifhoraire.LSHCategorieTarif = 1			      AND
         offresession.SSNo = {$s->SSNo}
     ");
-    if (!is_string($hp)) {
+    if ($hp->rowCount() > 0) {
       if ($hp = $hp->fetch()) {
         $ps .= Diogen::removeApostrophe($hp->LSHTarifTTC) .' €/h <br/>';
       }
@@ -218,6 +217,43 @@ Class DiogenHelper {
     }
 
     return $ps;
+  }
+
+
+  // Get conditions of the formation
+  public static function getConditions($s) {// Session
+    $css  = '';// Conditions String
+    $csa  = [];// Conditions Array
+    $cs   = Diogen::runQuery(" 
+      SELECT 
+        offreorganisation.ORIntitule
+
+       FROM 	
+        offreorganisation,
+        offresession,
+        offreliaisonsessionorganisation
+       
+       WHERE	
+        offresession.SSNo = offreliaisonsessionorganisation.LSOSession				AND
+        offreliaisonsessionorganisation.LSOOrganisation = offreorganisation.ORNo	AND
+        offresession.SSNo = {$s->SSNo}	
+        
+       ORDER BY
+        offreorganisation.ORNo ASC
+    ");	
+
+    if ($cs->rowCount() > 0) {
+      foreach($cs as $c) {
+        $csa[] = $c->ORIntitule;
+      }
+      $css = implode(', ', $csa) .'<br/>';
+    } 
+
+    if (isset($s->SSModalitesFormation) AND  $s->SSModalitesFormation != '') {
+      $css .= DIOGEN::removeApostrophe($s->SSModalitesFormation);
+    }
+
+    return $css;
   }
 
 
@@ -247,7 +283,7 @@ Class DiogenHelper {
         offresession.SSNo = {$s->SSNo}
     ");
 
-    if (!is_string($ls) AND ($ls->rowCount() > 0)) {
+    if ($ls->rowCount() > 0) {
       foreach($ls->fetchAll() as $l) {
         if (isset($l->STNom) AND $l->STNom != '') {
           $lcs .= Diogen::removeApostrophe($l->STNom);
@@ -275,7 +311,7 @@ Class DiogenHelper {
           $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
         }
         if (isset($l->STMel) AND $l->STMel != '') {
-          $lcs .= 'Email : '. Diogen::removeApostrophe($l->STMel) .'<br/>';
+          $lcs .= Diogen::removeApostrophe($l->STMel) .'<br/>';
         }
       }
     }
@@ -288,42 +324,89 @@ Class DiogenHelper {
   }
 
 
-  // Get conditions of the formation
-  public static function getConditions($s) {// Session
-    $css  = '';// Conditions String
-    $csa  = [];// Conditions Array
-    $cs   = Diogen::runQuery(" 
-      SELECT 
-        offreorganisation.ORIntitule
+  // Get contact info
+  public static function getContact($fID, $s) {// formation ID
+    // Contact
+    $c = Diogen::runQuery("
+      SELECT
+        personne.PENom,
+        personne.PEPrenom,
+        personne.PETel1,
+        personne.PETel2,
+        personne.PEMel1
 
-       FROM 	
-        offreorganisation,
+      FROM
         offresession,
-        offreliaisonsessionorganisation
-       
-       WHERE	
-        offresession.SSNo = offreliaisonsessionorganisation.LSOSession				AND
-        offreliaisonsessionorganisation.LSOOrganisation = offreorganisation.ORNo	AND
-        offresession.SSNo = {$s->SSNo}	
+        personne,
+        offreliaisonsessioncontact
         
-       ORDER BY
-        offreorganisation.ORNo ASC
-    ");	
-
-    if (!is_string($cs)) {
-      foreach($cs as $c) {
-        $csa[] = $c->ORIntitule;
-      }
-      $css = implode(', ', $csa) .'<br/>';
-    } 
+      WHERE
+        offresession.SSNo = offreliaisonsessioncontact.LSCSession AND
+        offreliaisonsessioncontact.LSCPersonne = personne.PENo    AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    
+    if ($c->rowCount() > 0) {
+      return self::outputContact($c->fetch());
+    }
     else {
-      $css = $cs .'<br/>';
-    }				
+      $cs = Diogen::runQuery("
+        SELECT
+          personne.PENom,
+          personne.PEPrenom,
+          personne.PETel1,
+          personne.PETel2,
+          personne.PEMel1
 
-    if (isset($s->SSModalitesFormation) AND  $s->SSModalitesFormation != '') {
-      $css .= DIOGEN::removeApostrophe($s->SSModalitesFormation);
+        FROM
+          personne, 
+          offreformation,
+          offreliaisonformationcontact
+          
+        WHERE
+          offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
+          offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
+          offreformation.OFNo = {$fID}
+      ");
+    }
+    if ($cs->rowCount() > 0) {
+      $o = '';// Output
+      foreach ($cs->fetchAll() as $c) {
+        $o .= self::outputContact($c);
+      }
+      return $o;
+    }		
+  }
+
+  // Output contact info
+  private static function outputContact($c) {
+    $o = '';// Output
+
+    if (isset($c->PEPrenom) && $c->PEPrenom != '') {
+      $o .= Diogen::removeApostrophe($c->PEPrenom);
+      if (isset($c->PENom) && $c->PENom != '') {
+        $o .= ' '. Diogen::removeApostrophe($c->PENom);
+      }
+      $o .= '<br/>';
+    }
+    if (isset($c->PETel1) && $c->PETel1 != '') {
+      $tel = trim( Diogen::removeApostrophe($c->PETel1) );
+      if (strlen($c->PETel1) < 14) {
+        $tel = chunk_split($tel, 2, ' ');
+      }
+      $o .= 'Tel: '. $tel .'<br/>';
+    }
+    if (isset($c->PETel2) && $c->PETel2 != '') {
+      $tel = trim( Diogen::removeApostrophe($c->PETel2) );
+      if (strlen($c->PETel2) < 14) {
+        $tel = chunk_split($tel, 2, ' ');
+      }
+      $o .= 'Mob:'. $tel .'<br/>';
+    }
+    if (isset($c->PEMel1) && $c->PEMel1 != '') {
+      $o .= '<a href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
     }
 
-    return $css;
+    return $o;
   }
 }
