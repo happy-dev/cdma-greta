@@ -7,7 +7,19 @@ require_once('Diogen.php');
 Class DiogenHelper {
 
   // Retrieve a formation object as defined in Diogen
-  public static function getFormation($formationId) {
+  public static function getFormation($formationsIds) {
+    $fqp = '';// Formation Query Part
+
+    // Several formations
+    if (is_array($formationsIds)) {
+      $fis = implode(',', $formationsIds);// Formations Ids String
+      $fqp = "offreformation.OFNo IN ({$fis})";
+    }
+    // Only one
+    else {
+      $fqp = "offreformation.OFNo = {$formationId}";
+    }
+
     // Query Result
     $qr = Diogen::runQuery("SELECT 
       offreformation.OFNo,
@@ -36,11 +48,14 @@ Class DiogenHelper {
     WHERE
       offreformation.OFNo = offreliaisonformationmotcle.LMCFormation			AND
       offreliaisonformationmotcle.LMCMotCle = offremotcle.MCNo						AND
-      offreformation.OFNo = {$formationId}
+      {$fqp}
     ");
 
-    if ($qr->rowCount() > 0) {		  
+    if ($qr->rowCount() == 1) {		  
       return $qr->fetch();
+    }
+    else if ($qr->rowCount() > 1) {
+      return $qr->fetchAll();
     }
   }
 
@@ -535,6 +550,16 @@ Class DiogenHelper {
       }
 
       return implode(', ', $cra);
+    }
+  }
+
+  // Get Matching Diogen Formation
+  // Diogen ID, Diogen Formations Array
+  public static function getMatchingDiogenFormation($di, $dfa) {
+    foreach($dfa as $df) {// Diogen formation
+      if ($df->OFNo == $di) {
+        return $df;
+      }
     }
   }
 }
