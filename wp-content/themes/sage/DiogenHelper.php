@@ -431,4 +431,110 @@ Class DiogenHelper {
 
     return $o;
   }
+
+  // Get Reco Acquis
+  public static function getRecoAcquis($f, $fID) {
+    $o = '';// Output
+
+    if (isset($f->OFCertification) && $f->OFCertification > 0) {
+      $ra = Diogen::runQuery("
+        SELECT
+          offrecertificationintitule.CIIntitule
+
+        FROM
+          offrecertificationintitule, 
+          offreformation
+          
+        WHERE
+          offrecertificationintitule.CINo = offreformation.OFCertificationIntitule AND
+          offreformation.OFNo = {$fID}
+      ");
+      if ($ra->rowCount() > 0) {					
+        if ($rao = $ra->fetch()) {// Reco Acquis Object
+          $o .= $rao->CIIntitule .'<br/>';
+        }
+      }
+    } 
+    elseif (isset($f->OFCertification) && $f->OFCertification == 0) {
+      $ra = Diogen::runQuery("
+        SELECT
+          offresanction.SAIntitule
+
+        FROM
+          offresanction, 
+          offreformation
+          
+        WHERE
+          offresanction.SANo = offreformation.OFSanction AND
+          offreformation.OFNo = {$fID}
+      ");
+      if ($ra->rowCount() > 0) {					
+        if ($rao = $ra->fetch()) {// Reco Acquis Object
+          $o .= $rao->SAIntitule .'<br/>';
+        }
+      }
+    }
+
+    if (isset($f->OFCommentaireReconnaissance) && $f->OFCommentaireReconnaissance != '') {
+      $o .= Diogen::removeApostrophe($f->OFCommentaireReconnaissance);
+    }
+
+    return $o;
+  }
+
+  // Get Formacode
+  public static function getFormacode($f, $fID) {
+    $fcs = Diogen::runQuery("	
+      SELECT DISTINCT
+        offrefcformacode.FCCode,
+        offrefcformacode.FCNomAcc
+
+      FROM
+        offrefcformacode, 
+        offreformation,
+        offreliaisonformationfc
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationfc.LFFFormation	AND
+        offreliaisonformationfc.LFFFCCode = offrefcformacode.FCCode	AND
+        offreformation.OFNo = {$fID}
+        
+      ORDER BY offreliaisonformationfc.LFFOrdre
+    ");
+    $fca = [];// FormaCode Array
+    if ($fcs->rowCount() > 0) {
+      foreach($fcs as $fc) {
+        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc;
+      }
+
+      return implode(', ', $fca);
+    }
+  }
+
+  // Get Code ROME
+  public static function getCodeROME($f, $fID) {
+    $crs = Diogen::runQuery("
+      SELECT DISTINCT
+        offreliaisonfcrome.LFRRomeCode,
+        offreliaisonfcrome.LFRRomeIntitule
+
+      FROM
+        offreliaisonfcrome, 
+        offreformation,
+        offreliaisonformationrome
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationrome.LFOFormation			      AND
+        offreliaisonformationrome.LFORomeCode = offreliaisonfcrome.LFRRomeCode	AND
+        offreformation.OFNo = {$fID}
+    ");
+    $cra = [];// Code ROME Array
+    if ($crs->rowCount() > 0) {
+      foreach($crs as $cr) {
+        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule;
+      }
+
+      return implode(', ', $cra);
+    }
+  }
 }

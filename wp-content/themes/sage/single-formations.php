@@ -33,7 +33,7 @@ $obj    = Diogen::removeApostrophe($fs->OFObjectif);// Objectifs
 $prm    = Diogen::removeApostrophe($fs->OFPrerequisMaxi);// Prérequis
 $metp   = Diogen::removeApostrophe($fs->OFMethode);// Méthodes pédagogiques
 $mop    = DiogenHelper::getMoyPeda($fs, $fi);// Moyens pédagogiques
-
-print_r($mop);
-
-
+$rcac   = DiogenHelper::getRecoAcquis($fs, $fi);// Reconnaissance des acquis
+$int    = Diogen::removeApostrophe($fs->OFIntervenant);// Intervenant
+$forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
+$corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
