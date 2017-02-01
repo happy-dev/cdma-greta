@@ -74,4 +74,38 @@ function remove_menus(){
   remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
 
 }
-add_action( 'admin_menu', 'remove_menus' );
+// add_action( 'admin_menu', 'remove_menus' );
+
+// Add custom query vars
+function custom_query_vars_filter($vars) {
+  $vars[] = 'fe';
+  $vars[] = 'fd';
+  return $vars;
+}
+add_filter( 'query_vars', 'custom_query_vars_filter' );
+
+// Enhanced search to enable taxonomy filtering
+add_action('pre_get_posts', 'search_by_tax'); 
+function search_by_tax() {     
+  global $wp_query;
+
+  if (is_search() && (isset($_GET['fe']) OR isset($_GET['fd']))) {
+    $ta = [];// Terms Array
+
+    if (isset($_GET['fe'])) {
+      $ta[] = 'formation-eligible-au-cpf';
+    }
+
+    if (isset($_GET['fd'])) {
+      $ta[] = 'formation-diplomante';
+    } 
+
+    $tq = [[
+      'taxonomy' => 'type_form',
+      'field'    => 'slug',
+      'terms'    => $ta,
+    ]];// Tax Query
+
+    $wp_query->query_vars['tax_query'] = $tq;     
+  } 
+}

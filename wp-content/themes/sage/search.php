@@ -27,14 +27,6 @@
 </div>
 
 <div class="search-domaine">
-
-<?php if (!have_posts()) { ?>
-  <div class="alert alert-warning">
-    <?php _e('Aucun résultat ne correspond à la recherche', 'sage'); ?>
-  </div>
-<?php 
-} 
-else { ?>
     
 <section class="container">
     <div class="row row-offcanvas row-offcanvas-left">
@@ -45,22 +37,27 @@ else { ?>
             <div class="row">
                 <div class="col-md-12">
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
-                    <h2>Formations pour "<?php the_search_query(); ?>"</h2>
+                    <?php if (the_search_query()): ?>
+                        <h2>Formations pour "<?php the_search_query(); ?>"</h2>
+                    <?php else: ?>
+                        <h2>Formations</h2>
+                    <?php endif; ?>     
                 </div>
             </div>
             
             <div class="row">
-            <?php 
-                while (have_posts()) : the_post(); 
-                    if ( 'formations' == get_post_type() ) { 
-                        get_template_part('templates/content', 'search');
-                    }
-                    elseif ( 'post' == get_post_type()){
-                    }
-                    else {
-                            echo 'Aucune formation ne correspond à la recherche';
-                        }
-                endwhile; 
+            <?php
+            $any_formation = false;
+            while (have_posts()) : the_post(); 
+                if ( 'formations' == get_post_type() ) { 
+                    get_template_part('templates/content', 'search');
+                    $any_formation = true;
+                }
+            endwhile; 
+            
+            if (!$any_formation) {
+                echo 'Aucune formation ne correspond à la recherche';
+            }
             ?>
             </div>
             
@@ -72,17 +69,17 @@ else { ?>
             
             <div class="row">
             <?php 
-                while (have_posts()) : the_post(); 
-                    if ( 'post' == get_post_type() ) { 
-                        get_template_part('templates/content', 'search');
-                    }
-                    elseif ( 'formations' == get_post_type()){
-                    }
-                    else {
-                            echo 'Aucune actualité ne correspond à la recherche';
-                    }
-                endwhile; 
-            } ?>
+            $any_news = false;
+            while (have_posts()) : the_post(); 
+                if ( 'post' == get_post_type() ) { 
+                    get_template_part('templates/content', 'search');
+                }
+            endwhile; 
+
+            if (!$any_news) {
+                echo 'Aucune actualité ne correspond à la recherche';
+            }
+            ?>
             </div>
 
         <?php the_posts_navigation(); ?>
