@@ -83,3 +83,43 @@
 
     
 })(jQuery); // Fully reference jQuery after this point.
+
+var $ = jQuery.noConflict();
+
+ScrollToTop=function() {
+    var s = $(window).scrollTop();
+
+    if (s > 250) {
+        var h = $(document).height();
+        var wh = $(window).height();
+        
+        $('.scroll-up').fadeIn();
+        if ((s + wh) > (h - 388)) {
+            $bottom = (((s + wh) - (h - 388)) + 50);
+            $('.scroll-up').css('bottom', $bottom);
+        }
+        else {
+            $('.scroll-up').css('bottom', 50);
+        }
+    } else {
+    $('.scroll-up').fadeOut();
+    }
+
+    $('.scroll-up').click(function () {
+    $("html, body").animate({ scrollTop: 0 }, 900);
+    return false;
+    });
+    }
+ 
+StopAnimation=function() {
+  $("html, body").bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
+    $('html, body').stop();
+  });
+}
+ 
+ 
+$(window).scroll(function() {
+  ScrollToTop();
+  StopAnimation();
+});
+

@@ -51,13 +51,13 @@ class Custom_Walker extends Walker_Nav_Menu {
 			}
 		}
         
-        $output .= "\n$indent<span $attributes>\n";
+        $output .= "\n$indent<div $attributes>\n";
         $output .= "\n$indent<span class='decoration'></span>\n";
         $output .= "\n$indent<div class=\"row\">\n";
 		$output .= "\n$indent<ul class=\"col-md-4\">\n";
         
         $this->children_cpt = 0;
-        
+        $this->children_total = 0;
 	}
 
     function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
@@ -118,7 +118,11 @@ class Custom_Walker extends Walker_Nav_Menu {
         $output .= "</li>\n";
         
         if ($depth > 0) {
-            if ($this->children_cpt >= 5) {
+            $this->children_total++;
+
+            if ($this->children_total >= $item->_parent_children_count) {
+                //$output .= "</ul></div>\n";
+            } else if ($this->children_cpt >= 5) {
                 $output .= '</ul>';
             }
 
@@ -127,9 +131,7 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
     
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
-        if ($this->children_cpt < 5) {
-            $indent = str_repeat("\t", $depth);
-            $output .= "$indent</ul></span>\n";
-        }
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul></div></div>\n";
     }
 }

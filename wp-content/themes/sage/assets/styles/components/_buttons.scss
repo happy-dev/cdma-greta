@@ -14,6 +14,14 @@
     cursor: pointer;
 }
 
+.icon-search {
+    background-image: url(../images/icon-search.png);
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-size: auto 50%;
+    padding-right: 15%;
+}
+
 .icon-social {
     text-indent: -3000px;
     background-position: top left;
@@ -35,6 +43,19 @@
     &.icon-linkedin {
         background-image: url(../images/icon-linkedin.png);
     }
+}
+
+.icon-arrow-up {
+    background-color: $cdma-blue;
+    background-image: url(../images/icon-arrow-up.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    cursor: pointer;
+    
+    display: block;
+    width: 40px;
+    height: 40px;
 }
 
 .btn {

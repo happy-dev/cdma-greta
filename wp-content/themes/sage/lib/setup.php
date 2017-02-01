@@ -213,3 +213,30 @@ function assets() {
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+
+/**
+ * Nav Menu Counts
+ */
+add_filter('wp_nav_menu_objects', function($sorted_menu_objects) {
+    foreach($sorted_menu_objects as &$item) {
+        $item->_children_count = 0;
+        for($i=1, $l=count($sorted_menu_objects); $i<=$l; ++$i) {
+            if($sorted_menu_objects[$i]->menu_item_parent == $item->ID) {
+                $item->_children_count++;
+            }
+        }        
+    }
+    foreach($sorted_menu_objects as &$item) {
+        $item->_parent_children_count = 0;
+        for($i=1, $l=count($sorted_menu_objects); $i<=$l; ++$i) {
+            if($item->menu_item_parent == $sorted_menu_objects[$i]->ID) {
+                $item->_parent_children_count = $sorted_menu_objects[$i]->_children_count;
+                break;                    
+            }
+        }
+    }
+    unset($item);
+    return $sorted_menu_objects;    
+});
+

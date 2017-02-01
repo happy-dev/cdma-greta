@@ -21,3 +21,43 @@
     line-height: 1.3333333;
     border-radius: 6px;
 }
+
+
+
+.wpcf7-form {
+    
+    h2 {
+        margin-bottom: 3vw;
+        
+        &.not-first {
+            margin-top: 6vw;
+        }
+    }
+    
+    .form-group {
+        @extend .row;
+        
+        label {
+            @extend .col-md-4;
+            font-family: $basic-thick-fonts;
+        }
+        
+        input[type=text],
+        input[type=date],
+        input[type=url],
+        input[type=tel],
+        input[type=email],
+        textarea {
+            @extend .col-md-8;
+        }
+        
+        .checkbox {
+            label {
+                white-space: nowrap;
+                input[type=checkbox] {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

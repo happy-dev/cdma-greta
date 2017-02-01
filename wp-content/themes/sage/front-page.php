@@ -1,9 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
 
-           <?php //get_search_form(); ?>
-
 <!-- OPENING IMAGE/VIDEO -->
-<div class="search">
+<section class="search">
     <div class="search-form">
         <form>
             <div class="container">
@@ -11,7 +9,7 @@
                 <div class="row row-input">
                     <div class="col-md-3 col-lg-4"></div>
                     <div class="col-md-6 col-lg-4">
-                        <input class="form-control input-lg"
+                        <input class="form-control input-lg icon-search"
                                type="text"
                                placeholder="Chercher une formation" />
                     </div>
@@ -21,11 +19,11 @@
                     <div class="col-lg-3 col-sm-0"></div>
                     <div class="col-lg-6 col-sm-12">
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                            <input type="checkbox" id="inlineCheckbox1b" value="option1">
                         Formations diplomantes
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2">
+                            <input type="checkbox" id="inlineCheckbox2b" value="option2">
                         Formations éligibles au CPF
                         </label>
                     </div>
@@ -35,18 +33,28 @@
         </form>
     </div>
 
+    
     <!-- LIENS SLIDER -->
-    <?php if (have_rows ('liens_header') ) { ?>  
-        <div class="search-links">
+    <div class="container">
+    <?php if (have_rows ('liens_header') ) {
+            $len = count( get_field('liens_header') );
+            $col = min(round(12 / $len, 0, PHP_ROUND_HALF_DOWN), 3);
+            $offset = max(12 - ($col * $len), 0);
+            $firstcol = true;
+        ?>
+        <div class="search-links row">
             <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <a href="<?php echo the_sub_field('lien_header'); ?>">
-                    <?php the_sub_field('texte_lien'); ?>
-                </a>
-            <?php endwhile; ?>
+                <div class="search-links-item col-md-<?php echo $col; ?> <?php if ($firstcol) : echo 'offset-md-'. $offset; endif; ?> col-sm-6">
+                    <a href="<?php echo the_sub_field('lien_header'); ?>">
+                        <?php the_sub_field('texte_lien'); ?>
+                    </a>
+                </div>
+            <?php $firstcol = false; endwhile; ?>
         </div>
     <?php } ?>
+    </div>
 
-    <?php if ( !get_field('video_home') ) {
+    <?php if ( false && !get_field('video_home') ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>
@@ -60,12 +68,24 @@
             <div class="layer"></div>
         <?php endif ;
     } else {
-        the_field('video_home');
+    ?>
+    <div class="embed-responsive embed-responsive-21by9 embed-video">
+        <video class="embed-responsive-item" poster="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/2016/12/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
+          <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <!-- source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.webm" type="video/webm"-->
+        <source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.mp4" type="video/mp4">
+        </video>
+        <div class="layer"></div>
+    </div>
+    <?php
+        //the_field('video_home');
     } ?>
-</div>
+</section>
+
+<?php get_search_form(); ?>
 
 <!-- FORMATIONS -->
-<section class="container">
+<section class="articles container">
     <h2>Formations à la une</h2>
     <a class="see-all hidden-md-down" href="">Voir toutes les formations</a>
     <div class="content row">
@@ -102,7 +122,7 @@
     <div class="row">
         <div class="video col-md-6">
             <?php //the_field('prez_video'); ?>
-            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" />
+            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" alt="presentation" />
             <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
@@ -116,15 +136,15 @@
 </section><!-- container end -->
 
 <!-- Modal -->
-<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby=" Vidéo <?php the_title(); ?>" aria-hidden="true">
+<div class="modal fade" id="modalVideoPresentation" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Le Greta CDMA</h4>
+            <h4 class="modal-title" id="modalLabel">Le Greta CDMA</h4>
         </div>
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" frameborder="0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
             </div>
         </div>
         <div class="modal-footer">
@@ -134,7 +154,7 @@
     </div>
 </div>
 
-<section class="container">
+<section class="articles container">
     <h2>Actualités</h2>
     <a class="see-all hidden-md-down" href="/actualites">Voir toute l'actualité</a>
 
@@ -160,7 +180,7 @@
 
 
 <!-- LIEUX DE FORMATION -->
-<section class="container">
+<section class="articles container">
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>

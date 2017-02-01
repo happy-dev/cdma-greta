@@ -1,12 +1,13 @@
 .domaine {
-    section {
-        .content {
-            .row-mise-en-avant {
-                background-color: #f4f4f4;
+    section.articles {
+        padding-top: 4vw;
+        padding-bottom: 4vw;
 
-                a:hover {
-                    background-color: #f9f9f9;
-                }
+        .row-mise-en-avant {
+            background-color: #f4f4f4;
+
+            a:hover {
+                background-color: #f9f9f9;
             }
         }
     }

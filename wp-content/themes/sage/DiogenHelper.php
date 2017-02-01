@@ -7,9 +7,21 @@ require_once('Diogen.php');
 Class DiogenHelper {
 
   // Retrieve a formation object as defined in Diogen
-  public static function getFormation($formationId) {
+  public static function getFormation($formationsIds) {
+    $fqp = '';// Formation Query Part
+
+    // Several formations
+    if (is_array($formationsIds)) {
+      $fis = implode(',', $formationsIds);// Formations Ids String
+      $fqp = "offreformation.OFNo IN ({$fis})";
+    }
+    // Only one
+    else {
+      $fqp = "offreformation.OFNo = {$formationId}";
+    }
+
     // Query Result
-    $qr = DIOGEN::runQuery("SELECT 
+    $qr = Diogen::runQuery("SELECT 
       offreformation.OFNo,
       offreformation.OFNoPermanent,
       offreformation.OFIntituleComplet,
@@ -36,27 +48,21 @@ Class DiogenHelper {
     WHERE
       offreformation.OFNo = offreliaisonformationmotcle.LMCFormation			AND
       offreliaisonformationmotcle.LMCMotCle = offremotcle.MCNo						AND
-      offreformation.OFNo = {$formationId}
+      {$fqp}
     ");
-    $f = $qr->fetch();
 
-
-    // If no error, and not empty
-    if (!is_string($f) AND !empty($f)) {		  
-      return $f;
+    if ($qr->rowCount() == 1) {		  
+      return $qr->fetch();
     }
-    else if (empty($f)) {
-      return 'Formation not found.';
-    }
-    else {
-      return $f;
+    else if ($qr->rowCount() > 1) {
+      return $qr->fetchAll();
     }
   }
 
 
   // Retrieve sessions 
   public static function getSessions($formationId) {
-    $qr = DIOGEN::runQuery("SELECT 
+    $qr = Diogen::runQuery("SELECT 
       offresession.SSDateDeb,
       offresession.SSDateFin,
       offresession.SSDateCommentaire,
@@ -86,13 +92,16 @@ Class DiogenHelper {
       offresession.SSPrestation = offreformation.OFNo					
     ");
 
-    return $qr->fetchAll();
+    if ($qr->rowCount() > 0) {		  
+      return $qr->fetchAll();
+    }
   }
 
 
   // Retrieve publics 
   public static function getPublics($SSNo) {
-    $public = DIOGEN::run_query("	SELECT
+    $publicStr  = '';
+    $public     = Diogen::runQuery("	SELECT
         offrefcpublic.FPNomAcc
 
       FROM
@@ -108,5 +117,449 @@ Class DiogenHelper {
       ORDER BY 
         offrefcpublic.FPOrdre ASC
     ");
+
+    if ($public->rowCount() > 0) {
+      foreach($public->fetchAll() as $a_public) {
+        $publicStr .= $a_public->FPNomAcc .', ';
+      }
+      return Diogen::removeApostrophe(substr($publicStr, 0, strlen($publicStr) - 2));
+    } 
+  }
+
+
+  // Get duration
+  public static function getDuration($s) {// Session
+    $ds = '';// Duration String
+
+    if (isset($s->SSDureeCentre) && $s->SSDureeCentre != '' && $s->SSDureeCentre != '0') {
+      $ds .= $s->SSDureeCentre .'h (en centre) <br/>';
+    }
+    if (isset($s->SSDureeEntreprise) && $s->SSDureeEntreprise != '' && $s->SSDureeEntreprise != '0') {
+      $ds .= $s->SSDureeEntreprise .'h (en entreprise) <br/>';
+    }
+    if (isset($s->SSEn2) && $s->SSEn2 == 'V') {
+      $ds .= 'La formation se fait en 2 ans <br/>';
+    }
+    elseif (isset($s->SSEn1Ou2) && $s->SSEn1Ou2 == 'V') {
+      $ds .= 'La formation se fait en 1 an <br/>';
+    }
+    elseif (isset($s->SSDureeP) && $s->SSDureeP == 'V') {
+      $ds .= 'La durée de la formation est personnalisée <br/>';
+    }
+    if (isset($s->SSDureeCommentaire) && $s->SSDureeCommentaire != '') {
+      $ds .= $s->SSDureeCommentaire;
+    }
+
+    return Diogen::removeApostrophe($ds);
+  }
+
+
+  // Get students counts
+  public static function getCounts($s) {// Session
+    $cs = '';
+
+    if (isset($s->SSEffectifMin) && $s->SSEffectifMin != '' && $s->SSEffectifMin != '0') {
+      $cs .= 'Minimum : '. Diogen::removeApostrophe($s->SSEffectifMin) .'<br/>';
+    }
+    if (isset($s->SSEffectifMax) && $s->SSEffectifMax != '' && $s->SSEffectifMax != '0') {
+      $cs .= 'Maximum : '. Diogen::removeApostrophe($s->SSEffectifMax) .'<br/>';
+    }
+    if (isset($s->SSEffectifCommentaire) && $s->SSEffectifCommentaire != '') {
+      $cs .= Diogen::removeApostrophe($s->SSEffectifCommentaire);
+    }
+
+    return $cs;
+  }
+
+
+  // Get prices
+  public static function getPrices($s) {
+    $ps = '';// Price String
+    
+    // Formation Price
+    $fp = Diogen::runQuery("	
+      SELECT
+        offreliaisonsessiontarif.LSTTarifTTC
+
+      FROM
+        offreliaisonsessiontarif, 
+        offresession
+        
+      WHERE
+        offreliaisonsessiontarif.LSTSession = offresession.SSNo	AND
+        offreliaisonsessiontarif.LSTCategorieTarif = 1			    AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    if ($fp->rowCount() > 0) {								
+      if ($fp = $fp->fetch()) {
+        $ps = Diogen::removeApostrophe($fp->LSTTarifTTC) .' € <br/>';
+      }
+    }	
+
+    // Hourly Price
+    $hp = Diogen::runQuery("	
+      SELECT
+        offreliaisonsessiontarifhoraire.LSHTarifTTC
+
+      FROM
+        offreliaisonsessiontarifhoraire, 
+        offresession
+        
+      WHERE
+        offreliaisonsessiontarifhoraire.LSHSession = offresession.SSNo	AND
+        offreliaisonsessiontarifhoraire.LSHCategorieTarif = 1			      AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    if ($hp->rowCount() > 0) {
+      if ($hp = $hp->fetch()) {
+        $ps .= Diogen::removeApostrophe($hp->LSHTarifTTC) .' €/h <br/>';
+      }
+    }									
+
+    if (isset($s->SSTarifCommentaire) AND $s->SSTarifCommentaire != '') {
+      $ps .= Diogen::removeApostrophe($s->SSTarifCommentaire);
+    }
+
+    return $ps;
+  }
+
+
+  // Get conditions of the formation
+  public static function getConditions($s) {// Session
+    $css  = '';// Conditions String
+    $csa  = [];// Conditions Array
+    $cs   = Diogen::runQuery(" 
+      SELECT 
+        offreorganisation.ORIntitule
+
+       FROM 	
+        offreorganisation,
+        offresession,
+        offreliaisonsessionorganisation
+       
+       WHERE	
+        offresession.SSNo = offreliaisonsessionorganisation.LSOSession				AND
+        offreliaisonsessionorganisation.LSOOrganisation = offreorganisation.ORNo	AND
+        offresession.SSNo = {$s->SSNo}	
+        
+       ORDER BY
+        offreorganisation.ORNo ASC
+    ");	
+
+    if ($cs->rowCount() > 0) {
+      foreach($cs as $c) {
+        $csa[] = $c->ORIntitule;
+      }
+      $css = implode(', ', $csa) .'<br/>';
+    } 
+
+    if (isset($s->SSModalitesFormation) AND  $s->SSModalitesFormation != '') {
+      $css .= DIOGEN::removeApostrophe($s->SSModalitesFormation);
+    }
+
+    return $css;
+  }
+
+
+  // Get location of the formation
+  public static function getLocations($s) {// Session
+    $lcs = '';// Localtion String
+
+    $ls = Diogen::runQuery("	
+      SELECT
+        structure.STNom,
+        structure.STLabelLycMet,
+        structure.STAdresse,
+        structure.STCP,
+        structure.STVille,
+        structure.STTel,
+        structure.STFax,
+        structure.STMel
+
+      FROM
+        structure, 
+        offresession,
+        offreliaisonsessionlieu
+        
+      WHERE
+        offreliaisonsessionlieu.LSLSession = offresession.SSNo	AND
+        offreliaisonsessionlieu.LSLLieu = structure.STNo		AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+
+    if ($ls->rowCount() > 0) {
+      foreach($ls->fetchAll() as $l) {
+        if (isset($l->STNom) AND $l->STNom != '') {
+          $lcs .= Diogen::removeApostrophe($l->STNom);
+          
+          if (isset($l->STLabelLycMet) AND $l->STLabelLycMet != '') {
+            $lcs .= ' : '. Diogen::removeApostrophe($l->STLabelLycMet);
+          }
+          $lcs .= '<br/>';
+        }
+        if (isset($l->STAdresse) AND $l->STAdresse != '') {
+          $lcs .= Diogen::removeApostrophe($l->STAdresse) .'<br/>';
+        }
+        if (isset($l->STCP) AND $l->STCP != '') {
+          $lcs .= Diogen::removeApostrophe($l->STCP);
+          
+          if (isset($l->STVille) AND $l->STVille != '') {
+            $lcs .= ' - '. Diogen::removeApostrophe($l->STVille);
+          }
+          $lcs .= '<br/>';
+        }
+        if (isset($l->STTel) AND $l->STTel != '') {
+          $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
+        }
+        if (isset($l->STFax) AND $l->STFax != '') {
+          $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
+        }
+        if (isset($l->STMel) AND $l->STMel != '') {
+          $lcs .= Diogen::removeApostrophe($l->STMel) .'<br/>';
+        }
+      }
+    }
+
+    if (isset($s->SSLieuCommentaire) AND $s->SSLieuCommentaire != '') {
+      $lcs .= Diogen::removeApostrophe($s->SSLieuCommentaire) .'<br/>';
+    }
+
+    return $lcs;
+  }
+
+
+  // Get contact info
+  public static function getContact($fID, $s) {// formation ID
+    // Contact
+    $c = Diogen::runQuery("
+      SELECT
+        personne.PENom,
+        personne.PEPrenom,
+        personne.PETel1,
+        personne.PETel2,
+        personne.PEMel1
+
+      FROM
+        offresession,
+        personne,
+        offreliaisonsessioncontact
+        
+      WHERE
+        offresession.SSNo = offreliaisonsessioncontact.LSCSession AND
+        offreliaisonsessioncontact.LSCPersonne = personne.PENo    AND
+        offresession.SSNo = {$s->SSNo}
+    ");
+    
+    if ($c->rowCount() > 0) {
+      return self::outputContact($c->fetch());
+    }
+    else {
+      $cs = Diogen::runQuery("
+        SELECT
+          personne.PENom,
+          personne.PEPrenom,
+          personne.PETel1,
+          personne.PETel2,
+          personne.PEMel1
+
+        FROM
+          personne, 
+          offreformation,
+          offreliaisonformationcontact
+          
+        WHERE
+          offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
+          offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
+          offreformation.OFNo = {$fID}
+      ");
+    }
+    if ($cs->rowCount() > 0) {
+      $o = '';// Output
+      foreach ($cs->fetchAll() as $c) {
+        $o .= self::outputContact($c);
+      }
+      return $o;
+    }		
+  }
+
+  // Output contact info
+  private static function outputContact($c) {
+    $o = '';// Output
+
+    if (isset($c->PEPrenom) && $c->PEPrenom != '') {
+      $o .= Diogen::removeApostrophe($c->PEPrenom);
+      if (isset($c->PENom) && $c->PENom != '') {
+        $o .= ' '. Diogen::removeApostrophe($c->PENom);
+      }
+      $o .= '<br/>';
+    }
+    if (isset($c->PETel1) && $c->PETel1 != '') {
+      $tel = trim( Diogen::removeApostrophe($c->PETel1) );
+      if (strlen($c->PETel1) < 14) {
+        $tel = chunk_split($tel, 2, ' ');
+      }
+      $o .= 'Tel: '. $tel .'<br/>';
+    }
+    if (isset($c->PETel2) && $c->PETel2 != '') {
+      $tel = trim( Diogen::removeApostrophe($c->PETel2) );
+      if (strlen($c->PETel2) < 14) {
+        $tel = chunk_split($tel, 2, ' ');
+      }
+      $o .= 'Mob:'. $tel .'<br/>';
+    }
+    if (isset($c->PEMel1) && $c->PEMel1 != '') {
+      $o .= '<a href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
+    }
+
+    return $o;
+  }
+
+  // Get Moyens Pédagogiques
+  public static function getMoyPeda($f, $fID) {
+    $mps = Diogen::runQuery("
+      SELECT
+        offremoyenpedagogique.MPIntitule
+
+      FROM
+        offreformation,
+        offremoyenpedagogique,
+        offreliaisonformationmoyenpedagogique
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
+        offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPNo	AND
+        offreformation.OFNo = {$fID}
+    ");	
+
+    $o  = '';// Output
+    $oa = [];// Output Array
+    if ($mps->rowCount() > 0) {
+      foreach($mps as $mp) {
+        $oa[] = $mp->MPIntitule;
+      }
+      $o = implode(',', $oa) .'<br/>';
+    } 
+
+    if (isset($f->OFMoyens) AND $f->OFMoyens != '') {
+      $o .= Diogen::removeApostrophe($f->OFMoyens);
+    }
+
+    return $o;
+  }
+
+  // Get Reco Acquis
+  public static function getRecoAcquis($f, $fID) {
+    $o = '';// Output
+
+    if (isset($f->OFCertification) && $f->OFCertification > 0) {
+      $ra = Diogen::runQuery("
+        SELECT
+          offrecertificationintitule.CIIntitule
+
+        FROM
+          offrecertificationintitule, 
+          offreformation
+          
+        WHERE
+          offrecertificationintitule.CINo = offreformation.OFCertificationIntitule AND
+          offreformation.OFNo = {$fID}
+      ");
+      if ($ra->rowCount() > 0) {					
+        if ($rao = $ra->fetch()) {// Reco Acquis Object
+          $o .= $rao->CIIntitule .'<br/>';
+        }
+      }
+    } 
+    elseif (isset($f->OFCertification) && $f->OFCertification == 0) {
+      $ra = Diogen::runQuery("
+        SELECT
+          offresanction.SAIntitule
+
+        FROM
+          offresanction, 
+          offreformation
+          
+        WHERE
+          offresanction.SANo = offreformation.OFSanction AND
+          offreformation.OFNo = {$fID}
+      ");
+      if ($ra->rowCount() > 0) {					
+        if ($rao = $ra->fetch()) {// Reco Acquis Object
+          $o .= $rao->SAIntitule .'<br/>';
+        }
+      }
+    }
+
+    if (isset($f->OFCommentaireReconnaissance) && $f->OFCommentaireReconnaissance != '') {
+      $o .= Diogen::removeApostrophe($f->OFCommentaireReconnaissance);
+    }
+
+    return $o;
+  }
+
+  // Get Formacode
+  public static function getFormacode($f, $fID) {
+    $fcs = Diogen::runQuery("	
+      SELECT DISTINCT
+        offrefcformacode.FCCode,
+        offrefcformacode.FCNomAcc
+
+      FROM
+        offrefcformacode, 
+        offreformation,
+        offreliaisonformationfc
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationfc.LFFFormation	AND
+        offreliaisonformationfc.LFFFCCode = offrefcformacode.FCCode	AND
+        offreformation.OFNo = {$fID}
+        
+      ORDER BY offreliaisonformationfc.LFFOrdre
+    ");
+    $fca = [];// FormaCode Array
+    if ($fcs->rowCount() > 0) {
+      foreach($fcs as $fc) {
+        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc;
+      }
+
+      return implode(', ', $fca);
+    }
+  }
+
+  // Get Code ROME
+  public static function getCodeROME($f, $fID) {
+    $crs = Diogen::runQuery("
+      SELECT DISTINCT
+        offreliaisonfcrome.LFRRomeCode,
+        offreliaisonfcrome.LFRRomeIntitule
+
+      FROM
+        offreliaisonfcrome, 
+        offreformation,
+        offreliaisonformationrome
+        
+      WHERE
+        offreformation.OFNo = offreliaisonformationrome.LFOFormation			      AND
+        offreliaisonformationrome.LFORomeCode = offreliaisonfcrome.LFRRomeCode	AND
+        offreformation.OFNo = {$fID}
+    ");
+    $cra = [];// Code ROME Array
+    if ($crs->rowCount() > 0) {
+      foreach($crs as $cr) {
+        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule;
+      }
+
+      return implode(', ', $cra);
+    }
+  }
+
+  // Get Matching Diogen Formation
+  // Diogen ID, Diogen Formations Array
+  public static function getMatchingDiogenFormation($di, $dfa) {
+    foreach($dfa as $df) {// Diogen formation
+      if ($df->OFNo == $di) {
+        return $df;
+      }
+    }
   }
 }

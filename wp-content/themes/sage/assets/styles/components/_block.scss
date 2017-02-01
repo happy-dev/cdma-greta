@@ -1,89 +1,88 @@
-section {
+aside.column {
     padding-top: 4vw;
     padding-bottom: 4vw;
-
-    h2 {
-//        line-height: inherit;
-    }
     
-    .column {
-        h3 {
-            color: black;
-            text-transform: none;
-            padding-bottom: 25px;
-        }
-        
-        ul {
-            li {
-                a {
-                    color: black;
-                    font-family: $title-fonts;
-                    line-height: 26px;
-                    
-                    &.active {
-                        font-weight: bold;
-                    }
-
-                    &:hover {
-                        color: $cdma-blue;
-                        font-weight: bold;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
+    h3 {
+        color: black;
+        text-transform: none;
+        padding-bottom: 25px;
     }
-    
-    .content {
-        h2 {
-            font-family: $title-fonts;
-            text-transform: none;
-            width: 100%;
-            padding-bottom: 1vw;
-        }
-        
-        .entry {
-            font-size: 14px;
-            line-height: 18px;
-            
+
+    ul {
+        li {
             a {
-              //  display: block;
-                padding: 15px 0;
+                color: black;
+                font-family: $title-fonts;
+                line-height: 26px;
+
+                &.active {
+                    font-weight: bold;
+                }
 
                 &:hover {
-                    background-color: #f4f4f4;
+                    color: $cdma-blue;
+                    font-weight: bold;
                     text-decoration: none;
-
-                    h3 {
-                        text-decoration: underline;
-                    }
                 }
             }
-            
-            img {
-                width: 100%;
+        }
+    }
+}
+
+section.content {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+section.articles {
+    h2 {
+        font-family: $title-fonts;
+        text-transform: none;
+        width: 100%;
+        padding-bottom: 1vw;
+    }
+
+    .entry {
+        font-size: 14px;
+        line-height: 18px;
+
+        a {
+          //  display: block;
+            padding: 15px 0;
+
+            &:hover {
+                background-color: #f4f4f4;
+                text-decoration: none;
+
+                h3 {
+                    text-decoration: underline;
+                }
             }
-            
-            h3 {
-                font-family: $basic-fonts;
-                font-size: 15px;
-                font-weight: bold;
-                line-height: 20px;
-                color: black;
-                text-transform: none;
-                line-height: 17px;
-                padding-bottom: 8px;
-            }
-            
-            span {
-                color: #0956a1;
-                font-family: $basic-fonts;
-            }
-            
-            p {
-              //  color: #5d5d5d;
-                padding-top: 5px;
-            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h3 {
+            font-family: $basic-fonts;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 20px;
+            color: black;
+            text-transform: none;
+            line-height: 17px;
+            padding-bottom: 8px;
+        }
+
+        span {
+            color: #0956a1;
+            font-family: $basic-fonts;
+        }
+
+        p {
+          //  color: #5d5d5d;
+            padding-top: 5px;
         }
     }
 }
@@ -171,7 +170,7 @@ section {
         overflow: hidden;
 
         img {
-            min-height: 100%;
+            //min-height: 100%;
             min-width: 100%;
         }
 
@@ -217,14 +216,10 @@ section {
 
 @media (max-width: 767px) {
     
-    section {
+    section.articles {
         .content {
             h2 {
                 padding-top: 7vw;
-            }
-            
-            article {
-           //     padding-bottom: 7vw; 
             }
         }
     }
@@ -234,10 +229,6 @@ section {
         
         .layer {
             width: 100%;
-        }
-        
-        .intro {
-           // padding-bottom: 0;
         }
     }
 }

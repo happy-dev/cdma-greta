@@ -12,7 +12,7 @@
       <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
       </a>
     <?php endif; ?>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" href="#collapse-nav-primary" aria-expanded="false" aria-controls="collapse-nav-primary">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav-primary" aria-expanded="false" aria-controls="collapse-nav-primary">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
