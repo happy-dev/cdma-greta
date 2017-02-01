@@ -58,19 +58,7 @@ function create_types_form_tax() {
   );
 }
 
-add_action( 'init', 'create_stages_tax' );
-
-function create_stages_tax() {
-  register_taxonomy(
-    'contrat',
-    'stages',
-    array(
-      'label' => __( 'Type de contrat' ),
-      'rewrite' => array( 'slug' => 'contrat' ),
-      'hierarchical' => true,
-    )
-  );
-}
+// OPTIONS
 
 if( function_exists('acf_add_options_page') ) { 
   acf_add_options_page();
@@ -80,3 +68,10 @@ if( function_exists('acf_add_options_page') ) {
 function isNotNull($str) {
   return isset($s->SSDateCommentaire) AND $s->SSDateCommentaire != '';
 }
+
+function remove_menus(){
+  
+  remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
+
+}
+add_action( 'admin_menu', 'remove_menus' );

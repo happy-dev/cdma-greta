@@ -17,17 +17,16 @@
  * @package WordPress
  */
 
-define('WP_HOME',     'http://greta-cdma.dev');
-define('WP_SITEURL',  'http://greta-cdma.dev');
+
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define('DB_NAME', 'Database name');
+define('DB_NAME', 'staging_cdmagreta');
 
 /** Utilisateur de la base de données MySQL. */
-define('DB_USER', 'Database username');
+define('DB_USER', 'sylvia_k');
 
 /** Mot de passe de la base de données MySQL. */
-define('DB_PASSWORD', 'Database password');
+define('DB_PASSWORD', 'laO9J4gRL4p8jFP99sbl');
 
 /** Adresse de l’hébergement MySQL. */
 define('DB_HOST', 'localhost');
