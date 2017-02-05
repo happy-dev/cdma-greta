@@ -7,6 +7,8 @@ $fi = get_field('formation_id');// Formation Id
 //$fi = 30143;// Multiple sessions
 $fi = 27494;// Date commented
 $fs = DiogenHelper::getFormation($fi);// Formations
+print_r($fs);
+die();
 $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false
 
