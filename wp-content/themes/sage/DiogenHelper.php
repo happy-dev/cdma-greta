@@ -17,7 +17,7 @@ Class DiogenHelper {
     }
     // Only one
     else {
-      $fqp = "offreformation.OFNo = {$formationId}";
+      $fqp = "offreformation.OFNo = {$formationsIds}";
     }
 
     // Query Result
@@ -51,10 +51,11 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    if ($qr->rowCount() == 1) {		  
+    echo $qr->rowCount() ." : Row count \n";
+    if (!is_array($formationsIds)) {
       return $qr->fetch();
     }
-    else if ($qr->rowCount() > 1) {
+    else {
       return $qr->fetchAll();
     }
   }
