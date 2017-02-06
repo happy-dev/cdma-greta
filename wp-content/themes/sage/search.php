@@ -26,26 +26,15 @@
     </nav>
 </div>
 
-<div class="search-domaine">
-    
-<section class="container">
-    <div class="row row-offcanvas row-offcanvas-left">
-        <div class="column col-md-3 sidebar-offcanvas" id="sidebar">
-        </div>
-        
-        <div class="content col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
-                    <?php if (the_search_query()): ?>
-                        <h2>Formations pour "<?php the_search_query(); ?>"</h2>
-                    <?php else: ?>
-                        <h2>Formations</h2>
-                    <?php endif; ?>     
-                </div>
+<div class="search-domaine">  
+    <section class="container">
+        <!-- FORMATIONS -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Formations pour "<?php the_search_query(); ?>"</h2>
             </div>
-            
-            <div class="row">
+        </div>   
+        <div class="row">
             <?php
             $any_formation = false;
             while (have_posts()) : the_post(); 
@@ -54,20 +43,19 @@
                     $any_formation = true;
                 }
             endwhile; 
-            
             if (!$any_formation) {
                 echo 'Aucune formation ne correspond à la recherche';
             }
             ?>
+        </div>
+
+        <!-- ACTUALITES -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Actualités pour "<?php the_search_query(); ?>"</h2>
             </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Actualités pour "<?php the_search_query(); ?>"</h2>
-                </div>
-            </div>
-            
-            <div class="row">
+        </div>
+        <div class="row">
             <?php 
             $any_news = false;
             while (have_posts()) : the_post(); 
@@ -75,14 +63,10 @@
                     get_template_part('templates/content', 'search');
                 }
             endwhile; 
-
             if (!$any_news) {
                 echo 'Aucune actualité ne correspond à la recherche';
             }
             ?>
-            </div>
-
-        <?php the_posts_navigation(); ?>
         </div>
-    </div>
-</section>
+    </section>
+</div>   
