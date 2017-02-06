@@ -56,7 +56,9 @@
 <div class="formation">
     <section class="introduction">
         <div class="container-fluid">
+        <?php get_template_part('template-parts/breadcrumb'); ?>
             <ol class="breadcrumb">
+
                 <li class="breadcrumb-item hidden-md-down"><a href="#">Accueil</a></li>
                 <li class="breadcrumb-item hidden-md-down"><a href="#">Formations</a></li>
                 <li class="breadcrumb-item hidden-md-down"><a href="#">Art du bois</a></li>

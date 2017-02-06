@@ -38,11 +38,7 @@
 </div>
 
 <div class="article container">
-    <ol class="breadcrumb hidden-md-down">
-        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-        <li class="breadcrumb-item ">Actualité</li>
-        <li class="breadcrumb-item active">Nos formations sur les logiciels en design d’espace et design intérieur</li>
-    </ol>
+    <?php get_template_part('templates/breadcrumb'); ?>
     <div class="row row-offcanvas row-offcanvas-left">
         <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
             <h3>Actualité</h3>

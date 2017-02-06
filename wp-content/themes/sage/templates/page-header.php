@@ -63,11 +63,7 @@
                 <p>Le GRETA de la Création, du Design et Métiers d’Art est une structure de l’Éducation nationale qui propose des formations pour adultes. Ces formations sont organisées en cours du soir ou en journée pour répondre aux besoins en compétences des entreprises et des particuliers.</p>
             </div>
             <div class="col-md-3"></div>
-
         </div>
     </div>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-        <li class="breadcrumb-item active">Le Greta CDMA</li>
-    </ol>
+    <?php get_template_part('templates/breadcrumb'); ?>
 </section>
