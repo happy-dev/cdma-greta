@@ -1,3 +1,44 @@
+<?php
+require_once('Diogen.php');
+require_once('DiogenHelper.php');
+
+$fi = get_field('formation_id');// Formation Id
+//$fi = 29877;// Single session
+//$fi = 30143;// Multiple sessions
+$fi = 27494;// Date commented
+$fs = DiogenHelper::getFormation($fi);// Formations
+$ss = DiogenHelper::getSessions($fi);// Sessions
+$ms = count($ss) > 1;// Multiple Sessions ? true or false
+
+//print_r( $fs ); 
+//print_r( $ss ); 
+
+// Iterating through each session
+foreach ($ss as $s) {
+  $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+  $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+  $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+  $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
+  $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
+  $ds   = DiogenHelper::getDuration($s);// Durations
+  $cts  = DiogenHelper::getCounts($s);// Counts
+  $pcs  = DiogenHelper::getPrices($s);// Prices 
+  $cs   = DiogenHelper::getConditions($s);// Conditions 
+  $ls   = DiogenHelper::getLocations($s);// Locations 
+  $ct   = DiogenHelper::getContact($fi, $s);// Contact
+}
+
+$ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
+$obj    = Diogen::removeApostrophe($fs->OFObjectif);// Objectifs
+$prm    = Diogen::removeApostrophe($fs->OFPrerequisMaxi);// Prérequis
+$metp   = Diogen::removeApostrophe($fs->OFMethode);// Méthodes pédagogiques
+$mop    = DiogenHelper::getMoyPeda($fs, $fi);// Moyens pédagogiques
+$rcac   = DiogenHelper::getRecoAcquis($fs, $fi);// Reconnaissance des acquis
+$int    = Diogen::removeApostrophe($fs->OFIntervenant);// Intervenant
+$forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
+$corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
+?>
+
 <div class="secondary-navbar">
     <nav class="navbar container">
         <div class="row">
@@ -143,41 +184,58 @@
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
+    <!-- DATES -->   
                     <h2>Dates</h2>
-                    <pre>Du 22/09/2016 au 01/06/2017
+                    <pre><?php // If multiple sessions
+                    if ($ms) {
+                      foreach ($ss as $s) {
+                        $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+                        $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+                        echo '<div>' ;
+                        echo 'Du '.$sd.' au '.$ed ;   // dates de session
+                      echo $dc ;            // commentaire de date
+                      echo '</div>' ;
+                      }
+                    }
+                // If single session
+                    else { 
+                    if ($sd) {
+                    echo 'Du '.$sd.' au '.$ed ;   // dates de session
+                    }
+                    echo $dc ;            // commentaire de date
+                    }
+                    ?>
+                    </pre>
 
-Un parcours par an. Rentrée en septembre.
-Rentrée en cours d'année possible sur accord du formateur.</pre>
+    <!-- PUBLIC -->
                     <h2>Public</h2>
-                    <pre>Tout public, public en emploi, agent de la fonction publique, artisan, salarié, salarié dans le cadre du plan de formation, public sans emploi, demandeur d'emploi, autre public, particulier, individuel
-Débutants acceptés.</pre>
+                    <pre><?php echo $ps; ?>
+                    <?php echo $pc; ?></pre>
+    <!-- DUREE -->
                     <h2>Durée</h2>
-                    <pre>90 H (en centre)
-Les jeudis soir de 18 heures à 21 heures, sauf pendant les vacances scolaires, plus quelques mercredis soir de 18 heures à 21 heures.
-Cours du soir
-En 1 an</pre>
+                    <pre><?php echo $ds; ?></pre>
+    <!-- EFFECTIF -->
                     <h2>Effectif</h2>
-                    <pre>Minimum : 8
-Maximum : 15</pre>
+                    <pre><?php echo $cts; ?></pre>
+    <!-- TARIF -->
                     <h2>Tarif(s)</h2>
-                    <pre>Tarif tout public : 945,00 €</pre>
+                    <pre><?php echo $pcs; ?></pre>
+    <!-- LIEU -->
                     <h2>Lieu(x)</h2>
-                    <pre>ESAA-Ecole Boulle - Lycée des métiers d'art, de l'architecture intérieure et du design 
-9, rue Pierre Bourdan
-75012 PARIS</pre>
+                    <pre><?php echo $ls; ?></pre>
+    <!-- MODALITE -->
                     <h2>Modalité de formation</h2>
-                    <pre>Collectif, Cours du soir, Formation en présentiel, Hors temps de travail</pre>
+                    <pre><?php echo $cs; ?></pre>
+    <!-- COORDONNEES GRETA -->
                     <h2>Coordonnées</h2>
                     <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
 Agence administrative et commerciale
 21 rue de Sambre et Meuse
 75010 PARIS
 info@cdma.greta.fr</pre>
+    <!-- CONTACT -->
                     <h2>Contact(s)</h2>
-                    <pre>Julien BOGARD
-Tél 1. 01 45 43 20 90
-Tél 2. 
-j.bogard@cdma.greta.fr</pre>
+                    <pre><?php echo $ct; ?></pre>
                 </aside>
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
@@ -185,59 +243,30 @@ j.bogard@cdma.greta.fr</pre>
                             <button type="button" class="btn btn-more hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
                         </div>
                     </div>
-                    <pre>Contenu de la formation préparatoire à la sculpture ornementale et pédagogie adaptés au stagiaire.
-En fonction du niveau du stagiaire, acquérir des compétences de sculpteur ornemaniste et possibilité de :
-- travailler différents projets, à partir de plâtres ou de modèles existants
-- Etudier le bas-relief, le haut-relief et la statuaire à partir de plâtres fournis et choisis par le formateur
-- Comprendre la chronologie des différents styles sur des ornements simples
-- Comprendre les refends
-- Savoir repérer des ornements simples de chaque style.
-- Comprendre les différentes compositions de chaque style
-- Information sur les différents styles et techniques de dessin.
-
-Toutes les productions réalisées par les stagiaires pendant leur formation sont conservées par les stagiaires.
-une session par an
-Document non contractuel</pre>
+    <!-- CONTENU -->
+                    <pre><?php echo $ctn; ?></pre>
+    <!-- OBJECTIFS -->
                     <h2>Objectifs</h2>
-                    <pre>Développer le travail d'observation.
-Se former l'oeil à travers des plâtres.
-Exécuter un dessin ombré. 
-Acquérir la notion de volume à travers le dessin pour l'appliquer à la taille du bois, à la sculpture, à la reparure, à la gravure, à la ciselure, à la taille de la pierre ... et à tous les métiers qui touchent à l'ornement.
-Comprendre et analyser les compositions des différents styles. 
-Approcher la statuaire et la ronde-bosse.</pre>
+                    <pre><?php echo $obj; ?></pre>
+    <!-- PREREQUIS -->    
                     <h2>Prérequis</h2>
-                    <pre>Avoir le sens de l'observation ou aimer dessiner ou avoir un intérêt pour l'ornement.
-Sculpteurs, doreurs, repareurs, restaurateurs de mobilier, graveurs, staffeurs, tailleurs de pierre ... sont les bienvenus. </pre>
+                    <pre><?php echo $prm; ?></pre>
+    <!-- METHODES PEDAGOGIQUES -->
                     <h2>Méthodes pédagogiques</h2>
-                    <pre>Exposés théoriques, démonstrations et mises en pratique des techniques.
-Travail personnalisé , progression individualisée, pédagogie adaptée au stagiaire.
-
-Papier et supports fournis.</pre>
+                    <pre><?php echo $metp; ?></pre>
+    <!-- MOYENS PEDAGOGIQUES -->
                     <h2>Moyens pédagogiques</h2>
-                    <pre>document pédagogique, étude de cas, travaux pratiques
-Lieu de formation : atelier de sculpture de l'Ecole Boulle
-Collection de moulages. Gypsothèque.
-Papier et supports fournis.
-Prévoir l'achat de matériel et de fournitures de dessin. Une liste vous sera remise lors de l'entretien de recrutement.
-</pre>
+                    <pre><?php echo $mop; ?></pre>
+    <!-- RECONNAISSANCE DES ACQUIS -->
                     <h2>Reconnaissance des acquis</h2>
-                    <pre>Attestation de fin de formation
-Relevé des acquis de la formation.</pre>
-                    <h2>Modalités d'admission et de recrutement</h2>
-                    <pre>admission après entretien, admission après test
-Envoyer votre candidature,CV + lettre de motivation détaillée, à Julien Bogard : j.bogard@cdma.greta.fr
-Vous pouvez joindre à votre candidature des photos de vos réalisations ou votre book présentant vos croquis et ou vos carnets de dessins le cas échéant.
-Test de positionnement pédagogique en dessin.
-Voir également nos formations de " modelage ornemental " et de " sculpture ornementale " .
-</pre>
+                    <pre><?php echo $rcac; ?></pre>
+    <!-- INTERVENANT -->               
                     <h2>Internant(e)(s)</h2>
-                    <pre>Patrick BLANCHARD, professeur à l'école Boulle, sculpteur sur bois,
-Meilleur Ouvrier de France 1997 MOF</pre>
+                    <pre><?php echo $int; ?></pre>
+    <!-- CODIFICATION -->
                     <h2>Codification de l'offre</h2>
-                    <pre>Formacode : 45096 - sculpture bois, 45057 - dessin art, 45076 - sculpture, 45066 - art plastique, 45554 - artisanat art
-ROME B1302 - Décoration d'objets d'art et artisanaux ROME K1602 - Gestion de patrimoine culturel
-IMPRIMER
-</pre>
+                    <pre><?php echo $forc; ?>
+                    <?php echo $corm ?></pre>
                     <hr/>
                     <button class="btn btn-action btn-candidate">Candidater</button>
                     <button class="btn">Demander plus d'informations</button>
@@ -323,4 +352,5 @@ IMPRIMER
 </div>
                     
 
-<span class="display-none" id="coordo-email">alexandre@happy-dev.fr</span>
+<span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>
+

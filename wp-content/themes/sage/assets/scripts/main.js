@@ -20,9 +20,7 @@
       init: function() {
         // JavaScript to be fired on all pages
       },
-      finalize: function(classform) {
-        var d = document.getElementByClassName("form-control");
-        d.classList.add("otherclass");
+      finalize: function() {
       }
     },
     // Home page
