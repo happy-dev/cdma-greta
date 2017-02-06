@@ -240,5 +240,5 @@ add_filter('wp_nav_menu_objects', function($sorted_menu_objects) {
     return $sorted_menu_objects;    
 });
 
-add_image_size( 'news', 500, 282, true ); // 335 pixels wide by 335 pixels tall, hard crop mode
-//add_image_size( 'slider', 750, 440, true ); // 750 pixels wide by 440 pixels tall, hard crop mode
+add_image_size( 'news', 500, 282, true ); // 500 pixels wide by 282 pixels tall, hard crop mode
+add_image_size( 'single_f', 600, 407, true ); // 600 pixels wide by 407 pixels tall, hard crop mode

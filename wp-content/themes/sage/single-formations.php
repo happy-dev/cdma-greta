@@ -65,7 +65,6 @@
             <div class="row">
                 <div class="introduction-media col-md-6 col-sm-12">
                     <!-- IMAGE / VIDEO -->
-                    <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
                     <?php if (!get_field ('post_video') ) { ?>
                         <figure>
                             <?php 
@@ -74,7 +73,7 @@
                                 $url = $image['url'];
                                 $title = $image['title'];
                                 $alt = $image['alt'];
-                                $size = 'large';
+                                $size = 'single_f';
                                 $thumb = $image['sizes'][ $size ]; 
                             ?>
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
@@ -94,7 +93,7 @@
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">
-                            <a href="/nous-contacter" class="btn btn-action btn-candidate">Candidater</a>
+                            <a href="/nous-contacter" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
                         </div>
                         <div class="col-lg-7">
                             <button class="btn">Demander plus d'informations</button>
