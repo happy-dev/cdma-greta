@@ -6,29 +6,7 @@
         <form>
             <div class="container">
                 <h1><?php the_field('titre_slider'); ?></h1>
-                <div class="row row-input">
-                    <div class="col-md-3 col-lg-4"></div>
-                    <div class="col-md-6 col-lg-4">
-                        <input class="form-control input-lg icon-search"
-                               type="text"
-                               placeholder="Chercher une formation" />
-                    </div>
-                    <div class="col-md-3 col-lg-4"></div>
-                </div>
-                <div class="row row-checkbox">
-                    <div class="col-lg-3 col-sm-0"></div>
-                    <div class="col-lg-6 col-sm-12">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1b" value="option1">
-                        Formations diplomantes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2b" value="option2">
-                        Formations éligibles au CPF
-                        </label>
-                    </div>
-                    <div class="col-lg-3 col-sm-0"></div>
-                </div>
+                <?php get_search_form(); ?>
             </div>
         </form>
     </div>
@@ -81,8 +59,6 @@
         //the_field('video_home');
     } ?>
 </section>
-
-<?php get_search_form(); ?>
 
 <!-- FORMATIONS -->
 <section class="articles container">

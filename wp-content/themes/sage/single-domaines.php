@@ -13,9 +13,11 @@ while (have_posts()) {
   $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
 
   foreach($fs as $f) {
-    echo $f->post_title .'<br/>';
     $df   = DiogenHelper::getMatchingDiogenFormation($fdia[$f->ID], $dfs);
     $ss   = DiogenHelper::getSessions($fdia[$f->ID]);// Sessions
+
+    $ft   = $f->post_title;// Formation Title
+    $obj  = $df->OFObjectif;// Objectif
 
     // Iterating through each session
     foreach ($ss as $s) {
@@ -23,12 +25,7 @@ while (have_posts()) {
       $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
       $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
     }
-
-    echo $sd .'<br/>';
-    echo $ed .'<br/>';
-    echo $dc .'<br/>';
-    echo $df->OFIntervenant .'<br/>';
-    echo $df->OFObjectif .'<br/>';
-    echo '<br/><br/>';
+    
+    
   }
 }

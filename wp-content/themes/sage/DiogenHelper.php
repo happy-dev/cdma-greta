@@ -51,7 +51,6 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    echo $qr->rowCount() ." : Row count \n";
     if (!is_array($formationsIds)) {
       return $qr->fetch();
     }

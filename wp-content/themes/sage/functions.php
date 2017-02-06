@@ -71,18 +71,11 @@ function isNotNull($str) {
 
 function remove_menus(){
   
-  remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
+  //remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
 
 }
-// add_action( 'admin_menu', 'remove_menus' );
+add_action( 'admin_menu', 'remove_menus' );
 
-// Add custom query vars
-function custom_query_vars_filter($vars) {
-  $vars[] = 'fe';
-  $vars[] = 'fd';
-  return $vars;
-}
-add_filter( 'query_vars', 'custom_query_vars_filter' );
 
 // Enhanced search to enable taxonomy filtering
 add_action('pre_get_posts', 'search_by_tax'); 
