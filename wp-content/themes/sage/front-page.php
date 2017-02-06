@@ -60,7 +60,8 @@
     } ?>
 </section>
 
-<!-- FORMATIONS -->
+<!-- FORMATIONS A LA UNE -->
+
 <section class="articles container">
     <h2>Formations à la une</h2>
     <a class="see-all hidden-md-down" href="">Voir toutes les formations</a>
@@ -72,15 +73,14 @@
                     <article class="entry col-md-4">
                         <?php $image = get_field('post_image');
                             if( !empty($image) ): 
-
                                 $url = $image['url'];
                                 $title = $image['title'];
                                 $alt = $image['alt'];
-                                $size = 'thumbnail';
+                                $size = 'news';
                                 $thumb = $image['sizes'][ $size ]; ?>
                             <?php endif; ?>
                             <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                                <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
+                                <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
                                 <h3><?php the_title(); ?></h3>
                                 <p>38h - Temps plein sur 5 jours<br/>
                                 Cours du jour, Formation en présentiel<br/>
@@ -130,6 +130,8 @@
     </div>
 </div>
 
+<!-- ACTUALITES -->
+
 <section class="articles container">
     <h2>Actualités</h2>
     <a class="see-all hidden-md-down" href="/actualites">Voir toute l'actualité</a>
@@ -143,6 +145,17 @@
         $the_query = new WP_Query( $args ); 
             while ( $the_query->have_posts()) : $the_query->the_post(); ?>
                 <article class="entry col-md-4">
+                    <?php $image = get_field('post_image');
+                            if( !empty($image) ): 
+                                $url = $image['url'];
+                                $title = $image['title'];
+                                $alt = $image['alt'];
+                                $size = 'news';
+                                $thumb = $image['sizes'][ $size ]; ?>
+                            <?php endif; ?>
+                            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('thumbnail'); ?>
                         <h3><?php the_title(); ?></h3>
