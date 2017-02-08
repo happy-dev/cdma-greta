@@ -2,16 +2,13 @@
 require_once('Diogen.php');
 require_once('DiogenHelper.php');
 
-$fi = get_field('formation_id');// Formation Id
+$fi = get_field('id_diogen');// Formation Id
 //$fi = 29877;// Single session
 //$fi = 30143;// Multiple sessions
 $fi = 27494;// Date commented
 $fs = DiogenHelper::getFormation($fi);// Formations
 $ss = DiogenHelper::getSessions($fi);// Sessions
-$ms = count($ss) > 1;// Multiple Sessions ? true or false
-
-//print_r( $fs ); 
-//print_r( $ss ); 
+$ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
 foreach ($ss as $s) {
@@ -90,9 +87,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
     </nav>
 </div>
 
-<?php
-  //require_once('DiogenHelper.php');
-  the_post(); ?>
+<?php the_post(); ?>
 
 <div class="formation">
     <section class="introduction">
@@ -186,23 +181,24 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
     <!-- DATES -->   
                     <h2>Dates</h2>
-                    <pre><?php // If multiple sessions
+                    <pre>
+                    <?php // If multiple sessions
                     if ($ms) {
                       foreach ($ss as $s) {
                         $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
                         $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                         echo '<div>' ;
-                        echo 'Du '.$sd.' au '.$ed ;   // dates de session
-                      echo $dc ;            // commentaire de date
-                      echo '</div>' ;
+                        echo 'Du '.$sd.' au '.$ed ; // dates de session
+                        echo $dc ; // commentaire de date
+                        echo '</div>' ;
                       }
                     }
                 // If single session
                     else { 
                     if ($sd) {
-                    echo 'Du '.$sd.' au '.$ed ;   // dates de session
+                    echo 'Du '.$sd.' au '.$ed ; // dates de session
                     }
-                    echo $dc ;            // commentaire de date
+                    echo $dc ; // commentaire de date
                     }
                     ?>
                     </pre>

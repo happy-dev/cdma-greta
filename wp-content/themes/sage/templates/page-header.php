@@ -2,6 +2,7 @@
 
 <div class="secondary-navbar">
     <nav class="navbar container">
+          <?php //wp_nav_menu(array('theme_location' => 'secondary_navigation_bis', 'menu_class' => 'nav')); ?>
         <div class="row">
             <ul class="nav navbar-nav col-lg-8 hidden-md-down">
                 <li class="nav-item dropdown">
@@ -23,30 +24,7 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
-                <div class="row">
-                    <div class="col-sm-11 col-xs-10">
-                        <input class="form-control"
-                               type="text"
-                               placeholder="Chercher une formation" />
-                    </div>
-                    <div class="col-sm-1 col-xs-2">
-                        <button class="btn btn-outline-success" type="submit">OK</button>
-                    </div>
-                </div>
-                <div class="row row-checkbox">
-                    <div class="col-lg-12">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1">
-                        Formations diplomantes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2">
-                        Formations éligibles au CPF
-                        </label>
-                    </div>
-                </div>
-            </form>
+            <?php get_search_form(); ?>
       </div>
     </nav>
 </div>
