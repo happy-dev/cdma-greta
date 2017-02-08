@@ -1,31 +1,3 @@
-<div class="secondary-navbar">
-    <nav class="navbar container">
-        <div class="row">
-            <ul class="nav navbar-nav col-lg-8 hidden-md-down">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="formations-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formations</a>
-                    <div class="dropdown-menu" aria-labelledby="formations-dropdown">
-                        
-                    </div>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Certifications et VAE</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Financez votre formation</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="entreprise-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entreprise</a>
-                    <div class="dropdown-menu" aria-labelledby="entreprise-dropdown">
-                       
-                    </div>
-                </li>
-            </ul>
-            <?php get_search_form(); ?>
-      </div>
-    </nav>
-</div>
-
 <?php while (have_posts()) : the_post(); ?>
 <div class="domaine">
 <!-- DOMAINE -->

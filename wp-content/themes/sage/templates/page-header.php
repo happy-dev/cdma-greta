@@ -1,34 +1,5 @@
 <?php use Roots\Sage\Titles; ?>
 
-<div class="secondary-navbar">
-    <nav class="navbar container">
-          <?php //wp_nav_menu(array('theme_location' => 'secondary_navigation_bis', 'menu_class' => 'nav')); ?>
-        <div class="row">
-            <ul class="nav navbar-nav col-lg-8 hidden-md-down">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="formations-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formations</a>
-                    <div class="dropdown-menu" aria-labelledby="formations-dropdown">
-                        
-                    </div>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Certifications et VAE</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Financez votre formation</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="entreprise-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entreprise</a>
-                    <div class="dropdown-menu" aria-labelledby="entreprise-dropdown">
-                       
-                    </div>
-                </li>
-            </ul>
-            <?php get_search_form(); ?>
-      </div>
-    </nav>
-</div>
-
 <section class="presentation presentation-page">
     <div class="container">
         <figure>

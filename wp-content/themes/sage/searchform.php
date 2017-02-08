@@ -7,16 +7,16 @@
     <!-- <input type="hidden" name="post_type[]" value="formations" /> -->
     <!-- <input type="hidden" name="post_type[]" value="post" /> -->
    
-<?php if (is_front_page()) { ?>
-  <!-- FRONT PAGE -->
+    <?php if (is_front_page()) { ?>
+      <!-- FRONT PAGE -->
     <div class="row row-input">
         <div class="col-md-3 col-lg-4"></div>
         <div class="col-md-6 col-lg-4">
-<?php } else { ?>
-    <!-- OTHER PAGES -->
+    <?php } else { ?>
+        <!-- OTHER PAGES -->
         <div class="row">
         <div class="col-sm-11 col-xs-10">
-<?php } ?>       
+    <?php } ?>       
             <input class="form-control input-lg"
                    placeholder="Chercher une formation"
                    type="text"
@@ -27,21 +27,21 @@
         <div class="col-sm-1 col-xs-2">
             <button class="btn btn-outline-success" type="submit">OK</button>
         </div>
-<?php if (is_front_page()) { ?>
-  <!-- FRONT PAGE -->
+    <?php if (is_front_page()) { ?>
+      <!-- FRONT PAGE -->
         <div class="col-md-3 col-lg-4"></div>
-<?php } ?>
+    <?php } ?>
     </div>
     
     <div class="row row-checkbox">
-<?php if (is_front_page()) { ?>
-  <!-- FRONT PAGE -->   
+    <?php if (is_front_page()) { ?>
+      <!-- FRONT PAGE -->   
       <div class="col-lg-3 col-sm-0"></div>
       <div class="col-lg-6 col-sm-12">
-<?php } else { ?>
-    <!-- OTHER PAGES -->
+    <?php } else { ?>
+      <!-- OTHER PAGES -->
       <div class="col-lg-12">
-<?php } ?> 
+    <?php } ?> 
         <label class="checkbox-inline">
           <input type="checkbox" id="inlineCheckbox1" name="fd" value="formation-diplomante">
           Formations diplomantes
@@ -51,12 +51,11 @@
           Formations éligibles au CPF
         </label>
       </div>
-<?php if (is_front_page()) { ?>
-  <!-- FRONT PAGE --> 
+    <?php if (is_front_page()) { ?>
+      <!-- FRONT PAGE --> 
         <div class="col-lg-3 col-sm-0"></div>
-<?php } ?>        
+    <?php } ?>        
     </div>        
     
 	<?php $query_types = get_query_var('post_type'); ?>
-
 </form>
