@@ -6,6 +6,7 @@ $fi = get_field('id_diogen');// Formation Id
 //$fi = 29877;// Single session
 //$fi = 30143;// Multiple sessions
 $fi = 27494;// Date commented
+$fi =31770;
 $fs = DiogenHelper::getFormation($fi);// Formations
 $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
@@ -130,14 +131,14 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
     <!-- DATES -->   
                     <h2>Dates</h2>
-                    <pre>
-                    <?php // If multiple sessions
+                    <pre><?php // If multiple sessions
                     if ($ms) {
                       foreach ($ss as $s) {
                         $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
                         $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                         echo '<div>' ;
                         echo 'Du '.$sd.' au '.$ed ; // dates de session
+                        echo '<br/>';
                         echo $dc ; // commentaire de date
                         echo '</div>' ;
                       }
@@ -147,6 +148,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     if ($sd) {
                     echo 'Du '.$sd.' au '.$ed ; // dates de session
                     }
+                    echo '<br/>';
                     echo $dc ; // commentaire de date
                     }
                     ?>
