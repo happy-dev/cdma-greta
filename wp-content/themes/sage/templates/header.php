@@ -57,7 +57,7 @@ if (!is_front_page()) { ?>
                 </li>
             </ul>
             <?php get_search_form(); ?>
-      </div>
+        </div>
     </nav>
 </div>
 <?php } ?>
