@@ -23,7 +23,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="intro col-md-6 col-sm-12 col-xs-12">
-                            <h1><?php the_title(); ?></h1>
+                            <?php $dom_title = get_the_title(); ?>
+                            <h1><?php echo $dom_title; ?></h1>
                             <?php the_content(); ?>
                             <a class="note"
                                href="#presentation-pannel"
@@ -31,7 +32,7 @@
                                aria-expanded="false"
                                aria-controls="presentation-pannel">Lire la suite</a>
                             <?php if (get_field ('post_video') ) { ?>
-                                <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?php the_title(); ?></span>
+                                <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?php echo $dom_title; ?></span>
                             <?php } ?>
                         </div>
                         <!-- VIDEO -->
@@ -70,7 +71,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalLabel"><?php the_title(); ?></h4>
+                <h4 class="modal-title" id="modalLabel"><?php echo $dom_title; ?></h4>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
@@ -84,115 +85,60 @@
         </div>
     </div>
     
-
-<!-- LISTE DOMAINES -->
-	<!-- THE QUERY -->
-    
-<div class="container">
-    <div class="row row-offcanvas row-offcanvas-left">
-    <!--div class="row"-->
-	<?php
-	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
-	$the_query = new WP_Query( $args ); ?>
-
-        <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
-            <h3>Domaines</h3>
-            <ul>
-                <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
-                    <li>
-                        <a href= <?php the_permalink(); ?> >
-                            <?php the_title(); ?>
-                        </a>
-                    </li>	
-                <?php endwhile; ?>
-            <?php wp_reset_postdata();?>
-            </ul>
-        </aside>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+        <!-- LISTE DOMAINES -->
+        	<?php
+        	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
+        	$the_query = new WP_Query( $args ); ?>
+            <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
+                <h3>Domaines</h3>
+                <ul>
+                    <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
+                        <li>
+                            <a href= <?php the_permalink(); ?> >
+                                <?php the_title(); ?>
+                            </a>
+                        </li>	
+                    <?php endwhile; ?>
+                <?php wp_reset_postdata();?>
+                </ul>
+            </aside> 
+        <!-- FORMATIONS -->
+            <section class="articles col-md-9">
+                <header class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
+                        <h2><?php //echo $i; ?> Formations <?php echo $dom_title; ?></h2>
+                    </div>
+                </header>
 
         <!-- LISTE FORMATIONS -->
-        <section class="articles col-md-9">
-            <header class="row">
-                <div class="col-md-12">
-                    <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
-                    <h2>128 Formations <?php the_title(); ?></h2>
-                </div>
-            </header>
-            
-            <div class="row row-mise-en-avant">
-                <article class="entry col-md-12">
-                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
-                        <div class="col-md-4">
-                                <img
-                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
-                                     alt="CAP Ébéniste (F/H)" />
-                        </div>
-                        <div class="col-md-8">
-                            <h3>CAP Ébéniste (F/H)</h3>
-                            <span>Du 03/11/2016 au 31/01/2017
-Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
-                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
-Identifier et respecter les contraintes du cahier des charges.
-Respecter l'utilisation des images au regard du Droit.</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="entry col-md-12">
-                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
-                        <div class="col-md-4">
-                                <img
-                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
-                                     alt="CAP Ébéniste (F/H)" />
-                        </div>
-                        <div class="col-md-8">
-                            <h3>CAP Ébéniste (F/H)</h3>
-                            <span>Du 03/11/2016 au 31/01/2017
-Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
-                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
-Identifier et respecter les contraintes du cahier des charges.
-Respecter l'utilisation des images au regard du Droit.</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="entry col-md-12">
-                    <a class="row row-entry" href="#" title="CAP Ébéniste (F/H)">
-                        <div class="col-md-4">
-                                <img
-                                     src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
-                                     alt="CAP Ébéniste (F/H)" />
-                        </div>
-                        <div class="col-md-8">
-                            <h3>CAP Ébéniste (F/H)</h3>
-                            <span>Du 03/11/2016 au 31/01/2017
-Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
-                            <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
-Identifier et respecter les contraintes du cahier des charges.
-Respecter l'utilisation des images au regard du Droit.</p>
-                        </div>
-                    </a>
-                </article>
-            </div>
-
-            <div class="row">
-            <?php $posts = get_field('formations_dom');
-            if( $posts ): ?>
-                <?php foreach( $posts as $post): ?>
-                    <?php setup_postdata($post); ?>
-
+                <?php
+                    $posts = get_field('formations_dom');
+                        if( $posts ): 
+                            $i=0;
+                            foreach( $posts as $post):
+                                setup_postdata($post);
+                                $i++;
+                        ?>  
+                <div class="row <?php if ( $i <= 2 ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
-
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
-                            <?php $image = get_field('post_image');
+                            <?php
+                                $image = get_field('post_image');
                                 if( !empty($image) ): 
                                     $url = $image['url'];
                                     $title = $image['title'];
                                     $alt = $image['alt'];
-                                    $size = 'thumbnail';
-                                    $thumb = $image['sizes'][ $size ]; ?>
-                                    <img
-                                         src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>"
-                                         alt="<?php echo $alt; ?>" />
-                            <?php endif; ?>
+                                    $size = 'single_f';
+                                    $thumb = $image['sizes'][ $size ]; 
+                                endif; 
+                                ?>
+                                <img src="<?php echo $thumb; ?>"
+                                     alt="<?php echo $alt; ?>" />
+                       
                             </div>
                             <div class="col-md-8">
                                 <h3><?php the_title(); ?></h3>
@@ -204,14 +150,16 @@ Respecter l'utilisation des images au regard du Droit.</p>
                             </div>
                         </a>
                     </article>
-                <?php endforeach; ?>
-            </div>
-            
-            <?php wp_reset_postdata(); ?>
-        </section>
+                </div>
+               <?php endforeach; 
+                        
+                    endif; 
+                
+                 wp_reset_postdata(); ?>
+            </section>
+        </div>
     </div>
-</div>
-    
-	<?php endif; ?>
+        
+    	<?php //ndif; ?>
 </div>
 <?php endwhile; ?>

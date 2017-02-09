@@ -22,8 +22,8 @@
                 <div class="row">
                 <!-- THE QUERY -->
                 <?php 
-                $args=( array(  'post_type' => 'post' ,
-                                'posts_per_page' => 12  ) );  
+                $args = array(  'post_type' => 'post' ,
+                                'posts_per_page' => 12  ) ;  
                 $the_query = new WP_Query( $args ); 
                     while ( $the_query->have_posts()) : $the_query->the_post();
                         get_template_part('templates/content-actualites', get_post_type()); 
