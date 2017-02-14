@@ -84,7 +84,8 @@
             </div>
         </div>
     </div>
-    
+<?php endwhile; ?>
+<?php wp_reset_postdata();?>   
     <div class="container">
         <div class="row row-offcanvas row-offcanvas-left">
         <!-- LISTE DOMAINES -->
@@ -109,7 +110,7 @@
         $mea = get_field('mise_en_avant');
         $posts = get_field('formations_dom');      
             if( $posts ): 
-                $count = count( $posts );
+                $count = count( $posts );  
         ?>
             <section class="articles col-md-9">
                 <header class="row">
@@ -122,9 +123,17 @@
         <!-- LISTE FORMATIONS -->
             <?php       
             $i = 0;
-            foreach( $posts as $post):
-                setup_postdata($post);
-                $i++;
+            $ids = get_field('formations_dom', false, false);
+            query_posts( array(
+                'post_type'         => 'formations',
+                'posts_per_page'    => 6,
+                'post__in'          => $ids,
+                'post_status'       => 'any',
+                'orderby'           => 'post__in',
+                'paged'             => $paged
+            ));
+            while ( have_posts()) : the_post();
+            $i++;
             ?>  
                 <div class="row <?php if ( $i <= $mea ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
@@ -155,15 +164,13 @@
                         </a>
                     </article>
                 </div>
-               <?php endforeach; 
-                        
-                    endif; 
-                
-                 wp_reset_postdata(); ?>
+                <?php
+                endwhile; 
+                endif; 
+                wp_reset_postdata(); ?>
+                <?php previous_posts_link( 'Précédent' ); ?>
+                <?php next_posts_link( 'Suivant' ); ?>
             </section>
         </div>
     </div>
-        
-    	<?php //ndif; ?>
 </div>
-<?php endwhile; ?>
