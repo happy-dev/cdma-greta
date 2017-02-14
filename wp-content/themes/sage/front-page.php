@@ -146,18 +146,15 @@
             while ( $the_query->have_posts()) : $the_query->the_post(); ?>
                 <article class="entry col-md-4">
                     <?php $image = get_field('post_image');
-                            if( !empty($image) ): 
-                                $url = $image['url'];
-                                $title = $image['title'];
-                                $alt = $image['alt'];
-                                $size = 'news';
-                                $thumb = $image['sizes'][ $size ]; ?>
-                            <?php endif; ?>
-                            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('thumbnail'); ?>
+                        if( !empty($image) ): 
+                            $url = $image['url'];
+                            $title = $image['title'];
+                            $alt = $image['alt'];
+                            $size = 'news';
+                            $thumb = $image['sizes'][ $size ]; ?>
+                        <?php endif; ?>
+                     <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <h3><?php the_title(); ?></h3>
                         <?php the_excerpt(); ?>
                     </a>
@@ -173,12 +170,20 @@
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
-	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": true, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
 		<?php while ( have_rows('lieux_formation') ) : the_row(); ?>
      		<?php
-			$imageArray = get_sub_field('logos_lieux');
-			$image = $imageArray['url']; ?>
-			<div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); width: 50px; height:50px;">
+			$image = get_sub_field('logos_lieux');
+			$url = $image['url'];
+            $title = $image['title'];
+            $alt = $image['alt'];
+            $size = 'large';
+            $thumb = $image['sizes'][ $size ]; 
+            $link = get_sub_field('liens_lieux'); ?>
+			<div class="carousel-cell" style="height:100px; margin-left: 100px;">
+                <a href="<?php echo $link; ?>" target="_blank">
+                    <img src="<?php echo $url; ?>" style="height:100%" alt="<?php echo $alt; ?>" />
+                </a>
 			</div>
 		<?php endwhile; ?>
 	</div>

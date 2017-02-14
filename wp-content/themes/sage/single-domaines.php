@@ -105,23 +105,26 @@
                 </ul>
             </aside> 
         <!-- FORMATIONS -->
+        <?php
+        $posts = get_field('formations_dom');
+            if( $posts ): 
+                $count = count( $posts );
+        ?>
             <section class="articles col-md-9">
                 <header class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
-                        <h2><?php //echo $i; ?> Formations <?php echo $dom_title; ?></h2>
+                        <h2><?php echo $count; ?> Formations <?php echo $dom_title; ?></h2>
                     </div>
                 </header>
 
         <!-- LISTE FORMATIONS -->
-                <?php
-                    $posts = get_field('formations_dom');
-                        if( $posts ): 
-                            $i=0;
-                            foreach( $posts as $post):
-                                setup_postdata($post);
-                                $i++;
-                        ?>  
+            <?php       
+            $i=0;
+            foreach( $posts as $post):
+                setup_postdata($post);
+                $i++;
+            ?>  
                 <div class="row <?php if ( $i <= 2 ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">

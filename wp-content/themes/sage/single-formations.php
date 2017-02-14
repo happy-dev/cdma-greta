@@ -5,8 +5,7 @@ require_once('DiogenHelper.php');
 $fi = get_field('id_diogen');// Formation Id
 //$fi = 29877;// Single session
 //$fi = 30143;// Multiple sessions
-$fi = 27494;// Date commented
-$fi =31770;
+//$fi = 27494;// Date commented
 $fs = DiogenHelper::getFormation($fi);// Formations
 $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
