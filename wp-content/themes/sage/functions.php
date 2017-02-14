@@ -71,7 +71,7 @@ function isNotNull($str) {
 
 function remove_menus(){
   
-  //remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
+  remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
 
 }
 add_action( 'admin_menu', 'remove_menus' );

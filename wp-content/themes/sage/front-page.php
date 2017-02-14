@@ -96,9 +96,13 @@
 
 <section class="presentation">
     <div class="row">
-        <div class="video col-md-6">
-            <?php //the_field('prez_video'); ?>
-            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" alt="presentation" />
+        <?php
+        $imageArray = get_field('prez_image');
+        if( !empty($imageArray) ): 
+        $image = $imageArray['url']; 
+        endif; ?> 
+        <div class="video col-md-6" style="background-image: url(<?php echo $image; ?>); background-size:cover; ">  
+            <!-- <img src="<?php echo $url; ?>" alt="<?php echo $alt; ?>" /> -->
             <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
@@ -120,7 +124,7 @@
         </div>
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="<?php the_field('prez_video'); ?>" allowfullscreen></iframe>
             </div>
         </div>
         <div class="modal-footer">
@@ -155,7 +159,8 @@
                         <?php endif; ?>
                      <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                         <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                        <h3><?php the_title(); ?></h3>
+                        <h3><?php the_title(); ?></h3>    
+        <!-- PAULINE : CSS A MODIFIER -->      
                         <?php
                         $categories = get_the_category();
                         $separator = ' ';
@@ -163,7 +168,7 @@
                         if($categories){
                             foreach($categories as $category) {
                         if($category->name !== 'A la une') {
-                                $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
+                                $output .= '<a style="color: #0956a1;" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
                             }
                         echo trim($output, $separator);
                         }
