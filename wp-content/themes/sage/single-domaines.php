@@ -106,7 +106,8 @@
             </aside> 
         <!-- FORMATIONS -->
         <?php
-        $posts = get_field('formations_dom');
+        $mea = get_field('mise_en_avant');
+        $posts = get_field('formations_dom');      
             if( $posts ): 
                 $count = count( $posts );
         ?>
@@ -120,12 +121,12 @@
 
         <!-- LISTE FORMATIONS -->
             <?php       
-            $i=0;
+            $i = 0;
             foreach( $posts as $post):
                 setup_postdata($post);
                 $i++;
             ?>  
-                <div class="row <?php if ( $i <= 2 ) {echo 'row-mise-en-avant';} ?>"> 
+                <div class="row <?php if ( $i <= $mea ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
