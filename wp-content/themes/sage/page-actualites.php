@@ -22,13 +22,23 @@
                 <div class="row">
                 <!-- THE QUERY -->
                 <?php 
-                $args = array(  'post_type' => 'post' ,
-                                'posts_per_page' => 12  ) ;  
-                $the_query = new WP_Query( $args ); 
-                    while ( $the_query->have_posts()) : $the_query->the_post();
+                //$args = array(  'post_type' => 'post' ,
+                  //              'posts_per_page' => 12  ) ;  
+                //$the_query = new WP_Query( $args );
+                if (have_posts()) :                 
+                    //$paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
+                        query_posts( array( 
+                                        'posts_per_page' => 3 ,
+                                        'paged' => $paged
+                                          ) );  
+                    while ( have_posts()) : the_post();
                         get_template_part('templates/content-actualites', get_post_type()); 
-                    endwhile; ?>
+                    endwhile; 
+                    endif;
+                    ?>
                 <?php wp_reset_postdata();?>
+                <?php previous_posts_link( 'Articles précédents' ); ?>
+                <?php next_posts_link( 'Articles suivants' ); ?>
                 </div>
             </div>
         </div>
