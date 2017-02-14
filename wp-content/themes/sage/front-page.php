@@ -156,6 +156,18 @@
                      <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                         <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <h3><?php the_title(); ?></h3>
+                        <?php
+                        $categories = get_the_category();
+                        $separator = ' ';
+                        $output = '';
+                        if($categories){
+                            foreach($categories as $category) {
+                        if($category->name !== 'A la une') {
+                                $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
+                            }
+                        echo trim($output, $separator);
+                        }
+                        ?>
                         <?php the_excerpt(); ?>
                     </a>
                 </article>
