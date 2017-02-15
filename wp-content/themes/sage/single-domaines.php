@@ -127,18 +127,17 @@
             $ids = get_field('formations_dom', false, false);
             query_posts( array(
                 'post_type'         => 'formations',
-                'posts_per_page'    => 6,
+                'posts_per_page'    => 9,
                 'post__in'          => $ids,
                 'post_status'       => 'any',
                 'orderby'           => 'post__in',
                 'paged'             => $paged
-            ));
-//if (have_posts()) : 
-                        $paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
+            )); 
+            $paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
             while ( have_posts()) : the_post();
             $i++;
             ?>  
-                <div class="row <?php if ( $i <= $mea ) {echo 'row-mise-en-avant';} ?>"> 
+                <div class="row <?php if ( $i <= $mea && 1 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
