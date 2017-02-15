@@ -110,7 +110,7 @@
         $mea = get_field('mise_en_avant');
         $posts = get_field('formations_dom');      
             if( $posts ): 
-                $count = count( $posts );  
+                $count = count( $posts ); 
         ?>
             <section class="articles col-md-9">
                 <header class="row">
@@ -123,6 +123,7 @@
         <!-- LISTE FORMATIONS -->
             <?php       
             $i = 0;
+
             $ids = get_field('formations_dom', false, false);
             query_posts( array(
                 'post_type'         => 'formations',
@@ -132,6 +133,8 @@
                 'orderby'           => 'post__in',
                 'paged'             => $paged
             ));
+//if (have_posts()) : 
+                        $paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
             while ( have_posts()) : the_post();
             $i++;
             ?>  
@@ -166,10 +169,11 @@
                 </div>
                 <?php
                 endwhile; 
-                endif; 
-                wp_reset_postdata(); ?>
+                 
+                //wp_reset_postdata(); ?>
                 <?php previous_posts_link( 'Précédent' ); ?>
-                <?php next_posts_link( 'Suivant' ); ?>
+                <?php next_posts_link( 'Suivant' ); 
+                endif; ?>
             </section>
         </div>
     </div>

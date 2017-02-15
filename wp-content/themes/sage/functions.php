@@ -102,3 +102,9 @@ function search_by_tax() {
     $wp_query->query_vars['tax_query'] = $tq;     
   } 
 }
+
+add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );
+function custom_disable_redirect_canonical( $redirect_url ) {
+    if ( is_paged() && is_singular() ) $redirect_url = false; 
+    return $redirect_url; 
+}
