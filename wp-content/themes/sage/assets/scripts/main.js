@@ -13,6 +13,7 @@
 (function($) {
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
+
   var Sage = {
     // All pages
     'common': {
@@ -20,7 +21,6 @@
         // JavaScript to be fired on all pages
       },
       finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
       }
     },
     // Home page
@@ -31,6 +31,40 @@
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
       }
+    },
+    'single_formations': {
+      init : function() {},
+      finalize : function() {
+        var BODY = $("body");
+        if (BODY.hasClass("single-formations")) {
+          var ce    = $("#coordo-email");// Coordo Email
+          var bc    = $(".candidate");// Btn Candidate
+          var href  = bc.attr("href");
+
+          href += href +"?email="+ ce.html();
+
+          bc.attr("href", href);
+        }
+      },
+    },
+    'nous_contacter': {
+      init : function() {},
+      finalize : function() {
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var email = getParameterByName("email");
+        $("#coordo-email-input").val(email);
+      },
     },
     // About us page, note the change from about-us to about_us.
     'about_us': {

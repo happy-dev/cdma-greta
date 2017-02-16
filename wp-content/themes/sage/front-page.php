@@ -6,29 +6,7 @@
         <form>
             <div class="container">
                 <h1><?php the_field('titre_slider'); ?></h1>
-                <div class="row row-input">
-                    <div class="col-md-3 col-lg-4"></div>
-                    <div class="col-md-6 col-lg-4">
-                        <input class="form-control input-lg icon-search"
-                               type="text"
-                               placeholder="Chercher une formation" />
-                    </div>
-                    <div class="col-md-3 col-lg-4"></div>
-                </div>
-                <div class="row row-checkbox">
-                    <div class="col-lg-3 col-sm-0"></div>
-                    <div class="col-lg-6 col-sm-12">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1b" value="option1">
-                        Formations diplomantes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2b" value="option2">
-                        Formations éligibles au CPF
-                        </label>
-                    </div>
-                    <div class="col-lg-3 col-sm-0"></div>
-                </div>
+                <?php get_search_form(); ?>
             </div>
         </form>
     </div>
@@ -54,7 +32,7 @@
     <?php } ?>
     </div>
 
-    <?php if ( false && !get_field('video_home') ) {
+    <?php //if ( false && !get_field('video_home') ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>
@@ -67,24 +45,24 @@
             </div>
             <div class="layer"></div>
         <?php endif ;
-    } else {
+    //} else {
     ?>
-    <div class="embed-responsive embed-responsive-21by9 embed-video">
+   <!-- <div class="embed-responsive embed-responsive-21by9 embed-video">
         <video class="embed-responsive-item" poster="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/2016/12/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <!-- source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.webm" type="video/webm"-->
-        <source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turdtle.mp4" type="video/mp4">
+     <!--   <source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.mp4" type="video/mp4">
+
         </video>
         <div class="layer"></div>
-    </div>
+    </div> -->
     <?php
         //the_field('video_home');
-    } ?>
+   // } ?>
 </section>
 
-<?php get_search_form(); ?>
+<!-- FORMATIONS A LA UNE -->
 
-<!-- FORMATIONS -->
 <section class="articles container">
     <h2>Formations à la une</h2>
     <a class="see-all hidden-md-down" href="">Voir toutes les formations</a>
@@ -96,15 +74,14 @@
                     <article class="entry col-md-4">
                         <?php $image = get_field('post_image');
                             if( !empty($image) ): 
-
                                 $url = $image['url'];
                                 $title = $image['title'];
                                 $alt = $image['alt'];
-                                $size = 'thumbnail';
+                                $size = 'news';
                                 $thumb = $image['sizes'][ $size ]; ?>
                             <?php endif; ?>
                             <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                                <img src="<?php echo get_site_url().'/wp-content/uploads/formation-default.jpg'; ?>" alt="<?php echo $alt; ?>" />
+                                <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
                                 <h3><?php the_title(); ?></h3>
                                 <p>38h - Temps plein sur 5 jours<br/>
                                 Cours du jour, Formation en présentiel<br/>
@@ -120,9 +97,13 @@
 
 <section class="presentation">
     <div class="row">
-        <div class="video col-md-6">
-            <?php //the_field('prez_video'); ?>
-            <img src="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/homepage-greta-video-background.jpg" alt="presentation" />
+        <?php
+        $imageArray = get_field('prez_image');
+        if( !empty($imageArray) ): 
+        $image = $imageArray['url']; 
+        endif; ?> 
+        <div class="video col-md-6" style="background-image: url(<?php echo $image; ?>); background-size:cover; ">  
+            <!-- <img src="<?php echo $url; ?>" alt="<?php echo $alt; ?>" /> -->
             <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
         </div>
         <div class="intro greta col-md-6">
@@ -144,7 +125,7 @@
         </div>
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="<?php the_field('prez_video'); ?>" allowfullscreen></iframe>
             </div>
         </div>
         <div class="modal-footer">
@@ -153,6 +134,8 @@
         </div>
     </div>
 </div>
+
+<!-- ACTUALITES -->
 
 <section class="articles container">
     <h2>Actualités</h2>
@@ -167,9 +150,30 @@
         $the_query = new WP_Query( $args ); 
             while ( $the_query->have_posts()) : $the_query->the_post(); ?>
                 <article class="entry col-md-4">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('thumbnail'); ?>
-                        <h3><?php the_title(); ?></h3>
+                    <?php $image = get_field('post_image');
+                        if( !empty($image) ): 
+                            $url = $image['url'];
+                            $title = $image['title'];
+                            $alt = $image['alt'];
+                            $size = 'news';
+                            $thumb = $image['sizes'][ $size ]; ?>
+                        <?php endif; ?>
+                     <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                        <h3><?php the_title(); ?></h3>    
+        <!-- PAULINE : CSS A MODIFIER -->      
+                        <?php
+                        $categories = get_the_category();
+                        $separator = ' ';
+                        $output = '';
+                        if($categories){
+                            foreach($categories as $category) {
+                        if($category->name !== 'A la une') {
+                                $output .= '<a style="color: #0956a1;" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
+                            }
+                        echo trim($output, $separator);
+                        }
+                        ?>
                         <?php the_excerpt(); ?>
                     </a>
                 </article>
@@ -184,12 +188,20 @@
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
-	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": true, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
 		<?php while ( have_rows('lieux_formation') ) : the_row(); ?>
      		<?php
-			$imageArray = get_sub_field('logos_lieux');
-			$image = $imageArray['url']; ?>
-			<div class="carousel-cell" style="background-image:url(<?php echo $image; ?>); width: 50px; height:50px;">
+			$image = get_sub_field('logos_lieux');
+			$url = $image['url'];
+            $title = $image['title'];
+            $alt = $image['alt'];
+            $size = 'large';
+            $thumb = $image['sizes'][ $size ]; 
+            $link = get_sub_field('liens_lieux'); ?>
+			<div class="carousel-cell" style="height:100px; margin-left: 100px;">
+                <a href="<?php echo $link; ?>" target="_blank">
+                    <img src="<?php echo $url; ?>" style="height:100%" alt="<?php echo $alt; ?>" />
+                </a>
 			</div>
 		<?php endwhile; ?>
 	</div>

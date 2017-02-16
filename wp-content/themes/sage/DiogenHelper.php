@@ -51,7 +51,6 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    echo $qr->rowCount() ." : Row count \n";
     if (!is_array($formationsIds)) {
       return $qr->fetch();
     }
@@ -376,15 +375,17 @@ Class DiogenHelper {
     }
     if ($cs->rowCount() > 0) {
       $o = '';// Output
+      $first=true;
       foreach ($cs->fetchAll() as $c) {
-        $o .= self::outputContact($c);
+        $o .= self::outputContact($c, $first);
+        $first=false;
       }
       return $o;
     }		
   }
 
   // Output contact info
-  private static function outputContact($c) {
+  private static function outputContact($c, $first=false) {
     $o = '';// Output
 
     if (isset($c->PEPrenom) && $c->PEPrenom != '') {
@@ -408,8 +409,10 @@ Class DiogenHelper {
       }
       $o .= 'Mob:'. $tel .'<br/>';
     }
-    if (isset($c->PEMel1) && $c->PEMel1 != '') {
-      $o .= '<a href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
+    $idc='';
+    if ($first) { $idc= 'id="coordo-email"'; }
+    if (isset($c->PEMel1) && $c->PEMel1 != '' ) {
+      $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
     }
 
     return $o;
