@@ -47,7 +47,7 @@ section.articles {
         line-height: 18px;
 
         a {
-          //  display: block;
+            //display: block;
             padding: 15px 0;
 
             &:hover {
@@ -56,6 +56,10 @@ section.articles {
 
                 h3 {
                     text-decoration: underline;
+                }
+                
+                p {
+                    color: $cdma-blue;
                 }
             }
         }

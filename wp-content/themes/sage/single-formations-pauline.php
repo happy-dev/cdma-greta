@@ -230,7 +230,7 @@ Vous pouvez joindre à votre candidature des photos de vos réalisations ou votr
 Test de positionnement pédagogique en dessin.
 Voir également nos formations de " modelage ornemental " et de " sculpture ornementale " .
 </pre>
-                    <h2>Internant(e)(s)</h2>
+                    <h2>Intervenant(e)(s)</h2>
                     <pre>Patrick BLANCHARD, professeur à l'école Boulle, sculpteur sur bois,
 Meilleur Ouvrier de France 1997 MOF</pre>
                     <h2>Codification de l'offre</h2>
