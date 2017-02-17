@@ -14,7 +14,7 @@
     }
     
     .formation-detail {
-        h1, h2 {
+        h1, h2, h3, h4 {
             text-transform: none;
             padding-bottom: 1vw !important;
         }
@@ -103,7 +103,7 @@
     }
     
     .formation-detail {
-        h2 {
+        h2, h3, h4 {
             font-family: $title-fonts;
             font-weight: bold;
         }
@@ -113,12 +113,17 @@
                 color: black;
                 font-size: 22px;
             }
+            
+            p, pre {
+                color: $cdma-blue;
+            }
         }
     }
     
     .formation-temoignage {
         color: black;
         background-color: #f5f5f5;
+        padding: 40px 0;
         
         h2 {
             color: black;
@@ -196,5 +201,11 @@
                 padding-bottom: 10px;
             }   
         }
+    }
+}
+
+.stage {
+    .presentation {
+        background-color: $cdma-blue;
     }
 }
