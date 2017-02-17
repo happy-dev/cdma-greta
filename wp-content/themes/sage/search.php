@@ -1,5 +1,5 @@
 <div class="search-domaine">  
-    <section class="container">
+    <section class="articles container">
         <!-- FORMATIONS -->
         <div class="row">
             <div class="col-md-12">
@@ -16,7 +16,7 @@
                 }
             endwhile; 
             if (!$any_formation) {
-                echo 'Aucune formation ne correspond à la recherche';
+                echo '<p>Aucune formation ne correspond à la recherche</p>';
             }
             ?>
         </div>
@@ -36,7 +36,7 @@
                 }
             endwhile; 
             if (!$any_news) {
-                echo 'Aucune actualité ne correspond à la recherche';
+                echo '<p>Aucune actualité ne correspond à la recherche</p>';
             }
             ?>
         </div>

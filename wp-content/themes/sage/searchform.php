@@ -17,7 +17,7 @@
         <div class="row">
         <div class="col-sm-11 col-xs-10">
     <?php } ?>       
-            <input class="form-control input-lg"
+            <input class="icon-search form-control input-lg"
                    placeholder="Chercher une formation"
                    type="text"
                    name="s"

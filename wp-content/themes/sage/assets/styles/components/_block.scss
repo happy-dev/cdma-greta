@@ -15,11 +15,7 @@ aside.column {
                 font-family: $title-fonts;
                 line-height: 26px;
 
-                &.active {
-                    font-weight: bold;
-                }
-
-                &:hover {
+                &:hover, &.active {
                     color: $cdma-blue;
                     font-weight: bold;
                     text-decoration: none;
