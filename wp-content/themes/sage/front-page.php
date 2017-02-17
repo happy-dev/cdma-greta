@@ -32,7 +32,9 @@
     <?php } ?>
     </div>
 
-    <?php //if ( false && !get_field('video_home') ) {
+    <?php 
+    $header_type = get_field('header_home');
+    if ( $header_type == 'slider' ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": false, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>
@@ -45,20 +47,21 @@
             </div>
             <div class="layer"></div>
         <?php endif ;
-    //} else {
+    } else {
     ?>
+
+  
    <div class="embed-responsive embed-responsive-21by9 embed-video">
-        <video class="embed-responsive-item" poster="http://127.0.0.1/~pauline/cdma/greta-cdma/wp-content/uploads/2016/12/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
+        <video class="embed-responsive-item" poster="/wp-content/uploads/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <!-- source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.webm" type="video/webm"-->
-            <source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.mp4" type="video/mp4">
-
+          <source src="<?php echo get_site_url() ?>/wp-content/uploads/<?php the_field('video_home') ?>" type="video/mp4">
         </video>
         <div class="layer"></div>
     </div>
     <?php
-        //the_field('video_home');
-   // } ?>
+   } ?>
+    
 </section>
 
 <!-- FORMATIONS A LA UNE -->

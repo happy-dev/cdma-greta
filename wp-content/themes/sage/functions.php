@@ -108,3 +108,7 @@ function custom_disable_redirect_canonical( $redirect_url ) {
     if ( is_paged() && is_singular() ) $redirect_url = false; 
     return $redirect_url; 
 }
+
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
