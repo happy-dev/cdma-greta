@@ -123,6 +123,10 @@ h6 { font-size: 12px;}
 
 a { color: black;}
 
+a:focus, a:hover {
+    color: $cdma-blue;
+}
+
 .breadcrumb {
     font-size: 11.5px;
     background-color: transparent;

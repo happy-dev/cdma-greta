@@ -22,12 +22,17 @@
         }
         
         .content {
-            article {
-                h3 {
-                    padding-bottom: 0;
-                }
-                p {
-                    padding-top: 0;
+            .entry {
+                a {
+                    h3 {
+                        padding-bottom: 0;
+                    }
+                    p {
+                        padding-top: 0;
+                    }
+                    &:hover {
+                        background-color: transparent;
+                    }
                 }
             }
         }
@@ -88,6 +93,9 @@
                 }
             }
             
+            .btn {
+                display: none;
+            }
             
             .row-input {
                 margin-bottom: 10px;
@@ -155,7 +163,7 @@
         }
         
         video { 
-            top: 98%;
+            top: 50%;
             left: 50%;
             min-width: 100%;
             min-height: 100%;
@@ -166,6 +174,29 @@
             background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
             background-size: cover;
             transition: 1s opacity;
+        }
+    }
+    
+    .js-flickity {
+        .flickity-prev-next-button, .flickity-prev-next-button {
+            background-image: transparent url(../../assets/images/icon-arrow-big-left-blue.png) top left no-repeat;
+            width: 28px;
+            height: 53px;
+            svg {
+                display: none;
+            }
+        }
+        
+        .flickity-prev-next-button {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .flickity-page-dots {
+            display: none;
         }
     }
 }
