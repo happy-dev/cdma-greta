@@ -50,6 +50,8 @@
 <div><?php the_field('activite_stage'); ?></div>
 <h4>Profil souhaité : </h4>
 <div><?php the_field('profil_stage'); ?></div>
+<h4>Date d'expiration de l'offre de stage : </h4>
+<div><?php the_field('exp_stage'); ?></div>
 
 
 <?php endwhile; ?>
