@@ -37,17 +37,10 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
 ?>
 
 <?php the_post(); ?>
-
 <div class="formation">
     <section class="introduction">
         <div class="container-fluid">
-        <?php //get_template_part('template-parts/breadcrumb'); ?>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item hidden-md-down"><a href="#">Accueil</a></li>
-                <li class="breadcrumb-item hidden-md-down"><a href="#">Formations</a></li>
-                <li class="breadcrumb-item hidden-md-down"><a href="#">Art du bois</a></li>
-                <li class="breadcrumb-item hidden-md-down active">Dessin d'ornement lié au patrimoine</li>
-            </ol>
+        <?php get_template_part('templates/breadcrumb'); ?>
             <div class="row">
                 <div class="introduction-media col-md-6 col-sm-12">
                     <!-- IMAGE / VIDEO -->
@@ -79,10 +72,10 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">
-                            <a href="/nous-contacter" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
+                            <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
                         </div>
                         <div class="col-lg-7">
-                            <button class="btn">Demander plus d'informations</button>
+                            <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
                         </div>
                     </div>
                     <hr/>
@@ -123,7 +116,6 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
@@ -214,8 +206,8 @@ info@cdma.greta.fr</pre>
                     <pre><?php echo $forc; ?>
                     <?php echo $corm ?></pre>
                     <hr/>
-                    <button class="btn btn-action btn-candidate">Candidater</button>
-                    <button class="btn">Demander plus d'informations</button>
+                    <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
+                    <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
                 </section>
             </div>
         </div>

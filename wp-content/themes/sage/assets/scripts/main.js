@@ -38,7 +38,7 @@
         var BODY = $("body");
         if (BODY.hasClass("single-formations")) {
           var ce    = $("#coordo-email");// Coordo Email
-          var bc    = $(".candidate");// Btn Candidate
+          var bc    = $(".contact");// Btn Candidate
           var href  = bc.attr("href");
 
           href += href +"?email="+ ce.html();

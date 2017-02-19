@@ -19,10 +19,25 @@ echo '<li class="breadcrumb-item hidden-md-down"><a title="GRETA CDMA - Accueil"
 	}
 }
 
-if (is_single()) {
+if (is_singular('post')) {
 	$category = get_the_category();
 	echo '<li class="breadcrumb-item"><a href="/actualites">Actualités</a></li>';
 	echo '<li class="breadcrumb-item"><a href="'.get_category_link($category[0]->cat_ID).'">'.$category[0]->cat_name.'</a></li>';
+}
+
+if (is_singular('stages')) {
+	echo '<li class="breadcrumb-item"><a href="/entreprise">Entreprise</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/entreprise/offres-de-stage/">Offres de stage</a></li>';
+}
+
+if (is_singular('domaines')) {
+	echo '<li class="breadcrumb-item"><a href="/formations">Formations</a></li>';
+}
+
+if (is_singular('formations')) {
+		$category = get_the_category(); echo $category[0]->cat_name;
+	echo '<li class="breadcrumb-item"><a href="/formations">Formations</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/entreprise/offres-de-stage/">Offres de stage</a></li>';
 }
 
 if (is_category()) {
@@ -30,6 +45,8 @@ if (is_category()) {
 	$category = get_the_category();
 	echo '<li class="breadcrumb-item hidden-md-down">'.$category[0]->cat_name.'</li>';
 }
+
+
 
 // Current page
 if (is_page() || is_single()) {
