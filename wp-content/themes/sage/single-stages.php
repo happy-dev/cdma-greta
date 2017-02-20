@@ -52,7 +52,7 @@
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-more hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
+                            <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
 
                             <h2>Description de la société</h2>
                             <div><?php the_field('text_societe_stage'); ?></div>
