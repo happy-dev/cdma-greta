@@ -112,8 +112,8 @@ LOCK TABLES `gretacdma_options` WRITE;
 
 INSERT INTO `gretacdma_options` (`option_id`, `option_name`, `option_value`, `autoload`)
 VALUES
-	(1,'siteurl','http://gretacdma.dev/','yes'),
-	(2,'home','http://gretacdma.dev/','yes'),
+	(1,'siteurl','https://cdma.greta.happy-dev.fr/','yes'),
+	(2,'home','https://cdma.greta.happy-dev.fr/','yes'),
 	(3,'blogname','Greta CDMA','yes'),
 	(4,'blogdescription','Un site utilisant WordPress','yes'),
 	(5,'users_can_register','0','yes'),

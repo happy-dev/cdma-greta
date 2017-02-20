@@ -1,12 +1,9 @@
 <footer class="footer" >
     <a href="#" title="Haut de page" class="icon-arrow-up scroll-up"></a>
-    
-  <div class="container">
+    <div class="container">
     <?php //dynamic_sidebar('sidebar-footer'); ?>
-
-      <div class="content row">
-          
-          <div class="col-md-4">
+        <div class="content row">
+            <div class="col-md-4">
             <!-- LOGO -->
             <?php 
             $image = get_field('logo_footer', 'option');
@@ -14,52 +11,44 @@
                     $alt = $image['alt'];
                     $size = 'large';
                     $thumb = $image['sizes'][ $size ]; ?>
-
                     <img class="logo" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                 <?php endif; ?>
-
             <!-- COORDONNEES -->
-            <address itemscope itemtype="https://schema.org/ContactPoint">
-                <div itemscope itemtype="https://schema.org/PostalAddress">
-                    <div itemprop="streetAddress"><?php the_field('address_1', 'option'); ?></div>
-                    <div itemprop="addressLocality"><?php the_field('address_2', 'option'); ?></div>
-                </div>
-                <div itemprop="telephone" class="phone"><?php the_field('telephone', 'option'); ?></div>
-            </address>
-              <hr class="hidden-md-up" />
-          </div>
-          <div class="norms col-md-4">
-              <div class="row">
-                <!-- LOGOS QUALITE -->
-       
-                          <div class="col-lg-4 col-md-8">
+                <address itemscope itemtype="https://schema.org/ContactPoint">
+                    <div itemscope itemtype="https://schema.org/PostalAddress">
+                        <div itemprop="streetAddress"><?php the_field('address_1', 'option'); ?></div>
+                        <div itemprop="addressLocality"><?php the_field('address_2', 'option'); ?></div>
+                    </div>
+                    <div itemprop="telephone" class="phone"><?php the_field('telephone', 'option'); ?></div>
+                </address>
+                <hr class="hidden-md-up" />
+            </div>
+            <div class="norms col-md-4">
+                <div class="row">
+            <!-- LOGOS QUALITE -->
+                    <div class="col-lg-4 col-md-8">
                     <?php 
                     $image = get_field('logo_qualite_1', 'option');
                         if( !empty($image) ): 
                             $alt = $image['alt'];
                             $size = 'large';
                             $thumb = $image['sizes'][ $size ]; ?>
-
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <?php endif; ?>
-                          </div>
-                          <div class="col-lg-8 col-md-12">
-                        <?php 
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                    <?php 
                     $image = get_field('logo_qualite_2', 'option');
                         if( !empty($image) ): 
                             $alt = $image['alt'];
                             $size = 'large';
                             $thumb = $image['sizes'][ $size ]; ?>
-
-                            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                        <?php endif; ?>
-                          </div>
-                      
-
-              </div>
-              <hr class="hidden-md-up" />
-          </div>
-          
+                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                    <?php endif; ?>
+                    </div>
+                </div>
+                <hr class="hidden-md-up" />
+            </div>
             <div class="socials col-md-4">
                 <div class="row row-icons">
                     <a class="icon-social icon-facebook" href="#">Facebook</a>
@@ -80,19 +69,17 @@
     <div class="trim">
         <div class="trim-left"></div>
         <div class="trim-right"></div>
-    </div>
-      
+    </div> 
     <div class="links row">
         <div class="col-md-12">
             <!-- TEXTE -->
             <?php the_field('texte_footer', 'option'); ?>
-
             <!-- LIENS -->
-                <?php while ( have_rows('liens_footer', 'option') ) : the_row(); ?>
-                    <a href="<?php the_sub_field('lien_footer', 'option'); ?>">
-                        <?php the_sub_field('texte_lien_footer', 'option'); ?>
-                    </a>
-                <?php endwhile; ?>
+            <?php while ( have_rows('liens_footer', 'option') ) : the_row(); ?>
+                <a href="<?php the_sub_field('lien_footer', 'option'); ?>">
+                    <?php the_sub_field('texte_lien_footer', 'option'); ?>
+                </a>
+            <?php endwhile; ?>
         </div>
     </div>
 </footer>
