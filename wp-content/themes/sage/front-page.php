@@ -163,7 +163,8 @@
                         <?php endif; ?>
                      <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                         <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                        <h3><?php the_title(); ?></h3>    
+                        <h3><?php the_title(); ?></h3>  
+                        <span><?php echo get_the_date(); ?></span><br/>
         <!-- PAULINE : CSS A MODIFIER -->      
                         <?php
                         $categories = get_the_category();

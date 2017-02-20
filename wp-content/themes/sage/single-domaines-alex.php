@@ -25,7 +25,9 @@ while (have_posts()) {
       $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
       $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
     }
-    
+   echo $ft;  
     
   }
+
 }
+?>

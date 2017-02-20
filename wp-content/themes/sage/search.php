@@ -15,7 +15,7 @@
                     $any_formation = false;
                     while (have_posts()) : the_post(); 
                         if ( 'formations' == get_post_type() ) { 
-                            get_template_part('templates/content', 'search');
+                            get_template_part('templates/content', 'search-formations');
                             $any_formation = true;
                         }
                     endwhile; 
@@ -36,7 +36,8 @@
                     $any_news = false;
                     while (have_posts()) : the_post(); 
                         if ( 'post' == get_post_type() ) { 
-                            get_template_part('templates/content', 'search');
+                            get_template_part('templates/content', 'search-news');
+                            $any_news = true;
                         }
                     endwhile; 
                     if (!$any_news) {

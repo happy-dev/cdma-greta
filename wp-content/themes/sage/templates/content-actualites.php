@@ -13,6 +13,7 @@
         </div>
         <div class="col-md-8">
             <h3><?php the_title(); ?></h3>
+            <span><?php echo get_the_date() ?></span>
             <?php the_excerpt(); ?>
         </div>
     </a>

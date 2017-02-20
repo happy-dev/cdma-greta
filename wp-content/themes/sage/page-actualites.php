@@ -25,16 +25,15 @@
                 <?php 
                 if (have_posts()) :                 
                         query_posts( array( 
-                                        'posts_per_page' => 3 ,
+                                        'posts_per_page' => 6 ,
                                         'paged' => $paged
                                           ) );  
-                    while ( have_posts()) : the_post();
-                        get_template_part('templates/content-actualites', get_post_type()); 
-                    endwhile; 
-                    endif;
-                    ?>
+                while ( have_posts()) : the_post();
+                    get_template_part('templates/content-actualites', get_post_type()); 
+                endwhile; 
+                endif;
+                ?>
                 <?php wp_reset_postdata();?>
-                    
                     <div class="buttons">
                         <?php next_posts_link( 'Articles suivants' ); ?>
                         <?php previous_posts_link( 'Articles précédents' ); ?>
