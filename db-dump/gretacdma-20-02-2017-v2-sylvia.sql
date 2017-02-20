@@ -7,7 +7,7 @@
 #
 # Hôte: 127.0.0.1 (MySQL 5.6.26)
 # Base de données: gretacdma
-# Temps de génération: 2017-02-20 00:18:19 +0000
+# Temps de génération: 2017-02-20 00:56:21 +0000
 # ************************************************************
 
 
@@ -591,7 +591,7 @@ VALUES
 	(326,46,'_edit_lock','1487231369:4'),
 	(331,48,'_edit_last','1'),
 	(332,48,'_wp_page_template','default'),
-	(333,48,'_edit_lock','1487549857:1'),
+	(333,48,'_edit_lock','1487550449:1'),
 	(334,50,'_edit_last','1'),
 	(335,50,'_wp_page_template','default'),
 	(336,50,'_edit_lock','1487368064:1'),
@@ -606,7 +606,7 @@ VALUES
 	(390,65,'_edit_lock','1477587119:1'),
 	(391,67,'_edit_last','1'),
 	(392,67,'_wp_page_template','default'),
-	(393,67,'_edit_lock','1487543223:1'),
+	(393,67,'_edit_lock','1487551312:1'),
 	(394,69,'_edit_last','1'),
 	(395,69,'_wp_page_template','default'),
 	(396,69,'_edit_lock','1487531344:1'),
@@ -1596,7 +1596,7 @@ VALUES
 	(1642,325,'_menu_item_url',''),
 	(1644,326,'_edit_last','1'),
 	(1645,326,'_wp_page_template','default'),
-	(1646,326,'_edit_lock','1487350200:1'),
+	(1646,326,'_edit_lock','1487550638:1'),
 	(1647,328,'_edit_last','1'),
 	(1648,328,'_wp_page_template','default'),
 	(1649,328,'_edit_lock','1479926750:1'),
@@ -13046,14 +13046,70 @@ VALUES
 	(13238,67,'_page_header_text','field_589b58c576303'),
 	(13271,437,'_config_errors','a:1:{s:11:\"mail.sender\";a:1:{i:0;a:2:{s:4:\"code\";i:103;s:4:\"args\";a:3:{s:7:\"message\";s:0:\"\";s:6:\"params\";a:0:{}s:4:\"link\";s:88:\"http://contactform7.com/configuration-errors/#mail.sender:error_email_not_in_site_domain\";}}}}'),
 	(13273,1368,'_config_errors','a:2:{s:11:\"mail.sender\";a:1:{i:0;a:2:{s:4:\"code\";i:103;s:4:\"args\";a:3:{s:7:\"message\";s:0:\"\";s:6:\"params\";a:0:{}s:4:\"link\";s:88:\"http://contactform7.com/configuration-errors/#mail.sender:error_email_not_in_site_domain\";}}}s:23:\"mail.additional_headers\";a:1:{i:0;a:2:{s:4:\"code\";i:102;s:4:\"args\";a:3:{s:7:\"message\";s:34:\"The %name% field value is invalid.\";s:6:\"params\";a:1:{s:4:\"name\";s:8:\"Reply-To\";}s:4:\"link\";s:90:\"http://contactform7.com/configuration-errors/#mail.additional_headers:error_invalid_syntax\";}}}}'),
-	(13274,1372,'_edit_lock','1487549789:1'),
+	(13274,1372,'_edit_lock','1487552079:1'),
 	(13275,1372,'_edit_last','1'),
 	(13276,1372,'_at_widget','1'),
 	(13277,48,'international_link','french'),
 	(13278,48,'_international_link','field_58aa340ab6d85'),
 	(13279,48,'international_url',''),
 	(13280,48,'_international_url','field_58aa349eb6d86'),
-	(13281,48,'_at_widget','1');
+	(13281,48,'_at_widget','1'),
+	(13282,1375,'_edit_lock','1487550753:1'),
+	(13283,1375,'_edit_last','1'),
+	(13284,1375,'_wp_page_template','default'),
+	(13285,1376,'page_header_img',''),
+	(13286,1376,'_page_header_img','field_589b588776302'),
+	(13287,1376,'page_header_text',''),
+	(13288,1376,'_page_header_text','field_589b58c576303'),
+	(13289,1376,'international_link','french'),
+	(13290,1376,'_international_link','field_58aa340ab6d85'),
+	(13291,1376,'international_url',''),
+	(13292,1376,'_international_url','field_58aa349eb6d86'),
+	(13293,1375,'_at_widget','1'),
+	(13294,1375,'page_header_img',''),
+	(13295,1375,'_page_header_img','field_589b588776302'),
+	(13296,1375,'page_header_text',''),
+	(13297,1375,'_page_header_text','field_589b58c576303'),
+	(13298,1375,'international_link','french'),
+	(13299,1375,'_international_link','field_58aa340ab6d85'),
+	(13300,1375,'international_url','67'),
+	(13301,1375,'_international_url','field_58aa349eb6d86'),
+	(13302,1378,'page_header_img',''),
+	(13303,1378,'_page_header_img','field_589b588776302'),
+	(13304,1378,'page_header_text',''),
+	(13305,1378,'_page_header_text','field_589b58c576303'),
+	(13306,1378,'international_link','french'),
+	(13307,1378,'_international_link','field_58aa340ab6d85'),
+	(13308,1378,'international_url',''),
+	(13309,1378,'_international_url','field_58aa349eb6d86'),
+	(13310,1379,'page_header_img',''),
+	(13311,1379,'_page_header_img','field_589b588776302'),
+	(13312,1379,'page_header_text',''),
+	(13313,1379,'_page_header_text','field_589b58c576303'),
+	(13314,1379,'international_link','french'),
+	(13315,1379,'_international_link','field_58aa340ab6d85'),
+	(13316,1379,'international_url',''),
+	(13317,1379,'_international_url','field_58aa349eb6d86'),
+	(13318,1380,'page_header_img',''),
+	(13319,1380,'_page_header_img','field_589b588776302'),
+	(13320,1380,'page_header_text',''),
+	(13321,1380,'_page_header_text','field_589b58c576303'),
+	(13322,1380,'international_link','french'),
+	(13323,1380,'_international_link','field_58aa340ab6d85'),
+	(13324,1380,'international_url','67'),
+	(13325,1380,'_international_url','field_58aa349eb6d86'),
+	(13326,1381,'page_header_img',''),
+	(13327,1381,'_page_header_img','field_589b588776302'),
+	(13328,1381,'page_header_text',''),
+	(13329,1381,'_page_header_text','field_589b58c576303'),
+	(13330,1381,'international_link','english'),
+	(13331,1381,'_international_link','field_58aa340ab6d85'),
+	(13332,1381,'international_url','1375'),
+	(13333,1381,'_international_url','field_58aa349eb6d86'),
+	(13334,67,'international_link','english'),
+	(13335,67,'_international_link','field_58aa340ab6d85'),
+	(13336,67,'international_url','1375'),
+	(13337,67,'_international_url','field_58aa349eb6d86');
 
 /*!40000 ALTER TABLE `gretacdma_postmeta` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -13138,7 +13194,7 @@ VALUES
 	(64,1,'2016-10-27 18:54:05','2016-10-27 16:54:05','','Certifications et VAE','','inherit','closed','closed','','63-revision-v1','','','2016-10-27 18:54:05','2016-10-27 16:54:05','',63,'http://gretacdma.dev/2016/10/63-revision-v1/',0,'revision','',0),
 	(65,1,'2016-10-27 18:54:21','2016-10-27 16:54:21','','Financez votre formation','','publish','closed','closed','','financez-votre-formation','','','2016-10-27 18:54:21','2016-10-27 16:54:21','',0,'http://gretacdma.dev/?page_id=65',0,'page','',0),
 	(66,1,'2016-10-27 18:54:21','2016-10-27 16:54:21','','Financez votre formation','','inherit','closed','closed','','65-revision-v1','','','2016-10-27 18:54:21','2016-10-27 16:54:21','',65,'http://gretacdma.dev/2016/10/65-revision-v1/',0,'revision','',0),
-	(67,1,'2016-10-27 18:54:31','2016-10-27 16:54:31','','Entreprise','','publish','closed','closed','','entreprise','','','2017-02-19 20:42:19','2017-02-19 19:42:19','',0,'http://gretacdma.dev/?page_id=67',0,'page','',0),
+	(67,1,'2016-10-27 18:54:31','2016-10-27 16:54:31','','Entreprise','','publish','closed','closed','','entreprise','','','2017-02-20 01:35:30','2017-02-20 00:35:30','',0,'http://gretacdma.dev/?page_id=67',0,'page','',0),
 	(68,1,'2016-10-27 18:54:31','2016-10-27 16:54:31','','Entreprise','','inherit','closed','closed','','67-revision-v1','','','2016-10-27 18:54:31','2016-10-27 16:54:31','',67,'http://gretacdma.dev/2016/10/67-revision-v1/',0,'revision','',0),
 	(69,1,'2016-10-27 18:54:41','2016-10-27 16:54:41','[contact-form-7 id=\"437\" title=\"Contact\"]','Contact','','publish','closed','closed','','nous-contacter','','','2017-02-19 19:40:13','2017-02-19 18:40:13','',0,'http://gretacdma.dev/?page_id=69',0,'page','',0),
 	(70,1,'2016-10-27 18:54:41','2016-10-27 16:54:41','','Nous contacter','','inherit','closed','closed','','69-revision-v1','','','2016-10-27 18:54:41','2016-10-27 16:54:41','',69,'http://gretacdma.dev/2016/10/69-revision-v1/',0,'revision','',0),
@@ -14366,9 +14422,16 @@ VALUES
 	(1369,1,'2017-02-19 20:11:50','2017-02-19 19:11:50','[contact-form-7 id=\"1368\" title=\"Candidature\"]','Candidater','','publish','closed','closed','','candidater','','','2017-02-19 20:11:50','2017-02-19 19:11:50','',0,'http://gretacdma.dev/?page_id=1369',0,'page','',0),
 	(1370,1,'2017-02-19 20:11:50','2017-02-19 19:11:50','[contact-form-7 id=\"1368\" title=\"Candidature\"]','Candidater','','inherit','closed','closed','','1369-revision-v1','','','2017-02-19 20:11:50','2017-02-19 19:11:50','',1369,'http://gretacdma.dev/2017/02/1369-revision-v1/',0,'revision','',0),
 	(1371,1,'2017-02-19 20:42:00','2017-02-19 19:42:00','','Entreprise','','inherit','closed','closed','','67-revision-v1','','','2017-02-19 20:42:00','2017-02-19 19:42:00','',67,'http://gretacdma.dev/2017/02/67-revision-v1/',0,'revision','',0),
-	(1372,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:7:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:4:\"page\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";s:0:\"\";s:11:\"description\";s:0:\"\";}','Internationalisation','internationalisation','publish','closed','closed','','group_58aa33e6d6e6f','','','2017-02-20 01:16:24','2017-02-20 00:16:24','',0,'http://gretacdma.dev/?post_type=acf-field-group&#038;p=1372',0,'acf-field-group','',0),
-	(1373,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:14:{s:4:\"type\";s:6:\"select\";s:12:\"instructions\";s:2:\"\r\n\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:7:\"choices\";a:2:{s:6:\"french\";s:30:\"Lien vers la page en français\";s:7:\"english\";s:30:\"Lien vers la page en français\";}s:13:\"default_value\";a:0:{}s:10:\"allow_null\";i:0;s:8:\"multiple\";i:0;s:2:\"ui\";i:0;s:4:\"ajax\";i:0;s:11:\"placeholder\";s:0:\"\";s:8:\"disabled\";i:0;s:8:\"readonly\";i:0;}','Version','international_link','publish','closed','closed','','field_58aa340ab6d85','','','2017-02-20 01:16:24','2017-02-20 00:16:24','',1372,'http://gretacdma.dev/?post_type=acf-field&p=1373',0,'acf-field','',0),
-	(1374,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:9:{s:4:\"type\";s:9:\"page_link\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"post_type\";a:0:{}s:8:\"taxonomy\";a:0:{}s:10:\"allow_null\";i:0;s:8:\"multiple\";i:0;}','URL de la page','international_url','publish','closed','closed','','field_58aa349eb6d86','','','2017-02-20 01:16:24','2017-02-20 00:16:24','',1372,'http://gretacdma.dev/?post_type=acf-field&p=1374',1,'acf-field','',0);
+	(1372,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:7:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:4:\"page\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";s:0:\"\";s:11:\"description\";s:0:\"\";}','Internationalisation','internationalisation','publish','closed','closed','','group_58aa33e6d6e6f','','','2017-02-20 01:35:48','2017-02-20 00:35:48','',0,'http://gretacdma.dev/?post_type=acf-field-group&#038;p=1372',0,'acf-field-group','',0),
+	(1373,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:14:{s:4:\"type\";s:6:\"select\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:7:\"choices\";a:2:{s:6:\"french\";s:30:\"Lien vers la page en français\";s:7:\"english\";s:28:\"Lien vers la page en anglais\";}s:13:\"default_value\";a:0:{}s:10:\"allow_null\";i:0;s:8:\"multiple\";i:0;s:2:\"ui\";i:0;s:4:\"ajax\";i:0;s:11:\"placeholder\";s:0:\"\";s:8:\"disabled\";i:0;s:8:\"readonly\";i:0;}','Version','international_link','publish','closed','closed','','field_58aa340ab6d85','','','2017-02-20 01:35:48','2017-02-20 00:35:48','',1372,'http://gretacdma.dev/?post_type=acf-field&#038;p=1373',0,'acf-field','',0),
+	(1374,1,'2017-02-20 01:16:24','2017-02-20 00:16:24','a:9:{s:4:\"type\";s:9:\"page_link\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"post_type\";a:0:{}s:8:\"taxonomy\";a:0:{}s:10:\"allow_null\";i:0;s:8:\"multiple\";i:0;}','URL de la page','international_url','publish','closed','closed','','field_58aa349eb6d86','','','2017-02-20 01:16:24','2017-02-20 00:16:24','',1372,'http://gretacdma.dev/?post_type=acf-field&p=1374',1,'acf-field','',0),
+	(1375,1,'2017-02-20 01:28:16','2017-02-20 00:28:16','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\r\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\r\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\r\nDrafting your specification\r\nMobilisation of the appropriate resources (trainers and equipment)\r\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\r\n<h2>To set up a first appointment, you can contact the training consultants :</h2>\r\nSpace Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr\r\nPerformance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\r\nPublishing, Book Arts and Crafts\r\nNatacha Raguet: n.raguet@cdma.greta.fr\r\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\r\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\r\nCarole Guillen: c.guillen@cdma.greta.fr\r\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\r\nVéronique Thomas: v.tho mas@cdma.greta.fr\r\n<h2>To inform you about legal requirements concerning the training of your employees :</h2>\r\nVocational training of employees\r\n\r\n&nbsp;\r\n<h2>They have trusted us :</h2>\r\nChanel SAS\r\nInstitut Des Métiers d\'Excellence LVMH\r\nCartier International\r\nMusée Du Louvre\r\nTF1\r\nLagardère Publicité\r\nLa Banque Postale\r\nKenzo Paris\r\nChristian Dior Couture\r\nL\'Oréal\r\nPrintemps\r\nComédie Française\r\nÉcole Nationale Des Beaux-Arts De Paris','Companies','','publish','closed','closed','','companies','','','2017-02-20 01:34:27','2017-02-20 00:34:27','',0,'http://gretacdma.dev/?page_id=1375',0,'page','',0),
+	(1376,1,'2017-02-20 01:28:16','2017-02-20 00:28:16','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\r\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\r\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\r\nDrafting your specification\r\nMobilisation of the appropriate resources (trainers and equipment)\r\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\r\nTo set up a first appointment, you can contact the training consultants:\r\nSpace Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr\r\nPerformance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\r\nPublishing, Book Arts and Crafts\r\nNatacha Raguet: n.raguet@cdma.greta.fr\r\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\r\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\r\nCarole Guillen: c.guillen@cdma.greta.fr\r\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\r\nVéronique Thomas: v.tho mas@cdma.greta.fr\r\n\r\nTo inform you about legal requirements concerning the training of your employees:\r\nVocational training of employees','Companies','','inherit','closed','closed','','1375-revision-v1','','','2017-02-20 01:28:16','2017-02-20 00:28:16','',1375,'http://gretacdma.dev/2017/02/1375-revision-v1/',0,'revision','',0),
+	(1377,1,'2017-02-20 01:32:44','2017-02-20 00:32:44','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\nDrafting your specification\nMobilisation of the appropriate resources (trainers and equipment)\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\n<h2>To set up a first appointment, you can contact the training consultants :</h2>\n<ul>\n 	<li>Space Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr</li>\n 	<li></li>\n</ul>\nPerformance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\nPublishing, Book Arts and Crafts\nNatacha Raguet: n.raguet@cdma.greta.fr\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\nCarole Guillen: c.guillen@cdma.greta.fr\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\nVéronique Thomas: v.tho mas@cdma.greta.fr\n<h2>To inform you about legal requirements concerning the training of your employees :</h2>\nVocational training of employees\n\n&nbsp;\n<h2>They have trusted us :</h2>\nChanel SAS\nInstitut Des Métiers d\'Excellence LVMH\nCartier International\nMusée Du Louvre\nTF1\nLagardère Publicité\nLa Banque Postale\nKenzo Paris\nChristian Dior Couture\nL\'Oréal\nPrintemps\nComédie Française\nÉcole Nationale Des Beaux-Arts De Paris','Companies','','inherit','closed','closed','','1375-autosave-v1','','','2017-02-20 01:32:44','2017-02-20 00:32:44','',1375,'http://gretacdma.dev/2017/02/1375-autosave-v1/',0,'revision','',0),
+	(1378,1,'2017-02-20 01:32:58','2017-02-20 00:32:58','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\r\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\r\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\r\nDrafting your specification\r\nMobilisation of the appropriate resources (trainers and equipment)\r\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\r\n<h2>To set up a first appointment, you can contact the training consultants :</h2>\r\n<ul>\r\n 	<li>Space Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr</li>\r\n 	<li>Performance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\r\nPublishing, Book Arts and Crafts</li>\r\n 	<li>Natacha Raguet: n.raguet@cdma.greta.fr</li>\r\n</ul>\r\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\r\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\r\nCarole Guillen: c.guillen@cdma.greta.fr\r\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\r\nVéronique Thomas: v.tho mas@cdma.greta.fr\r\n<h2>To inform you about legal requirements concerning the training of your employees :</h2>\r\nVocational training of employees\r\n\r\n&nbsp;\r\n<h2>They have trusted us :</h2>\r\nChanel SAS\r\nInstitut Des Métiers d\'Excellence LVMH\r\nCartier International\r\nMusée Du Louvre\r\nTF1\r\nLagardère Publicité\r\nLa Banque Postale\r\nKenzo Paris\r\nChristian Dior Couture\r\nL\'Oréal\r\nPrintemps\r\nComédie Française\r\nÉcole Nationale Des Beaux-Arts De Paris','Companies','','inherit','closed','closed','','1375-revision-v1','','','2017-02-20 01:32:58','2017-02-20 00:32:58','',1375,'http://gretacdma.dev/2017/02/1375-revision-v1/',0,'revision','',0),
+	(1379,1,'2017-02-20 01:33:55','2017-02-20 00:33:55','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\r\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\r\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\r\nDrafting your specification\r\nMobilisation of the appropriate resources (trainers and equipment)\r\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\r\n<h2>To set up a first appointment, you can contact the training consultants :</h2>\r\nSpace Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr\r\nPerformance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\r\nPublishing, Book Arts and Crafts\r\nNatacha Raguet: n.raguet@cdma.greta.fr\r\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\r\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\r\nCarole Guillen: c.guillen@cdma.greta.fr\r\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\r\nVéronique Thomas: v.tho mas@cdma.greta.fr\r\n<h2>To inform you about legal requirements concerning the training of your employees :</h2>\r\nVocational training of employees\r\n\r\n&nbsp;\r\n<h2>They have trusted us :</h2>\r\nChanel SAS\r\nInstitut Des Métiers d\'Excellence LVMH\r\nCartier International\r\nMusée Du Louvre\r\nTF1\r\nLagardère Publicité\r\nLa Banque Postale\r\nKenzo Paris\r\nChristian Dior Couture\r\nL\'Oréal\r\nPrintemps\r\nComédie Française\r\nÉcole Nationale Des Beaux-Arts De Paris','Companies','','inherit','closed','closed','','1375-revision-v1','','','2017-02-20 01:33:55','2017-02-20 00:33:55','',1375,'http://gretacdma.dev/2017/02/1375-revision-v1/',0,'revision','',0),
+	(1380,1,'2017-02-20 01:34:27','2017-02-20 00:34:27','For more than 40 years, the network of GRETA developed expertise in training for companies. The GRETA of Creation, Design and Fine Crafts proposes solutions adapted to the professional context and to each company. Training courses can take place in the training centres of the GRETA or in the company, in the form of inter- or intra-company sessions.\r\nOur training centre is offering you a whole range of more than 200 training courses specialized in the professions of Art and Design, constantly renewed and completed.\r\nThe training consultants of the GRETA are at your service to offer you tailored training courses matching with your training needs and support you all along your project:\r\nDrafting your specification\r\nMobilisation of the appropriate resources (trainers and equipment)\r\nDevelopment and implementation of a device proposing educational approaches serving the operational goals of the company.\r\n<h2>To set up a first appointment, you can contact the training consultants :</h2>\r\nSpace Design, Plastic Expression, Photography Dominique Grimault: d.grimault@cdma.greta.fr\r\nPerformance Stage and Costumes, Dressing, Hairdressing / Image and Style Isabelle Rossi-Carignano: i.rossi-carignano@cdma.greta.fr\r\nPublishing, Book Arts and Crafts\r\nNatacha Raguet: n.raguet@cdma.greta.fr\r\nGraphic Design, Internet Trades, Industrial and Textile Design, Product Design, Retail design, FOAD (open and distance learning), Print media industry Catherine Gatineau : c.gatineau@cdma.greta.fr\r\nWood Arts and Crafts, Upholstered Furniture, entrepreneurship, Glass Trades\r\nCarole Guillen: c.guillen@cdma.greta.fr\r\nEmbroidery, Fashion Accessories, Jewellery, Metal Arts, Leather Trades\r\nVéronique Thomas: v.tho mas@cdma.greta.fr\r\n<h2>To inform you about legal requirements concerning the training of your employees :</h2>\r\nVocational training of employees\r\n\r\n&nbsp;\r\n<h2>They have trusted us :</h2>\r\nChanel SAS\r\nInstitut Des Métiers d\'Excellence LVMH\r\nCartier International\r\nMusée Du Louvre\r\nTF1\r\nLagardère Publicité\r\nLa Banque Postale\r\nKenzo Paris\r\nChristian Dior Couture\r\nL\'Oréal\r\nPrintemps\r\nComédie Française\r\nÉcole Nationale Des Beaux-Arts De Paris','Companies','','inherit','closed','closed','','1375-revision-v1','','','2017-02-20 01:34:27','2017-02-20 00:34:27','',1375,'http://gretacdma.dev/2017/02/1375-revision-v1/',0,'revision','',0),
+	(1381,1,'2017-02-20 01:35:30','2017-02-20 00:35:30','','Entreprise','','inherit','closed','closed','','67-revision-v1','','','2017-02-20 01:35:30','2017-02-20 00:35:30','',67,'http://gretacdma.dev/2017/02/67-revision-v1/',0,'revision','',0);
 
 /*!40000 ALTER TABLE `gretacdma_posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -14844,10 +14907,10 @@ VALUES
 	(17,1,'orderby',''),
 	(18,1,'closedpostboxes_formation','a:0:{}'),
 	(19,1,'metaboxhidden_formation','a:1:{i:0;s:7:\"slugdiv\";}'),
-	(20,1,'closedpostboxes_page','a:3:{i:0;s:23:\"acf-group_589b5872d7467\";i:1;s:23:\"acf-group_58aa33e6d6e6f\";i:2;s:12:\"revisionsdiv\";}'),
+	(20,1,'closedpostboxes_page','a:2:{i:0;s:23:\"acf-group_589b5872d7467\";i:1;s:12:\"revisionsdiv\";}'),
 	(21,1,'metaboxhidden_page','a:20:{i:0;s:23:\"acf-group_589776d56046f\";i:1;s:23:\"acf-group_583c2a911c31a\";i:2;s:23:\"acf-group_584498ca48b04\";i:3;s:23:\"acf-group_58483c795b16a\";i:4;s:23:\"acf-group_584952abe9bcb\";i:5;s:23:\"acf-group_582e060243f8c\";i:6;s:23:\"acf-group_5818d059ca8a2\";i:7;s:23:\"acf-group_5818b222462f9\";i:8;s:23:\"acf-group_582e2c18ddeed\";i:9;s:23:\"acf-group_5836f7baa27ec\";i:10;s:23:\"acf-group_58191aab6454e\";i:11;s:23:\"acf-group_582e2b14205b5\";i:12;s:23:\"acf-group_5835d82dd87f3\";i:13;s:23:\"acf-group_583702077c81b\";i:14;s:12:\"revisionsdiv\";i:15;s:10:\"postcustom\";i:16;s:16:\"commentstatusdiv\";i:17;s:11:\"commentsdiv\";i:18;s:7:\"slugdiv\";i:19;s:9:\"authordiv\";}'),
-	(22,1,'gretacdma_user-settings','editor=tinymce&libraryContent=browse&unfold=0&mfold=o&advImgDetails=hide&align=center'),
-	(23,1,'gretacdma_user-settings-time','1486660643'),
+	(22,1,'gretacdma_user-settings','editor=tinymce&libraryContent=browse&unfold=0&mfold=o&advImgDetails=hide&align=center&hidetb=1'),
+	(23,1,'gretacdma_user-settings-time','1487550831'),
 	(24,1,'managenav-menuscolumnshidden','a:5:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";i:4;s:15:\"title-attribute\";}'),
 	(25,1,'metaboxhidden_nav-menus','a:5:{i:0;s:21:\"add-post-type-domaine\";i:1;s:23:\"add-post-type-formation\";i:2;s:12:\"add-post_tag\";i:3;s:15:\"add-post_format\";i:4;s:15:\"add-domaine_cat\";}'),
 	(26,1,'nav_menu_recently_edited','7'),
@@ -14855,8 +14918,8 @@ VALUES
 	(28,1,'metaboxhidden_domainesdeformation','a:2:{i:0;s:12:\"revisionsdiv\";i:1;s:7:\"slugdiv\";}'),
 	(29,1,'closedpostboxes_domaines','a:0:{}'),
 	(30,1,'metaboxhidden_domaines','a:4:{i:0;s:23:\"acf-group_5818d059ca8a2\";i:1;s:23:\"acf-group_58191aab6454e\";i:2;s:12:\"revisionsdiv\";i:3;s:7:\"slugdiv\";}'),
-	(31,1,'gretacdma_user-settings','editor=tinymce&libraryContent=browse&unfold=0&mfold=o&advImgDetails=hide&align=center'),
-	(32,1,'gretacdma_user-settings-time','1486660643'),
+	(31,1,'gretacdma_user-settings','editor=tinymce&libraryContent=browse&unfold=0&mfold=o&advImgDetails=hide&align=center&hidetb=1'),
+	(32,1,'gretacdma_user-settings-time','1487550831'),
 	(34,0,NULL,NULL),
 	(35,1,'closedpostboxes_formations','a:0:{}'),
 	(36,1,'metaboxhidden_formations','a:9:{i:0;s:23:\"acf-group_582e060243f8c\";i:1;s:23:\"acf-group_5818d059ca8a2\";i:2;s:23:\"acf-group_5818b222462f9\";i:3;s:23:\"acf-group_582e2c18ddeed\";i:4;s:23:\"acf-group_5836f7baa27ec\";i:5;s:23:\"acf-group_582e2b14205b5\";i:6;s:23:\"acf-group_5835d82dd87f3\";i:7;s:12:\"revisionsdiv\";i:8;s:7:\"slugdiv\";}'),
