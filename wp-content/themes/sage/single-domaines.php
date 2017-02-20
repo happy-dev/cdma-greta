@@ -104,7 +104,7 @@
             <section class="articles col-md-9">
                 <header class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir la liste des domaines</button>
+                        <button type="button" class="btn hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Voir la liste des domaines</button>
                         <h2><?php echo $count; ?> Formations <?php echo $dom_title; ?></h2>
                     </div>
                 </header>
@@ -160,9 +160,11 @@
                 endwhile; 
                  
                 //wp_reset_postdata(); ?>
-                <?php previous_posts_link( 'Précédent' ); ?>
-                <?php next_posts_link( 'Suivant' ); 
-                endif; ?>
+                <div class="buttons">
+                    <?php next_posts_link( 'Suivant' ); ?>
+                    <?php previous_posts_link( 'Précédent' ); ?>
+                </div>
+                <?php endif; ?>
             </section>
         </div>
     </div>

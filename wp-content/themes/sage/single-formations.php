@@ -178,7 +178,7 @@ info@cdma.greta.fr</pre>
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-more hidden-md-up navbar-toggle" data-toggle="offcanvas">Informations complémentaires</button>
+                            <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
                         </div>
                     </div>
     <!-- CONTENU -->
