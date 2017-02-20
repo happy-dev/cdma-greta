@@ -1,7 +1,6 @@
 <div class="actualite">
     <section class="articles container">
     <?php get_template_part('templates/breadcrumb'); ?>
-
         <div class="row row-offcanvas row-offcanvas-left">
             <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
                 <h3>Actualité</h3>

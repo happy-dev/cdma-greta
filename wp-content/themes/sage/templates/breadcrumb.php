@@ -35,9 +35,9 @@ if (is_singular('domaines')) {
 }
 
 if (is_singular('formations')) {
-		$category = get_the_category(); echo $category[0]->cat_name;
 	echo '<li class="breadcrumb-item"><a href="/formations">Formations</a></li>';
-	echo '<li class="breadcrumb-item"><a href="/entreprise/offres-de-stage/">Offres de stage</a></li>';
+	$category = the_terms('formations', 'domaine');
+	echo $category;
 }
 
 if (is_category()) {

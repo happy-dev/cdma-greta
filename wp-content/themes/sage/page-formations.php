@@ -1,5 +1,6 @@
 <div class="domaine">
     <div class="container">
+        <?php get_template_part('templates/breadcrumb'); ?>
         <div class="row row-offcanvas row-offcanvas-left">
         <!-- LISTE DOMAINES -->
         	<?php
