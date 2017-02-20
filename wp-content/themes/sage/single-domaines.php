@@ -112,7 +112,6 @@
         <!-- LISTE FORMATIONS -->
             <?php       
             $i = 0;
-
             $ids = get_field('formations_dom', false, false);
             query_posts( array(
                 'post_type'         => 'formations',

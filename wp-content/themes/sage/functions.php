@@ -58,6 +58,13 @@ function create_types_form_tax() {
   );
 }
 
+//manage column custom post type for taxonomies
+add_filter( 'manage_taxonomies_for_formations_columns', 'domaine_columns' );
+function domaine_columns( $taxonomies ) {
+    $taxonomies[] = 'domaine';
+    return $taxonomies;
+}
+
 // OPTIONS
 
 if( function_exists('acf_add_options_page') ) { 
