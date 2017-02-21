@@ -289,8 +289,7 @@ info@cdma.greta.fr</pre>
     </div>
 </div>
                     
-<?php 
-$string = $int;
-print_r(extract_email_address ($string)) ?>
+
+
 <span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>
 

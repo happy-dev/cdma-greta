@@ -125,8 +125,6 @@
                 $fia[]          = $f->ID;
             }
             $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-
-
             query_posts( array(
                 'post_type'         => 'formations',
                 'posts_per_page'    => 9,
@@ -150,6 +148,44 @@
                   $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                   $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
                 }
+                $i++;
+            ?>
+                <div class="row <?php if ( $i <= $mea && 1 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
+                    <article class="entry col-md-12">
+                        <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                            <div class="col-md-4">
+                            <?php
+                                $image = get_field('post_image');
+                                if( !empty($image) ): 
+                                    $url = $image['url'];
+                                    $title = $image['title'];
+                                    $alt = $image['alt'];
+                                    $size = 'single_f';
+                                    $thumb = $image['sizes'][ $size ]; 
+                                endif; 
+                                ?>
+                                <img src="<?php echo $thumb; ?>"
+                                     alt="<?php echo $alt; ?>" />
+                       
+                            </div>
+                            <div class="col-md-8">
+                                <h3><?php the_title(); ?></h3>
+                                <span>
+                                <?php if ($sd) {
+                                    echo 'Du '.$sd.' au '.$ed ; // dates de session
+                                    echo '<br/>';
+                                }
+                                echo $dc ; // commentaire de date
+                                ?>
+                                </span>
+                                <?php the_excerpt(); ?>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+                <?php
+
+
             endwhile; 
              
             //wp_reset_postdata(); ?>
