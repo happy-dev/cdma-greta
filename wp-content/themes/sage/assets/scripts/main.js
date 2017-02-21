@@ -50,6 +50,7 @@
     'nous_contacter': {
       init : function() {},
       finalize : function() {
+        // Fill coordo email input
         function getParameterByName(name, url) {
           if (!url) {
             url = window.location.href;
@@ -64,6 +65,20 @@
 
         var email = getParameterByName("email");
         $("#coordo-email-input").val(email);
+
+
+        // Fill coordo email input & domain input
+        var ds = $("#domains-select");
+        ds.change(function(e) {
+          var val     = ds.val();
+          var array   = val.split('+!+');
+          var domain  = array[0];
+          var email   = array[1];
+          
+
+          $('#domain-input').val(domain);
+          $('#coordo-email-input').val(email);
+        });
       },
     },
     // About us page, note the change from about-us to about_us.

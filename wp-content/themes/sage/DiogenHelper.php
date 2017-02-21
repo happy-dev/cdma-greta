@@ -51,11 +51,20 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    if (!is_array($formationsIds)) {
-      return $qr->fetch();
+    // If error from DIOGEN
+    if (is_string($qr)) {
+      echo "DIOGEN ERROR : {$qr} <br/>";
+      return null;
     }
+
+    // Everything is fine
     else {
-      return $qr->fetchAll();
+      if (!is_array($formationsIds)) {
+        return $qr->fetch();
+      }
+      else {
+        return $qr->fetchAll();
+      }
     }
   }
 

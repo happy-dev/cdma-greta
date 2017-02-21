@@ -1,3 +1,4 @@
+
 <article class="entry col-md-12">
     <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
         <div class="col-md-4">

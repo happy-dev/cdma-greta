@@ -5,7 +5,7 @@
       class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
 
     <!-- <input type="hidden" name="post_type[]" value="formations" /> -->
-    <!-- <input type="hidden" name="post_type[]" value="post" /> -->
+    <!-- <input type="hidden" name="pages[]" value="1" /> -->
    
     <?php if (is_front_page()) { ?>
       <!-- FRONT PAGE -->
@@ -55,7 +55,7 @@
       <!-- FRONT PAGE --> 
         <div class="col-lg-3 col-sm-0"></div>
     <?php } ?>        
-    </div>        
-    
+    </div>          
 	<?php $query_types = get_query_var('post_type'); ?>
+
 </form>

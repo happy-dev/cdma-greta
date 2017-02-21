@@ -214,7 +214,7 @@ info@cdma.greta.fr</pre>
     </div>
 
 <!-- TEMOIGNAGE -->
-    <?php if (get_field ('temoignage') ) {
+    <?php if (get_field ('tem_yes_no') == 'oui' ) {
         $posts = get_field('temoignage');
         foreach( $posts as $post): 
             setup_postdata($post); ?>
@@ -289,6 +289,8 @@ info@cdma.greta.fr</pre>
     </div>
 </div>
                     
-
+<?php 
+$string = $int;
+print_r(extract_email_address ($string)) ?>
 <span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>
 

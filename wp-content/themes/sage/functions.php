@@ -89,6 +89,7 @@ add_action('pre_get_posts', 'search_by_tax');
 function search_by_tax() {     
   global $wp_query;
 
+  // Some search filter selected
   if (is_search() && (isset($_GET['fe']) OR isset($_GET['fd']))) {
     $ta = [];// Terms Array
 
@@ -106,8 +107,10 @@ function search_by_tax() {
       'terms'    => $ta,
     ]];// Tax Query
 
-    $wp_query->query_vars['tax_query'] = $tq;     
-  } 
+    $wp_query->query_vars['tax_query']      = $tq;
+  }
+
+  $wp_query->query_vars['posts_per_page'] = 9;
 }
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );
@@ -116,6 +119,30 @@ function custom_disable_redirect_canonical( $redirect_url ) {
     return $redirect_url; 
 }
 
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-@ini_set( 'max_execution_time', '300' );
+// Builds a dropdown list based on Formations CPT
+function domains_select_list($tag, $unused){ 
+    if ( $tag['name'] != 'domaine' )
+        return $tag;
+
+    $args = array (
+        'numberposts'   => -1,
+        'post_type'     => 'domaines',
+        'orderby'       => 'title',
+        'order'         => 'ASC',
+    );
+
+    $domains = get_posts($args);
+
+    if ( ! $domains ) {
+        return $tag;
+    } 
+
+    foreach ( $domains as $domain ) {
+        $tag['raw_values'][]  = $domain->post_title;
+        $tag['values'][]      = $domain->post_title .'+!+'. get_field('coordo_email', $domain->ID);
+        $tag['labels'][]      = $domain->post_title;
+    }
+
+    return $tag;
+}
+add_filter( 'wpcf7_form_tag', 'domains_select_list', 10, 2);
