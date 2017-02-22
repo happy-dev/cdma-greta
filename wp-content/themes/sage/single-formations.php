@@ -199,7 +199,7 @@ info@cdma.greta.fr</pre>
                     <h2>Reconnaissance des acquis</h2>
                     <pre><?php echo $rcac; ?></pre>
     <!-- INTERVENANT -->               
-                    <h2>Internant(e)(s)</h2>
+                    <h2>Intervenant(e)(s)</h2>
                     <pre><?php echo $int; ?></pre>
     <!-- CODIFICATION -->
                     <h2>Codification de l'offre</h2>

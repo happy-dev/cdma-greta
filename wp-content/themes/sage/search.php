@@ -22,8 +22,6 @@
                     while(have_posts()) {
                         the_post();
                         if ( 'formations' == get_post_type() ) { 
-                            
-
                             $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
                             $fia[]                  = get_the_ID();
                         }
@@ -50,9 +48,8 @@
                             $any_formation = true;
                         }
                     endwhile; ?>
-                    <?php //echo get_pagination_links(); ?>
-                    <div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
-                    <div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+                    <div class="nav-previous alignleft"><?php next_posts_link( 'Précédent' ); ?></div>
+                    <div class="nav-next alignright"><?php previous_posts_link( 'Suivant' ); ?></div>
                     <?php if (!$any_formation) {
                         echo '<p>Aucune formation ne correspond à la recherche</p>';
                     }

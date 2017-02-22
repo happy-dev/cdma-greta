@@ -115,7 +115,6 @@
         <!-- LISTE FORMATIONS -->
             <?php       
             $i      = 0;
-            $paged  = isset($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
             $fs     = get_field('formations_dom');// Formations
             $fdia   = [];// Formations DIOGEN IDs Array
             $fia    = [];// Formations IDs Array
@@ -133,8 +132,7 @@
                 'orderby'           => 'post__in',
                 'paged'             => $paged
             )); 
-        
-            
+
             while ( have_posts()) : the_post();
                 $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                 $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
@@ -183,11 +181,8 @@
                         </a>
                     </article>
                 </div>
-                <?php
-
-
+            <?php
             endwhile; 
-             
             //wp_reset_postdata(); ?>
             <?php previous_posts_link( 'Précédent' ); ?>
             <?php next_posts_link( 'Suivant' ); 

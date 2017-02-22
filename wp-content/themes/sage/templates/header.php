@@ -20,13 +20,13 @@
     <nav class="navbar navbar-full primary-navbar collapse" id="collapse-nav-primary">
       <?php 
       // FRONT PAGE
-      //if (is_front_page()) { 
+      if (is_front_page()) { 
           wp_nav_menu(['theme_location'   => 'primary_navigation',
                        'walker'           => new Custom_Walker]);
       // OTHER PAGES
-      //} else { 
-      //wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav'));
-      //} ?>
+      } else { 
+      wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav'));
+      } ?>
     </nav>
 </header>
 

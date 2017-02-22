@@ -110,7 +110,7 @@ function search_by_tax() {
     $wp_query->query_vars['tax_query']      = $tq;
   }
 
-  $wp_query->query_vars['posts_per_page'] = 9;
+  //$wp_query->query_vars['posts_per_page'] = 9;
 }
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );

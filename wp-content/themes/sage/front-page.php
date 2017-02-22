@@ -1,4 +1,7 @@
-<?php while (have_posts()) : the_post(); ?>
+<?php 
+require_once('DiogenHelper.php');
+while (have_posts()) : the_post(); 
+?>
 
 <!-- OPENING IMAGE/VIDEO -->
 <section class="search">
@@ -49,7 +52,6 @@
         <?php endif ;
     } else {
     ?>
-
   
    <div class="embed-responsive embed-responsive-21by9 embed-video">
         <video class="embed-responsive-item" poster="/wp-content/uploads/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
@@ -68,33 +70,59 @@
 
 <section class="articles container">
     <h2>Formations à la une</h2>
-    <a class="see-all hidden-md-down" href="/formations">Voir toutes les formations</a>
+    <a class="see-all hidden-md-down" href="/liste-formations">Voir toutes les formations</a>
     <div class="content row">
     <?php $posts = get_field('formations_une');
-        if( $posts ): ?>
-            <?php foreach( $posts as $post): ?>
-                <?php setup_postdata($post); ?>
-                    <article class="entry col-md-4">
-                        <?php $image = get_field('post_image');
-                            if( !empty($image) ): 
-                                $url = $image['url'];
-                                $title = $image['title'];
-                                $alt = $image['alt'];
-                                $size = 'news';
-                                $thumb = $image['sizes'][ $size ]; ?>
-                            <?php endif; ?>
-                            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                                <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
-                                <h3><?php the_title(); ?></h3>
-                                <p>38h - Temps plein sur 5 jours<br/>
-                                Cours du jour, Formation en présentiel<br/>
-                                <span>Ecole Estienne</span></p>
-                            </a>
-                        <?php //the_excerpt(); ?>
-                    </article>
-            <?php endforeach; ?>
-            <?php wp_reset_postdata(); ?>
-        <?php endif; ?>
+    if( $posts ):
+        foreach( $posts as $post):
+            setup_postdata($post);
+            // DIOGEN 
+            $fdia   = [];// Formations DIOGEN IDs Array
+            $fia    = [];// Formations IDs Array
+            $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
+            $fia[]                  = get_the_ID();
+            $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
+            $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
+            $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
+            $ft   = get_the_title();// Formation Title
+            //$ls   = DiogenHelper::getLocations($s);// Locations 
+
+            // Iterating through each session
+            foreach ($ss as $s) {
+              $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+              $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+              $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+            }
+    ?>
+        <article class="entry col-md-4">
+            <?php $image = get_field('post_image');
+                if( !empty($image) ): 
+                    $url = $image['url'];
+                    $title = $image['title'];
+                    $alt = $image['alt'];
+                    $size = 'news';
+                    $thumb = $image['sizes'][ $size ]; ?>
+                <?php endif; ?>
+            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
+                <h3><?php the_title(); ?></h3>
+                <p>
+                <?php if ($sd) {
+                    echo 'Du '.$sd.' au '.$ed ; // dates de session
+                    echo '<br/>';
+                }
+                if ($dc) {
+                    echo $dc ; // commentaire de date
+                    echo '<br/>';
+                }
+                ?>
+                <span><?php //echo $ls; ?></span>
+                </p>
+            </a>
+        </article>
+        <?php endforeach;
+        wp_reset_postdata();
+        endif; ?>
     </div><!-- row end -->
 </section><!-- container end -->
 
