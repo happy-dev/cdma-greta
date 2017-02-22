@@ -51,10 +51,11 @@
                 <div id="search-bar-select-facade" class="select-facade">
                     Toutes nos formations
                 </div>
-                <select id="search-bar-select">
-                    <option selected="selected">Toutes nos formations</option>
-                    <option>Formations diplomantes</option>
-                    <option>Formations éligibles au CPF</option>
+                <select name="fd" id="search-bar-select">
+                    <option value="toute-formation" selected="selected">Toutes nos formations</option>
+                    <option value="formation-diplomante">Formations diplomantes</option>
+                    <option value="formation-eligible-au-cpf">Formations éligibles au CPF</option>
+                    <option value="formation-diplomantes-cpf">Formations diplomantes et CPF</option>
                 </select>
             </div>
             <div class="select-input-container">
