@@ -103,14 +103,14 @@ function search_by_tax() {
       } 
 
       $tq = [[
-        'taxonomy' => 'type_form',
-        'field'    => 'slug',
-        'terms'    => $ta,
+        'taxonomy'  => 'type_form',
+        'field'     => 'slug',
+        'terms'     => $ta,
       ]];// Tax Query
       
       $wp_query->query_vars['tax_query']      = $tq;
     }
-
+    $wp_query->query_vars['post_type']      = 'formations';
     $wp_query->query_vars['posts_per_page'] = 9;
   }
 }

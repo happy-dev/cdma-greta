@@ -60,9 +60,12 @@ Class DiogenHelper {
     // Everything is fine
     else {
       if (!is_array($formationsIds)) {
+    // print_r($qr->rowCount()); 
+    // die();  
         return $qr->fetch();
       }
       else {
+
         return $qr->fetchAll();
       }
     }
@@ -101,7 +104,7 @@ Class DiogenHelper {
       offresession.SSPrestation = offreformation.OFNo					
     ");
 
-    if ($qr->rowCount() > 0) {		  
+    if ($qr->rowCount() > 0) {	
       return $qr->fetchAll();
     }
   }

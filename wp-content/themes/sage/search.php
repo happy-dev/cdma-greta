@@ -15,26 +15,20 @@
                 <div class="row">
                     <?php
                     $any_formation = false;
-
                     $fdia   = [];// Formations DIOGEN IDs Array
                     $fia    = [];// Formations IDs Array
-
-                    while(have_posts()) {
-                        the_post();
+                    while (have_posts()) : the_post();
                         if ( 'formations' == get_post_type() ) { 
                             $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
                             $fia[]                  = get_the_ID();
                         }
-                    }
-
+                    endwhile;
                     $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-
                     while (have_posts()) : the_post(); 
-                        if ( 'formations' == get_post_type() ) { 
+                       if ( 'formations' == get_post_type() ) { 
                             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-                            $obj  = $df->OFObjectif;// Objectif
-
+                            //$obj  = $df->OFObjectif;// Objectif
                             // Iterating through each session
                             foreach ($ss as $s) {
                                 $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
@@ -42,7 +36,7 @@
                                 $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
                                 $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
                             }
-                            ?>
+                    ?>
                             <article class="entry col-md-12">
                                 <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                                     <div class="col-md-4">
@@ -77,10 +71,10 @@
                                 </a>
                             </article>
                             <?php $any_formation = true;
-                        }
+                       }
                     endwhile; ?>
-                    <div class="nav-previous alignleft"><?php next_posts_link( 'Précédent' ); ?></div>
-                    <div class="nav-next alignright"><?php previous_posts_link( 'Suivant' ); ?></div>
+                    <div class="nav-previous alignleft"><?php next_posts_link( 'Suivant' ); ?></div>
+                    <div class="nav-next alignright"><?php previous_posts_link( 'Précédent' ); ?></div>
                     <?php if (!$any_formation) {
                         echo '<p>Aucune formation ne correspond à la recherche</p>';
                     }
@@ -96,11 +90,20 @@
                 <div class="row">
                     <?php 
                     $any_news = false;
-                    while (have_posts()) : the_post(); 
-                        if ( 'post' == get_post_type() ) { 
+                    // THE POSTS QUERY
+
+                    $search_txt = get_query_var('s');    
+                    $pq         = new WP_Query('s='.$search_txt);// Posts Query
+
+                    $pq->query_vars['post_type']        = 'post';
+                    $pq->query_vars['posts_per_page']   = 3;
+                    relevanssi_do_query($pq);
+
+                    while ($pq->have_posts()) : $pq->the_post(); 
+                        //if ( 'post' == get_post_type() ) { 
                             get_template_part('templates/content', 'search-news');
                             $any_news = true;
-                        }
+                        //}
                     endwhile; 
                     if (!$any_news) {
                         echo '<p>Aucune actualité ne correspond à la recherche</p>';
