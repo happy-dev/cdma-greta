@@ -19,6 +19,17 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+          $('#search-bar-select').change(
+            function () {
+                $this = $(this);
+                var str = '';
+                $( "#search-bar-select option:selected" ).each(function() {
+                  str += $( this ).text() + " ";
+                });
+              console.log(str);
+                $('#search-bar-select-facade').html(str);
+            }
+        );
       },
       finalize: function() {
       }

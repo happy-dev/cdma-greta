@@ -103,11 +103,11 @@
         margin: 0;
         
         * {
+            color: white;
             font-size: 15px;
         }
         
         a {
-            color: white;
             text-decoration: underline;
             margin-left: 1vw;
         }
@@ -127,7 +127,7 @@
 }
 
 @media (max-width: 767px) {
-    footer {
+    .footer {
         text-align: center;
         padding: 40px 0;
         

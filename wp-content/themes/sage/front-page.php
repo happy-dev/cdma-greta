@@ -25,7 +25,7 @@ while (have_posts()) : the_post();
         ?>
         <div class="search-links row">
             <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <div class="search-links-item col-md-<?php echo $col; ?> <?php if ($firstcol) : echo 'offset-md-'. $offset; endif; ?> col-sm-6">
+                <div class="search-links-item col-lg-<?php echo $col; ?> <?php if ($firstcol) : echo 'offset-lg-'. $offset; endif; ?> col-md-6 col-sm-6">
                     <a href="<?php echo the_sub_field('lien_header'); ?>">
                         <?php the_sub_field('texte_lien'); ?>
                     </a>
