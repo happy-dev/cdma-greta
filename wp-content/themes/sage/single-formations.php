@@ -68,7 +68,19 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <div class="col-md-6 col-sm-12">
                     <!-- TEXTE -->
                     <h1><?php the_title(); ?></h1>
-                    <span class="introduction-label">Formation éligible au CPF</span>
+                   <?php   // Get terms for post
+                     $terms = get_the_terms( $post->ID , 'type_form' );
+                     // Loop over each item since it's an array
+                     if ( $terms != null ){
+                     foreach( $terms as $term ) {
+                        if($term->slug == 'formation-diplomante') { 
+                            echo '<span class="introduction-label">Formation diplômante</span>';
+                        }
+                        if($term->slug == 'formation-eligible-au-cpf') { 
+                            echo '<span class="introduction-label">Formation éligible au CPF</span>';
+                        }
+                     unset($term);
+                    } } ?>
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">

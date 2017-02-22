@@ -51,9 +51,9 @@
             </div>
             <div class="socials col-md-4">
                 <div class="row row-icons">
-                    <a class="icon-social icon-facebook" href="#">Facebook</a>
-                    <a class="icon-social icon-twitter" href="#">Twitter</a>
-                    <a class="icon-social icon-linkedin" href="#">Linkedin</a>
+                    <a class="icon-social icon-facebook" href="https://www.facebook.com/GretaCDMA/" target="_blank">Facebook</a>
+                    <a class="icon-social icon-twitter" href="https://twitter.com/greta_cdma?lang=fr" target="_blank">Twitter</a>
+                    <a class="icon-social icon-linkedin" href="#" target="_blank">Linkedin</a>
                 </div>
                 <div class="row">
                     <div class="col-md-11 col-sm-11 col-xs-10">
