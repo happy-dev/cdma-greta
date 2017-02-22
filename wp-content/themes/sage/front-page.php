@@ -109,12 +109,11 @@ while (have_posts()) : the_post();
                 <p>
                 <?php if ($sd) {
                     echo 'Du '.$sd.' au '.$ed ; // dates de session
-                    echo '<br/>';
                 }
-                if ($dc) {
+                else {
                     echo $dc ; // commentaire de date
-                    echo '<br/>';
                 }
+                echo '<br/>';
                 ?>
                 <span><?php //echo $ls; ?></span>
                 </p>

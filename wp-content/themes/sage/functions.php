@@ -90,27 +90,29 @@ function search_by_tax() {
   global $wp_query;
 
   // Some search filter selected
-  if (is_search() && (isset($_GET['fe']) OR isset($_GET['fd']))) {
-    $ta = [];// Terms Array
+  if (is_search()) {
+    if (isset($_GET['fe']) OR isset($_GET['fd'])) {
+      $ta = [];// Terms Array
 
-    if (isset($_GET['fe'])) {
-      $ta[] = 'formation-eligible-au-cpf';
+      if (isset($_GET['fe'])) {
+        $ta[] = 'formation-eligible-au-cpf';
+      }
+
+      if (isset($_GET['fd'])) {
+        $ta[] = 'formation-diplomante';
+      } 
+
+      $tq = [[
+        'taxonomy' => 'type_form',
+        'field'    => 'slug',
+        'terms'    => $ta,
+      ]];// Tax Query
+      
+      $wp_query->query_vars['tax_query']      = $tq;
     }
 
-    if (isset($_GET['fd'])) {
-      $ta[] = 'formation-diplomante';
-    } 
-
-    $tq = [[
-      'taxonomy' => 'type_form',
-      'field'    => 'slug',
-      'terms'    => $ta,
-    ]];// Tax Query
-
-    $wp_query->query_vars['tax_query']      = $tq;
+    $wp_query->query_vars['posts_per_page'] = 9;
   }
-
-  //$wp_query->query_vars['posts_per_page'] = 9;
 }
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );

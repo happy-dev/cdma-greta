@@ -532,10 +532,11 @@ Class DiogenHelper {
     $fca = [];// FormaCode Array
     if ($fcs->rowCount() > 0) {
       foreach($fcs as $fc) {
-        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc;
+        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc .'<br/>';
       }
 
-      return implode(', ', $fca);
+      //return implode(', ', $fca);
+      return Diogen::removeApostrophe(implode('', $fca));
     }
   }
 
@@ -559,10 +560,11 @@ Class DiogenHelper {
     $cra = [];// Code ROME Array
     if ($crs->rowCount() > 0) {
       foreach($crs as $cr) {
-        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule;
+        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule .'<br/>';
       }
 
-      return implode(', ', $cra);
+      //return implode(', ', $cra);
+      return Diogen::removeApostrophe(implode('', $cra));
     }
   }
 

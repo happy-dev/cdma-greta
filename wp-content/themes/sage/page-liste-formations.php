@@ -33,6 +33,7 @@
            //$paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
             $fdia   = [];// Formations DIOGEN IDs Array
             $fia    = [];// Formations IDs Array
+            $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
 
             while ( have_posts()) : the_post();
             $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
@@ -40,14 +41,12 @@
             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
 
-            $ft   = get_the_title();// Formation Title
-            $obj  = $df->OFObjectif;// Objectif
-
             // Iterating through each session
             foreach ($ss as $s) {
               $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
               $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
               $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+              $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             }
             ?>  
                 <div class="row"> 
@@ -69,11 +68,21 @@
                             </div>
                             <div class="col-md-8">
                                 <h3><?php the_title(); ?></h3>
-                                <span>Du 03/11/2016 au 31/01/2017
-    Session de formation conventionnée par la Région IDF pour les demandeurs d'emploi.</span>
-                                <p>Réaliser une recherche iconographique en vue de concevoir un projet d'édition.
-    Identifier et respecter les contraintes du cahier des charges.
-    Respecter l'utilisation des images au regard du Droit.</p>
+                                <span>
+                                <?php if ($sd) {
+                                    echo 'Du '.$sd.' au '.$ed ; // dates de session
+                                }
+                                else {
+                                    echo $dc ; // commentaire de date
+                                }
+                                echo '<br/>';
+                                if ($ps) {
+                                    echo $ps ;
+                                }
+                                ?>
+                                <br/>
+                                </span>
+                                <p><?php the_excerpt(); ?></p>
                             </div>
                         </a>
                     </article>

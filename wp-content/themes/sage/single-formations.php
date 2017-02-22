@@ -203,8 +203,7 @@ info@cdma.greta.fr</pre>
                     <pre><?php echo $int; ?></pre>
     <!-- CODIFICATION -->
                     <h2>Codification de l'offre</h2>
-                    <pre><?php echo $forc; ?>
-                    <?php echo $corm ?></pre>
+                    <pre><?php echo $forc; ?><?php echo $corm ?></pre>
                     <hr/>
                     <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
                     <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>

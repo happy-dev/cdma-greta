@@ -33,19 +33,50 @@
                         if ( 'formations' == get_post_type() ) { 
                             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-
-                            $ft   = get_the_title();// Formation Title
                             $obj  = $df->OFObjectif;// Objectif
 
                             // Iterating through each session
                             foreach ($ss as $s) {
-                              $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                              $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                              $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+                                $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+                                $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+                                $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+                                $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
                             }
-
-                            get_template_part('templates/content', 'search-formations');
-                            $any_formation = true;
+                            ?>
+                            <article class="entry col-md-12">
+                                <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
+                                    <div class="col-md-4">
+                                    <?php $image = get_field('post_image');
+                                        if( !empty($image) ): 
+                                            $url = $image['url'];
+                                            $title = $image['title'];
+                                            $alt = $image['alt'];
+                                            $size = 'news';
+                                            $thumb = $image['sizes'][ $size ]; ?>
+                                                                    <?php endif; ?>
+                                            <img style="width:100%;" src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3><?php the_title(); ?></h3>
+                                        <span>
+                                        <?php if ($sd) {
+                                            echo 'Du '.$sd.' au '.$ed ; // dates de session
+                                        }
+                                        else {
+                                            echo $dc ; // commentaire de date
+                                        }
+                                        echo '<br/>';
+                                        if ($ps) {
+                                            echo $ps ;
+                                        }
+                                        ?>
+                                        <br/>
+                                    </span>
+                                        <?php the_excerpt(); ?>
+                                    </div>
+                                </a>
+                            </article>
+                            <?php $any_formation = true;
                         }
                     endwhile; ?>
                     <div class="nav-previous alignleft"><?php next_posts_link( 'Précédent' ); ?></div>
