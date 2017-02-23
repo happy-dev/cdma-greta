@@ -68,7 +68,7 @@
     </div>
     <div class="trim">
         <div class="trim-left"></div>
-        <div class="trim-right"></div>
+        <div class="trim-right hidden-xs-down"></div>
     </div> 
     <div class="links row">
         <div class="col-md-12">

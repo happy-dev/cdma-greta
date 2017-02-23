@@ -82,8 +82,8 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <?php the_content() ?>
                     <?php if (get_field( 'taux_reussite' ) ) { ?> 
                     <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
-                    <hr/>
                     <?php } ?>
+                    <hr/>
                     <div class="row">
                         <div class="col-md-12">
                             <a class="link-pdf" href="#">Télécharger la fiche en format PDF</a>
@@ -206,8 +206,15 @@ info@cdma.greta.fr</pre>
                     <pre><?php echo $forc; ?>
                     <?php echo $corm ?></pre>
                     <hr/>
-                    <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
-                    <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
+                    
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
+                        </div>
+                        <div class="col-lg-5">
+                            <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
