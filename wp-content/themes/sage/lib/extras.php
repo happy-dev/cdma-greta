@@ -71,7 +71,7 @@ class Custom_Walker extends Walker_Nav_Menu {
         
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-        if ($depth > 0) {
+        if ($args->walker->has_children /* $depth > 0 */) {
             $output .= $indent . '<li class="dropdown">';
         } else {
             $output .= $indent . '<li>';
