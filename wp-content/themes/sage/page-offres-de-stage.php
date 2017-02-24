@@ -16,9 +16,9 @@
                         <h3><?php the_title(); ?></h3>
                         <span>Date de début : <?php the_field('debut_stage'); ?> - <?php the_field('nature_stage'); ?></span>
                         <p>
-                            Profil recherché : <?php the_field('profil_stage'); ?><br/>
-                            Personne à contacter : <?php the_field('contact_stage'); ?><br/>
-                            Email : <?php the_field('email_stage'); ?><br/>
+                            <strong>Profil recherché :</strong> <?php the_field('profil_stage'); ?><br/>
+                            <strong>Personne à contacter :</strong> <?php the_field('contact_stage'); ?><br/>
+                            <strong>Email :</strong> <?php the_field('email_stage'); ?><br/>
                         </p>
                         <?php the_excerpt(); ?>
                     </a>
