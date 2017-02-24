@@ -30,7 +30,6 @@
                 'paged'             => $paged,
                 'order'             => 'ASC'
             )); 
-           //$paged = ($wp_query->query['paged']) ? $wp_query->query['paged'] : 1;
             $fdia   = [];// Formations DIOGEN IDs Array
             $fia    = [];// Formations IDs Array
             $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
@@ -48,6 +47,7 @@
               $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
               $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             }
+            //$ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
             ?>  
                 <div class="row"> 
                     <article class="entry col-md-12">
@@ -72,17 +72,15 @@
                                 <?php if ($sd) {
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
                                 }
-                                else {
-                                    echo $dc ; // commentaire de date
-                                }
                                 echo '<br/>';
-                                if ($ps) {
-                                    echo $ps ;
+                                if ($dc) {
+                                    echo $dc ;
                                 }
                                 ?>
                                 <br/>
                                 </span>
                                 <p><?php the_excerpt(); ?></p>
+                                <p><?php //echo $ctn; ?></p>
                             </div>
                         </a>
                     </article>
@@ -90,8 +88,18 @@
             <?php
             endwhile; 
             wp_reset_postdata(); ?>
-            <?php previous_posts_link( 'Précédent' ); ?>
-            <?php next_posts_link( 'Suivant' ); ?>
+            <?php wp_reset_postdata();?>
+            <div class="buttons">
+                <?php
+                $big = 999999999; // need an unlikely integer
+
+                echo paginate_links( array(
+                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                    'format' => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                    //'total' => $the_query->max_num_pages
+                ) );
+                ?>
             </section>
         </div>
     </div>

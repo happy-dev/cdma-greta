@@ -133,7 +133,7 @@
                 'paged'             => $paged
             )); 
 
-            while ( have_posts()) : the_post();
+            while ( have_posts()) : the_post(); 
                 $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                 $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
 
@@ -186,8 +186,15 @@
                  
                 //wp_reset_postdata(); ?>
                 <div class="buttons">
-                    <?php next_posts_link( 'Suivant' ); ?>
-                    <?php previous_posts_link( 'Précédent' ); ?>
+                 <?php
+                $big = 999999999; // need an unlikely integer
+
+                echo paginate_links( array(
+                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                    'format' => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                ) );
+                ?>
                 </div>
                 <?php endif; ?>
             </section>
