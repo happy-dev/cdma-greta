@@ -52,7 +52,7 @@
 
   
    <div class="embed-responsive embed-responsive-21by9 embed-video">
-        <video class="embed-responsive-item" poster="/wp-content/uploads/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
+        <video class="embed-responsive-item" poster="<?php echo get_site_url() ?>/wp-content/uploads/page-intro.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <!-- source src="<?php echo get_site_url() ?>/wp-content/themes/sage/assets/videos/turtle.webm" type="video/webm"-->
           <source src="<?php echo get_site_url() ?>/wp-content/uploads/<?php the_field('video_home') ?>" type="video/mp4">
