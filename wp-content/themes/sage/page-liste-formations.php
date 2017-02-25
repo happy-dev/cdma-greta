@@ -43,7 +43,6 @@
             $fi = get_field('id_diogen');// Formation Id
             $fs = DiogenHelper::getFormation($fi);// Formations
 
-
             // Iterating through each session
             foreach ($ss as $s) {
               $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
