@@ -132,7 +132,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
-    <!-- DATES -->   
+    <!-- 1. DATES -->   
                     <h2>Dates</h2>
                     <pre><?php // If multiple sessions
                     if ($ms) {
@@ -157,33 +157,33 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     ?>
                     </pre>
 
-    <!-- PUBLIC -->
+    <!-- 2. PUBLIC -->
                     <h2>Public</h2>
                     <pre><?php echo $ps; ?>
                     <?php echo $pc; ?></pre>
-    <!-- DUREE -->
+    <!-- 3. DUREE -->
                     <h2>Durée</h2>
                     <pre><?php echo $ds; ?></pre>
-    <!-- EFFECTIF -->
-                    <h2>Effectif</h2>
-                    <pre><?php echo $cts; ?></pre>
-    <!-- TARIF -->
+    <!-- 4. TARIF -->
                     <h2>Tarif(s)</h2>
                     <pre><?php echo $pcs; ?></pre>
-    <!-- LIEU -->
+    <!-- 5. LIEU -->
                     <h2>Lieu(x)</h2>
                     <pre><?php echo $ls; ?></pre>
-    <!-- MODALITE -->
+    <!-- 6. MODALITE -->
                     <h2>Modalité de formation</h2>
                     <pre><?php echo $cs; ?></pre>
-    <!-- COORDONNEES GRETA -->
+    <!-- 7. EFFECTIF -->
+                    <h2>Effectif</h2>
+                    <pre><?php echo $cts; ?></pre>
+    <!-- 8. COORDONNEES GRETA -->
                     <h2>Coordonnées</h2>
                     <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
 Agence administrative et commerciale
 21 rue de Sambre et Meuse
 75010 PARIS
 info@cdma.greta.fr</pre>
-    <!-- CONTACT -->
+    <!-- 9. CONTACT -->
                     <h2>Contact(s)</h2>
                     <pre><?php echo $ct; ?></pre>
                 </aside>
@@ -193,27 +193,28 @@ info@cdma.greta.fr</pre>
                             <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
                         </div>
                     </div>
-    <!-- CONTENU -->
-                    <pre><?php echo $ctn; ?></pre>
-    <!-- OBJECTIFS -->
+    <!-- 1. OBJECTIFS -->
                     <h2>Objectifs</h2>
                     <pre><?php echo $obj; ?></pre>
-    <!-- PREREQUIS -->    
+    <!-- 2. PREREQUIS -->    
                     <h2>Prérequis</h2>
                     <pre><?php echo $prm; ?></pre>
-    <!-- METHODES PEDAGOGIQUES -->
+    <!-- 3. CONTENU -->
+                    <h2>Contenu</h2>
+                    <pre><?php echo $ctn; ?></pre>
+    <!-- 4. METHODES PEDAGOGIQUES -->
                     <h2>Méthodes pédagogiques</h2>
                     <pre><?php echo $metp; ?></pre>
-    <!-- MOYENS PEDAGOGIQUES -->
+    <!-- 5. MOYENS PEDAGOGIQUES -->
                     <h2>Moyens pédagogiques</h2>
                     <pre><?php echo $mop; ?></pre>
-    <!-- RECONNAISSANCE DES ACQUIS -->
+    <!-- 6. RECONNAISSANCE DES ACQUIS -->
                     <h2>Reconnaissance des acquis</h2>
                     <pre><?php echo $rcac; ?></pre>
-    <!-- INTERVENANT -->               
+    <!-- 7. INTERVENANT -->               
                     <h2>Intervenant(e)(s)</h2>
                     <pre><?php echo $int; ?></pre>
-    <!-- CODIFICATION -->
+    <!-- 8. CODIFICATION -->
                     <h2>Codification de l'offre</h2>
                     <pre><?php echo $forc; ?><?php echo $corm ?></pre>
                     <hr/>

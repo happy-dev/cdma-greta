@@ -28,7 +28,8 @@
                 'post_type'         => 'formations',
                 'posts_per_page'    => 9,
                 'paged'             => $paged,
-                'order'             => 'ASC'
+                'order'             => 'ASC',
+                'orderby'           => 'title'
             )); 
             $fdia   = [];// Formations DIOGEN IDs Array
             $fia    = [];// Formations IDs Array
@@ -39,6 +40,8 @@
             $fia[]                  = get_the_ID();
             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
+            $fi = get_field('id_diogen');// Formation Id
+            $fs = DiogenHelper::getFormation($fi);// Formations
 
             // Iterating through each session
             foreach ($ss as $s) {
@@ -71,16 +74,15 @@
                                 <span>
                                 <?php if ($sd) {
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
+                                    echo '<br/>';
                                 }
-                                echo '<br/>';
                                 if ($dc) {
                                     echo $dc ;
+                                    echo '<br/>';
                                 }
                                 ?>
-                                <br/>
                                 </span>
-                                <p><?php the_excerpt(); ?></p>
-                                <p><?php //echo $ctn; ?></p>
+                                <pre><?php echo wp_trim_words( $ctn, 40, '...' ); ?></pre>
                             </div>
                         </a>
                     </article>
