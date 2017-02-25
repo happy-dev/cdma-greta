@@ -132,31 +132,87 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
-    <!-- 1. DATES -->   
+
+<?php // IF MULTIPLE SESSIONS
+                    if ($ms) { 
+                        foreach ($ss as $s) { 
+                    ?>
+        <!-- 1. DATES -->
+                        <?php if ($sd or $dc) { ?>
+                            <h2>Dates</h2>
+                            <pre>
+                            <?php if ($sd) { 
+                            echo 'Du '.$sd.' au '.$ed ; // dates de session
+                            echo '<br/>';
+                            }
+                            if ($dc) {
+                            echo $dc ; // commentaire de date
+                            }
+                            ?>
+                            </pre>
+                        <?php } ?>
+        <!-- 2. PUBLIC --> 
+                        <?php if ($ps or $pc) { ?>
+                            <h2>Public</h2>
+                            <pre><?php echo $ps; ?>
+                            <?php echo $pc; ?></pre>
+                        <?php } ?>
+        <!-- 3. DUREE -->
+                        <?php if ($ds) { ?>
+                            <h2>Durée</h2>
+                            <pre><?php echo $ds; ?></pre>
+                        <?php } ?>
+        <!-- 4. TARIF -->
+                        <?php if ($pcs) { ?>
+                            <h2>Tarif(s)</h2>
+                            <pre><?php echo $pcs; ?></pre>
+                        <?php } ?>
+        <!-- 5. LIEU -->
+                        <?php if ($ls) { ?>
+                            <h2>Lieu(x)</h2>
+                            <pre><?php echo $ls; ?></pre>
+                        <?php } ?>
+        <!-- 6. MODALITE -->
+                        <?php if ($cs) { ?>
+                            <h2>Modalité de formation</h2>
+                            <pre><?php echo $cs; ?></pre>
+                        <?php } ?>
+        <!-- 7. EFFECTIF -->
+                        <?php if ($cts) { ?>
+                            <h2>Effectif</h2>
+                            <pre><?php echo $cts; ?></pre>
+                        <?php } ?>
+        <!-- 8. COORDONNEES GRETA -->
+                        <h2>Coordonnées</h2>
+                        <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
+Agence administrative et commerciale
+21 rue de Sambre et Meuse
+75010 PARIS
+info@cdma.greta.fr</pre>
+        <!-- 9. CONTACT -->
+                        <?php if ($ct) { ?>
+                            <h2>Contact(s)</h2>
+                            <pre><?php echo $ct; ?></pre>
+                         <?php } ?>   
+                    <?php } //endforeach
+                        } //endif
+                    ?>
+
+<!-- IF SINGLE SESSION -->
+    <!-- 1. DATES -->  
+                    <?php if ($sd or $dc) { ?>
                     <h2>Dates</h2>
-                    <pre><?php // If multiple sessions
-                    if ($ms) {
-                      foreach ($ss as $s) {
-                        $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                        $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                        echo '<div>' ;
-                        echo 'Du '.$sd.' au '.$ed ; // dates de session
-                        echo '<br/>';
-                        echo $dc ; // commentaire de date
-                        echo '</div>' ;
-                      }
-                    }
-                // If single session
-                    else { 
-                    if ($sd) {
+                    <pre>
+                    <?php if ($sd) {
                     echo 'Du '.$sd.' au '.$ed ; // dates de session
-                    }
                     echo '<br/>';
+                    }
+                    if ($dc) {
                     echo $dc ; // commentaire de date
                     }
                     ?>
                     </pre>
-
+                    <?php } ?>
     <!-- 2. PUBLIC --> 
                     <?php if ($ps or $pc) { ?>
                         <h2>Public</h2>
@@ -201,6 +257,7 @@ info@cdma.greta.fr</pre>
                         <pre><?php echo $ct; ?></pre>
                     <?php } ?>
                 </aside>
+
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
