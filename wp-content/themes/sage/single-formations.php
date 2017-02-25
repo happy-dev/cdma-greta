@@ -283,7 +283,7 @@ info@cdma.greta.fr</pre>
                                     $url = $image['url'];
                                     $title = $image['title'];
                                     $alt = $image['alt'];
-                                    $size = 'large';
+                                    $size = 'tem';
                                     $thumb = $image['sizes'][ $size ]; 
                                 ?>
                                 <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
@@ -291,8 +291,9 @@ info@cdma.greta.fr</pre>
                             </figure>
                         </div>
                         <div class="col-md-9">
-                            <h2><?php the_title() ?></h2>
-                            <p><?php the_content() ?></p>
+                            <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?php the_title() ?></h2>
+                            <p><?php the_excerpt() ?></p>
+                            <p style="font-weight: bold; color: #0956a1;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
                         </div>
                     </article>
                 </div>
@@ -309,29 +310,12 @@ info@cdma.greta.fr</pre>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe>
                 </div>
                 <hr/>
                 <div class="container">
-                    <h2>Témoignage d’une stagiaire du Greta – formation CAP Tapisserie en 2013</h2>
-                    <br/>
-                    <pre>C’est avec plaisir que je vous fais part de ma réussite au CAP crû 2013 ! 1er sésame décroché pour démarrer une jolie carrière de Tapissier.
-
-     Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier sa coordinatrice Helen Fréard pour sa connaissance pointue du métier, son exigence quant aux respect des valeurs du métier et des méthodes traditionnelles et son énergie manifeste pour maintenir une formation de qualité. Remercier tous les professeurs (je n’ai pas l’adresse mail de tout le monde) pour leurs qualités professionnelles, leur patience et leur capacité à s’adapter à chacun des stagiaires simultanément !
-
-     Merci à mon maître de stage Mr Bruno LASCAR, véritable maître d’apprentissage qui a la passion de son métier et de la transmission du savoir et du savoir faire, dans le respect des traditions, du produit et du client, tout en étant bien ancré dans le 21e siècle avec ses nouvelles techniques et ses contraintes économiques.
-
-     Remercier ma consultante Mme Amira Ouerhani du cabinet de reclassement BPI, qui croit fermement en mon projet de reconversion depuis le début et m’accompagne pleinement dans mon reclassement.
-
-     Et puis, merci à Micheline et Bernard de la chambre d’hôte de Joué les Tours près du centre d’examens, qui m’ont soutenu matin et soir durant ces 4 jours d’épreuves !
-
-     Me voici donc partie sur les routes de la Tapisserie et de l’Ameublement. Je ne manquerai pas de vous faire part de mes prochaines étapes et réalisations, et espère pouvoir continuer d’échanger avec vous sur cet univers fantastique !
-
-     Je vous souhaite de passer une très belle période estivale.
-
-     A bientôt.
-
-    Françoise Hervy</pre>
+                    <h2><?php the_title(); ?></h2></br>
+                    <pre><?php the_content(); ?></pre>
                 </div>
             </div>
             <div class="modal-footer">
@@ -342,7 +326,4 @@ info@cdma.greta.fr</pre>
     </div>
 </div>
                     
-
-
 <span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>
-
