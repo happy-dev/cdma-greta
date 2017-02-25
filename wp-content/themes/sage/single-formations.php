@@ -132,7 +132,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
-    <!-- DATES -->   
+    <!-- 1. DATES -->   
                     <h2>Dates</h2>
                     <pre><?php // If multiple sessions
                     if ($ms) {
@@ -156,35 +156,50 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     }
                     ?>
                     </pre>
-    <!-- PUBLIC -->
-                    <h2>Public</h2>
-                    <pre><?php echo $ps; ?>
-                    <?php echo $pc; ?></pre>
-    <!-- DUREE -->
-                    <h2>Durée</h2>
-                    <pre><?php echo $ds; ?></pre>
-    <!-- EFFECTIF -->
-                    <h2>Effectif</h2>
-                    <pre><?php echo $cts; ?></pre>
-    <!-- TARIF -->
-                    <h2>Tarif(s)</h2>
-                    <pre><?php echo $pcs; ?></pre>
-    <!-- LIEU -->
-                    <h2>Lieu(x)</h2>
-                    <pre><?php echo $ls; ?></pre>
-    <!-- MODALITE -->
-                    <h2>Modalité de formation</h2>
-                    <pre><?php echo $cs; ?></pre>
-    <!-- COORDONNEES GRETA -->
+
+    <!-- 2. PUBLIC --> 
+                    <?php if ($ps or $pc) { ?>
+                        <h2>Public</h2>
+                        <pre><?php echo $ps; ?>
+                        <?php echo $pc; ?></pre>
+                    <?php } ?>
+    <!-- 3. DUREE -->
+                    <?php if ($ds) { ?>
+                        <h2>Durée</h2>
+                        <pre><?php echo $ds; ?></pre>
+                    <?php } ?>
+    <!-- 4. TARIF -->
+                    <?php if ($pcs) { ?>
+                        <h2>Tarif(s)</h2>
+                        <pre><?php echo $pcs; ?></pre>
+                    <?php } ?>
+    <!-- 5. LIEU -->
+                    <?php if ($ls) { ?>
+                        <h2>Lieu(x)</h2>
+                        <pre><?php echo $ls; ?></pre>
+                    <?php } ?>
+    <!-- 6. MODALITE -->
+                    <?php if ($cs) { ?>
+                        <h2>Modalité de formation</h2>
+                        <pre><?php echo $cs; ?></pre>
+                    <?php } ?>
+    <!-- 7. EFFECTIF -->
+                    <?php if ($cts) { ?>
+                        <h2>Effectif</h2>
+                        <pre><?php echo $cts; ?></pre>
+                    <?php } ?>
+    <!-- 8. COORDONNEES GRETA -->
                     <h2>Coordonnées</h2>
                     <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
 Agence administrative et commerciale
 21 rue de Sambre et Meuse
 75010 PARIS
 info@cdma.greta.fr</pre>
-    <!-- CONTACT -->
-                    <h2>Contact(s)</h2>
-                    <pre><?php echo $ct; ?></pre>
+    <!-- 9. CONTACT -->
+                    <?php if ($ct) { ?>
+                        <h2>Contact(s)</h2>
+                        <pre><?php echo $ct; ?></pre>
+                    <?php } ?>
                 </aside>
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
@@ -192,29 +207,50 @@ info@cdma.greta.fr</pre>
                             <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
                         </div>
                     </div>
-    <!-- CONTENU -->
-                    <pre><?php echo $ctn; ?></pre>
-    <!-- OBJECTIFS -->
-                    <h2>Objectifs</h2>
-                    <pre><?php echo $obj; ?></pre>
-    <!-- PREREQUIS -->    
-                    <h2>Prérequis</h2>
-                    <pre><?php echo $prm; ?></pre>
-    <!-- METHODES PEDAGOGIQUES -->
-                    <h2>Méthodes pédagogiques</h2>
-                    <pre><?php echo $metp; ?></pre>
-    <!-- MOYENS PEDAGOGIQUES -->
-                    <h2>Moyens pédagogiques</h2>
-                    <pre><?php echo $mop; ?></pre>
-    <!-- RECONNAISSANCE DES ACQUIS -->
-                    <h2>Reconnaissance des acquis</h2>
-                    <pre><?php echo $rcac; ?></pre>
-    <!-- INTERVENANT -->               
-                    <h2>Intervenant(e)(s)</h2>
-                    <pre><?php echo $int; ?></pre>
-    <!-- CODIFICATION -->
+    <!-- 1. OBJECTIFS -->
+                    <?php if ($obj) { ?>
+                        <h2>Objectifs</h2>
+                        <pre><?php echo $obj; ?></pre>
+                    <?php } ?>
+    <!-- 2. PREREQUIS -->  
+                    <?php if ($prm) { ?>  
+                        <h2>Prérequis</h2>
+                        <pre><?php echo $prm; ?></pre>
+                    <?php } ?>
+    <!-- 3. CONTENU -->
+                    <?php if ($ctn) { ?> 
+                        <h2>Contenu</h2>
+                        <pre><?php echo $ctn; ?></pre>
+                    <?php } ?>
+    <!-- 4. METHODES PEDAGOGIQUES -->
+                    <?php if ($metp) { ?> 
+                        <h2>Méthodes pédagogiques</h2>
+                        <pre><?php echo $metp; ?></pre>
+                    <?php } ?>
+    <!-- 5. MOYENS PEDAGOGIQUES -->
+                    <?php if ($mop) { ?> 
+                        <h2>Moyens pédagogiques</h2>
+                        <pre><?php echo $mop; ?></pre>
+                    <?php } ?>
+    <!-- 6. RECONNAISSANCE DES ACQUIS -->
+                    <?php if ($rcac) { ?> 
+                        <h2>Reconnaissance des acquis</h2>
+                        <pre><?php echo $rcac; ?></pre>
+                    <?php } ?>
+    <!-- 7. INTERVENANT --> 
+                    <?php if ($int) { ?>               
+                        <h2>Intervenant(e)(s)</h2>
+                        <pre><?php echo $int; ?></pre>
+                    <?php } ?>
+    <!-- 8. CODIFICATION -->
+                    <?php if ($forc or $corm) { ?> 
                     <h2>Codification de l'offre</h2>
-                    <pre><?php echo $forc; ?><?php echo $corm ?></pre>
+                    <pre><?php  if ($forc) { 
+                                    echo $forc ;
+                                    if ($corm) { echo '<br/>'.$corm ; }
+                                }
+                                else { echo $corm ; } ?></pre>
+                    <?php } ?>
                     <hr/>
                     
                     <div class="row">
