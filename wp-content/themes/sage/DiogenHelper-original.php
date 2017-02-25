@@ -13,11 +13,11 @@ Class DiogenHelper {
     // Several formations
     if (is_array($formationsIds)) {
       $fis = implode(',', $formationsIds);// Formations Ids String
-      $fqp = "offreformation.OFNo IN ({$fis})";
+      $fqp = "offreformation.OFNoPermanent IN ({$fis})";
     }
     // Only one
     else {
-      $fqp = "offreformation.OFNo = {$formationsIds}";
+      $fqp = "offreformation.OFNoPermanent = {$formationsIds}";
     }
 
     // Query Result
@@ -100,7 +100,7 @@ Class DiogenHelper {
       offresession
      
      WHERE	
-      offreformation.OFNo = {$formationId}														AND
+      offreformation.OFNoPermanent = {$formationId}														AND
       offresession.SSPrestation = offreformation.OFNo					
     ");
 
@@ -382,7 +382,7 @@ Class DiogenHelper {
         WHERE
           offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
           offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
     }
     if ($cs->rowCount() > 0) {
@@ -444,7 +444,7 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
         offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPNo	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
     ");	
 
     $o  = '';// Output
@@ -478,7 +478,7 @@ Class DiogenHelper {
           
         WHERE
           offrecertificationintitule.CINo = offreformation.OFCertificationIntitule AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
@@ -497,7 +497,7 @@ Class DiogenHelper {
           
         WHERE
           offresanction.SANo = offreformation.OFSanction AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
@@ -528,7 +528,7 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationfc.LFFFormation	AND
         offreliaisonformationfc.LFFFCCode = offrefcformacode.FCCode	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
         
       ORDER BY offreliaisonformationfc.LFFOrdre
     ");
@@ -558,7 +558,7 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationrome.LFOFormation			      AND
         offreliaisonformationrome.LFORomeCode = offreliaisonfcrome.LFRRomeCode	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
     ");
     $cra = [];// Code ROME Array
     if ($crs->rowCount() > 0) {
@@ -575,7 +575,7 @@ Class DiogenHelper {
   // Diogen ID, Diogen Formations Array
   public static function getMatchingDiogenFormation($di, $dfa) {
     foreach($dfa as $df) {// Diogen formation
-      if ($df->OFNo == $di) {
+      if ($df->OFNoPermanent == $di) {
         return $df;
       }
     }
