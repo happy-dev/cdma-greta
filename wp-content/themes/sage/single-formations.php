@@ -156,7 +156,6 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     }
                     ?>
                     </pre>
-
     <!-- PUBLIC -->
                     <h2>Public</h2>
                     <pre><?php echo $ps; ?>
