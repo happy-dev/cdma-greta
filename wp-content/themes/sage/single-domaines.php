@@ -28,12 +28,20 @@
                     <div class="intro col-md-6 col-sm-12 col-xs-12">
                         <?php $dom_title = get_the_title(); ?>
                         <h1><?php echo $dom_title; ?></h1>
-                        <?php the_content(); ?>
-                        <a class="note"
-                           href="#presentation-pannel"
-                           data-toggle="collapse"
-                           aria-expanded="false"
-                           aria-controls="presentation-pannel">Lire la suite</a>
+                        <?php 
+                        $ct     = get_the_content(); 
+                        $text   = trim( strip_tags( $ct ) );
+                        $word_number = substr_count( "$text ", ' ' );
+                        ?>
+                        <p><?php echo wp_trim_words( $ct, 120, '...' ); ?></p>
+                        <?php if ( $word_number > 120 ) { ?>
+                            <a class="note"
+                               href="#presentation-pannel"
+                               data-toggle="collapse"
+                               aria-expanded="false"
+                               aria-controls="presentation-pannel">Lire la suite
+                            </a>
+                        <?php } ?>
                         <?php if (get_field ('post_video') ) { ?>
                             <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?php echo $dom_title; ?></span>
                         <?php } ?>
@@ -47,6 +55,7 @@
                 </div>
             </div>
         </div>
+        <?php if ( $word_number > 120 ) { ?>
         <div class="presentation-annexe container collapse" id="presentation-pannel">
             <?php the_content() ?>
             <a class="note up"
@@ -55,6 +64,7 @@
                aria-expanded="false"
                aria-controls="presentation-pannel">X Fermer</a>
         </div>
+        <?php } ?>
     </section>
     
     <!-- Modal -->
@@ -136,9 +146,8 @@
             while ( have_posts()) : the_post(); 
                 $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                 $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-
                 $ft   = get_the_title();// Formation Title
-                $obj  = $df->OFObjectif;// Objectif
+                $obj  = Diogen::removeApostrophe($df->OFObjectif);// Objectif
 
                 // Iterating through each session
                 foreach ($ss as $s) {
@@ -173,17 +182,19 @@
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
                                     echo '<br/>';
                                 }
-                                echo $dc ; // commentaire de date
+                                if ($dc) {
+                                    echo $dc ; // commentaire de date
+                                    echo '<br/>';
+                                }
                                 ?>
                                 </span>
-                                <?php the_excerpt(); ?>
+                                <?php echo wp_trim_words( $obj, 40, '...' ); ?>
                             </div>
                         </a>
                     </article>
                 </div>
                 <?php
                 endwhile; 
-                 
                 //wp_reset_postdata(); ?>
                 <div class="buttons">
                  <?php
