@@ -188,7 +188,7 @@
                                 }
                                 ?>
                                 </span>
-                                <?php echo wp_trim_words( $obj, 40, '...' ); ?>
+                                <?php echo wp_trim_words( $obj, 50, '...' ); ?>
                             </div>
                         </a>
                     </article>

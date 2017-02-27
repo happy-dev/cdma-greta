@@ -26,34 +26,39 @@
             <div class="norms col-md-4">
                 <div class="row">
             <!-- LOGOS QUALITE -->
-                    <div class="col-lg-4 col-md-8">
-                    <?php 
-                    $image = get_field('logo_qualite_1', 'option');
-                        if( !empty($image) ): 
-                            $alt = $image['alt'];
-                            $size = 'large';
-                            $thumb = $image['sizes'][ $size ]; ?>
+                    <?php while ( have_rows('logos_quali', 'option') ) : the_row(); 
+                    $image = get_sub_field('logo_quali', 'option');
+                                if( !empty($image) ): 
+                                    $url = $image['url'];
+                                    $title = $image['title'];
+                                    $alt = $image['alt'];
+                                    $size = 'single_f';
+                                    $thumb = $image['sizes'][ $size ]; 
+                                endif; 
+                    ?>
+                        <div class="col-lg-6 col-md-12">
                             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                        <?php endif; ?>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                    <?php 
-                    $image = get_field('logo_qualite_2', 'option');
-                        if( !empty($image) ): 
-                            $alt = $image['alt'];
-                            $size = 'large';
-                            $thumb = $image['sizes'][ $size ]; ?>
-                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                    <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
                 <hr class="hidden-md-up" />
             </div>
+            <!-- RESEAUX SOCIAUX -->
             <div class="socials col-md-4">
                 <div class="row row-icons">
-                    <a class="icon-social icon-facebook" href="https://www.facebook.com/GretaCDMA/" target="_blank">Facebook</a>
-                    <a class="icon-social icon-twitter" href="https://twitter.com/greta_cdma?lang=fr" target="_blank">Twitter</a>
-                    <a class="icon-social icon-linkedin" href="#" target="_blank">Linkedin</a>
+                    <?php while ( have_rows('reseaux_sociaux', 'option') ) : the_row(); 
+                    $image = get_sub_field('logo_rs', 'option');
+                                if( !empty($image) ): 
+                                    $url = $image['url'];
+                                endif; 
+                    ?>
+                        <a  class="icon-social" 
+                            style="background-image: url(<?php echo $url; ?>)" 
+                            href="<?php the_sub_field('lien_rs', 'option'); ?>" 
+                            target="_blank">
+                            <?php the_sub_field('texte_rs', 'option'); ?>
+                        </a>
+                    <?php endwhile; ?>
                 </div>
                 <div class="row">
                     <div class="col-md-11 col-sm-11 col-xs-10">
