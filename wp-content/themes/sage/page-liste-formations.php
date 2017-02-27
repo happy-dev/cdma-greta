@@ -50,7 +50,7 @@
               $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
               $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             }
-            //$ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
+            $obj   = Diogen::removeApostrophe($fs->OFObjectif);// Objectif
             ?>  
                 <div class="row"> 
                     <article class="entry col-md-12">
@@ -82,7 +82,7 @@
                                 }
                                 ?>
                                 </span>
-                                <pre><?php echo wp_trim_words( $ctn, 40, '...' ); ?></pre>
+                                <pre><?php echo wp_trim_words( $obj, 50, '...' ); ?></pre>
                             </div>
                         </a>
                     </article>

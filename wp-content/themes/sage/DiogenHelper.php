@@ -13,11 +13,11 @@ Class DiogenHelper {
     // Several formations
     if (is_array($formationsIds)) {
       $fis = implode(',', $formationsIds);// Formations Ids String
-      $fqp = "offreformation.OFNo IN ({$fis})";
+      $fqp = "offreformation.OFNoPermanent IN ({$fis})";
     }
     // Only one
     else {
-      $fqp = "offreformation.OFNo = {$formationsIds}";
+      $fqp = "offreformation.OFNoPermanent = {$formationsIds}";
     }
 
     // Query Result
@@ -51,23 +51,11 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    // If error from DIOGEN
-    if (is_string($qr)) {
-      echo "DIOGEN ERROR : {$qr} <br/>";
-      return null;
+    if (!is_array($formationsIds)) {
+      return $qr->fetch();
     }
-
-    // Everything is fine
     else {
-      if (!is_array($formationsIds)) {
-    // print_r($qr->rowCount()); 
-    // die();  
-        return $qr->fetch();
-      }
-      else {
-
-        return $qr->fetchAll();
-      }
+      return $qr->fetchAll();
     }
   }
 
@@ -100,11 +88,11 @@ Class DiogenHelper {
       offresession
      
      WHERE	
-      offreformation.OFNo = {$formationId}														AND
+      offreformation.OFNoPermanent = {$formationId}														AND
       offresession.SSPrestation = offreformation.OFNo					
     ");
 
-    if ($qr->rowCount() > 0) {	
+    if ($qr->rowCount() > 0) {		  
       return $qr->fetchAll();
     }
   }
@@ -382,7 +370,7 @@ Class DiogenHelper {
         WHERE
           offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
           offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
     }
     if ($cs->rowCount() > 0) {
@@ -444,7 +432,7 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
         offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPNo	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
     ");	
 
     $o  = '';// Output
@@ -478,7 +466,7 @@ Class DiogenHelper {
           
         WHERE
           offrecertificationintitule.CINo = offreformation.OFCertificationIntitule AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
@@ -497,7 +485,7 @@ Class DiogenHelper {
           
         WHERE
           offresanction.SANo = offreformation.OFSanction AND
-          offreformation.OFNo = {$fID}
+          offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
@@ -528,17 +516,15 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationfc.LFFFormation	AND
         offreliaisonformationfc.LFFFCCode = offrefcformacode.FCCode	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
         
       ORDER BY offreliaisonformationfc.LFFOrdre
     ");
     $fca = [];// FormaCode Array
     if ($fcs->rowCount() > 0) {
       foreach($fcs as $fc) {
-        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc .'<br/>';
+        $fca[] = $fc->FCCode .' - '. $fc->FCNomAcc.'<br/>';
       }
-
-      //return implode(', ', $fca);
       return Diogen::removeApostrophe(implode('', $fca));
     }
   }
@@ -558,15 +544,13 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationrome.LFOFormation			      AND
         offreliaisonformationrome.LFORomeCode = offreliaisonfcrome.LFRRomeCode	AND
-        offreformation.OFNo = {$fID}
+        offreformation.OFNoPermanent = {$fID}
     ");
     $cra = [];// Code ROME Array
     if ($crs->rowCount() > 0) {
       foreach($crs as $cr) {
-        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule .'<br/>';
+        $cra[] = $cr->LFRRomeCode .' - '. $cr->LFRRomeIntitule.'<br/>';
       }
-
-      //return implode(', ', $cra);
       return Diogen::removeApostrophe(implode('', $cra));
     }
   }
@@ -575,7 +559,7 @@ Class DiogenHelper {
   // Diogen ID, Diogen Formations Array
   public static function getMatchingDiogenFormation($di, $dfa) {
     foreach($dfa as $df) {// Diogen formation
-      if ($df->OFNo == $di) {
+      if ($df->OFNoPermanent == $di) {
         return $df;
       }
     }

@@ -132,50 +132,116 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
-    <!-- 1. DATES -->   
+<?php // IF MULTIPLE SESSIONS
+                    if ($ms) { 
+                        foreach ($ss as $s) { 
+                    ?>
+        <!-- 1. DATES -->
+                        <?php if ($sd or $dc) { ?>
+                            <h2>Dates</h2>
+                            <pre>
+                            <?php if ($sd) { 
+                            echo 'Du '.$sd.' au '.$ed ; // dates de session
+                            echo '<br/>';
+                            }
+                            if ($dc) {
+                            echo $dc ; // commentaire de date
+                            }
+                            ?>
+                            </pre>
+                        <?php } ?>
+        <!-- 2. PUBLIC --> 
+                        <?php if ($ps or $pc) { ?>
+                            <h2>Public</h2>
+                            <pre><?php echo $ps; ?>
+                            <?php echo $pc; ?></pre>
+                        <?php } ?>
+        <!-- 3. DUREE -->
+                        <?php if ($ds) { ?>
+                            <h2>Durée</h2>
+                            <pre><?php echo $ds; ?></pre>
+                        <?php } ?>
+        <!-- 4. TARIF -->
+                        <?php if ($pcs) { ?>
+                            <h2>Tarif(s)</h2>
+                            <pre><?php echo $pcs; ?></pre>
+                        <?php } ?>
+        <!-- 5. LIEU -->
+                        <?php if ($ls) { ?>
+                            <h2>Lieu(x)</h2>
+                            <pre><?php echo $ls; ?></pre>
+                        <?php } ?>
+        <!-- 6. MODALITE -->
+                        <?php if ($cs) { ?>
+                            <h2>Modalité de formation</h2>
+                            <pre><?php echo $cs; ?></pre>
+                        <?php } ?>
+        <!-- 7. EFFECTIF -->
+                        <?php if ($cts) { ?>
+                            <h2>Effectif</h2>
+                            <pre><?php echo $cts; ?></pre>
+                        <?php } ?>
+        <!-- 8. COORDONNEES GRETA -->
+                        <h2>Coordonnées</h2>
+                        <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
+Agence administrative et commerciale
+21 rue de Sambre et Meuse
+75010 PARIS
+info@cdma.greta.fr</pre>
+        <!-- 9. CONTACT -->
+                        <?php if ($ct) { ?>
+                            <h2>Contact(s)</h2>
+                            <pre><?php echo $ct; ?></pre>
+                         <?php } ?>   
+                    <?php } //endforeach
+                        } //endif
+                    ?>
+<!-- IF SINGLE SESSION -->
+    <!-- 1. DATES -->  
+                    <?php if ($sd or $dc) { ?>
                     <h2>Dates</h2>
-                    <pre><?php // If multiple sessions
-                    if ($ms) {
-                      foreach ($ss as $s) {
-                        $sd = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                        $ed = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                        echo '<div>' ;
-                        echo 'Du '.$sd.' au '.$ed ; // dates de session
-                        echo '<br/>';
-                        echo $dc ; // commentaire de date
-                        echo '</div>' ;
-                      }
-                    }
-                // If single session
-                    else { 
-                    if ($sd) {
+                    <pre>
+                    <?php if ($sd) {
                     echo 'Du '.$sd.' au '.$ed ; // dates de session
-                    }
                     echo '<br/>';
+                    }
+                    if ($dc) {
                     echo $dc ; // commentaire de date
                     }
                     ?>
                     </pre>
-
-    <!-- 2. PUBLIC -->
-                    <h2>Public</h2>
-                    <pre><?php echo $ps; ?>
-                    <?php echo $pc; ?></pre>
+                    <?php } ?>
+    <!-- 2. PUBLIC --> 
+                    <?php if ($ps or $pc) { ?>
+                        <h2>Public</h2>
+                        <pre><?php echo $ps; ?>
+                        <?php echo $pc; ?></pre>
+                    <?php } ?>
     <!-- 3. DUREE -->
-                    <h2>Durée</h2>
-                    <pre><?php echo $ds; ?></pre>
+                    <?php if ($ds) { ?>
+                        <h2>Durée</h2>
+                        <pre><?php echo $ds; ?></pre>
+                    <?php } ?>
     <!-- 4. TARIF -->
-                    <h2>Tarif(s)</h2>
-                    <pre><?php echo $pcs; ?></pre>
+                    <?php if ($pcs) { ?>
+                        <h2>Tarif(s)</h2>
+                        <pre><?php echo $pcs; ?></pre>
+                    <?php } ?>
     <!-- 5. LIEU -->
-                    <h2>Lieu(x)</h2>
-                    <pre><?php echo $ls; ?></pre>
+                    <?php if ($ls) { ?>
+                        <h2>Lieu(x)</h2>
+                        <pre><?php echo $ls; ?></pre>
+                    <?php } ?>
     <!-- 6. MODALITE -->
-                    <h2>Modalité de formation</h2>
-                    <pre><?php echo $cs; ?></pre>
+                    <?php if ($cs) { ?>
+                        <h2>Modalité de formation</h2>
+                        <pre><?php echo $cs; ?></pre>
+                    <?php } ?>
     <!-- 7. EFFECTIF -->
-                    <h2>Effectif</h2>
-                    <pre><?php echo $cts; ?></pre>
+                    <?php if ($cts) { ?>
+                        <h2>Effectif</h2>
+                        <pre><?php echo $cts; ?></pre>
+                    <?php } ?>
     <!-- 8. COORDONNEES GRETA -->
                     <h2>Coordonnées</h2>
                     <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
@@ -184,9 +250,12 @@ Agence administrative et commerciale
 75010 PARIS
 info@cdma.greta.fr</pre>
     <!-- 9. CONTACT -->
-                    <h2>Contact(s)</h2>
-                    <pre><?php echo $ct; ?></pre>
+                    <?php if ($ct) { ?>
+                        <h2>Contact(s)</h2>
+                        <pre><?php echo $ct; ?></pre>
+                    <?php } ?>
                 </aside>
+
                 <section class="content col-lg-8 col-md-8 ">
                     <div class="row">
                         <div class="col-md-12">
@@ -194,29 +263,49 @@ info@cdma.greta.fr</pre>
                         </div>
                     </div>
     <!-- 1. OBJECTIFS -->
-                    <h2>Objectifs</h2>
-                    <pre><?php echo $obj; ?></pre>
-    <!-- 2. PREREQUIS -->    
-                    <h2>Prérequis</h2>
-                    <pre><?php echo $prm; ?></pre>
+                    <?php if ($obj) { ?>
+                        <h2>Objectifs</h2>
+                        <pre><?php echo $obj; ?></pre>
+                    <?php } ?>
+    <!-- 2. PREREQUIS -->  
+                    <?php if ($prm) { ?>  
+                        <h2>Prérequis</h2>
+                        <pre><?php echo $prm; ?></pre>
+                    <?php } ?>
     <!-- 3. CONTENU -->
-                    <h2>Contenu</h2>
-                    <pre><?php echo $ctn; ?></pre>
+                    <?php if ($ctn) { ?> 
+                        <h2>Contenu</h2>
+                        <pre><?php echo $ctn; ?></pre>
+                    <?php } ?>
     <!-- 4. METHODES PEDAGOGIQUES -->
-                    <h2>Méthodes pédagogiques</h2>
-                    <pre><?php echo $metp; ?></pre>
+                    <?php if ($metp) { ?> 
+                        <h2>Méthodes pédagogiques</h2>
+                        <pre><?php echo $metp; ?></pre>
+                    <?php } ?>
     <!-- 5. MOYENS PEDAGOGIQUES -->
-                    <h2>Moyens pédagogiques</h2>
-                    <pre><?php echo $mop; ?></pre>
+                    <?php if ($mop) { ?> 
+                        <h2>Moyens pédagogiques</h2>
+                        <pre><?php echo $mop; ?></pre>
+                    <?php } ?>
     <!-- 6. RECONNAISSANCE DES ACQUIS -->
-                    <h2>Reconnaissance des acquis</h2>
-                    <pre><?php echo $rcac; ?></pre>
-    <!-- 7. INTERVENANT -->               
-                    <h2>Intervenant(e)(s)</h2>
-                    <pre><?php echo $int; ?></pre>
+                    <?php if ($rcac) { ?> 
+                        <h2>Reconnaissance des acquis</h2>
+                        <pre><?php echo $rcac; ?></pre>
+                    <?php } ?>
+    <!-- 7. INTERVENANT --> 
+                    <?php if ($int) { ?>               
+                        <h2>Intervenant(e)(s)</h2>
+                        <pre><?php echo $int; ?></pre>
+                    <?php } ?>
     <!-- 8. CODIFICATION -->
+                    <?php if ($forc or $corm) { ?> 
                     <h2>Codification de l'offre</h2>
-                    <pre><?php echo $forc; ?><?php echo $corm ?></pre>
+                    <pre><?php  if ($forc) { 
+                                    echo $forc ;
+                                    if ($corm) { echo '<br/>'.$corm ; }
+                                }
+                                else { echo $corm ; } ?></pre>
+                    <?php } ?>
                     <hr/>
                     
                     <div class="row">
@@ -249,7 +338,7 @@ info@cdma.greta.fr</pre>
                                     $url = $image['url'];
                                     $title = $image['title'];
                                     $alt = $image['alt'];
-                                    $size = 'large';
+                                    $size = 'tem';
                                     $thumb = $image['sizes'][ $size ]; 
                                 ?>
                                 <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
@@ -257,8 +346,9 @@ info@cdma.greta.fr</pre>
                             </figure>
                         </div>
                         <div class="col-md-9">
-                            <h2><?php the_title() ?></h2>
-                            <p><?php the_content() ?></p>
+                            <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?php the_title() ?></h2>
+                            <p><?php the_excerpt() ?></p>
+                            <p style="font-weight: bold; color: #0956a1;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
                         </div>
                     </article>
                 </div>
@@ -275,29 +365,12 @@ info@cdma.greta.fr</pre>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe>
                 </div>
                 <hr/>
                 <div class="container">
-                    <h2>Témoignage d’une stagiaire du Greta – formation CAP Tapisserie en 2013</h2>
-                    <br/>
-                    <pre>C’est avec plaisir que je vous fais part de ma réussite au CAP crû 2013 ! 1er sésame décroché pour démarrer une jolie carrière de Tapissier.
-
-     Je voudrais remercier le GRETA pour sa formation intense et intensive, remercier sa coordinatrice Helen Fréard pour sa connaissance pointue du métier, son exigence quant aux respect des valeurs du métier et des méthodes traditionnelles et son énergie manifeste pour maintenir une formation de qualité. Remercier tous les professeurs (je n’ai pas l’adresse mail de tout le monde) pour leurs qualités professionnelles, leur patience et leur capacité à s’adapter à chacun des stagiaires simultanément !
-
-     Merci à mon maître de stage Mr Bruno LASCAR, véritable maître d’apprentissage qui a la passion de son métier et de la transmission du savoir et du savoir faire, dans le respect des traditions, du produit et du client, tout en étant bien ancré dans le 21e siècle avec ses nouvelles techniques et ses contraintes économiques.
-
-     Remercier ma consultante Mme Amira Ouerhani du cabinet de reclassement BPI, qui croit fermement en mon projet de reconversion depuis le début et m’accompagne pleinement dans mon reclassement.
-
-     Et puis, merci à Micheline et Bernard de la chambre d’hôte de Joué les Tours près du centre d’examens, qui m’ont soutenu matin et soir durant ces 4 jours d’épreuves !
-
-     Me voici donc partie sur les routes de la Tapisserie et de l’Ameublement. Je ne manquerai pas de vous faire part de mes prochaines étapes et réalisations, et espère pouvoir continuer d’échanger avec vous sur cet univers fantastique !
-
-     Je vous souhaite de passer une très belle période estivale.
-
-     A bientôt.
-
-    Françoise Hervy</pre>
+                    <h2><?php the_title(); ?></h2></br>
+                    <pre><?php the_content(); ?></pre>
                 </div>
             </div>
             <div class="modal-footer">
@@ -308,7 +381,4 @@ info@cdma.greta.fr</pre>
     </div>
 </div>
                     
-
-
 <span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>
-

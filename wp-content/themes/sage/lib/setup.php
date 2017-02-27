@@ -244,6 +244,8 @@ add_filter('wp_nav_menu_objects', function($sorted_menu_objects) {
 
 add_image_size( 'news', 500, 282, true ); // 500 pixels wide by 282 pixels tall, hard crop mode
 add_image_size( 'single_f', 600, 407, true ); // 600 pixels wide by 407 pixels tall, hard crop mode
+add_image_size( 'tem', 160, 160, true ); // 160 pixels wide by 160 pixels tall, hard crop mode
+
 
 add_filter('next_posts_link_attributes', function($output) {
     return 'class="btn btn-next"';

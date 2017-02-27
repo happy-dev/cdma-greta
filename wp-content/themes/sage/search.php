@@ -7,36 +7,39 @@
             </aside>
             <section class="articles col-md-9">
                 <!-- FORMATIONS -->
-                <header class="row">
-                    <div class="col-md-12">
-                        <h2>Formations pour "<?php the_search_query(); ?>"</h2>
-                    </div>
-                </header>   
-                <div class="row">
                     <?php
                     $any_formation = false;
                     $fdia   = [];// Formations DIOGEN IDs Array
                     $fia    = [];// Formations IDs Array
+                    $i=0;
                     while (have_posts()) : the_post();
                         if ( 'formations' == get_post_type() ) { 
+                            $i++;
                             $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
                             $fia[]                  = get_the_ID();
                         }
                     endwhile;
+                    ?>
+                    <header class="row">
+                        <div class="col-md-12">
+                            <h2><?php //echo $i.' ' ; ?>Formations pour "<?php the_search_query(); ?>"</h2>
+                        </div>
+                    </header>   
+                <div class="row">
+                    <?php
                     $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
                     while (have_posts()) : the_post(); 
                        if ( 'formations' == get_post_type() ) { 
                             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-                            //$obj  = $df->OFObjectif;// Objectif
-                            // Iterating through each session
+                            // Iterating through each session 
                             foreach ($ss as $s) {
                                 $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
                                 $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                                 $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
                                 $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
                             }
-                    ?>
+                     ?>
                             <article class="entry col-md-12">
                                 <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                                     <div class="col-md-4">
@@ -55,17 +58,12 @@
                                         <span>
                                         <?php if ($sd) {
                                             echo 'Du '.$sd.' au '.$ed ; // dates de session
+                                            echo '<br/>';
                                         }
-                                        else {
-                                            echo $dc ; // commentaire de date
-                                        }
-                                        echo '<br/>';
-                                        if ($ps) {
-                                            echo $ps ;
-                                        }
+                                        echo $dc ; // commentaire de date
                                         ?>
                                         <br/>
-                                    </span>
+                                        </span>
                                         <?php the_excerpt(); ?>
                                     </div>
                                 </a>
@@ -73,8 +71,17 @@
                             <?php $any_formation = true;
                        }
                     endwhile; ?>
-                    <div class="nav-previous alignleft"><?php next_posts_link( 'Suivant' ); ?></div>
-                    <div class="nav-next alignright"><?php previous_posts_link( 'Précédent' ); ?></div>
+                     <div class="buttons">
+                     <?php
+                    $big = 999999999; // need an unlikely integer
+
+                    echo paginate_links( array(
+                        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                        'format' => '?paged=%#%',
+                        'current' => max( 1, get_query_var('paged') ),
+                    ) );
+                    ?>
+                    </div>
                     <?php if (!$any_formation) {
                         echo '<p>Aucune formation ne correspond à la recherche</p>';
                     }
