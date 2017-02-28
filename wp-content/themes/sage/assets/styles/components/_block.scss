@@ -58,6 +58,11 @@ section.articles {
                     color: $cdma-blue;
                 }
             }
+            
+            &.entry-category {
+                color: $cdma-blue;
+                display: block;
+            }
         }
 
         img {

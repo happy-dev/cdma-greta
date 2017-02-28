@@ -14,6 +14,35 @@
   @extend .btn-secondary;
 }
 
+.wpcf7-form {
+    h2 {
+        margin-top: 3vw;
+        margin-bottom: 2vw;
+    }
+    
+    h3 {
+        margin-bottom: 0.5vw;
+    }
+    
+    .checkbox {
+        margin-bottom: 1vw;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .wpcf7-form {
+        .search-form {
+            select {
+                -webkit-box-flex: 0;
+                -webkit-flex: 0 0 66.6666666667%;
+                -ms-flex: 0 0 66.6666666667%;
+                flex: 0 0 66.6666666667%;
+                max-width: 66.6666666667%;
+            }
+        }
+    }
+}
+
 .input-lg {
     height: 46px;
     padding: 10px 16px;
