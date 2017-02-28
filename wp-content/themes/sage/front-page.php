@@ -191,8 +191,9 @@ while (have_posts()) : the_post();
                      <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                         <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <h3><?php the_title(); ?></h3>  
-                        <span><?php echo get_the_date(); ?></span><br/>
-        <!-- PAULINE : CSS A MODIFIER -->      
+                        <span><?php echo get_the_date(); ?></span>
+                     </a>
+
                         <?php
                         $categories = get_the_category();
                         $separator = ' ';
@@ -200,11 +201,12 @@ while (have_posts()) : the_post();
                         if($categories){
                             foreach($categories as $category) {
                         if($category->name !== 'A la une') {
-                                $output .= '<a style="color: #0956a1;" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
+                                $output .= '<a class="entry-category" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "Voir toutes les actualités %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; }
                             }
                         echo trim($output, $separator);
                         }
                         ?>
+                    <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                         <?php the_excerpt(); ?>
                     </a>
                 </article>
