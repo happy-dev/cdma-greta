@@ -43,7 +43,7 @@ if (!is_front_page()) { ?>
             'menu_class'        => 'menu nav navbar-nav col-lg-8 hidden-md-down',
             'walker'            => new Custom_Walker,
             'container'         => '']); ?>
-        <?php //get_search_form(); ?>
+        <?php get_search_form(); ?>
         </div>
     </nav>
 </div>
