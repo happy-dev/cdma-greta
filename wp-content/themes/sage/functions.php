@@ -82,7 +82,7 @@ add_action('pre_get_posts', 'search_by_tax');
 function search_by_tax() {     
   global $wp_query;
 
-  if (is_search() && (isset($_GET['fe']) OR isset($_GET['fd']))) {
+  /* if (is_search() && (isset($_GET['fe']) OR isset($_GET['fd']))) {
     $ta = [];// Terms Array
 
     if (isset($_GET['fe'])) {
@@ -100,7 +100,25 @@ function search_by_tax() {
     ]];// Tax Query
 
     $wp_query->query_vars['tax_query'] = $tq;     
-  } 
+  } */
+    
+    if (is_search() && isset($_GET['taxonomy'])) {
+        $ta = $_GET['taxonomy'];
+        
+        if (!in_array('toute-formation', $ta)) {
+            if (in_array('formation-diplomantes-cpf', $ta)) {
+                $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+            }
+
+            $tq = [[
+              'taxonomy' => 'type_form',
+              'field'    => 'slug',
+              'terms'    => $ta,
+            ]];// Tax Query
+
+            $wp_query->query_vars['tax_query'] = $tq;   
+        }
+    } 
 }
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );

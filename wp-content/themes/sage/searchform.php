@@ -45,13 +45,13 @@
                        <?php if(is_search()) { ?>value="<?php the_search_query(); ?>" <?php } else { ?> onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"<?php } ?> />
                 <button class="btn btn-outline-success select-button" type="submit">OK</button>
             </div>
-        </div-->
+        </div -->
         <div class="form-container">
             <div class="select-container">
                 <div id="search-bar-select-facade" class="select-facade">
                     Toutes nos formations
                 </div>
-                <select name="fd" id="search-bar-select">
+                <select name="taxonomy[]" id="search-bar-select">
                     <option value="toute-formation" selected="selected">Toutes nos formations</option>
                     <option value="formation-diplomante">Formations diplomantes</option>
                     <option value="formation-eligible-au-cpf">Formations éligibles au CPF</option>
@@ -81,11 +81,11 @@
       <div class="col-lg-3 col-sm-0"></div>
       <div class="col-lg-6 col-sm-12">
           <label class="checkbox-inline">
-          <input type="checkbox" id="inlineCheckbox1" name="fd" value="formation-diplomante">
+          <input type="checkbox" id="inlineCheckbox1" name="taxonomy[]" value="formation-diplomante">
           Formations diplomantes
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" id="inlineCheckbox2" name="fe" value="formation-eligible-au-cpf">
+          <input type="checkbox" id="inlineCheckbox2" name="taxonomy[]" value="formation-eligible-au-cpf">
           Formations éligibles au CPF
         </label>
       </div>
