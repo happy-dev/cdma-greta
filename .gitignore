@@ -2,9 +2,12 @@
 wp-content/themes/*
 !wp-content/themes/sage
 wp-content/uploads
+.DS_Store
+.well-known
 
 
 # Files
 wp-content/themes/sage/diogenConfig.php
 wp-config.php
 .htaccess
+*.swp

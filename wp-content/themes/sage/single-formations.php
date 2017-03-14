@@ -67,7 +67,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <!-- TEXTE -->
-                    <h1><?php the_title(); ?></h1>
+                    <h1 id="formation-title"><?php the_title(); ?></h1>
                    <?php   // Get terms for post
                      $terms = get_the_terms( $post->ID , 'type_form' );
                      // Loop over each item since it's an array
@@ -87,7 +87,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                             <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
                         </div>
                         <div class="col-lg-7">
-                            <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
+                            <a href="/nous-contacter" class="contact-btn"><button class="btn">Demander plus d'informations</button></a>
                         </div>
                     </div>
                     <hr/>
@@ -313,7 +313,7 @@ info@cdma.greta.fr</pre>
                             <a href="/candidater" class="candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
                         </div>
                         <div class="col-lg-5">
-                            <a href="/nous-contacter" class="contact"><button class="btn">Demander plus d'informations</button></a>
+                            <a href="/nous-contacter" class="contact-btn"><button class="btn">Demander plus d'informations</button></a>
                         </div>
                     </div>
                 </section>

@@ -48,20 +48,26 @@
       finalize : function() {
         var BODY = $("body");
         if (BODY.hasClass("single-formations")) {
+	  // Coordo email to form
           var ce    = $("#coordo-email");// Coordo Email
-          var bc    = $(".contact");// Btn Candidate
-          var href  = bc.attr("href");
+          var cb    = $(".contact-btn");// Contact Buttons
+          var href  = cb.attr("href");
 
-          href += href +"?email="+ ce.html();
+          href += "?email="+ encodeURIComponent( ce.html() );
 
-          bc.attr("href", href);
+
+	  // Formation title to form
+          var ft    = $("#formation-title");// Formation Title
+
+          href += "&formation="+ encodeURIComponent( ft.html() );
+          cb.attr("href", href);
         }
       },
     },
     'nous_contacter': {
       init : function() {},
       finalize : function() {
-        // Fill coordo email input
+        // Fill email input
         function getParameterByName(name, url) {
           if (!url) {
             url = window.location.href;
@@ -74,11 +80,24 @@
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
+	// Coordo email
         var email = getParameterByName("email");
-        $("#coordo-email-input").val(email);
+        $("#email-input").val( decodeURIComponent(email) );
 
 
-        // Fill coordo email input & domain input
+	// Formation title
+        var ft = getParameterByName("formation");
+
+	if (ft) {
+	  $("#formation-title-input").val( decodeURIComponent(ft) );
+	  $("#domains-select").prop("disabled", true).parent().hide();
+	}
+	else {
+	  $("#formation-title-input").parent().hide();
+	}
+
+
+        // Fill email input & domain input
         var ds = $("#domains-select");
         ds.change(function(e) {
           var val     = ds.val();
@@ -88,7 +107,7 @@
           
 
           $('#domain-input').val(domain);
-          $('#coordo-email-input').val(email);
+          $('#email-input').val(email);
         });
       },
     },
