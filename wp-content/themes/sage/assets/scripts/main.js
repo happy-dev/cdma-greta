@@ -111,6 +111,49 @@
         });
       },
     },
+
+    'candidater': {
+      init : function() {},
+      finalize : function() {
+        var si = $("#salarie-input");// Salarie Input
+        var nsi 	= $("#non-salarie-input");// Non-Salarie Input
+        var se 	= $("#sans-emploi-input");// Sans Emploi Input
+        var dv 	= "";// Default Value
+
+        si.change(function(e) {
+          if (si.val() != dv) {
+            nsi.prop("disabled", true);
+            se.prop("disabled", true);
+          }
+	  else {
+            nsi.prop("disabled", false);
+            se.prop("disabled", false);
+	  }
+        });
+
+        nsi.change(function(e) {
+          if (nsi.val() != dv) {
+            si.prop("disabled", true);
+            se.prop("disabled", true);
+          }
+	  else {
+            si.prop("disabled", false);
+            se.prop("disabled", false);
+	  }
+        });
+
+        se.change(function(e) {
+          if (se.val() != dv) {
+            si.prop("disabled", true);
+            nsi.prop("disabled", true);
+          }
+	  else {
+            si.prop("disabled", false);
+            nsi.prop("disabled", false);
+	  }
+        });
+      },
+    },
     // About us page, note the change from about-us to about_us.
     'about_us': {
       init: function() {
