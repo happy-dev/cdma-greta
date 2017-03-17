@@ -16,23 +16,118 @@
 
 .wpcf7-form {
     h2 {
-        margin-top: 3vw;
+        margin-top: 5vw;
         margin-bottom: 2vw;
+        
+        .h2-top {
+            margin-top: 0;
+        }
     }
     
     h3 {
-        margin-bottom: 0.5vw;
+        margin-bottom: 1vw;
+        margin-top: 3vw;
     }
     
-    .checkbox {
-        margin-bottom: 1vw;
+    label {
+        font-family: $basic-thick-fonts;
+    }
+    
+    .form-group {
+        margin-top: 1rem;
+        
+        .checkbox {
+            margin-bottom: 1vw;
+
+            label {
+                position: relative;
+
+                /* Base for label styling */
+                [type="checkbox"]:not(:checked),
+                [type="checkbox"]:checked {
+                    margin-right: 46px;
+                    -webkit-appearance: none;
+                }
+
+                /* checkbox aspect */
+                [type="checkbox"]:not(:checked):before,
+                [type="checkbox"]:checked:before {
+                  content: '';
+                  position: absolute;
+                  left: 24px;
+                    top: -.2em;
+                  width: 24px;
+                    height: 24px;
+                  border: 2px solid #ccc;
+                  background: #fff;
+                  border-radius: 4px;
+                  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+                }
+                /* checked mark aspect */
+                [type="checkbox"]:not(:checked):after,
+                [type="checkbox"]:checked:after {
+                  content: '✔';
+                  position: absolute;
+                  top: 0px;
+                  left: 30px;
+                  font-size: 1.3em;
+                  line-height: 0.8;
+                  color: #09ad7e;
+                  transition: all .2s;
+                }
+                /* checked mark aspect changes */
+                [type="checkbox"]:not(:checked):after {
+                  opacity: 0;
+                  transform: scale(0);
+                }
+                [type="checkbox"]:checked:after {
+                  opacity: 1;
+                  transform: scale(1);
+                }
+
+                /* accessibility */
+                [type="checkbox"]:checked:focus:before,
+                [type="checkbox"]:not(:checked):focus:before {
+                  //border: 2px solid blue;
+                }
+                
+                /* hover style just for information */
+                &:hover {
+                    [type="checkbox"]:before {
+                      border: 2px solid #4778d9!important;
+                    }
+                }
+            }
+            &.disabled {
+                pointer-events: none;
+                    
+                /* disabled checkbox */
+                [type="checkbox"]:not(:checked):before,
+                [type="checkbox"]:checked:before {
+                  box-shadow: none;
+                  border-color: #bbb;
+                  background-color: #ddd;
+                }
+                [type="checkbox"]:checked:after {
+                  color: #999;
+                }
+                [type="checkbox"] {
+                  color: #aaa;
+                }
+            }
+        }
+        
+        .wpcf7-submit {
+            padding-left: 4vw;
+            padding-right: 4vw;
+        }
     }
 }
 
 @include media-breakpoint-up(md) {
     .wpcf7-form {
-        .search-form {
-            select {
+        .form-group /* .search-form */ {
+            .wpcf7-select {
                 -webkit-box-flex: 0;
                 -webkit-flex: 0 0 66.6666666667%;
                 -ms-flex: 0 0 66.6666666667%;
@@ -157,7 +252,7 @@
 .wpcf7-form {
     
     h2 {
-        margin-bottom: 3vw;
+        //margin-bottom: 3vw;
         
         &.not-first {
             margin-top: 6vw;
