@@ -91,9 +91,13 @@ function search_by_tax() {
 
   // Some search filter selected
   if (is_search()) {
+      $wp_query->query_vars["taxonomy"] 	= null;
+      $wp_query->query_vars['post_type']      	= 'formations';
+      $wp_query->query_vars['posts_per_page'] 	= 9;
+
       if (isset($_GET['taxonomy'])) {
         switch ($_GET['taxonomy']) {
-          case 'formation-eligible-cpf':
+          case 'formation-diplomantes-cpf':
             $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
             break;
 
@@ -114,9 +118,6 @@ function search_by_tax() {
           $wp_query->query_vars['tax_query'] = $tq;   
         }
       }
-
-      $wp_query->query_vars['post_type']      = 'formations';
-      $wp_query->query_vars['posts_per_page'] = 9;
   }
 }
 
