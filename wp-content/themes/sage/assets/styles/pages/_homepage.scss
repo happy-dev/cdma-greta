@@ -76,11 +76,35 @@
             position: relative;
             margin-bottom: 5vw;
             z-index: 3;
+
+	    .search-input-container {
+	      position: relative;
             
-            input[type=text] {
-                width: 100%;
-                border: 0;
-            }
+              input[type=text] {
+                  width: 100%;
+                  border: 0;
+		  padding-right:	45px;
+              }
+
+	      input[type="submit"].search-submit {
+	        position:		absolute;
+  		display:		block;
+		height:			30px;
+		width:			30px;
+		top:			0px;
+		bottom:			0px;
+		margin:			auto;
+		right:			25px;
+		background-image:	url(../../assets/images/icon-search.png);
+    		background-color: 	transparent;
+    		background-repeat: 	no-repeat;
+    		background-position: 	center center;
+    		box-shadow: 		none;
+		border:			none;
+		text-indent: 		-9999px;
+		white-space: 		nowrap; 
+	      }
+	    }
             
             label {
                 color: white;
