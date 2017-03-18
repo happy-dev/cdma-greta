@@ -61,12 +61,7 @@
                     <?php endwhile; ?>
                 </div>
                 <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-10">
-                        <input type="text" class="form-control" placeholder="Recevez la Newsletter"/>
-                    </div>
-                    <div class="col-button col-md-1 col-sm-1 col-xs-2">
-                        <button class="btn btn-outline-success">OK</button>
-                    </div>
+		  <?php echo do_shortcode('[contact-form-7 id="1603" title="Newsletter"]'); ?>
                 </div>
             </div>
         </div>

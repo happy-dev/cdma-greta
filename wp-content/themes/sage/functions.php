@@ -90,52 +90,34 @@ function search_by_tax() {
   global $wp_query;
 
   // Some search filter selected
-  /* if (is_search()) {
-    if (isset($_GET['fe']) OR isset($_GET['fd'])) {
-      $ta = [];// Terms Array
+  if (is_search()) {
+      if (isset($_GET['taxonomy'])) {
+        switch ($_GET['taxonomy']) {
+          case 'formation-eligible-cpf':
+            $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+            break;
 
-      if (isset($_GET['fe'])) {
-        $ta[] = 'formation-eligible-au-cpf';
+          case 'toute-formation':
+            break;
+
+          default:
+            $ta = $_GET['taxonomy'];
+        }
+
+        if (isset($ta)) {
+          $tq = [[
+            'taxonomy' => 'type_form',
+            'field'    => 'slug',
+            'terms'    => $ta,
+          ]];// Tax Query
+
+          $wp_query->query_vars['tax_query'] = $tq;   
+        }
       }
 
-      if (isset($_GET['fd'])) {
-        $ta[] = 'formation-diplomante';
-      } 
-
-      $tq = [[
-        'taxonomy'  => 'type_form',
-        'field'     => 'slug',
-        'terms'     => $ta,
-      ]];// Tax Query
-      
-      $wp_query->query_vars['tax_query']      = $tq;
-    }
-    $wp_query->query_vars['post_type']      = 'formations';
-    $wp_query->query_vars['posts_per_page'] = 9;
-  } */
-
-    
-    if (is_search()) {
-        if (isset($_GET['taxonomy'])) {
-            $ta = $_GET['taxonomy'];
-
-            if (!in_array('toute-formation', $ta)) {
-                if (in_array('formation-diplomantes-cpf', $ta)) {
-                    $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-                }
-
-                $tq = [[
-                  'taxonomy' => 'type_form',
-                  'field'    => 'slug',
-                  'terms'    => $ta,
-                ]];// Tax Query
-
-                $wp_query->query_vars['tax_query'] = $tq;   
-            }
-        }
-        $wp_query->query_vars['post_type']      = 'formations';
-        $wp_query->query_vars['posts_per_page'] = 9;
-    }
+      $wp_query->query_vars['post_type']      = 'formations';
+      $wp_query->query_vars['posts_per_page'] = 9;
+  }
 }
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );

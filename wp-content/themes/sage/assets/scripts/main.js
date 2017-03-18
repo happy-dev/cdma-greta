@@ -17,18 +17,35 @@
   var Sage = {
     // All pages
     'common': {
+      // JavaScript to be fired on all pages
       init: function() {
-        // JavaScript to be fired on all pages
-          $('#search-bar-select').change(
-            function () {
-                $this = $(this);
-                var str = '';
-                $( "#search-bar-select option:selected" ).each(function() {
-                  str += $( this ).text() + " ";
-                });
-              console.log(str);
-                $('#search-bar-select-facade').html(str);
-            }
+	// Grab a giver GET parameter
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+	var facade 	= $('#search-bar-select-facade');
+	var taxonomy 	= getParameterByName('taxonomy');
+
+	facade.html( $("#search-bar-select option[value='"+ taxonomy +"']").prop("selected", true).html() );
+
+        $('#search-bar-select').change(
+          function () {
+            $this = $(this);
+            var str = '';
+            $( "#search-bar-select option:selected" ).each(function() {
+              str = $( this ).text();
+            });
+            facade.html(str);
+          }
         );
       },
       finalize: function() {
@@ -37,7 +54,26 @@
     // Home page
     'home': {
       init: function() {
-        // JavaScript to be fired on the home page
+	var taxonomy = $("#taxonomy-input");
+	var fdi      = $("#fd-checkbox");// Formation Diplomante Input
+	var feaci    = $("#feac-checkbox");// Formation Eligible Au CPF Input
+
+	$(document).change("#fd-checkbox, #feac-checkbox", function(e) {
+	  if (fdi.prop("checked") && feaci.prop("checked")) {
+            taxonomy.val("formation-diplomantes-cpf");
+	  }
+	  else {
+	    if (fdi.prop("checked")) {
+              taxonomy.val("formation-diplomante");
+	    }
+	    else if (feaci.prop("checked")) {
+              taxonomy.val("formation-eligible-au-cpf");
+	    }
+	    else {
+              taxonomy.val("toute-formation");
+     	    }
+	  }
+	});
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
@@ -67,19 +103,6 @@
     'nous_contacter': {
       init : function() {},
       finalize : function() {
-        // Fill email input
-        function getParameterByName(name, url) {
-          if (!url) {
-            url = window.location.href;
-          }
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-              results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
 	// Coordo email
         var email = getParameterByName("email");
         $("#email-input").val( decodeURIComponent(email) );
