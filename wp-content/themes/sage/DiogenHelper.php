@@ -564,4 +564,109 @@ Class DiogenHelper {
       }
     }
   }
+
+  // Get the HTML of the left column of the formation's session
+  public static function getLeftColumn($s, $fi) {// Session, Formation Id
+    $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+    $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+    $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+    $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
+    $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
+    $ds   = DiogenHelper::getDuration($s);// Durations
+    $cts  = DiogenHelper::getCounts($s);// Counts
+    $pcs  = DiogenHelper::getPrices($s);// Prices 
+    $cs   = DiogenHelper::getConditions($s);// Conditions 
+    $ls   = DiogenHelper::getLocations($s);// Locations 
+    $ct   = DiogenHelper::getContact($fi, $s);// Contact
+    $html = '';
+    
+    $html .= '<div id="session-'. $s->SSNo .'">';
+    // 1. DATES
+    if ($sd || $dc) {
+      $html .= '<h2>Dates</h2>';
+      $html .= '<pre>';
+
+      if ($sd) { 
+        $html .= 'Du '. $sd .' au '. $ed;// dates de session
+        $html .= '<br/>';
+      }
+      if ($dc) {
+        $html .= $dc ;// commentaire de date
+      }
+
+      $html .= '</pre>';
+    }
+
+    // 2. PUBLIC
+    if ($ps || $pc) {
+      $html .= '<h2>Public</h2>';
+      $html .= '<pre>';
+
+      if ($ps) {
+        $html .= $ps;
+      }
+      if ($pc) {
+        $html .= $pc;
+      }
+
+      $html .= '</pre>';
+    }
+
+    // 3. DUREE
+    if ($ds) {
+      $html .= '<h2>Durée</h2>';
+      $html .= '<pre>';
+      $html .=   $ds;
+      $html .= '</pre>';
+    }
+
+    // 4. TARIF
+    if ($pcs) {
+      $html .= '<h2>Tarif(s)</h2>';
+      $html .= '<pre>';
+      $html .=   $pcs;
+      $html .= '</pre>';
+    }
+
+    // 5. LIEU
+    if ($ls) {
+      $html .= '<h2>Lieu(x)</h2>';
+      $html .= '<pre>';
+      $html .= $ls;
+      $html .= '</pre>';
+    }
+
+    // 6. MODALITE
+    if ($cs) {
+      $html .= '<h2>Modalité de formation</h2>';
+      $html .= '<pre>';
+      $html .= $cs;
+      $html .= '</pre>';
+    }
+
+    // 7. EFFECTIF
+    if ($cts) {
+      $html .= '<h2>Effectif</h2>';
+      $html .= '<pre>';
+      $html .= $cts;
+      $html .= '</pre>';
+    }
+
+    // 8. COORDONNEES GRETA
+    $html .= '<h2>Coordonnées</h2>';
+    $html .= '<pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D\'ART';
+    $html .= ' administrative et commerciale';
+    $html .= ' rue de Sambre et Meuse';
+    $html .= ' PARIS';
+    $html .= '@cdma.greta.fr</pre>';
+
+    // 9. CONTACT -->
+    if ($ct) {
+      $html .= '<h2>Contact(s)</h2>';
+      $html .= '<pre>'. $ct .'</pre>';
+    }
+    $html .= '</div>';
+
+    return $html;
+  }
 }

@@ -2,27 +2,15 @@
 require_once('Diogen.php');
 require_once('DiogenHelper.php');
 
+$sa = [];// Sessions Array
 $fi = get_field('id_diogen');// Formation Id
-//$fi = 29877;// Single session
-//$fi = 30143;// Multiple sessions
-//$fi = 27494;// Date commented
 $fs = DiogenHelper::getFormation($fi);// Formations
 $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
 foreach ($ss as $s) {
-  $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-  $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-  $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-  $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
-  $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
-  $ds   = DiogenHelper::getDuration($s);// Durations
-  $cts  = DiogenHelper::getCounts($s);// Counts
-  $pcs  = DiogenHelper::getPrices($s);// Prices 
-  $cs   = DiogenHelper::getConditions($s);// Conditions 
-  $ls   = DiogenHelper::getLocations($s);// Locations 
-  $ct   = DiogenHelper::getContact($fi, $s);// Contact
+  $sa[] = DiogenHelper::getLeftColumn($s, $fi);
 }
 
 $ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
@@ -132,128 +120,11 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
-<?php // IF MULTIPLE SESSIONS
-                    if ($ms) { 
-                        foreach ($ss as $s) { 
-                    ?>
-        <!-- 1. DATES -->
-                        <?php if ($sd or $dc) { ?>
-                            <h2>Dates</h2>
-                            <pre>
-                            <?php if ($sd) { 
-                            echo 'Du '.$sd.' au '.$ed ; // dates de session
-                            echo '<br/>';
-                            }
-                            if ($dc) {
-                            echo $dc ; // commentaire de date
-                            }
-                            ?>
-                            </pre>
-                        <?php } ?>
-        <!-- 2. PUBLIC --> 
-                        <?php if ($ps or $pc) { ?>
-                            <h2>Public</h2>
-                            <pre><?php echo $ps; ?>
-                            <?php echo $pc; ?></pre>
-                        <?php } ?>
-        <!-- 3. DUREE -->
-                        <?php if ($ds) { ?>
-                            <h2>Durée</h2>
-                            <pre><?php echo $ds; ?></pre>
-                        <?php } ?>
-        <!-- 4. TARIF -->
-                        <?php if ($pcs) { ?>
-                            <h2>Tarif(s)</h2>
-                            <pre><?php echo $pcs; ?></pre>
-                        <?php } ?>
-        <!-- 5. LIEU -->
-                        <?php if ($ls) { ?>
-                            <h2>Lieu(x)</h2>
-                            <pre><?php echo $ls; ?></pre>
-                        <?php } ?>
-        <!-- 6. MODALITE -->
-                        <?php if ($cs) { ?>
-                            <h2>Modalité de formation</h2>
-                            <pre><?php echo $cs; ?></pre>
-                        <?php } ?>
-        <!-- 7. EFFECTIF -->
-                        <?php if ($cts) { ?>
-                            <h2>Effectif</h2>
-                            <pre><?php echo $cts; ?></pre>
-                        <?php } ?>
-        <!-- 8. COORDONNEES GRETA -->
-                        <h2>Coordonnées</h2>
-                        <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
-Agence administrative et commerciale
-21 rue de Sambre et Meuse
-75010 PARIS
-info@cdma.greta.fr</pre>
-        <!-- 9. CONTACT -->
-                        <?php if ($ct) { ?>
-                            <h2>Contact(s)</h2>
-                            <pre><?php echo $ct; ?></pre>
-                         <?php } ?>   
-                    <?php } //endforeach
-                        } //endif
-                    ?>
-<!-- IF SINGLE SESSION -->
-    <!-- 1. DATES -->  
-                    <?php if ($sd or $dc) { ?>
-                    <h2>Dates</h2>
-                    <pre>
-                    <?php if ($sd) {
-                    echo 'Du '.$sd.' au '.$ed ; // dates de session
-                    echo '<br/>';
-                    }
-                    if ($dc) {
-                    echo $dc ; // commentaire de date
-                    }
-                    ?>
-                    </pre>
-                    <?php } ?>
-    <!-- 2. PUBLIC --> 
-                    <?php if ($ps or $pc) { ?>
-                        <h2>Public</h2>
-                        <pre><?php echo $ps; ?>
-                        <?php echo $pc; ?></pre>
-                    <?php } ?>
-    <!-- 3. DUREE -->
-                    <?php if ($ds) { ?>
-                        <h2>Durée</h2>
-                        <pre><?php echo $ds; ?></pre>
-                    <?php } ?>
-    <!-- 4. TARIF -->
-                    <?php if ($pcs) { ?>
-                        <h2>Tarif(s)</h2>
-                        <pre><?php echo $pcs; ?></pre>
-                    <?php } ?>
-    <!-- 5. LIEU -->
-                    <?php if ($ls) { ?>
-                        <h2>Lieu(x)</h2>
-                        <pre><?php echo $ls; ?></pre>
-                    <?php } ?>
-    <!-- 6. MODALITE -->
-                    <?php if ($cs) { ?>
-                        <h2>Modalité de formation</h2>
-                        <pre><?php echo $cs; ?></pre>
-                    <?php } ?>
-    <!-- 7. EFFECTIF -->
-                    <?php if ($cts) { ?>
-                        <h2>Effectif</h2>
-                        <pre><?php echo $cts; ?></pre>
-                    <?php } ?>
-    <!-- 8. COORDONNEES GRETA -->
-                    <h2>Coordonnées</h2>
-                    <pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D'ART
-Agence administrative et commerciale
-21 rue de Sambre et Meuse
-75010 PARIS
-info@cdma.greta.fr</pre>
-    <!-- 9. CONTACT -->
-                    <?php if ($ct) { ?>
-                        <h2>Contact(s)</h2>
-                        <pre><?php echo $ct; ?></pre>
-                    <?php } ?>
+                <?php 
+		  foreach($sa as $s) {
+	            echo $s; 
+                  }
+                ?>
                 </aside>
 
                 <section class="content col-lg-8 col-md-8 ">
@@ -380,5 +251,3 @@ info@cdma.greta.fr</pre>
         </div>
     </div>
 </div>
-                    
-<span style="display:none;" id="coordo-email">alexandre@happy-dev.fr</span>

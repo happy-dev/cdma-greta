@@ -29,6 +29,11 @@
 			  <?php endif; ?>	
                         </div>
                     </header>   
+	            <?php
+                    if (!$any_formation) {
+                        echo '<p>Aucune formation ne correspond à la recherche</p>';
+                    }
+                    ?>
                 <div class="row">
                     <?php
                     $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
@@ -86,10 +91,6 @@
                     ) );
                     ?>
                     </div>
-                    <?php if (!$any_formation) {
-                        echo '<p>Aucune formation ne correspond à la recherche</p>';
-                    }
-                    ?>
                 </div>
 
                 <!-- ACTUALITES -->
@@ -120,11 +121,13 @@
                             $any_news = true;
                         //}
                     endwhile; 
-                    if (!$any_news) {
-                        echo '<p>Aucune actualité ne correspond à la recherche</p>';
-                    }
                     ?>
                 </div>
+                <?php
+                if (!$any_news) {
+                    echo '<p>Aucune actualité ne correspond à la recherche</p>';
+                }
+                ?>
             </section>
         </div>
     </div>
