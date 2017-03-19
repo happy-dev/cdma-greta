@@ -13,16 +13,20 @@
                     $fia    = [];// Formations IDs Array
                     $i=0;
                     while (have_posts()) : the_post();
-                        if ( 'formations' == get_post_type() ) { 
-                            $i++;
-                            $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
-                            $fia[]                  = get_the_ID();
-                        }
+                      if ( 'formations' == get_post_type() ) { 
+                        $i++;
+                        $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
+                        $fia[]                  = get_the_ID();
+                      }
                     endwhile;
                     ?>
                     <header class="row">
                         <div class="col-md-12">
-                            <h2><?php //echo $i.' ' ; ?>Formations pour "<?php the_search_query(); ?>"</h2>
+			  <?php if ($_GET['s'] != '') : ?>
+                            <h2>Formations pour "<?php the_search_query(); ?>"</h2>
+			  <?php else : ?>
+                            <h2>Formations</h2>
+			  <?php endif; ?>	
                         </div>
                     </header>   
                 <div class="row">
@@ -91,7 +95,11 @@
                 <!-- ACTUALITES -->
                 <header class="row">
                     <div class="col-md-12">
-                        <h2>Actualités pour "<?php the_search_query(); ?>"</h2>
+			<?php if ($_GET['s'] != '') : ?>
+                          <h2>Actualités pour "<?php the_search_query(); ?>"</h2>
+			<?php else : ?>
+                          <h2>Actualités</h2>
+			<?php endif; ?>	
                     </div>
                 </header>
                 <div class="row">
