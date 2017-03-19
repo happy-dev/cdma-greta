@@ -21,6 +21,25 @@ aside.column {
                     text-decoration: none;
                 }
             }
+
+	    &.current {
+   	      position:	relative;
+	      display:	inline;
+
+   	      &::before {
+                content : 	'>';
+		position:	absolute;
+		left:		-15px;
+		top:		3px;
+              }
+
+   	      &::after {
+                content : 	'<';
+		position:	absolute;
+		right:		-15px;
+		top:		3px;
+              }
+            }
         }
     }
 }

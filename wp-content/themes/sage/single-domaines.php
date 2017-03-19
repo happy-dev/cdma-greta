@@ -92,14 +92,22 @@
         <div class="row row-offcanvas row-offcanvas-left">
         <!-- LISTE DOMAINES -->
         	<?php
-        	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
+		$slug = $post->post_name;
+        	$args = array('post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC'); 
         	$the_query = new WP_Query( $args ); ?>
             <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
                 <h3>Domaines</h3>
                 <ul>
-                    <?php while ( $the_query->have_posts()) : $the_query->the_post(); ?>
-                        <li>
-                            <a href= <?php the_permalink(); ?> >
+                    <?php 
+                      while ( $the_query->have_posts()) : $the_query->the_post(); 
+                        $current = '';
+                        if ($post->post_name == $slug) {
+                          $current = 'current';
+                        }
+                    ?>
+
+                        <li class="<?php echo $current; ?>">
+                            <a href="<?php the_permalink(); ?>">
                                 <?php the_title(); ?>
                             </a>
                         </li>	
