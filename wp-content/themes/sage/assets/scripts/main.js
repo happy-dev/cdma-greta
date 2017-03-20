@@ -14,23 +14,24 @@
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
 
+  // Grab a giver GET parameter
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
   var Sage = {
     // All pages
     'common': {
       // JavaScript to be fired on all pages
       init: function() {
-	// Grab a giver GET parameter
-        function getParameterByName(name, url) {
-          if (!url) {
-            url = window.location.href;
-          }
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-              results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
 
 	var facade 	= $('#search-bar-select-facade');
 	var taxonomy 	= getParameterByName('taxonomy');
@@ -85,18 +86,24 @@
         var BODY = $("body");
         if (BODY.hasClass("single-formations")) {
 	  // Coordo email to form
-          var ce    = $("#coordo-email");// Coordo Email
-          var cb    = $(".contact-btn");// Contact Buttons
-          var href  = cb.attr("href");
+          var ce     	= $("#coordo-email");// Coordo Email
+          var cb     	= $(".contact-btn");// Contact Buttons
+          var cdtb   	= $(".candidate-btn");// Candidate Buttons
+          var href   	= cb.attr("href");
+          var cdt_href  = cdtb.attr("href");
 
           href += "?email="+ encodeURIComponent( ce.html() );
+          cdt_href += "?email="+ encodeURIComponent( ce.html() );
 
 
 	  // Formation title to form
           var ft    = $("#formation-title");// Formation Title
 
           href += "&formation="+ encodeURIComponent( ft.html() );
+          cdt_href += "&formation="+ encodeURIComponent( ft.html() );
+
           cb.attr("href", href);
+          cdtb.attr("href", cdt_href);
         }
       },
     },
@@ -105,14 +112,16 @@
       finalize : function() {
 	// Coordo email
         var email = getParameterByName("email");
-        $("#email-input").val( decodeURIComponent(email) );
+	if (email) {
+          $("#email-input").val( decodeURIComponent(email) );
+	}
 
 
 	// Formation title
         var ft = getParameterByName("formation");
 
 	if (ft) {
-	  $("#formation-title-input").val( decodeURIComponent(ft) );
+	  $("#formation-title-input").val( decodeURIComponent(ft) ).prop("disabled", true);
 	  $("#domains-select").prop("disabled", true).parent().hide();
 	}
 	else {

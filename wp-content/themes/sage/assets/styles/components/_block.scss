@@ -27,18 +27,24 @@ aside.column {
 	      display:	inline;
 
    	      &::before {
-                content : 	'>';
+                content : 	'→';
 		position:	absolute;
-		left:		-15px;
-		top:		3px;
+		left:		-25px;
+		top:		0px;
               }
 
    	      &::after {
-                content : 	'<';
-		position:	absolute;
-		right:		-15px;
-		top:		3px;
+                // content : 	'<';
+		// position:	absolute;
+		// right:		-15px;
+		// top:		3px;
               }
+
+	      a {
+                    color: $cdma-blue;
+                    font-weight: bold;
+                    text-decoration: none;
+	      }
             }
         }
     }
