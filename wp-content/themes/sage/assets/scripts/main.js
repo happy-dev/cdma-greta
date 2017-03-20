@@ -17,8 +17,9 @@
   var Sage = {
     // All pages
     'common': {
+
       // JavaScript to be fired on all pages
-      init: function() {
+      init: function() {          
 	// Grab a giver GET parameter
         function getParameterByName(name, url) {
           if (!url) {
@@ -225,7 +226,6 @@
         $('.row-offcanvas').toggleClass('active');
       });
     });
-
     
 })(jQuery); // Fully reference jQuery after this point.
 
