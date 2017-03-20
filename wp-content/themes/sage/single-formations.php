@@ -107,11 +107,36 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                    <div id="playerFormation"></div>
+
+                    <script>
+                      // 2. This code loads the IFrame Player API code asynchronously.
+                      var tag = document.createElement('script');
+
+                      tag.src = "https://www.youtube.com/iframe_api";
+                      var firstScriptTag = document.getElementsByTagName('script')[0];
+                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                      // 3. This function creates an <iframe> (and YouTube player)
+                      //    after the API code downloads.
+                      var playerFormation;
+                      function onYouTubeIframeAPIReady() {
+                        playerFormation = new YT.Player('playerFormation', {
+                          height: '390',
+                          width: '640',
+                          videoId: 'PtsTJ_xoZYo',
+                        });
+                      }
+
+                        function pauseVideo() {
+                        playerFormation.pauseVideo();
+                      }
+
+                    </script>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="pauseVideo();">Fermer</button>
             </div>
             </div>
         </div>
@@ -236,7 +261,36 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe>
+                    <!-- iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe -->
+                    
+                    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                    <div id="playerTemoignage"></div>
+
+                    <script>
+                      // 2. This code loads the IFrame Player API code asynchronously.
+                      var tag = document.createElement('script');
+
+                      tag.src = "https://www.youtube.com/iframe_api";
+                      var firstScriptTag = document.getElementsByTagName('script')[0];
+                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                      // 3. This function creates an <iframe> (and YouTube player)
+                      //    after the API code downloads.
+                      var playerTemoignage;
+                      function onYouTubeIframeAPIReady() {
+                        playerTemoignage = new YT.Player('player', {
+                          height: '390',
+                          width: '640',
+                          videoId: '<?php the_field('post_video'); ?>',
+                        });
+                      }
+
+                        function pauseVideo() {
+                        playerTemoignage.pauseVideo();
+                      }
+
+                    </script>
+        
                 </div>
                 <hr/>
                 <div class="container">
@@ -245,7 +299,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="pauseVideo();">Fermer</button>
             </div>
             </div>
         </div>

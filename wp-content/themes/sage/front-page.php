@@ -37,7 +37,7 @@ while (have_posts()) : the_post();
 
     <?php 
     $header_type = get_field('header_home');
-    if ( $header_type == 'slider' ) {
+    if ( false && $header_type == 'slider' ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": 5000, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>
@@ -155,7 +155,32 @@ while (have_posts()) : the_post();
         </div>
         <div class="modal-body">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="<?php the_field('prez_video'); ?>" allowfullscreen></iframe>
+                <div id="playerPresentation"></div>
+
+                <script>
+                  // 2. This code loads the IFrame Player API code asynchronously.
+                  var tag = document.createElement('script');
+
+                  tag.src = "https://www.youtube.com/iframe_api";
+                  var firstScriptTag = document.getElementsByTagName('script')[0];
+                  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                  // 3. This function creates an <iframe> (and YouTube player)
+                  //    after the API code downloads.
+                  var playerPresentation;
+                  function onYouTubeIframeAPIReady() {
+                    playerPresentation = new YT.Player('playerPresentation', {
+                      height: '390',
+                      width: '640',
+                      videoId: '<?php the_field('prez_video'); ?>',
+                    });
+                  }
+
+                    function pauseVideo() {
+                    playerPresentation.pauseVideo();
+                  }
+
+                </script>
             </div>
         </div>
         <div class="modal-footer">
@@ -217,7 +242,7 @@ while (have_posts()) : the_post();
 
 
 <!-- LIEUX DE FORMATION -->
-<section class="articles container">
+<section class="articles container schools">
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>

@@ -31,6 +31,12 @@
         img {
             max-width: 200px;
         }
+        
+        .row {
+            .col-lg-6:first-child {
+                max-width: 120px;
+            }
+        }
     }
     
     .socials {
