@@ -412,7 +412,7 @@ Class DiogenHelper {
     $idc='';
     if ($first) { $idc= 'id="coordo-email"'; }
     if (isset($c->PEMel1) && $c->PEMel1 != '' ) {
-      $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
+      $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a><br/>';
     }
 
     return $o;

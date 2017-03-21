@@ -106,7 +106,7 @@
 	// Coordo email to form
         var ce     	= $("#coordo-email");// Coordo Email
         var cb     	= $(".contact-btn");// Contact Buttons
-        var cdtb   	= $(".candidate-btn");// Candidate Buttons
+        var cdtb   	= $(".btn-candidate");// Candidate Buttons
         var href   	= cb.attr("href");
         var cdt_href  = cdtb.attr("href");
 
@@ -159,11 +159,11 @@
         var ft = getParameterByName("formation");
 
 	if (ft) {
-	  $("#formation-title-input").val( decodeURIComponent(ft) ).prop("disabled", true);
+	  $(".formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
 	  $("#domains-select").prop("disabled", true).parent().hide();
 	}
 	else {
-	  $("#formation-title-input").parent().hide();
+	  $(".formation-title-input").parent().hide();
 	}
 
 
@@ -185,8 +185,27 @@
     'candidater': {
       init : function() {},
       finalize : function() {
-        var si = $("#salarie-input");// Salarie Input
-        var nsi 	= $("#non-salarie-input");// Non-Salarie Input
+	// Coordo email
+        var email = getParameterByName("email");
+	if (email) {
+          $("#email-input").val( decodeURIComponent(email) );
+	}
+
+
+	// Formation title
+        var ft = getParameterByName("formation");
+
+	if (ft) {
+	  $(".formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
+	  $("#domains-select").prop("disabled", true).parent().hide();
+	}
+	else {
+	  $(".formation-title-input").parent().hide();
+	}
+
+
+        var si  = $("#salarie-input");// Salarie Input
+        var nsi	= $("#non-salarie-input");// Non-Salarie Input
         var se 	= $("#sans-emploi-input");// Sans Emploi Input
         var dv 	= "";// Default Value
 
@@ -224,6 +243,7 @@
         });
       },
     },
+
     // About us page, note the change from about-us to about_us.
     'about_us': {
       init: function() {
