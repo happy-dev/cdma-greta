@@ -154,7 +154,16 @@ input[type="submit"].search-submit {
   z-index:		10;	        
 
   &.small {
-    right:		5px;
-    background-size:	20px;
+    right: 5px;
+    background-size: 20px;
   }
+}
+
+@include media-breakpoint-down(xs) {
+    input[type="submit"].search-submit {
+        &.small {
+            right: 5%;
+            background-size: 20px;
+        }
+    }
 }

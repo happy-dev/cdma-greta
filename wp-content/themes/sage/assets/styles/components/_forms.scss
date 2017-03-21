@@ -38,9 +38,13 @@
         
         .checkbox {
             margin-bottom: 1vw;
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
 
             label {
                 position: relative;
+                padding-left: 15px;
 
                 /* Base for label styling */
                 [type="checkbox"]:not(:checked),
@@ -55,9 +59,9 @@
                   content: '';
                   position: absolute;
                   left: 24px;
-                    top: -.2em;
+                  top: -.2em;
                   width: 24px;
-                    height: 24px;
+                  height: 24px;
                   border: 2px solid #ccc;
                   background: #fff;
                   border-radius: 4px;
@@ -117,22 +121,51 @@
             }
         }
         
+        &.inline {
+            .checkbox {
+                display: inline-block;
+                width: auto;
+            }
+        }
+        
         .wpcf7-submit {
             padding-left: 4vw;
             padding-right: 4vw;
         }
     }
+    
+    .wpcf7-form-control-wrap {
+        margin-top: 4vw;
+        margin-bottom: 2vw;
+    }
+    
+    .wpcf7-not-valid-tip {
+        color: red;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
 }
 
 @include media-breakpoint-up(md) {
     .wpcf7-form {
-        .form-group /* .search-form */ {
+        .form-group /* .search-form */ {            
             .wpcf7-select {
                 -webkit-box-flex: 0;
                 -webkit-flex: 0 0 66.6666666667%;
                 -ms-flex: 0 0 66.6666666667%;
                 flex: 0 0 66.6666666667%;
                 max-width: 66.6666666667%;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .wpcf7-form {
+        .form-group {
+            label {
+                padding-bottom: 15px;
+                padding-left: 0;
             }
         }
     }

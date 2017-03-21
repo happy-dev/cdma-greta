@@ -76,11 +76,36 @@
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PtsTJ_xoZYo" allowfullscreen></iframe>
+                    <div id="playerDomaine"></div>
+
+                    <script>
+                      // 2. This code loads the IFrame Player API code asynchronously.
+                      var tag = document.createElement('script');
+
+                      tag.src = "https://www.youtube.com/iframe_api";
+                      var firstScriptTag = document.getElementsByTagName('script')[0];
+                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                      // 3. This function creates an <iframe> (and YouTube player)
+                      //    after the API code downloads.
+                      var playerDomaine;
+                      function onYouTubeIframeAPIReady() {
+                        playerDomaine = new YT.Player('playerDomaine', {
+                          height: '390',
+                          width: '640',
+                          videoId: 'PtsTJ_xoZYo',
+                        });
+                      }
+
+                        function pauseVideo() {
+                        playerDomaine.pauseVideo();
+                      }
+
+                    </script>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Fermer</button>
             </div>
             </div>
         </div>

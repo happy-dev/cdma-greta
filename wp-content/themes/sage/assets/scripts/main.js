@@ -30,8 +30,21 @@
   var Sage = {
     // All pages
     'common': {
+
       // JavaScript to be fired on all pages
-      init: function() {
+      init: function() {          
+	// Grab a giver GET parameter
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
 
 	var facade 	= $('#search-bar-select-facade');
 	var taxonomy 	= getParameterByName('taxonomy');
@@ -234,7 +247,6 @@
         $('.row-offcanvas').toggleClass('active');
       });
     });
-
     
 })(jQuery); // Fully reference jQuery after this point.
 
