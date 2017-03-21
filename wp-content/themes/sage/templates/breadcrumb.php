@@ -3,7 +3,7 @@
 
 if (is_page() && !is_front_page() || is_single() || is_category()) {
 
-echo '<ol class="breadcrumb hidden-md-dow">';
+echo '<ol class="breadcrumb hidden-md-dow" id="breadcrumb">';
 echo '<li class="breadcrumb-item hidden-md-down"><a title="GRETA CDMA - Accueil" rel="nofollow" href="/">Accueil</a></li>';
 
 

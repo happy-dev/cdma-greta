@@ -61,6 +61,13 @@
             facade.html(str);
           }
         );
+
+
+	var pna = document.location.pathname.split("/");// Path Name Array
+	if (pna.indexOf("domaines") == -1 && pna.indexOf("formations") == -1) {
+	  localStorage.setItem("domain_href", undefined);
+	  localStorage.setItem("domain_html", undefined);
+	}
       },
       finalize: function() {
       }
@@ -96,29 +103,47 @@
     'single_formations': {
       init : function() {},
       finalize : function() {
-        var BODY = $("body");
-        if (BODY.hasClass("single-formations")) {
-	  // Coordo email to form
-          var ce     	= $("#coordo-email");// Coordo Email
-          var cb     	= $(".contact-btn");// Contact Buttons
-          var cdtb   	= $(".candidate-btn");// Candidate Buttons
-          var href   	= cb.attr("href");
-          var cdt_href  = cdtb.attr("href");
+	// Coordo email to form
+        var ce     	= $("#coordo-email");// Coordo Email
+        var cb     	= $(".contact-btn");// Contact Buttons
+        var cdtb   	= $(".candidate-btn");// Candidate Buttons
+        var href   	= cb.attr("href");
+        var cdt_href  = cdtb.attr("href");
 
-          href += "?email="+ encodeURIComponent( ce.html() );
-          cdt_href += "?email="+ encodeURIComponent( ce.html() );
+        href += "?email="+ encodeURIComponent( ce.html() );
+        cdt_href += "?email="+ encodeURIComponent( ce.html() );
 
 
-	  // Formation title to form
-          var ft    = $("#formation-title");// Formation Title
+	// Formation title to form
+        var ft    = $("#formation-title");// Formation Title
 
-          href += "&formation="+ encodeURIComponent( ft.html() );
-          cdt_href += "&formation="+ encodeURIComponent( ft.html() );
+        href += "&formation="+ encodeURIComponent( ft.html() );
+        cdt_href += "&formation="+ encodeURIComponent( ft.html() );
 
-          cb.attr("href", href);
-          cdtb.attr("href", cdt_href);
-        }
+        cb.attr("href", href);
+        cdtb.attr("href", cdt_href);
+
+
+	// Breadcrumbs
+	var ls_href = localStorage.getItem("domain_href");
+	var ls_html = localStorage.getItem("domain_html");
+
+	if (ls_href !== "undefined" && ls_html !== "undefined") {
+	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
+	}
+
       },
+    },
+    'single_domaines': {
+      init : function() {
+	var domain = $("#sidebar li.current a");
+	var href   = domain.attr("href");
+	var html   = domain.html();
+
+	localStorage.setItem("domain_href", href);
+	localStorage.setItem("domain_html", html);
+      },
+      finalize : function() {}
     },
     'nous_contacter': {
       init : function() {},
