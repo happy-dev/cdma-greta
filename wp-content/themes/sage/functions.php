@@ -134,7 +134,7 @@ function domains_select_list($tag, $unused){
 
     $args = array (
         'numberposts'   => -1,
-        'post_type'     => 'domaine-offres',
+        'post_type'     => 'domaines',
         'orderby'       => 'title',
         'order'         => 'ASC',
     );
