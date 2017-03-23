@@ -20,6 +20,7 @@ $obj    = Diogen::removeApostrophe($fs->OFObjectif);// Objectifs
 $prm    = Diogen::removeApostrophe($fs->OFPrerequisMaxi);// Prérequis
 $metp   = Diogen::removeApostrophe($fs->OFMethode);// Méthodes pédagogiques
 $mop    = DiogenHelper::getMoyPeda($fs, $fi);// Moyens pédagogiques
+$mar    = Diogen::removeApostrophe($fs->OFSelection);// Méthodes d'Admission et de Recrutement
 $rcac   = DiogenHelper::getRecoAcquis($fs, $fi);// Reconnaissance des acquis
 $int    = Diogen::removeApostrophe($fs->OFIntervenant);// Intervenant
 $forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
@@ -184,6 +185,11 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <?php if ($mop) { ?> 
                         <h2>Moyens pédagogiques</h2>
                         <pre><?php echo $mop; ?></pre>
+                    <?php } ?>
+    <!-- 5. MÉTHODES ADMISSION ET RECRUTEMENT -->
+                    <?php if ($mar) { ?> 
+                        <h2>Modalités d'admission et de recrutement</h2>
+                        <pre><?php echo $mar; ?></pre>
                     <?php } ?>
     <!-- 6. RECONNAISSANCE DES ACQUIS -->
                     <?php if ($rcac) { ?> 
