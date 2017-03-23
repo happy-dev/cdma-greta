@@ -31,11 +31,11 @@ if (is_singular('stages')) {
 }
 
 if (is_singular('domaines')) {
-	echo '<li class="breadcrumb-item"><a href="/liste-formations">Formations</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/se-former-au-greta">Formations</a></li>';
 }
 
 if (is_singular('formations')) {
-	echo '<li class="breadcrumb-item"><a href="/liste-formations">Formations</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/se-former-au-greta">Formations</a></li>';
 	$category = the_terms('formations', 'domaine');
 	echo $category;
 }
