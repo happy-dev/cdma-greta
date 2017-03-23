@@ -132,6 +132,15 @@
 	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
 	}
 
+
+	// Multi Sessions
+        $('#sessions-switch a').click(function (e) {
+          e.preventDefault()
+
+          $(this).tab('show')
+   	  $('#sessions-switch a.active').removeClass('active')
+   	  // $(this).addClass('active')
+        })
       },
     },
     'single_domaines': {

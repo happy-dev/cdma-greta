@@ -11,8 +11,11 @@ $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
+$sa[] = DiogenHelper::getLeftColumnHeader($ss, $fi);
+$first = true;
 foreach ($ss as $s) {
-  $sa[] = DiogenHelper::getLeftColumn($s, $fi);
+  $sa[] = DiogenHelper::getLeftColumn($s, $fi, $first);
+  $first = false;
 }
 
 $ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
@@ -147,7 +150,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
     <div class="container">
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
-                <aside class="column col-lg-4 col-md-4 sidebar-offcanvas" id="sidebar">
+                <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content" id="sidebar">
                 <?php 
 		  foreach($sa as $s) {
 	            echo $s; 

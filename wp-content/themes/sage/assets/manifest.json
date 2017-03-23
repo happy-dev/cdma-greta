@@ -3,6 +3,7 @@
     "main.js": {
       "files": [
         "../node_modules/flickity/dist/flickity.pkgd.js",
+        "../bower_components/bootstrap/dist/js/bootstrap.js",
         "scripts/main.js"
       ],
       "main": true

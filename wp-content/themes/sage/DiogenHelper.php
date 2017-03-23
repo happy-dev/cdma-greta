@@ -565,10 +565,35 @@ Class DiogenHelper {
     }
   }
 
+  // Get the HTML of the left column header of the formation's session
+  public static function getLeftColumnHeader($ss, $fi) {// Sessions, Formation Id
+    $class = 'active';
+    $html  = '';
+
+    $html .= '<h2>Dates</h2>';
+    $html .= '<ul id="sessions-switch" class="" role="tablist">';
+
+    foreach ($ss as $s) {
+      $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+      $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+      
+      if ($sd && $ed) { 
+	$html .= '<li role="presentation" >';
+        $html .=   '<a class="'. $class .'" href="#session-'. $s->SSNo .'" data-toggle="tab">Du '. $sd .' au '. $ed .'</a>';// dates de session
+        $html .= '</li>';
+
+ 	$class = '';
+      }
+    }
+
+    $html .= '</ul>';
+
+    return $html;
+  }
+
+
   // Get the HTML of the left column of the formation's session
-  public static function getLeftColumn($s, $fi) {// Session, Formation Id
-    $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-    $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+  public static function getLeftColumn($s, $fi, $first) {// Session, Formation Id
     $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
     $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
     $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
@@ -579,17 +604,17 @@ Class DiogenHelper {
     $ls   = DiogenHelper::getLocations($s);// Locations 
     $ct   = DiogenHelper::getContact($fi, $s);// Contact
     $html = '';
-    
-    $html .= '<div id="session-'. $s->SSNo .'">';
+
+    $class = '';
+    if ($first) {
+      $class = 'in active';
+    }
+
+    $html .= '<div id="session-'. $s->SSNo .'" role="tabpanel" class="tab-pane fade '. $class .'">';
     // 1. DATES
-    if ($sd || $dc) {
-      $html .= '<h2>Dates</h2>';
+    if ($dc) {
       $html .= '<pre>';
 
-      if ($sd) { 
-        $html .= 'Du '. $sd .' au '. $ed;// dates de session
-        $html .= '<br/>';
-      }
       if ($dc) {
         $html .= $dc ;// commentaire de date
       }
