@@ -168,11 +168,11 @@
         var ft = getParameterByName("formation");
 
 	if (ft) {
-	  $(".formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
+	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
 	  $("#domains-select").prop("disabled", true).parent().hide();
 	}
 	else {
-	  $(".formation-title-input").parent().hide();
+	  $("#formation-title-input").parent().hide();
 	}
 
 
@@ -205,11 +205,11 @@
         var ft = getParameterByName("formation");
 
 	if (ft) {
-	  $(".formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
+	  $("#formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
 	  $("#domains-select").prop("disabled", true).parent().hide();
 	}
 	else {
-	  $(".formation-title-input").parent().hide();
+	  $("#formation-title-input").parent().hide();
 	}
 
 
