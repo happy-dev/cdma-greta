@@ -11,7 +11,7 @@ $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
-$sa[] = DiogenHelper::getLeftColumnHeader($ss, $fi);
+//$sa[] = DiogenHelper::getLeftColumnHeader($ss, $fi);
 $first = true;
 foreach ($ss as $s) {
   $sa[] = DiogenHelper::getLeftColumn($s, $fi, $first);
@@ -148,12 +148,27 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         </div>
     </div>
     <div class="container">
+        <ul class="nav nav-tabs sessions-tabs">
+            <?php
+                $class = 'active';
+                foreach ($ss as $s) :
+                  $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+                  $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+            ?>
+            <li class="nav-item">
+            <a class="nav-link <?php echo $class; ?>"
+               data-toggle="tab"
+               role="tab"
+               href="#session-<?php echo $s->SSNo ?>">Session du <?php echo $sd ?> au <?php echo $ed ?></a>
+            </li>
+            <?php $class = ''; endforeach; ?>
+        </ul>
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content" id="sidebar">
                 <?php 
-		  foreach($sa as $s) {
-	            echo $s; 
+                  foreach($sa as $s) {
+                    echo $s; 
                   }
                 ?>
                 </aside>

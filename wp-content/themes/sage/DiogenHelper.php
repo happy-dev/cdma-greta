@@ -594,6 +594,8 @@ Class DiogenHelper {
 
   // Get the HTML of the left column of the formation's session
   public static function getLeftColumn($s, $fi, $first) {// Session, Formation Id
+    $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+    $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
     $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
     $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
     $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
@@ -612,15 +614,11 @@ Class DiogenHelper {
 
     $html .= '<div id="session-'. $s->SSNo .'" role="tabpanel" class="tab-pane fade '. $class .'">';
     // 1. DATES
-    if ($dc) {
-      $html .= '<pre>';
-
+      $html .= '<h2>Dates</h2>';
+      $html .= '<pre>Du '. $sd .' au '. $ed . '</pre>';
       if ($dc) {
-        $html .= $dc ;// commentaire de date
+        $html .= '<pre>' . $dc . '</pre>';// commentaire de date
       }
-
-      $html .= '</pre>';
-    }
 
     // 2. PUBLIC
     if ($ps || $pc) {
