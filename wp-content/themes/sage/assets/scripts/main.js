@@ -134,11 +134,11 @@
 
 
 	// Multi Sessions
-        $('#sessions-switch a').click(function (e) {
+        $('#sessions-tabs a').click(function (e) {
           e.preventDefault()
 
           $(this).tab('show')
-   	  $('#sessions-switch a.active').removeClass('active')
+   	  $('#sessions-tabs a.active').removeClass('active')
    	  // $(this).addClass('active')
         })
       },

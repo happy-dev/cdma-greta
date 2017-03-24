@@ -45,18 +45,17 @@
             </div>
             <!-- RESEAUX SOCIAUX -->
             <div class="socials col-md-4">
-                <div class="row row-icons">
+                <div class="row-icons">
                     <?php while ( have_rows('reseaux_sociaux', 'option') ) : the_row(); 
                     $image = get_sub_field('logo_rs', 'option');
                                 if( !empty($image) ): 
                                     $url = $image['url'];
                                 endif; 
                     ?>
-                        <a  class="icon-social icon-<?php echo strtolower(get_sub_field('texte_rs', 'option')); ?>" 
-                            style="background-image: url(<?php echo $url; ?>)" 
-                            href="<?php the_sub_field('lien_rs', 'option'); ?>" 
+                        <a  href="<?php the_sub_field('lien_rs', 'option'); ?>" 
                             target="_blank">
-                            <?php the_sub_field('texte_rs', 'option'); ?>
+                            <img src="<?php echo $url; ?>" alt="<?php the_sub_field('texte_rs', 'option'); ?>"/>
+                            <?php // the_sub_field('texte_rs', 'option'); ?>
                         </a>
                     <?php endwhile; ?>
                 </div>

@@ -25,7 +25,7 @@ while (have_posts()) : the_post();
         ?>
         <div class="search-links row">
             <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <div class="search-links-item col-lg-<?php echo $col; ?> <?php if ($firstcol) : echo 'offset-lg-'. $offset; endif; ?> col-md-6 col-sm-6">
+                <div class="search-links-item col-lg-3 col-md-6 col-sm-6">
                     <a href="<?php echo the_sub_field('lien_header'); ?>">
                         <?php the_sub_field('texte_lien'); ?>
                     </a>
@@ -37,7 +37,7 @@ while (have_posts()) : the_post();
 
     <?php 
     $header_type = get_field('header_home');
-    if ( $header_type == 'slider' ) {
+    if ( true || $header_type == 'slider' ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": 5000, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>

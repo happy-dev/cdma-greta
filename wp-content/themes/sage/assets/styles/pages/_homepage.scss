@@ -226,6 +226,7 @@
             }
 
             .next {
+                top: -24px;
                 right: -5%;
 
                 -webkit-transform: rotate(180deg);
@@ -242,11 +243,23 @@
     }
 }
 
-@media (min-width: 1050px) {
-    .home {
-        .search {
-            .search-links {
+@include media-breakpoint-down(sm) {
+    .search-links {
+        .search-links-item {
+            a {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .schools {
+        .js-flickity {
+            .previous {
+                left: 0;
+            }
 
+            .next {
+                right: 0;
             }
         }
     }
