@@ -21,7 +21,7 @@ echo '<li class="breadcrumb-item hidden-md-down"><a title="GRETA CDMA - Accueil"
 
 if (is_singular('post')) {
 	$category = get_the_category();
-	echo '<li class="breadcrumb-item"><a href="/actualites">Actualités</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
 	echo '<li class="breadcrumb-item"><a href="'.get_category_link($category[0]->cat_ID).'">'.$category[0]->cat_name.'</a></li>';
 }
 
@@ -41,7 +41,7 @@ if (is_singular('formations')) {
 }
 
 if (is_category()) {
-	echo '<li class="breadcrumb-item"><a href="/actualites">Actualités</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
 	$category = get_the_category();
 	echo '<li class="breadcrumb-item hidden-md-down">'.$category[0]->cat_name.'</li>';
 }

@@ -8,6 +8,7 @@
                 <?php wp_list_categories( array(
                                         'orderby' => 'name',
                                         'title_li' => '',
+					'current_category' => $cat,
                                         'exclude'    => array( 6, 1 )
                                     ) ); ?>
                 </ul>
@@ -23,13 +24,22 @@
                 <div class="row">
                 <!-- THE QUERY -->
                 <?php  
+	  	    global $wp_query;
                     while ( have_posts()) : the_post();
                         get_template_part('templates/content-actualites', get_post_type()); 
                     endwhile; ?>
                 <?php wp_reset_postdata();?>
                     <div class="buttons">
-                        <?php next_posts_link( 'Articles suivants' ); ?>
-                        <?php previous_posts_link( 'Articles précédents' ); ?>
+                      <?php
+                      $big = 999999999; // need an unlikely integer
+
+                      echo paginate_links( array(
+                          'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                          'format' => '/page/%#%',
+                          'current' => max( 1, get_query_var('paged') ),
+		          'total' => $wp_query->max_num_pages,
+                      ) );
+                      ?>
                     </div>
                 </div>
             </div>
