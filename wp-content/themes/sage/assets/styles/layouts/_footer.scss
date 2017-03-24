@@ -130,6 +130,31 @@
             bottom: 430px;
         }
     }
+    
+    .wpcf7 {
+        width: 100%;
+        .wpcf7-form {
+            .form-group {
+                margin-left: 0;
+                margin-right: 0;
+
+                input[type=email] {
+                    width: 100%;
+                    max-width: 100%;
+                    flex: inherit;
+                }
+
+                .wpcf7-submit {
+                    padding-left: .7rem;
+                    padding-right: .7rem;
+                }
+            }
+            
+            .row {
+                margin: 0;
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {

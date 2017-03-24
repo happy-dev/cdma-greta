@@ -52,7 +52,7 @@
                                     $url = $image['url'];
                                 endif; 
                     ?>
-                        <a  class="icon-social" 
+                        <a  class="icon-social icon-<?php echo strtolower(get_sub_field('texte_rs', 'option')); ?>" 
                             style="background-image: url(<?php echo $url; ?>)" 
                             href="<?php the_sub_field('lien_rs', 'option'); ?>" 
                             target="_blank">
@@ -60,9 +60,7 @@
                         </a>
                     <?php endwhile; ?>
                 </div>
-                <div class="row">
-		  <?php echo do_shortcode('[contact-form-7 id="1603" title="Newsletter"]'); ?>
-                </div>
+                  <?php echo do_shortcode('[contact-form-7 id="1603" title="Newsletter"]'); ?>
             </div>
         </div>
     </div>

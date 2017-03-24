@@ -37,7 +37,7 @@ while (have_posts()) : the_post();
 
     <?php 
     $header_type = get_field('header_home');
-    if ( false && $header_type == 'slider' ) {
+    if ( $header_type == 'slider' ) {
         if ( have_rows('slider_home') ): ?>
             <div class="carousel main-carousel js-flickity" data-flickity='{ "autoPlay": 5000, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
                 <?php while ( have_rows('slider_home') ) : the_row(); ?>
