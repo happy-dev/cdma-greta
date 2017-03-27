@@ -300,6 +300,10 @@
       $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active');
       });
+        
+        $('[data-toggle="offcanvasmobile"]').click(function () {
+            $('.row-offcanvas-mobile').toggleClass('active');
+          });
     });
     
 })(jQuery); // Fully reference jQuery after this point.

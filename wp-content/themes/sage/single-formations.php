@@ -165,12 +165,14 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         </ul>
         <div class="formation-detail">
             <div class="row row-offcanvas row-offcanvas-left">
-                <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content" id="sidebar">
-                <?php 
-                  foreach($sa as $s) {
-                    echo $s; 
-                  }
-                ?>
+                <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content">
+                    <div class="container">
+                        <?php 
+                          foreach($sa as $s) {
+                            echo $s; 
+                          }
+                        ?>
+                    </div>
                 </aside>
 
                 <section class="content col-lg-8 col-md-8 ">

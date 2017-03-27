@@ -12,12 +12,12 @@
       <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
       </a>
     <?php endif; ?>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav-primary" aria-expanded="false" aria-controls="collapse-nav-primary">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvasmobile">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <nav class="navbar navbar-full primary-navbar collapse" id="collapse-nav-primary">
+    <nav class="navbar navbar-full primary-navbar collapse hidden-md-down">
       <?php 
       // FRONT PAGE
       if (is_front_page()) { 

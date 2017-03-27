@@ -15,11 +15,12 @@
                    name="s"
                    id="s"
                    <?php if(is_search()) { ?>value="<?php the_search_query(); ?>" <?php } else { ?> onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"<?php } ?> />
-	    <input type="submit" class="search-submit" />
+            <input type="submit" class="search-submit" />
         </div>
         <div class="col-sm-1 col-xs-2">
             <button class="btn btn-outline-success" type="submit">OK</button>
         </div>
+    </div>
     <?php } else { ?>
         <!-- OTHER PAGES -->
         <!-- div class="row row-search">
@@ -62,7 +63,7 @@
                        name="s"
                        id="s"
                        <?php if(is_search()) { ?>value="<?php the_search_query(); ?>" <?php } else { ?> onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"<?php } ?> />
-	    	<input type="submit" class="search-submit small" />
+                <input type="submit" class="search-submit small" />
             </div>
             <button class="btn btn-outline-success select-button" type="submit">OK</button>
         </div>
@@ -72,7 +73,7 @@
       <!-- FRONT PAGE -->
         <div class="col-md-3 col-lg-4"></div>
     <?php } ?>
-    </div>
+    
     
     <div class="row row-checkbox">
     <?php if (is_front_page()) { ?>
