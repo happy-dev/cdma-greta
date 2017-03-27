@@ -81,9 +81,41 @@
         background-color: orange;
     }
     
+    &.btn-international {
+        background-color: #555;
+        background-position: 10px 5px;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        text-indent: 40px;
+        vertical-align: text-top;
+        
+        &.french {
+            background-image:url(../images/icon-french.png);
+        }
+        
+        &.english {
+            background-image:url(../images/icon-english.png);
+        }
+        
+        &:hover {
+            background-color: $cdma-blue;
+        }
+    }
+    
     &:hover {
         color: white;
         background-color: #555;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .btn {
+        &.btn-international {
+            width: 100%;
+            text-align: center;
+            text-indent: 0;
+            margin-bottom: 20px;
+        }
     }
 }
 
