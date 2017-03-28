@@ -290,7 +290,7 @@
       UTIL.fire('common', 'finalize');
     }
   };
-
+    
   // Load Events
   $(document).ready(UTIL.loadEvents);
     

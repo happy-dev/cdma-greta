@@ -37,7 +37,7 @@ use Roots\Sage\Extras\Custom_Walker;
                 ?>
             </div>
             <aside class="sidebar-offcanvas-menu hidden-lg-up" id="sidebar-mobile">
-                <div class="container">
+                <div class="container-fluid">
                 <?php wp_nav_menu([ 'theme_location'   => 'primary_navigation',
                                     'walker'           => new Custom_Walker,
                                     'container'        => '']); ?>

@@ -10,12 +10,12 @@
         li {
             a {
                 color: white;
-                font-family: $title-bold-fonts;
+                font-family: $title-fonts;
                 
                 
                 display: block;
                 padding: 20px;
-                border-bottom: 1px solid $cdma-light-brown;
+                border-bottom: 1px solid #074d91;
             }
             
             .dropdown-menu {
@@ -36,11 +36,18 @@
                     li {
                         a {
                             color: $cdma-blue;
-                            font-family: $title-fonts;
+                            //font-family: $title-fonts;
                             background-color: white;
+                            border-bottom: 1px solid $cdma-light-brown;
                         }
                     }
                 }
+            }
+        }
+        
+        > li {
+            > a:first-letter {
+                color: $cdma-light-brown;
             }
         }
     }
