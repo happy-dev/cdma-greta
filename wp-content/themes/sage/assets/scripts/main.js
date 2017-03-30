@@ -134,11 +134,11 @@
 
 
 	// Multi Sessions
-        $('#sessions-switch a').click(function (e) {
+        $('#sessions-tabs a').click(function (e) {
           e.preventDefault()
 
           $(this).tab('show')
-   	  $('#sessions-switch a.active').removeClass('active')
+   	  $('#sessions-tabs a.active').removeClass('active')
    	  // $(this).addClass('active')
         })
       },
@@ -290,7 +290,7 @@
       UTIL.fire('common', 'finalize');
     }
   };
-
+    
   // Load Events
   $(document).ready(UTIL.loadEvents);
     
@@ -300,6 +300,10 @@
       $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active');
       });
+        
+        $('[data-toggle="offcanvasmobile"]').click(function () {
+            $('.row-offcanvas-mobile').toggleClass('active');
+          });
     });
     
 })(jQuery); // Fully reference jQuery after this point.

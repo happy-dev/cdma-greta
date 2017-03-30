@@ -1,0 +1,54 @@
+.sidebar-offcanvas-menu {
+    background: $cdma-blue;
+    height: 100%;
+    
+    .container {
+        padding-right: 0;
+    }
+    
+    .menu {
+        li {
+            a {
+                color: white;
+                font-family: $title-fonts;
+                
+                
+                display: block;
+                padding: 20px;
+                border-bottom: 1px solid #074d91;
+            }
+            
+            .dropdown-menu {
+                background-color: transparent;
+                border: 0;
+                position: inherit;
+                margin: 0;
+                padding: 0;
+                float: none;
+                
+                .col-md-4 {
+                    -ms-flex: 0 0 100%;
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                
+                ul {
+                    li {
+                        a {
+                            color: $cdma-blue;
+                            //font-family: $title-fonts;
+                            background-color: white;
+                            border-bottom: 1px solid $cdma-light-brown;
+                        }
+                    }
+                }
+            }
+        }
+        
+        > li {
+            > a:first-letter {
+                color: $cdma-light-brown;
+            }
+        }
+    }
+}

@@ -120,25 +120,27 @@
 		$slug = $post->post_name;
         	$args = array('post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC'); 
         	$the_query = new WP_Query( $args ); ?>
-            <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
-                <h3>Domaines</h3>
-                <ul>
-                    <?php 
-                      while ( $the_query->have_posts()) : $the_query->the_post(); 
-                        $current = '';
-                        if ($post->post_name == $slug) {
-                          $current = 'current';
-                        }
-                    ?>
+            <aside class="column col-md-4 sidebar-offcanvas" id="sidebar">
+                <div class="container">
+                    <h3>Domaines</h3>
+                    <ul>
+                        <?php 
+                          while ( $the_query->have_posts()) : $the_query->the_post(); 
+                            $current = '';
+                            if ($post->post_name == $slug) {
+                              $current = 'current';
+                            }
+                        ?>
 
-                        <li class="<?php echo $current; ?>">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
-                            </a>
-                        </li>	
-                    <?php endwhile; ?>
-                <?php wp_reset_postdata();?>
-                </ul>
+                            <li class="<?php echo $current; ?>">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </li>	
+                        <?php endwhile; ?>
+                    <?php wp_reset_postdata();?>
+                    </ul>
+                </div>
             </aside> 
         <!-- FORMATIONS -->
         <?php
@@ -147,7 +149,7 @@
             if( $posts ): 
                 $count = count( $posts ); 
         ?>
-            <section class="articles col-md-9">
+            <section class="articles col-md-8">
                 <header class="row">
                     <div class="col-md-12">
                         <button type="button" class="btn hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Voir la liste des domaines</button>

@@ -102,6 +102,19 @@
         }
     }
     
+    .sessions-tabs {
+        margin-top: 30px;
+        
+        .nav-link {
+            font-size: 18px;
+            
+            &.active {
+                font-weight: bold;
+                color: $cdma-blue;
+            }
+        }
+    }
+    
     .formation-detail {
         h2, h3, h4 {
             font-family: $title-fonts;
@@ -187,7 +200,8 @@
             padding: 20px 0;
             
             .column {
-                padding-left: 30px;
+                //padding-left: 30px;
+                //padding-right: 0;
             }
             
             .btn-more {

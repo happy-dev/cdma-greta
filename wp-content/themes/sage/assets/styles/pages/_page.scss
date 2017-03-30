@@ -32,7 +32,7 @@
 }
 
 .page-greta {
-    padding: 7vw 14vw;
+    padding: 7vw 0 /* 14vw */;
     
     .breadcrumb {
         padding-left: 0;
@@ -46,6 +46,12 @@
         .breadcrumb-item a {
             color: white;
         }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .page-greta {
+        padding: 7vw;
     }
 }
 
@@ -143,5 +149,75 @@
     
     .navbar-toggle {
         margin-bottom: 25px;
+    }
+}
+
+.page {
+    .article {
+        font-size: 16px;
+        font-family: $basic-fonts;
+        line-height: 140%;
+
+        ul {
+            list-style-type: disc;
+            padding-left: 45px;
+            padding-bottom: 1vw;
+        }
+
+        h2, h3, h4, h5 {
+            padding-top: 2vw;
+            padding-bottom: 1vw;
+            text-transform: none;
+        }
+
+        h2 {
+            font-family: $title-fonts;
+            font-size: 26px;
+            padding-top: 3vw;
+        }
+
+        h3 {
+            color: $cdma-light-brown;
+            font-family: $title-fonts;
+            font-size: 24px;
+        }
+
+        h4 {
+            color: #373737;
+            font-family: $title-fonts;
+            font-size: 20px;
+        }
+
+        a {
+            font-family: $title-bold-fonts;
+            color: $cdma-blue;
+            text-decoration: underline;
+
+            &:hover {
+                color: black;
+            }
+            
+            &.btn {
+                color: white;
+                font-family: $title-fonts;
+                text-decoration: none;
+            }
+        }
+
+        img {
+          @extend .img-fluid;
+          @extend .img-rounded;
+        }
+
+        blockquote {
+            padding-left: 25px;
+            margin: 0 0 1vw 30px;
+            border-left: 4px solid $cdma-light-brown;
+
+            p {
+                font-style: italic;
+                padding: 0;
+            }
+        }
     }
 }

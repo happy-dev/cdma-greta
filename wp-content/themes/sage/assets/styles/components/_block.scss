@@ -244,12 +244,25 @@ section.articles {
     padding: 3vw 4vw;
 }
 
-@media (max-width: 767px) {
+@include media-breakpoint-down(sm) {
     
     section.articles {
+        .entry {
+            font-size: 18px;
+            line-height: 22px;
+            
+            h3 {
+                font-size: 18px;
+                line-height: 22px;
+            }
+        }
         .content {
             h2 {
                 padding-top: 7vw;
+            }
+            
+            article {
+                padding-bottom: 30px;
             }
         }
     }
