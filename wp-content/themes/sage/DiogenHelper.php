@@ -47,7 +47,8 @@ Class DiogenHelper {
                           
     WHERE
       offreformation.OFNo = offreliaisonformationmotcle.LMCFormation			AND
-      offreliaisonformationmotcle.LMCMotCle = offremotcle.MCNo						AND
+      offreformation.OFReconduit IN ('V', 'K')						AND
+      offreliaisonformationmotcle.LMCMotCle = offremotcle.MCNo				AND
       {$fqp}
     ");
 
@@ -88,7 +89,8 @@ Class DiogenHelper {
       offresession
      
      WHERE	
-      offreformation.OFNoPermanent = {$formationId}														AND
+      offreformation.OFNoPermanent = {$formationId}					AND
+      offreformation.OFReconduit IN ('V', 'K')						AND
       offresession.SSPrestation = offreformation.OFNo					
     ");
 

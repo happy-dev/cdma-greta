@@ -2,6 +2,7 @@
 wp-content/themes/*
 !wp-content/themes/sage
 wp-content/uploads
+wp-piwik/tmp
 .DS_Store
 .well-known
 
