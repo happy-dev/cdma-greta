@@ -167,6 +167,7 @@
 	// Formation title
         var ft = getParameterByName("formation");
 
+
 	if (ft) {
 	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
 	  $("#domains-select").prop("disabled", true).parent().hide();

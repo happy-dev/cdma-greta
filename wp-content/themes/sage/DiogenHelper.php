@@ -92,6 +92,8 @@ Class DiogenHelper {
       offreformation.OFNoPermanent = {$formationId}					AND
       offreformation.OFReconduit IN ('V', 'K')						AND
       offresession.SSPrestation = offreformation.OFNo					
+
+     ORDER BY offresession.SSDateDeb ASC, offresession.SSDateFin ASC
     ");
 
     if ($qr->rowCount() > 0) {		  
@@ -290,7 +292,13 @@ Class DiogenHelper {
     ");
 
     if ($ls->rowCount() > 0) {
+      $first = true;
+
       foreach($ls->fetchAll() as $l) {
+	if (!$first) {
+	  $lcs .= '<br/>';
+        }
+
         if (isset($l->STNom) AND $l->STNom != '') {
           $lcs .= Diogen::removeApostrophe($l->STNom);
           
@@ -317,8 +325,10 @@ Class DiogenHelper {
           $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
         }
         if (isset($l->STMel) AND $l->STMel != '') {
-          $lcs .= Diogen::removeApostrophe($l->STMel) .'<br/>';
+          $lcs .= '<a href="mailto:'. Diogen::removeApostrophe($l->STMel) .'">'. Diogen::removeApostrophe($l->STMel) .'</a><br/>';
         }
+
+	$first = false;
       }
     }
 
@@ -679,11 +689,13 @@ Class DiogenHelper {
 
     // 8. COORDONNEES GRETA
     $html .= '<h2>Coordonnées</h2>';
-    $html .= '<pre>GRETA DE LA CRÉATION, DU DESIGN ET DES MÉTIERS D\'ART';
-    $html .= ' administrative et commerciale';
-    $html .= ' rue de Sambre et Meuse';
-    $html .= ' PARIS';
-    $html .= '@cdma.greta.fr</pre>';
+    $html .= '<pre>';
+    $html .=   'GRETA CDMA<br/>';
+    $html .=   'Agence administrative et commerciale<br/>';
+    $html .=   '21 rue de Sambre et Meuse<br/>';
+    $html .=   '75010 - PARIS<br/>';
+    $html .=   '<a href="mailto:info@cdma.greta.fr">info@cdma.greta.fr</a>';
+    $html .= '</pre>';
 
     // 9. CONTACT -->
     if ($ct) {
