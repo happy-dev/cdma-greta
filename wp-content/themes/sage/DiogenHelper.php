@@ -609,7 +609,7 @@ Class DiogenHelper {
     $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
     $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
     $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-    $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
+    $ps   = ucfirst( DiogenHelper::getPublics($s->SSNo) );// Publics
     $pc   = Diogen::removeApostrophe($s->SSPublicCommentaire);// Publics Commentaire
     $ds   = DiogenHelper::getDuration($s);// Durations
     $cts  = DiogenHelper::getCounts($s);// Counts
@@ -641,6 +641,9 @@ Class DiogenHelper {
         $html .= $ps;
       }
       if ($pc) {
+        if ($ps) {
+          $html .= '<br/>';
+        }
         $html .= $pc;
       }
 

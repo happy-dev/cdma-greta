@@ -17,6 +17,7 @@
                         $i++;
                         $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
                         $fia[]                  = get_the_ID();
+                        $any_formation 		= true;
                       }
                     endwhile;
                     ?>

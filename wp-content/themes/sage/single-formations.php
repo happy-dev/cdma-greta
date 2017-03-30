@@ -224,11 +224,14 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
     <!-- 8. CODIFICATION -->
                     <?php if ($forc or $corm) { ?> 
                     <h2>Codification de l'offre</h2>
-                    <pre><?php  if ($forc) { 
-                                    echo $forc ;
-                                    if ($corm) { echo '<br/>'.$corm ; }
-                                }
-                                else { echo $corm ; } ?></pre>
+                    <pre><?php  
+		      if ($forc) { 
+                        echo $forc ;
+                      }
+                      if ($corm) { 
+		        echo $corm ; 
+		      }
+                    ?></pre>
                     <?php } ?>
                     <hr/>
                     

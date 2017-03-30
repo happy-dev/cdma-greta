@@ -2,6 +2,8 @@
     <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
         <div class="col-md-4">
         <?php $image = get_field('post_image');
+	    $alt = '';
+
             if( !empty($image) ): 
                 $url = $image['url'];
                 $title = $image['title'];
