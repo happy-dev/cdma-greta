@@ -79,7 +79,6 @@
                 }
                 
                 &.dropdown {
-                    border-bottom: 3px solid $cdma-blue;
                     position: static;
 
                     .dropdown-menu {
@@ -88,6 +87,8 @@
                 }
                 
                 &.active {
+                    border-bottom: 3px solid $cdma-blue;
+                    
                     a {
                         color: $cdma-brown;
                     }

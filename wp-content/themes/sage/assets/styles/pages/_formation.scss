@@ -75,7 +75,7 @@
         }
         
         .introduction-success {
-            font-size: 17px;
+            font-size: 20px;
             text-indent: 28px;
             background: transparent url(../images/icon-success.png) top left no-repeat;
             
@@ -129,6 +129,17 @@
             
             p, pre {
                 color: $cdma-blue;
+            }
+        }
+        
+        .tab-content {
+            .container {
+                position: relative;
+            }
+            .tab-pane {
+                position: absolute;
+                top: 0;
+                left: 15px;
             }
         }
     }

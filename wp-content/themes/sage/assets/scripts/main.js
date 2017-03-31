@@ -135,11 +135,14 @@
 
 	// Multi Sessions
         $('#sessions-tabs a').click(function (e) {
-          e.preventDefault()
+          e.preventDefault();
 
-          $(this).tab('show')
-   	  $('#sessions-tabs a.active').removeClass('active')
-   	  // $(this).addClass('active')
+          $(this).tab('show');
+            
+            //$id = $(this).attr('ID'); alert('#tab-'+$id);
+          //$('#tab-'+$id).addClass('active');
+          $('#sessions-tabs a.active').removeClass('active');
+          // $(this).addClass('active')
         })
       },
     },
