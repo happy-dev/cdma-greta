@@ -42,6 +42,8 @@
                        if ( 'formations' == get_post_type() ) { 
                             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
+                	    $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
+
                             // Iterating through each session 
                             foreach ($ss as $s) {
                                 $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
@@ -74,7 +76,7 @@
                                         ?>
                                         <br/>
                                         </span>
-                                        <?php the_excerpt(); ?>
+                                	<?php echo wp_trim_words( $dsc, 50, '...' ); ?>
                                     </div>
                                 </a>
                             </article>

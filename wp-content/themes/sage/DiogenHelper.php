@@ -709,4 +709,18 @@ Class DiogenHelper {
 
     return $html;
   }
+
+
+  // Get the description of a formation for search and domain pages
+  public static function getDescription($tc, $f) {// The Content, Formation
+    if (!nullOrEmpty($tc)) {
+      return $tc;
+    }
+    else if (!nullOrEmpty($f->OFAccroche)) {
+      return Diogen::removeApostrophe($f->OFAccroche);
+    }
+    else if (!nullOrEmpty($f->OFObjectif)) {
+      return Diogen::removeApostrophe($f->OFObjectif);
+    }
+  }
 }

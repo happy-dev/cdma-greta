@@ -33,15 +33,22 @@
             )); 
             $fdia   = [];// Formations DIOGEN IDs Array
             $fia    = [];// Formations IDs Array
-            $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
 
+
+            while ( have_posts()) { 
+	      the_post();
+              $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
+              $fia[]                  = get_the_ID();
+	    }
+
+            $dfs    = DiogenHelper::getFormation($fdia);// Diogen Formations
+
+	    // WHILE
             while ( have_posts()) : the_post();
-            $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
-            $fia[]                  = get_the_ID();
             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-            $fi = get_field('id_diogen');// Formation Id
-            $fs = DiogenHelper::getFormation($fi);// Formations
+            $fi   = get_field('id_diogen');// Formation Id
+            $fs   = DiogenHelper::getFormation($fi);// Formations
 
             // Iterating through each session
             foreach ($ss as $s) {
@@ -50,7 +57,7 @@
               $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
               $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             }
-            $obj   = Diogen::removeApostrophe($fs->OFObjectif);// Objectif
+            $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
             ?>  
                 <div class="row"> 
                     <article class="entry col-md-12">
@@ -82,7 +89,7 @@
                                 }
                                 ?>
                                 </span>
-                                <pre><?php echo wp_trim_words( $obj, 50, '...' ); ?></pre>
+                                <pre><?php echo wp_trim_words( $dsc, 50, '...' ); ?></pre>
                             </div>
                         </a>
                     </article>

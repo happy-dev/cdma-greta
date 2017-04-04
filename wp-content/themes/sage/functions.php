@@ -163,3 +163,8 @@ function custom_rewrite_rules( $wp_rewrite ) {
   ) + $wp_rewrite->rules;
 }
 add_action( 'generate_rewrite_rules', 'custom_rewrite_rules' );
+
+
+function nullOrEmpty($x) {
+  return (!isset($x) || trim($x) === '');
+}

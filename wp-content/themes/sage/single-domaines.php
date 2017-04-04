@@ -182,7 +182,7 @@
                 $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                 $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
                 $ft   = get_the_title();// Formation Title
-                $obj  = Diogen::removeApostrophe($df->OFObjectif);// Objectif
+                $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
 
                 // Iterating through each session
                 foreach ($ss as $s) {
@@ -223,7 +223,7 @@
                                 }
                                 ?>
                                 </span>
-                                <?php echo wp_trim_words( $obj, 50, '...' ); ?>
+                                <?php echo wp_trim_words( $dsc, 50, '...' ); ?>
                             </div>
                         </a>
                     </article>
