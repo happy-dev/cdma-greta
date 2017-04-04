@@ -70,7 +70,7 @@ while (have_posts()) : the_post();
 
 <section class="articles container">
     <h2>Formations à la une</h2>
-    <a class="see-all hidden-md-down" href="/liste-formations">Voir toutes les formations</a>
+    <a class="see-all hidden-md-down" href="/se-former-au-greta">Voir toutes les formations</a>
     <div class="content row">
     <?php $posts = get_field('formations_une');
     if( $posts ):
