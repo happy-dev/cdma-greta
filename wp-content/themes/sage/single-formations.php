@@ -167,7 +167,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             <div class="row row-offcanvas row-offcanvas-left">
                 <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content">
                     <div class="container">
-                        <?php 
+                        <?php //var_dump($sa); exit;
                           foreach($sa as $s) {
                             echo $s; 
                           }
