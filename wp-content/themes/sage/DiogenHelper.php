@@ -381,6 +381,7 @@ Class DiogenHelper {
           
         WHERE
           offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
+      	  offreformation.OFReconduit IN ('V', 'K')				AND
           offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
           offreformation.OFNoPermanent = {$fID}
       ");
