@@ -44,13 +44,12 @@
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
                 	    $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
 
-                            // Iterating through each session 
-                            foreach ($ss as $s) {
-                                $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                                $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                                $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-                                $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
-                            }
+            		    // Selecting first session
+	    		    $s 	  = $ss[0];
+                            $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+                            $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+                            $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+                            $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
                      ?>
                             <article class="entry col-md-12">
                                 <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">

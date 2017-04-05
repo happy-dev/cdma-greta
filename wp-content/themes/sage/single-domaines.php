@@ -118,7 +118,12 @@
         <!-- LISTE DOMAINES -->
         	<?php
 		$slug = $post->post_name;
-        	$args = array('post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC'); 
+        	$args = array(
+		  'post_type' => 'domaines', 
+		  'orderby' => 'title', 
+		  'order' => 'ASC',
+		  'posts_per_page' => -1,
+		); 
         	$the_query = new WP_Query( $args ); ?>
             <aside class="column col-md-4 sidebar-offcanvas" id="sidebar">
                 <div class="container">
@@ -184,12 +189,12 @@
                 $ft   = get_the_title();// Formation Title
                 $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
 
-                // Iterating through each session
-                foreach ($ss as $s) {
-                  $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                  $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                  $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-                }
+            	// Selecting first session
+	    	$s 	  = $ss[0];
+                $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+                $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+                $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+
                 $i++;
             ?>
                 <div class="row <?php if ( $i <= $mea && 1 == $paged ) {echo 'row-mise-en-avant';} ?>"> 

@@ -6,7 +6,12 @@
         <div class="row row-offcanvas row-offcanvas-left">
         <!-- LISTE DOMAINES -->
         	<?php
-        	$args=( array( 	'post_type' => 'domaines', 'orderby' => 'title', 'order' => 'ASC' ) ); 
+        	$args= array(
+		  'post_type' => 'domaines', 
+		  'orderby' => 'title', 
+		  'order' => 'ASC',
+		  'posts_per_page' => -1,
+		); 
         	$the_query = new WP_Query( $args ); ?>
             <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">
                 <h3>Domaines</h3>
@@ -50,13 +55,12 @@
             $fi   = get_field('id_diogen');// Formation Id
             $fs   = DiogenHelper::getFormation($fi);// Formations
 
-            // Iterating through each session
-            foreach ($ss as $s) {
-              $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-              $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-              $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-              $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
-            }
+            // Selecting first session
+	    $s 	  = $ss[0];
+            $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+            $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+            $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+            $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
             ?>  
                 <div class="row"> 
