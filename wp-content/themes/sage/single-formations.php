@@ -78,10 +78,10 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">
-                            <a href="/candidater" class="btn-candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
+                            <a href="/candidater" class="btn btn-action btn-candidate">Candidater</a>
                         </div>
                         <div class="col-lg-7">
-                            <a href="/nous-contacter" class="contact-btn"><button class="btn">Demander plus d'informations</button></a>
+                            <a href="/nous-contacter" class="btn contact-btn">Demander plus d'informations</a>
                         </div>
                     </div>
                     <hr/>
@@ -148,7 +148,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         </div>
     </div>
     <div class="container">
-        <ul class="nav nav-tabs sessions-tabs">
+        <ul class="nav nav-tabs sessions-tabs" role="tablist">
             <?php
                 $class = 'active';
                 foreach ($ss as $s) :
@@ -237,10 +237,10 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     
                     <div class="row">
                         <div class="col-lg-7">
-                            <a href="/candidater" class="btn-candidate"><button class="btn btn-action btn-candidate">Candidater</button></a>
+                            <a href="/candidater" class="btn btn-action btn-candidate">Candidater</a>
                         </div>
                         <div class="col-lg-5">
-                            <a href="/nous-contacter" class="contact-btn"><button class="btn">Demander plus d'informations</button></a>
+                            <a href="/nous-contacter" class="btn contact-btn">Demander plus d'informations</a>
                         </div>
                     </div>
                 </section>
@@ -274,7 +274,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                         </div>
                         <div class="col-md-9">
                             <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?php the_title() ?></h2>
-                            <p><?php the_excerpt() ?></p>
+                            <div><?php the_excerpt() ?></div>
                             <p style="font-weight: bold; color: #0956a1;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
                         </div>
                     </article>
@@ -325,8 +325,8 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 </div>
                 <hr/>
                 <div class="container">
-                    <h2><?php the_title(); ?></h2></br>
-                    <pre><?php the_content(); ?></pre>
+                    <h2><?php the_title(); ?></h2><br/>
+                    <div><?php the_content(); ?></div>
                 </div>
             </div>
             <div class="modal-footer">

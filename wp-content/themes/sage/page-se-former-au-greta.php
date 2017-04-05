@@ -113,6 +113,7 @@
                     //'total' => $the_query->max_num_pages
                 ) );
                 ?>
+	    </div>
             </section>
         </div>
     </div>

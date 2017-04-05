@@ -6,12 +6,12 @@ while (have_posts()) : the_post();
 <!-- OPENING IMAGE/VIDEO -->
 <section class="search">
     <div class="search-form">
-        <form>
+        <div>
             <div class="container">
                 <h1><?php the_field('titre_slider'); ?></h1>
                 <?php get_search_form(); ?>
             </div>
-        </form>
+        </div>
     </div>
 
     

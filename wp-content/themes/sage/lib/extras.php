@@ -36,11 +36,17 @@ use Walker_Nav_Menu;
 
 class Custom_Walker extends Walker_Nav_Menu {
 
+    private $_rand = 0; 
+
+    function __construct() {
+      $this->_rand = rand();
+    }
+
     function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat("\t", $depth);
+	$indent = str_repeat("\t", $depth);
   
         $atts = array();
-        $atts['aria-labelledby']    = 'dropdown-'.$this->parent_item->ID;
+        $atts['aria-labelledby']    = 'dropdown-'.$this->parent_item->ID . $this->_rand;
         $atts['class']              = 'dropdown-menu';
         
         $attributes = '';
@@ -82,7 +88,7 @@ class Custom_Walker extends Walker_Nav_Menu {
     
         if ($args->walker->has_children) {
           //  $href = 'dropdown'. $item->ID;
-            $atts['id']         = 'dropdown-'. $item->ID;
+            $atts['id']         = 'dropdown-'. $item->ID . $this->_rand;
             $atts['class']            = 'dropdown-toggle';
             $atts['data-toggle']      = 'dropdown';
             $atts['aria-haspopup']    = 'true';
