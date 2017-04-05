@@ -134,12 +134,17 @@
         
         .tab-content {
             .container {
-                position: relative;
+                //position: relative;
             }
             .tab-pane {
-                position: absolute;
-                top: 0;
-                left: 15px;
+                //position: absolute;
+                //top: 0;
+                //left: 15px;
+                display: none;
+                
+                &.active {
+                    display: block;
+                }
             }
         }
     }
