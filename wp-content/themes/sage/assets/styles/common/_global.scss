@@ -121,10 +121,10 @@ h4 { font-size: 18px;}
 h5 { font-size: 14px;}
 h6 { font-size: 12px;}
 
-a { color: black;}
+a { color: $cdma-blue;}
 
 a:focus, a:hover {
-    color: $cdma-blue;
+    color: black;
 }
 
 .breadcrumb {

@@ -137,6 +137,7 @@
         $('#sessions-tabs a').click(function (e) {
           e.preventDefault();
 
+            $('.tab-panel').tab('hide');
           $(this).tab('show');
             
             //$id = $(this).attr('ID'); alert('#tab-'+$id);

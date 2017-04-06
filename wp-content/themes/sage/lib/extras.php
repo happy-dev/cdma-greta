@@ -95,6 +95,10 @@ class Custom_Walker extends Walker_Nav_Menu {
             $atts['aria-expanded']    = 'false';
         } else {
             //$href = $item->url;
+
+            if (in_array('current-menu-item', $item->classes) ){
+                $atts['class']        = 'active';
+            }
             $atts['target']           = ! empty( $item->target )     ? $item->target     : '';
             $atts['rel']              = ! empty( $item->xfn )        ? $item->xfn        : '';
         }

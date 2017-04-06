@@ -1,10 +1,8 @@
+<?php if (is_front_page()) { ?>
 <form role="search"
-      method="get"
-      id="searchform"
-      action="<?php echo home_url( '/' ); ?>"
-      class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
-
-    <?php if (is_front_page()) { ?>
+  method="get"
+  id="searchform"
+  action="<?php echo home_url( '/' ); ?>">
       <!-- FRONT PAGE -->
     <div class="row row-input">
         <div class="col-md-3 col-lg-4"></div>
@@ -22,6 +20,11 @@
         </div>
     </div>
     <?php } else { ?>
+<form role="search"
+      method="get"
+      id="searchform"
+      action="<?php echo home_url( '/' ); ?>"
+      class="form-inline col-sm-12 col-xs-12 col-md-12 col-lg-4">
         <!-- OTHER PAGES -->
         <!-- div class="row row-search">
             <div class="col-search col-lg-5 col-md-3 col-sm-4 col-xs-5">

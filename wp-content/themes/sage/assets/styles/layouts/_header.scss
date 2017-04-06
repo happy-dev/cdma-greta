@@ -38,7 +38,7 @@
         width: 18vw;
         height: $header-height;
         text-indent: -3000px; */
-        float: left;
+        //float: left;
         
         img {
             height: 80px; //60px;
@@ -54,10 +54,16 @@
                 a {
                     color: white;
                     font-family: $title-fonts;
+                    
+                    &.active {
+                        color: $cdma-light-brown;
+                        border-bottom: 3px solid $cdma-light-brown;
+                    }
                 }
                 
                 > a:first-letter {
                     color: $cdma-light-brown;
+                    border: 0;
                 }
             }
         }
@@ -76,21 +82,34 @@
                     color: $cdma-light-brown;
                     font-family: $title-fonts;
                     font-size: 15px;
+                    
+                    &.active {
+                        color: $cdma-blue;
+                    }
                 }
                 
                 &.dropdown {
                     position: static;
 
+                    &.open {
+                        border-bottom: 3px solid $cdma-blue;
+                    }
+                    
                     .dropdown-menu {
                         top: 51px;
-                    }
-                }
-                
-                &.active {
-                    border-bottom: 3px solid $cdma-blue;
-                    
-                    a {
-                        color: $cdma-brown;
+                        
+                        ul {
+                            li {
+                                a {
+                                    line-height: 19px;
+                                    
+                                    &.active {
+                                        color: $cdma-blue;
+                                        font-family: $title-bold-fonts;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -99,10 +118,12 @@
                 > li {
                     float:left;
                     margin-right: 22px;
+                    height: 35px;
+                    line-height: 35px;
                     
                     > a {
-                        line-height: 25px;
-                        padding-bottom: 0;
+                        //line-height: 25px;
+                        //padding-bottom: 0;
                     }
                 }
             }
