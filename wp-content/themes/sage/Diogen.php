@@ -126,10 +126,10 @@ Class Diogen {
 		$nd 		      = [];// New Date
 		
 		foreach(array_reverse($date_buffer) as $date_part) {
-			if ($date_part == '00') {
-				$start_date_str = '';
-				break;
-			}
+			//if ($date_part == '00') {
+			//	$start_date_str = '';
+			//	break;
+			//}
 			$nd[] = $date_part;
 		}
 		
