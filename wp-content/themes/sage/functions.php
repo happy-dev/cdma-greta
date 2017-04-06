@@ -84,43 +84,6 @@ function remove_menus(){
 add_action( 'admin_menu', 'remove_menus' );
 
 
-// Enhanced search to enable taxonomy filtering
-add_action('pre_get_posts', 'search_by_tax'); 
-function search_by_tax() {     
-  global $wp_query;
-
-  // Some search filter selected
-  if (is_search()) {
-      $wp_query->query_vars["taxonomy"] 	= null;
-      $wp_query->query_vars['post_type']      	= 'formations';
-      $wp_query->query_vars['posts_per_page'] 	= 9;
-
-      if (isset($_GET['taxonomy'])) {
-        switch ($_GET['taxonomy']) {
-          case 'formation-diplomantes-cpf':
-            $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-            break;
-
-          case 'toute-formation':
-            break;
-
-          default:
-            $ta = $_GET['taxonomy'];
-        }
-
-        if (isset($ta)) {
-          $tq = [[
-            'taxonomy' => 'type_form',
-            'field'    => 'slug',
-            'terms'    => $ta,
-          ]];// Tax Query
-
-          $wp_query->query_vars['tax_query'] = $tq;   
-        }
-      }
-  }
-}
-
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );
 function custom_disable_redirect_canonical( $redirect_url ) {
     if ( is_paged() && is_singular() ) $redirect_url = false; 

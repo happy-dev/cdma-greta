@@ -8,11 +8,46 @@
             <section class="articles col-md-9">
                 <!-- FORMATIONS -->
                     <?php
-                    $any_formation = false;
-                    $fdia   = [];// Formations DIOGEN IDs Array
-                    $fia    = [];// Formations IDs Array
+                    $search_txt 	= get_query_var('s');    
+                    $fq         	= new WP_Query('s='.$search_txt);// Posts Query
+
+      		    $fq->query_vars["taxonomy"] 	= null;
+      		    $fq->query_vars['post_type']      	= 'formations';
+      		    $fq->query_vars['posts_per_page'] 	= 9;
+      		    $fq->query_vars['paged'] 		= $paged;
+      		    $fq->query_vars['tax_query'] 	= [];   
+
+      		    if (isset($_GET['taxonomy'])) {
+      		      switch ($_GET['taxonomy']) {
+      		        case 'formation-diplomantes-cpf':
+      		          $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+      		          break;
+
+      		        case 'toute-formation':
+      		          break;
+
+      		        default:
+      		          $ta = $_GET['taxonomy'];
+      		      }
+
+      		      if (isset($ta)) {
+      		        $tq = [[
+      		          'taxonomy' => 'type_form',
+      		          'field'    => 'slug',
+      		          'terms'    => $ta,
+      		        ]];// Tax Query
+
+      		        $fq->query_vars['tax_query'] = $tq;   
+      		      }
+      		    }
+
+                    relevanssi_do_query($fq);
+
+                    $any_formation 	= false;
+                    $fdia   		= [];// Formations DIOGEN IDs Array
+                    $fia    		= [];// Formations IDs Array
                     $i=0;
-                    while (have_posts()) : the_post();
+                    while ($fq->have_posts()) : $fq->the_post();
                       if ( 'formations' == get_post_type() ) { 
                         $i++;
                         $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
@@ -38,7 +73,7 @@
                 <div class="row">
                     <?php
                     $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-                    while (have_posts()) : the_post(); 
+                    while ($fq->have_posts()) : $fq->the_post(); 
                        if ( 'formations' == get_post_type() ) { 
                             $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
                             $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
@@ -90,6 +125,7 @@
                         'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
                         'format' => '?paged=%#%',
                         'current' => max( 1, get_query_var('paged') ),
+			'total' => $fq->max_num_pages
                     ) );
                     ?>
                     </div>
@@ -110,9 +146,7 @@
                     $any_news = false;
                     // THE POSTS QUERY
 
-                    $search_txt = get_query_var('s');    
                     $pq         = new WP_Query('s='.$search_txt);// Posts Query
-
                     $pq->query_vars['post_type']        = 'post';
                     $pq->query_vars['posts_per_page']   = 3;
                     relevanssi_do_query($pq);
