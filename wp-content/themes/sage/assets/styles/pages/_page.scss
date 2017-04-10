@@ -4,7 +4,7 @@
     .breadcrumb {
         position: absolute;
         top: 0;
-        left: 0;
+        left: 6%;
         z-index: 4;
     }
     
@@ -217,6 +217,24 @@
             p {
                 font-style: italic;
                 padding: 0;
+            }
+        }
+        
+        table {
+            thead {
+                th {
+                    font-family: $title-fonts;
+                    width: 50%;
+                    padding: 10px;
+                    border-bottom: 2px solid grey;
+                }
+            }
+            
+            tbody {
+                td {
+                    padding: 10px;
+                    border-bottom: 1px solid grey;
+                }
             }
         }
     }
