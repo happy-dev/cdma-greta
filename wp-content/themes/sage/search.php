@@ -152,6 +152,7 @@
                     $pq         = new WP_Query('s='.$search_txt);// Posts Query
                     $pq->query_vars['post_type']        = 'post';
                     $pq->query_vars['posts_per_page']   = 3;
+                    $pq->query_vars['orderby']   	= 'date';
                     relevanssi_do_query($pq);
 
                     while ($pq->have_posts()) : $pq->the_post(); 
