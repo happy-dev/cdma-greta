@@ -17,22 +17,21 @@
  * @package WordPress
  */
 
-
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define('DB_NAME', 'staging_cdmagreta');
+define('DB_NAME', 'votre_nom_de_bdd');
 
 /** Utilisateur de la base de données MySQL. */
-define('DB_USER', 'sylvia_k');
+define('DB_USER', 'votre_utilisateur_de_bdd');
 
 /** Mot de passe de la base de données MySQL. */
-define('DB_PASSWORD', 'laO9J4gRL4p8jFP99sbl');
+define('DB_PASSWORD', 'votre_mdp_de_bdd');
 
 /** Adresse de l’hébergement MySQL. */
 define('DB_HOST', 'localhost');
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
-define('DB_CHARSET', 'utf8mb4');
+define('DB_CHARSET', 'utf8');
 
 /** Type de collation de la base de données.
   * N’y touchez que si vous savez ce que vous faites.
@@ -50,14 +49,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'z,+ZDm~T%wTay#Nb46)JT9YO4/(bQu02X<$%(Sx(CBi<+Mh!Hb<hgzM*wVH<Z4n?');
-define('SECURE_AUTH_KEY',  '4!.sCTd`?|9>18J#u<#{#11%lAmU6PHE#^y($E8A*&SX%30efI!8,~e.Vdy-q1j,');
-define('LOGGED_IN_KEY',    ']@jx3oZeLXMl:B/*6r#}OI&~Q=_f1 4.B:a$(Hz{ezSpme#K,eqltP}FUs?V=&bt');
-define('NONCE_KEY',        'gf1Jtml#tgdi+)$]Q{Tj}/}`S!*2b~?hI~n`ab&|AEB(+x8,>Ge$Rp51LhvPgXjp');
-define('AUTH_SALT',        '5nE-ZTCP]s=1kP*EQS~>{ZB#}@$G)g0IZy=R,O(*|u7WJi3L+E[`LA*SIOOm{ vp');
-define('SECURE_AUTH_SALT', '!>yt$cRrse(tq9[LTHTB-bks#vCr+2NByiriZ..9wH8Z/S1G+taqx&f8PD_Z~I*C');
-define('LOGGED_IN_SALT',   'SIAK9>kb&F|A;I}e<J@lxg*$lN|L1ZNK)bIpl~uhQ(f5F@d0~t|=U0|CKi].,S!M');
-define('NONCE_SALT',       'n$BITDyH*ov=t$H69TfjgO)-U&~M_#[m#-{PM,jh7.}1|.`k<jySr>GsZf]%c-?;');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 /**#@-*/
 
 /**
@@ -67,7 +66,7 @@ define('NONCE_SALT',       'n$BITDyH*ov=t$H69TfjgO)-U&~M_#[m#-{PM,jh7.}1|.`k<jyS
  * si vous leur donnez chacune un préfixe unique.
  * N’utilisez que des chiffres, des lettres non-accentuées, et des caractères soulignés !
  */
-$table_prefix  = 'gretacdma_';
+$table_prefix  = 'wp_';
 
 /**
  * Pour les développeurs : le mode déboguage de WordPress.
@@ -78,13 +77,12 @@ $table_prefix  = 'gretacdma_';
  * de thèmes se servent de WP_DEBUG dans leur environnement de
  * développement.
  *
- * Pour plus d'information sur les autres constantes qui peuvent être utilisées
+ * Pour plus d’information sur les autres constantes qui peuvent être utilisées
  * pour le déboguage, rendez-vous sur le Codex.
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
-define('FS_METHOD', 'direct');
+define('WP_DEBUG', false);
 
 /* C’est tout, ne touchez pas à ce qui suit ! */
 

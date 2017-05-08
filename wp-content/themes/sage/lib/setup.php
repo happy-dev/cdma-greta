@@ -205,6 +205,7 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
+  wp_enqueue_style('bootstrap-datepicker-css', Assets\asset_path('../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'), false, null);
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
   wp_enqueue_style('sage/css', Assets\asset_path('styles/flickity.css'), false, null);
 
@@ -212,6 +213,8 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
+  wp_enqueue_script('bootstrap-datepicker', Assets\asset_path('../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'), ['jquery'], null, true);
+  wp_enqueue_script('bootstrap-datepicker-fr', Assets\asset_path('../node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js'), ['jquery'], null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

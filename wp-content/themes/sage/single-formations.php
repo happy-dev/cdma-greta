@@ -3,6 +3,7 @@ require_once('Diogen.php');
 require_once('DiogenHelper.php');
 
 global $post;
+the_post();
 
 $sa = [];// Sessions Array
 $fi = get_field('id_diogen');// Formation Id
@@ -11,7 +12,6 @@ $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
-//$sa[] = DiogenHelper::getLeftColumnHeader($ss, $fi);
 $first = true;
 foreach ($ss as $s) {
   $sa[] = DiogenHelper::getLeftColumn($s, $fi, $first);
@@ -30,7 +30,6 @@ $forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
 $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
 ?>
 
-<?php the_post(); ?>
 <div class="formation">
     <section class="introduction">
         <div class="container-fluid">

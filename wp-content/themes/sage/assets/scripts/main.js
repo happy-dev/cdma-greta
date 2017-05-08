@@ -206,6 +206,16 @@
 	}
 
 
+	// Numbers only
+	$(".numbers-only").on("keypress", function(e) {
+	  return e.charCode >= 48 && e.charCode <= 57;
+	});
+
+
+	// Datepickers
+	$(".datepicker").datepicker({ language: 'fr' });
+
+
 	// Formation title
         var ft = getParameterByName("formation");
 
