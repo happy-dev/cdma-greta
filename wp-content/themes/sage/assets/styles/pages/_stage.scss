@@ -13,7 +13,6 @@
                     text-decoration: none;
                     background-color: #f4f4f4;
                     border-radius: 10px;
-                    
                     display: block;
                     height: 100%;
                     padding: 3vw;
@@ -25,6 +24,15 @@
                             text-decoration: underline;
                         }
                     }
+
+		    pre {
+		      color: $cdma-blue;
+
+		      &.excerpt {
+			margin-bottom :		0px;
+			padding-bottom :	0px;
+	 	      }
+		    }
                 }
             }
         }
