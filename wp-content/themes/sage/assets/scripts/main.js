@@ -208,7 +208,7 @@
 
 	// Numbers only
 	$(".numbers-only").on("keypress", function(e) {
-	  return e.charCode >= 48 && e.charCode <= 57;
+	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8;
 	});
 
 
