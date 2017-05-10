@@ -24,6 +24,7 @@
             <!-- TEXTE -->
             <div class="layer"></div>
             <div class="container">
+                <?php get_template_part('templates/breadcrumb'); ?>
                 <div class="row">
                     <div class="intro col-md-6 col-sm-12 col-xs-12">
                         <?php $dom_title = get_the_title(); ?>
@@ -113,7 +114,6 @@
 <?php endwhile; ?>
 <?php wp_reset_postdata();?>   
     <div class="container">
-        <?php get_template_part('templates/breadcrumb'); ?>
         <div class="row row-offcanvas row-offcanvas-left">
         <!-- LISTE DOMAINES -->
         	<?php

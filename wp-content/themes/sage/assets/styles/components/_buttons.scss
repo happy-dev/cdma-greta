@@ -86,15 +86,15 @@
         background-position: 10px 5px;
         background-repeat: no-repeat;
         background-size: 30px;
-        text-indent: 40px;
+        //text-indent: 40px;
         vertical-align: text-top;
         
         &.french {
-            background-image:url(../images/icon-french.png);
+            //background-image:url(../images/icon-french.png);
         }
         
         &.english {
-            background-image:url(../images/icon-english.png);
+            //background-image:url(../images/icon-english.png);
         }
         
         &:hover {

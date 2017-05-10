@@ -38,8 +38,94 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
+.mce-content-body {
+    line-height: 20px;
+    font-size: 16px;
+    font-family: $basic-fonts;
+    line-height: 140%;
+
+    ol, ul {
+        padding-left: 45px;
+        padding-bottom: 1vw;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    h2, h3, h4, h5 {
+        padding-top: 2vw;
+        padding-bottom: 1vw;
+        text-transform: none;
+    }
+
+    h2 {
+        font-family: $title-fonts;
+        font-size: 26px;
+        padding-top: 3vw;
+    }
+
+    h3 {
+        color: $cdma-light-brown;
+        font-family: $title-fonts;
+        font-size: 24px;
+    }
+
+    h4 {
+        color: #373737;
+        font-family: $title-fonts;
+        font-size: 20px;
+    }
+
+    a {
+        font-family: $title-bold-fonts;
+        color: $cdma-blue;
+        text-decoration: underline;
+
+        &:hover {
+            color: black;
+        }
+
+        &.btn {
+            color: white;
+            font-family: $title-fonts;
+            text-decoration: none;
+        }
+    }
+
+    img {
+      @extend .img-fluid;
+      @extend .img-rounded;
+    }
+
+    blockquote {
+        padding-left: 25px;
+        margin: 0 0 1vw 30px;
+        border-left: 4px solid $cdma-light-brown;
+
+        p {
+            font-style: italic;
+            padding: 0;
+        }
+    }
+
+    table {
+        thead {
+            th {
+                font-family: $title-fonts;
+                width: 50%;
+                padding: 10px;
+                border-bottom: 2px solid grey;
+            }
+        }
+
+        tbody {
+            td {
+                padding: 10px;
+                border-bottom: 1px solid grey;
+            }
+        }
+    }
 }
 blockquote, q {
 	quotes: none;
