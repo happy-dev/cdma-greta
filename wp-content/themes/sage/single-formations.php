@@ -3,6 +3,7 @@ require_once('Diogen.php');
 require_once('DiogenHelper.php');
 
 global $post;
+the_post();
 
 $sa = [];// Sessions Array
 $fi = get_field('id_diogen');// Formation Id
@@ -11,7 +12,6 @@ $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
 // Iterating through each session
-//$sa[] = DiogenHelper::getLeftColumnHeader($ss, $fi);
 $first = true;
 foreach ($ss as $s) {
   $sa[] = DiogenHelper::getLeftColumn($s, $fi, $first);
@@ -30,7 +30,6 @@ $forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
 $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
 ?>
 
-<?php the_post(); ?>
 <div class="formation">
     <section class="introduction">
         <div class="container-fluid">
@@ -85,7 +84,14 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                         </div>
                     </div>
                     <hr/>
-                    <?php the_content() ?>
+                    <?php 
+		      if ($content = get_the_content()) {
+			echo $content;
+		      }
+		      else {
+			echo Diogen::removeApostrophe($fs->OFAccroche);
+    		      }
+		    ?>
                     <?php if (get_field( 'taux_reussite' ) ) { ?> 
                     <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
                     <?php } ?>
@@ -226,9 +232,12 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <h2>Codification de l'offre</h2>
                     <pre><?php  
 		      if ($forc) { 
+			echo '<strong>Formacode : </strong><br/>';
                         echo $forc ;
+			echo '<br/>';
                       }
                       if ($corm) { 
+			echo '<strong>ROME : </strong><br/>';
 		        echo $corm ; 
 		      }
                     ?></pre>

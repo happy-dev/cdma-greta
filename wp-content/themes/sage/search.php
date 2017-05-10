@@ -21,6 +21,7 @@
       		      switch ($_GET['taxonomy']) {
       		        case 'formation-diplomantes-cpf':
       		          $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+			  $op = 'AND';
       		          break;
 
       		        case 'toute-formation':
@@ -28,6 +29,7 @@
 
       		        default:
       		          $ta = $_GET['taxonomy'];
+			  $op = 'IN';
       		      }
 
       		      if (isset($ta)) {
@@ -35,6 +37,7 @@
       		          'taxonomy' => 'type_form',
       		          'field'    => 'slug',
       		          'terms'    => $ta,
+			  'operator' => $op,
       		        ]];// Tax Query
 
       		        $fq->query_vars['tax_query'] = $tq;   
@@ -149,6 +152,7 @@
                     $pq         = new WP_Query('s='.$search_txt);// Posts Query
                     $pq->query_vars['post_type']        = 'post';
                     $pq->query_vars['posts_per_page']   = 3;
+                    $pq->query_vars['orderby']   	= 'date';
                     relevanssi_do_query($pq);
 
                     while ($pq->have_posts()) : $pq->the_post(); 
