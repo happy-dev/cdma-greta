@@ -18,27 +18,34 @@
         <span class="icon-bar"></span>
     </button>
     <nav class="navbar navbar-full primary-navbar collapse hidden-md-down">
-      <div id="en-dropdown" class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          EN <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right">
-	<?php
-	  $args = array(
-	  	'post_type' 	=> 'page',
-	  	'meta_key'  	=> 'english',
-	  	'meta_value'  	=> true,
-	  );
-	  $en_query = new WP_Query( $args );
-	  while ( $en_query->have_posts()) {
-	    $en_query->the_post(); 
-	    echo '<li>';	
-	    echo   '<a href="'. get_the_permalink() .'">';	
-	    echo     get_the_title();
-	    echo   '</a>';	
-	    echo '</li>';	
-	  }
-	?>
+      <div id="en-dropdown">
+        <ul class="menu">
+            <li class="dropdown">
+                <a id="dropdown-language" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">EN</a>
+                <div  aria-labelledby="dropdown-language" class="dropdown-menu">
+                    <span class='decoration'></span>
+                    <div class="row">
+                        <ul class="col-md-4">
+                            <?php
+                              $args = array(
+                                'post_type' 	=> 'page',
+                                'meta_key'  	=> 'english',
+                                'meta_value'  	=> true,
+                              );
+                              $en_query = new WP_Query( $args );
+                              while ( $en_query->have_posts()) {
+                                $en_query->the_post(); 
+                                echo '<li>';	
+                                echo   '<a href="'. get_the_permalink() .'">';	
+                                echo     get_the_title();
+                                echo   '</a>';	
+                                echo '</li>';	
+                              }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </li>
         </ul>
       </div>
 
