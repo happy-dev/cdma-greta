@@ -22,6 +22,10 @@
         .h2-top {
             margin-top: 0;
         }
+        
+        &:first-child {
+            margin-top: 0;
+        }
     }
     
     h3 {
