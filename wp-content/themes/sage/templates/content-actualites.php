@@ -1,5 +1,5 @@
 <article class="entry col-md-12">
-    <a class="row row-entry" href="<?php the_permalink(); ?>" title="#">
+    <a class="row row-entry" href="<?php the_permalink(); ?>">
         <div class="col-md-4">
             <?php 
     $image = get_field('post_image');

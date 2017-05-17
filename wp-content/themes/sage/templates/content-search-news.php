@@ -1,6 +1,5 @@
-<article class="entry col-md-12">
-    <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-        <div class="col-md-4">
+<article class="entry col-md-4">
+    <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
         <?php $image = get_field('post_image');
 	    $alt = '';
 
@@ -11,12 +10,9 @@
                 $size = 'news';
                 $thumb = $image['sizes'][ $size ]; ?>
             <?php endif; ?>
-                <img style="width:100%;" src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
-        </div>
-        <div class="col-md-8">
-            <h3><?php the_title(); ?></h3>
-            <span><?php the_date() ?></span>
-            <?php the_excerpt(); ?>
-        </div>
+        <img style="width:100%;" src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
+        <h3><?php the_title(); ?></h3>
+        <span><?php the_date() ?></span>
+        <?php the_excerpt(); ?>
     </a>
 </article>

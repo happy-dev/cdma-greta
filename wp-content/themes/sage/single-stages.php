@@ -55,16 +55,16 @@
                             <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
 
                             <h2>Description de la société</h2>
-                            <div><?php the_field('text_societe_stage'); ?></div>
+                            <pre><?php the_field('text_societe_stage'); ?></pre>
 
                             <h2>Informations sur le poste</h2>
 
                             <h3>Description de l'activité</h3>
-                            <div><?php the_field('activite_stage'); ?></div>
+                            <pre><?php the_field('activite_stage'); ?></pre>
                             <h3>Profil souhaité : </h3>
-                            <div><?php the_field('profil_stage'); ?></div>
+                            <pre><?php the_field('profil_stage'); ?></pre>
                             <h3>Date d'expiration de l'offre de stage : </h3>
-                            <div><?php the_field('exp_stage'); ?></div>
+                            <pre><?php the_field('exp_stage'); ?></pre>
                         </div>
                     </div>
 

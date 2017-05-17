@@ -8,7 +8,7 @@
                 <?php wp_list_categories( array(
                                         'orderby' => 'name',
                                         'title_li' => '',
-					'current_category' => $cat,
+					                    'current_category' => $cat,
                                         'exclude'    => array( 6, 1 )
                                     ) ); ?>
                 </ul>

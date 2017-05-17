@@ -61,19 +61,21 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <div class="col-md-6 col-sm-12">
                     <!-- TEXTE -->
                     <h1 id="formation-title"><?php the_title(); ?></h1>
+                    <div class="container-labels row">
                    <?php   // Get terms for post
                      $terms = get_the_terms( $post->ID , 'type_form' );
                      // Loop over each item since it's an array
                      if ( $terms != null ){
                      foreach( $terms as $term ) {
                         if($term->slug == 'formation-diplomante') { 
-                            echo '<span class="introduction-label">Formation diplômante</span>';
+                            echo '<span class="introduction-label col-sm-6">Formation diplômante</span>';
                         }
                         if($term->slug == 'formation-eligible-au-cpf') { 
-                            echo '<span class="introduction-label">Formation éligible au CPF</span>';
+                            echo '<span class="introduction-label col-sm-6">Formation éligible au CPF</span>';
                         }
                      unset($term);
                     } } ?>
+                    </div>
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">
@@ -84,6 +86,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                         </div>
                     </div>
                     <hr/>
+                    <p>
                     <?php 
 		      if ($content = get_the_content()) {
 			echo $content;
@@ -92,6 +95,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
 			echo Diogen::removeApostrophe($fs->OFAccroche);
     		      }
 		    ?>
+                    </p>
                     <?php if (get_field( 'taux_reussite' ) ) { ?> 
                     <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
                     <?php } ?>

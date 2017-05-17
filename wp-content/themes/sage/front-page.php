@@ -23,9 +23,9 @@ while (have_posts()) : the_post();
             $offset = max(12 - ($col * $len), 0);
             $firstcol = true;
         ?>
-        <div class="search-links row">
-            <?php while ( have_rows('liens_header') ) : the_row(); ?>
-                <div class="search-links-item col-lg-3 col-md-6 col-sm-6">
+        <div class="search-links">
+            <?php while ( have_rows('liens_header') ) : the_row(); // col-lg-3 col-md-6 col-sm-6?>
+                <div class="search-links-item">
                     <a href="<?php echo the_sub_field('lien_header'); ?>">
                         <?php the_sub_field('texte_lien'); ?>
                     </a>

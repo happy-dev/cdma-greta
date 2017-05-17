@@ -62,6 +62,7 @@
                     &.active {
                         color: $cdma-light-brown;
                         border-bottom: 3px solid $cdma-light-brown;
+                        padding-left: 1.5vw;
                     }
                 }
                 
@@ -107,7 +108,7 @@
             
             > li {    
                 a {
-                    color: $cdma-light-brown;
+                    color: #544942; //$cdma-light-brown;
                     font-family: $title-fonts;
                     font-size: 15px;
                     

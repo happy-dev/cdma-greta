@@ -57,21 +57,25 @@
                 color: white;
             }
         }
-        
-        .introduction-label {
-            color: $cdma-blue;
-            font-family: $title-bold-fonts;
-            font-size: 15px;
+    
+        .container-labels {
+            padding: 0 15px;
             
-            background-color: transparent;
-            background-image: url(../images/icon-accept.png);
-            background-position: top left;
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-            text-indent: 19px;
-            display: block;
-            height: 14px;
-            line-height: 17px;
+            .introduction-label {
+                color: $cdma-blue;
+                font-family: $title-bold-fonts;
+                font-size: 15px;
+
+                background-color: transparent;
+                background-image: url(../images/icon-accept.png);
+                background-position: top left;
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                text-indent: 6px;
+                display: block;
+                height: 14px;
+                line-height: 17px;
+            }
         }
         
         .introduction-success {

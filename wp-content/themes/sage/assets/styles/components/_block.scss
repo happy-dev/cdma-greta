@@ -24,16 +24,16 @@ aside.column {
                 }
             }
 
-	    &.current {
+	    &.current, &.current-cat {
    	      position:	relative;
 	      display:	inline;
 
    	      &::before {
-                content : 	'→';
-		position:	absolute;
-		left:		-25px;
-		top:		0px;
-              }
+            content : 	'→';
+            position:	absolute;
+            left:		-25px;
+            top:		0px;
+          }
 
    	      &::after {
                 // content : 	'<';
