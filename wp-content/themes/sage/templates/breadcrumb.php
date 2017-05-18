@@ -40,10 +40,11 @@ if (is_singular('formations')) {
 	echo $category;
 }
 
+// Actualités Category
 if (is_category()) {
 	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
-	$category = get_the_category();
-	echo '<li class="breadcrumb-item hidden-md-down">'.$category[0]->cat_name.'</li>';
+	$category = get_category($cat);
+	echo '<li class="breadcrumb-item hidden-md-down">'. $category->name .'</li>';
 }
 
 
