@@ -134,11 +134,16 @@
     <?php 
       $pq         = new WP_Query('s='.$search_txt);// Posts Query
       $pq->query_vars['post_type']        = 'post';
-      $pq->query_vars['posts_per_page']   = 3;
-      $pq->query_vars['orderby']   	= 'date';
+      $pq->query_vars['posts_per_page']   = 9999;
+      $pq->query_vars['orderby']          = 'date';
       relevanssi_do_query($pq);
     ?>
        <h2><?php echo($pq->post_count); ?> Actualités pour "<?php the_search_query(); ?>"</h2>
+    <?php 
+       if ($pq->post_count > 3) {
+         echo '<a role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
+       }
+    ?>
     <?php else : ?>
                   <h2>Actualités</h2>
     <?php endif; ?>	
@@ -147,15 +152,21 @@
             $any_news = false;
             // THE POSTS QUERY
 
+	    $idx = 1;
             while ($pq->have_posts()) : $pq->the_post(); 
-                //if ( 'post' == get_post_type() ) { 
-                    get_template_part('templates/content', 'search-news');
-                    $any_news = true;
-                //}
+		if ($idx == 4) {
+		  echo '</div><div class="collapse content row" id="more-news">';
+		}
+
+                get_template_part('templates/content', 'search-news');
+                $any_news = true;
+
+		$idx++;
             endwhile; 
-            ?>
-        </div>
-        <?php
+
+	    if ($idx > 3) {
+	      echo '</div>';
+	    }
         if (!$any_news) {
             echo '<p>Aucune actualité ne correspond à la recherche</p>';
         }
