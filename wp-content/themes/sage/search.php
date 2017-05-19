@@ -56,7 +56,7 @@
             ?>
             <section class="articles">
       <?php if ($_GET['s'] != '') : ?>
-                    <h2>Formations pour "<?php the_search_query(); ?>"</h2>
+                    <h2><?php echo($fq->post_count); ?> Formations pour "<?php the_search_query(); ?>"</h2>
       <?php else : ?>
                     <h2>Formations</h2>
       <?php endif; ?>	  
@@ -129,9 +129,16 @@
     <hr/>
 
         <!-- ACTUALITES -->
-    <section class="articles container">
+    <section class="articles container"> 
     <?php if ($_GET['s'] != '') : ?>
-                  <h2>Actualités pour "<?php the_search_query(); ?>"</h2>
+    <?php 
+      $pq         = new WP_Query('s='.$search_txt);// Posts Query
+      $pq->query_vars['post_type']        = 'post';
+      $pq->query_vars['posts_per_page']   = 3;
+      $pq->query_vars['orderby']   	= 'date';
+      relevanssi_do_query($pq);
+    ?>
+       <h2><?php echo($pq->post_count); ?> Actualités pour "<?php the_search_query(); ?>"</h2>
     <?php else : ?>
                   <h2>Actualités</h2>
     <?php endif; ?>	
@@ -139,12 +146,6 @@
             <?php 
             $any_news = false;
             // THE POSTS QUERY
-
-            $pq         = new WP_Query('s='.$search_txt);// Posts Query
-            $pq->query_vars['post_type']        = 'post';
-            $pq->query_vars['posts_per_page']   = 3;
-            $pq->query_vars['orderby']   	= 'date';
-            relevanssi_do_query($pq);
 
             while ($pq->have_posts()) : $pq->the_post(); 
                 //if ( 'post' == get_post_type() ) { 
