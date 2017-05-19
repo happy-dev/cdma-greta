@@ -31,6 +31,7 @@
                                 'post_type' 	=> 'page',
                                 'meta_key'  	=> 'english',
                                 'meta_value'  	=> true,
+				'orderby' 	=> 'date',
                               );
                               $en_query = new WP_Query( $args );
                               while ( $en_query->have_posts()) {
