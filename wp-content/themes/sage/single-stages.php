@@ -45,7 +45,7 @@
                     <h2>Personne à contacter : </h2>
                     <pre><?php the_field('contact_stage'); ?></pre>
                     <h2>Email : </h2>
-                    <pre><?php the_field('email_stage'); ?></pre>
+                    <pre><a href="mailto:<?php the_field('email_stage'); ?>"><?php the_field('email_stage'); ?></a></pre>
                     <h2>Téléphone : </h2>
                     <pre><?php the_field('tel_stage'); ?></pre>
                 </aside>
