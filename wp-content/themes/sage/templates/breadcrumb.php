@@ -2,6 +2,7 @@
 // Breadcrumb navigation
 
 if (is_page() && !is_front_page() || is_single() || is_category()) {
+wp_reset_postdata();
 
 echo '<ol class="breadcrumb hidden-md-dow" id="breadcrumb">';
 echo '<li class="breadcrumb-item hidden-md-down"><a title="GRETA CDMA - Accueil" rel="nofollow" href="/">Accueil</a></li>';
@@ -19,10 +20,10 @@ echo '<li class="breadcrumb-item hidden-md-down"><a title="GRETA CDMA - Accueil"
 	}
 }
 
+// Actu single
 if (is_singular('post')) {
 	$category = get_the_category();
 	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
-	echo '<li class="breadcrumb-item"><a href="'.get_category_link($category[0]->cat_ID).'">'.$category[0]->cat_name.'</a></li>';
 }
 
 if (is_singular('stages')) {
@@ -40,10 +41,10 @@ if (is_singular('formations')) {
 	echo $category;
 }
 
-// Actualités Category
+// Actu category
 if (is_category()) {
-	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
 	$category = get_category($cat);
+	echo '<li class="breadcrumb-item"><a href="/actualite">Actualités</a></li>';
 	echo '<li class="breadcrumb-item hidden-md-down">'. $category->name .'</li>';
 }
 

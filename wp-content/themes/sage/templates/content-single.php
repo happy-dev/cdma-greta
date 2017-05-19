@@ -1,4 +1,4 @@
-<div class="article container">
+<div class="article container" id="single-article-page">
     <?php get_template_part('templates/breadcrumb'); ?>
     <div class="row row-offcanvas row-offcanvas-left">
        <aside class="column col-md-3 sidebar-offcanvas" id="sidebar">

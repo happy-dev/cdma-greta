@@ -64,9 +64,13 @@
 
 
 	var pna = document.location.pathname.split("/");// Path Name Array
-	if (pna.indexOf("domaines") == -1 && pna.indexOf("formations") == -1) {
+	if (pna.indexOf("domaine-offres") == -1 && pna.indexOf("fiches") == -1) {
 	  localStorage.setItem("domain_href", undefined);
 	  localStorage.setItem("domain_html", undefined);
+	}
+	if (pna.indexOf("actualite") == -1 && $("#single-article-page").length == 0) {
+	  localStorage.setItem("category_href", undefined);
+	  localStorage.setItem("category_html", undefined);
 	}
       },
       finalize: function() {
@@ -155,6 +159,37 @@
 
 	localStorage.setItem("domain_href", href);
 	localStorage.setItem("domain_html", html);
+      },
+      finalize : function() {}
+    },
+    'single' : {
+      init : function() {
+	// Breadcrumbs
+	var ls_href = localStorage.getItem("category_href");
+	var ls_html = localStorage.getItem("category_html");
+
+	if (ls_href !== "undefined" && ls_html !== "undefined") {
+	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
+	}
+
+	$("#sidebar a").each(function(idx) {
+	  var el = $(this);
+	  if (el.html() == ls_html) {
+	    el.parent().addClass("current-cat");
+	  }
+	});
+      },
+      finalize : function() {}
+    },
+    'category': {
+      init : function() {
+console.log("Actualités");
+	var category 	= $("#sidebar li.current-cat a");
+	var href   	= category.attr("href");
+	var html   	= category.html();
+
+	localStorage.setItem("category_href", href);
+	localStorage.setItem("category_html", html);
       },
       finalize : function() {}
     },
