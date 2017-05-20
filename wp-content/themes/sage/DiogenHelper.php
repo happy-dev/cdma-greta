@@ -448,13 +448,14 @@ Class DiogenHelper {
         offreformation.OFNoPermanent = {$fID}
     ");	
 
+
     $o  = '';// Output
     $oa = [];// Output Array
     if ($mps->rowCount() > 0) {
       foreach($mps as $mp) {
         $oa[] = $mp->MPIntitule;
       }
-      $o = implode(',', $oa) .'<br/>';
+      $o = implode(', ', $oa) .'.<br/>';
     } 
 
     if (isset($f->OFMoyens) AND $f->OFMoyens != '') {
@@ -502,7 +503,7 @@ Class DiogenHelper {
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
-          $o .= $rao->SAIntitule .'<br/>';
+          $o .= Diogen::removeApostrophe($rao->SAIntitule) .'<br/>';
         }
       }
     }
@@ -723,5 +724,42 @@ Class DiogenHelper {
     else if (!nullOrEmpty($f->OFObjectif)) {
       return Diogen::removeApostrophe($f->OFObjectif);
     }
+  }
+
+
+  // Get the admission modalities
+  public static function getAdmissionMod($fs, $fID) {
+    $mar = '';// Méthodes d'Admission et de Recrutement
+
+    $results = Diogen::runQuery("
+      SELECT
+        offreadmission.ADIntitule
+
+      FROM
+        offreadmission, 
+        offreformation,
+        offreliaisonformationadmission
+        
+      WHERE
+        offreformation.OFNo=offreliaisonformationadmission.LFAFormation		AND
+        offreliaisonformationadmission.LFAAdmission=offreadmission.ADCode	AND
+  	offreformation.OFNoPermanent = {$fID}
+    ");
+
+    $arr = [];
+
+    if ($results->rowCount() > 0) {
+      foreach($results as $result) {
+        $arr[] = ucfirst( Diogen::removeApostrophe($result->ADIntitule) );
+      }
+      $mar = implode(', ', $arr) .'.<br/>';
+    } 
+
+
+    if (!nullOrEmpty($fs->OFSelection)) {
+      $mar .= Diogen::removeApostrophe($fs->OFSelection);
+    }
+
+    return $mar;
   }
 }

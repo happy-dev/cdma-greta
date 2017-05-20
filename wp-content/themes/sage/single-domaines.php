@@ -197,7 +197,7 @@
 
                 $i++;
             ?>
-                <div class="row <?php if ( $i <= $mea && 1 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
+                <div class="row <?php if ( $i <= $mea && 0 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
