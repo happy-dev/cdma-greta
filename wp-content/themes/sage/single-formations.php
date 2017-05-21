@@ -102,7 +102,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <hr/>
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="link-pdf" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?php echo $fi; ?>" download="<?php echo $post->post_name; ?>.pdf">Télécharger la fiche en format PDF</a>
+                            <a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?php echo $fi; ?>" download="<?php echo $post->post_name; ?>.pdf">Télécharger la fiche en format PDF</a>
                         </div>
                     </div>
                     <?php if (get_field ('post_video') ) { ?>

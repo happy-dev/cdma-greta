@@ -149,6 +149,24 @@
           $('#sessions-tabs a.active').removeClass('active');
           // $(this).addClass('active')
         })
+
+	function modifyPrint() {
+	  var printBtn = $("#at4-share a.at-svc-print");
+
+	  if (printBtn.length > 0) {
+	    printBtn.removeClass("at-share-btn at-svc-print")
+	    	    .on("click", function(e) {
+		var href = $("#pdf-file").attr("href");
+		window.open(href, "_self");
+	    });
+	  }
+	  else {
+	    setTimeout(function() {
+	      modifyPrint();
+	    }, 250);
+	  }
+	}
+	modifyPrint();
       },
     },
     'single_domaines': {
