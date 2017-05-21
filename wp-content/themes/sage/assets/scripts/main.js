@@ -99,6 +99,10 @@
      	    }
 	  }
 	});
+
+        $("#modalVideoPresentation").on("hide.bs.modal", function(e) {               
+          playerPresentation.pauseVideo();                                           
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS

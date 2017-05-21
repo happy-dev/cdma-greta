@@ -132,9 +132,9 @@ while (have_posts()) : the_post();
         if( !empty($imageArray) ): 
         $image = $imageArray['url']; 
         endif; ?> 
-        <div class="video col-md-6" style="background-image: url(<?php echo $image; ?>); background-size:cover; ">  
+        <div class="video col-md-6" data-toggle="modal" data-target="#modalVideoPresentation" style="background-image: url(<?php echo $image; ?>); background-size:cover; ">  
             <!-- <img src="<?php echo $url; ?>" alt="<?php echo $alt; ?>" /> -->
-            <span class="icon-play" data-toggle="modal" data-target="#modalVideoPresentation"></span>
+            <span class="icon-play"></span>
         </div>
         <div class="intro greta col-md-6">
             <div class="container">
@@ -175,11 +175,6 @@ while (have_posts()) : the_post();
                       videoId: '<?php the_field('prez_video'); ?>',
                     });
                   }
-
-                    function pauseVideo() {
-                    playerPresentation.pauseVideo();
-                  }
-
                 </script>
             </div>
         </div>
