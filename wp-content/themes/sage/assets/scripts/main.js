@@ -181,6 +181,10 @@
 
 	localStorage.setItem("domain_href", href);
 	localStorage.setItem("domain_html", html);
+
+        $("#modalVideoDomaine").on("hide.bs.modal", function(e) {               
+          playerDomaine.pauseVideo();                                           
+        });
       },
       finalize : function() {}
     },

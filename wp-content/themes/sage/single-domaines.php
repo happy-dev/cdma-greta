@@ -7,7 +7,6 @@
     <section>
         <div class="presentation">
             <!-- IMAGE -->
-            <?php if (!get_field ('post_video') ) { ?>
             <figure>
                 <?php $image = get_field('post_image');
                 if( !empty($image) ): 
@@ -19,7 +18,6 @@
                         <img class="image-background" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                 <?php endif; ?>
             </figure>
-            <?php } ?>
 
             <!-- TEXTE -->
             <div class="layer"></div>
@@ -49,8 +47,8 @@
                     </div>
                     <!-- VIDEO -->
                     <?php if (get_field ('post_video') ) { ?>
-                        <div class="video col-md-6 col-sm-12 col-xs-12">
-                            &nbsp;<span class="icon-play" data-target="#modalVideoDomaine"></span>
+                        <div class="video col-md-6 col-sm-12 col-xs-12" data-toggle="modal" data-target="#modalVideoDomaine">
+                            &nbsp;<span class="icon-play"></span>
                         </div>
                      <?php } ?>
                 </div>
@@ -94,7 +92,7 @@
                         playerDomaine = new YT.Player('playerDomaine', {
                           height: '390',
                           width: '640',
-                          videoId: 'PtsTJ_xoZYo',
+                          videoId: '<?php the_field('post_video'); ?>',
                         });
                       }
 
