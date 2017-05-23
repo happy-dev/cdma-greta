@@ -105,7 +105,7 @@
                                 ?>
                                 <br/>
                                 </span>
-                            <?php echo wp_trim_words( $dsc, 50, '...' ); ?>
+                                <p><?php echo wp_trim_words( $dsc, 50, '...' ); ?></p>
                             </div>
                         </a>
                     </article>
@@ -141,7 +141,7 @@
        <h2><?php echo($pq->post_count); ?> Actualités pour "<?php the_search_query(); ?>"</h2>
     <?php 
        if ($pq->post_count > 3) {
-         echo '<a role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
+         echo '<a class="see-all" role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
        }
     ?>
     <?php else : ?>

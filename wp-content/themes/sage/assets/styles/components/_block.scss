@@ -58,6 +58,8 @@ section.content {
 }
 
 section.articles {
+    position: relative;
+    
     h2 {
         font-family: $title-fonts;
         text-transform: none;
@@ -78,11 +80,15 @@ section.articles {
                 text-decoration: none;
 
                 h3 {
-                    text-decoration: underline;
+                    //text-decoration: underline;
+                }
+                
+                span {
+                    color: $cdma-blue;
                 }
                 
                 p {
-                    color: $cdma-blue;
+                    //color: $cdma-blue;
                 }
             }
             
@@ -97,25 +103,37 @@ section.articles {
         }
 
         h3 {
-            font-family: $basic-fonts;
+            font-family: $basic-thick-fonts;
             font-size: 15px;
             font-weight: bold;
             line-height: 20px;
             color: black;
             text-transform: none;
             line-height: 17px;
-            padding-bottom: 8px;
+            padding-bottom: 2px; //8px;
         }
 
         span {
-            color: #0956a1;
-            font-family: $basic-fonts;
+            color: $cdma-blue;//#0956a1;
+            font-family: $basic-thick-fonts;
+            line-height: 18px;
         }
 
         p {
-          //  color: #5d5d5d;
-            padding-top: 5px;
+            color: #5d5d5d;
+            font-family: $basic-thick-fonts;
         }
+    }
+    
+    .see-all {
+        font-size: 15px;
+        line-height: 20px;
+        color: $cdma-brown;
+
+        position: absolute;
+        top: 66px;
+        right: 0;
+        font-weight: bold;
     }
 }
 

@@ -106,7 +106,7 @@ while (have_posts()) : the_post();
             <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                 <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
                 <h3><?php the_title(); ?></h3>
-                <p>
+                <span>
                 <?php if ($sd) {
                     echo 'Du '.$sd.' au '.$ed ; // dates de session
                 }
@@ -115,8 +115,8 @@ while (have_posts()) : the_post();
                 }
                 echo '<br/>';
                 ?>
-                <span><?php //echo $ls; ?></span>
-                </p>
+                </span>
+                <p><?php //echo $ls; ?></p>
             </a>
         </article>
         <?php endforeach;

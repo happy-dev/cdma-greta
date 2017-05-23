@@ -226,7 +226,7 @@
                                 }
                                 ?>
                                 </span>
-                                <?php echo wp_trim_words( $dsc, 50, '...' ); ?>
+                                <p><?php echo wp_trim_words( $dsc, 50, '...' ); ?></p>
                             </div>
                         </a>
                     </article>
