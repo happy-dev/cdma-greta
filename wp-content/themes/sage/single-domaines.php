@@ -38,7 +38,7 @@
                                href="#presentation-pannel"
                                data-toggle="collapse"
                                aria-expanded="false"
-                               aria-controls="presentation-pannel">Lire la suite
+                               aria-controls="presentation-pannel">Lire l'intégralité
                             </a>
                         <?php } ?>
                         <?php if (get_field ('post_video') ) { ?>

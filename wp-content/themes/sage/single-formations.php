@@ -120,10 +120,8 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
                   <?php 
-		      echo 'URL : '. $url .'<br/>';
-		      $url = '[embed]'. $url .'[/embed]';
-		      echo 'URL : '. $url .'<br/>';
 		      global $wp_embed;
+		      $url = '[embed]'. $url .'[/embed]';
 		      echo $wp_embed->run_shortcode($url); 
 		  ?>
                 </div>

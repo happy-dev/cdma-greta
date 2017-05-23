@@ -444,7 +444,7 @@ Class DiogenHelper {
         
       WHERE
         offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
-        offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPNo	AND
+        offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPCode	AND
         offreformation.OFNoPermanent = {$fID}
     ");	
 
@@ -453,7 +453,7 @@ Class DiogenHelper {
     $oa = [];// Output Array
     if ($mps->rowCount() > 0) {
       foreach($mps as $mp) {
-        $oa[] = $mp->MPIntitule;
+        $oa[] = ucfirst(Diogen::removeApostrophe($mp->MPIntitule));
       }
       $o = implode(', ', $oa) .'.<br/>';
     } 
