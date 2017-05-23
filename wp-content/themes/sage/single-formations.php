@@ -37,25 +37,21 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             <div class="row">
                 <div class="introduction-media col-md-6 col-sm-12">
                     <!-- IMAGE / VIDEO -->
-                    <?php if (!get_field ('post_video') ) { ?>
-                        <figure>
-                            <?php 
-                            $image = get_field('post_image');
-                              if( !empty($image) ): 
-                                $url = $image['url'];
-                                $title = $image['title'];
-                                $alt = $image['alt'];
-                                $size = 'single_f';
-                                $thumb = $image['sizes'][ $size ]; 
-                            ?>
-                            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                            <?php endif; ?>
-                        </figure>
-                    <?php } 
-                    else {
-                    the_field('video_home');
-                    ?>
-                    <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
+                    <figure>
+                        <?php 
+                        $image = get_field('post_image');
+                          if( !empty($image) ): 
+                            $url = $image['url'];
+                            $title = $image['title'];
+                            $alt = $image['alt'];
+                            $size = 'single_f';
+                            $thumb = $image['sizes'][ $size ]; 
+                        ?>
+                        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+                        <?php endif; ?>
+                    </figure>
+                    <?php if ($url = get_field ('video_url') ) { ?>
+                      <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
                     <?php } ?>
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -105,7 +101,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                             <a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?php echo $fi; ?>" download="<?php echo $post->post_name; ?>.pdf">Télécharger la fiche en format PDF</a>
                         </div>
                     </div>
-                    <?php if (get_field ('post_video') ) { ?>
+                    <?php if (!nullOrEmpty($url)) { ?>
                         <hr/>
                         <span class="note hidden-sm-down">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
                     <?php } ?>
@@ -123,32 +119,13 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <div id="playerFormation"></div>
-
-                    <script>
-                      // 2. This code loads the IFrame Player API code asynchronously.
-                      var tag = document.createElement('script');
-
-                      tag.src = "https://www.youtube.com/iframe_api";
-                      var firstScriptTag = document.getElementsByTagName('script')[0];
-                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                      // 3. This function creates an <iframe> (and YouTube player)
-                      //    after the API code downloads.
-                      var playerFormation;
-                      function onYouTubeIframeAPIReady() {
-                        playerFormation = new YT.Player('playerFormation', {
-                          height: '390',
-                          width: '640',
-                          videoId: 'PtsTJ_xoZYo',
-                        });
-                      }
-
-                        function pauseVideo() {
-                        playerFormation.pauseVideo();
-                      }
-
-                    </script>
+                  <?php 
+		      echo 'URL : '. $url .'<br/>';
+		      $url = '[embed]'. $url .'[/embed]';
+		      echo 'URL : '. $url .'<br/>';
+		      global $wp_embed;
+		      echo $wp_embed->run_shortcode($url); 
+		  ?>
                 </div>
             </div>
             <div class="modal-footer">
