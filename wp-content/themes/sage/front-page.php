@@ -212,7 +212,6 @@ while (have_posts()) : the_post();
                         <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
                         <h3><?php the_title(); ?></h3>  
                         <span><?php echo get_the_date(); ?></span>
-                     </a>
 
                         <?php
                         $categories = get_the_category();
@@ -226,8 +225,8 @@ while (have_posts()) : the_post();
                         echo trim($output, $separator);
                         }
                         ?>
-                    <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                        <?php the_excerpt(); ?>
+                    
+                         <?php the_excerpt(); ?>
                     </a>
                 </article>
             <?php endwhile; ?>

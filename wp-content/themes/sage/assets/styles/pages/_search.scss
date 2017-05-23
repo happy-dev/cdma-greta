@@ -1,9 +1,13 @@
-body.search-results {
+.search {
+    
   #more-news.in {
     display:	flex !important;
   }
     
     section.articles {
+        padding-left: 0;
+        padding-right: 0;
+        
         .content {
             .entry {
                 a {
@@ -12,6 +16,10 @@ body.search-results {
                     }
                 }
             }
+        }
+        
+        .see-all {
+            top: 4vw;
         }
     }
 }

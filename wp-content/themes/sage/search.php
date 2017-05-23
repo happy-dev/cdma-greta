@@ -127,8 +127,7 @@
         </div>
     </section>
     <hr/>
-
-        <!-- ACTUALITES -->
+ <!-- ACTUALITES -->
     <section class="articles container"> 
     <?php if ($_GET['s'] != '') : ?>
     <?php 
@@ -172,4 +171,4 @@
         }
         ?>
     </section>
-</div>   
+</div>
