@@ -56,7 +56,7 @@
             ?>
             <section class="articles">
       <?php if ($_GET['s'] != '') : ?>
-                    <h2><?php echo($fq->post_count); ?> Formations pour "<?php the_search_query(); ?>"</h2>
+                    <h2><?php echo($fq->found_posts); ?> Formations pour "<?php the_search_query(); ?>"</h2>
       <?php else : ?>
                     <h2>Formations</h2>
       <?php endif; ?>	  
