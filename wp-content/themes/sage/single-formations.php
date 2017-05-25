@@ -82,16 +82,14 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                         </div>
                     </div>
                     <hr/>
-                    <p>
-                    <?php 
+                    <pre><?php 
 		      if ($content = get_the_content()) {
 			echo $content;
 		      }
 		      else {
 			echo Diogen::removeApostrophe($fs->OFAccroche);
     		      }
-		    ?>
-                    </p>
+		    ?></pre>
                     <?php if (get_field( 'taux_reussite' ) ) { ?> 
                     <h2 class="introduction-success">Taux de réussite : <?php echo get_field( 'taux_reussite' ) ?> </h2>
                     <?php } ?>

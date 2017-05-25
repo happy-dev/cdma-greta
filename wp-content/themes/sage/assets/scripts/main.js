@@ -329,6 +329,20 @@ console.log("Actualités");
       },
     },
 
+    
+    'publier_un_stage': {
+      init: function() {
+	// Numbers only
+	$(".numbers-only").on("keypress", function(e) {
+	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8;
+	});
+
+
+	// Datepickers
+	$(".datepicker").datepicker({ language: 'fr' });
+      },
+    },
+
     // About us page, note the change from about-us to about_us.
     'about_us': {
       init: function() {

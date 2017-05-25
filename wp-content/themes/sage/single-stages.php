@@ -11,7 +11,7 @@
                     <p>
                         Profil recherché : <?php echo get_field('profil_stage'); ?><br/>
                         Date de début : <?php the_field('debut_stage'); ?><br/>
-                        Commune : <?php the_field('commune_stage'); ?><br/>
+                        Commune : <?php the_field('city'); ?><br/>
                     </p>
                     <?php //the_excerpt(); ?>
                 </div>
@@ -28,15 +28,18 @@
                     <h2>Intitulé du poste</h2>
                     <pre><?php the_title(); ?></pre>
                     <h2>Lieu</h2>
-                    <pre><?php the_field('lieu_stage'); ?></pre>
+                    <pre><?php the_field('lieu_stage'); 
+		      if ($city = get_field('city')) {
+			$postcode = get_field('postcode');
+			echo '<br/>'. $postcode .' - '. $city;
+		      }
+		    ?></pre>
                     <h2>Date de début</h2>
                     <pre><?php the_field('debut_stage'); ?></pre>
                     <h2>Nature</h2>
                     <pre><?php the_field('nature_stage'); ?></pre>
                     <h2>Durée</h2>
                     <pre><?php the_field('duree_stage'); ?></pre>
-                    <h2>Commune</h2>
-                    <pre><?php the_field('commune_stage'); ?></pre>
 
                     <h2>Société ou organisme :</h2>
                     <pre><?php the_field('societe_stage'); ?></pre>
