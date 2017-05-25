@@ -167,42 +167,42 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
     <!-- 1. OBJECTIFS -->
                     <?php if ($obj) { ?>
                         <h2>Objectifs</h2>
-                        <pre><?php echo $obj; ?></pre>
+                        <pre><?php echo make_clickable($obj); ?></pre>
                     <?php } ?>
     <!-- 2. PREREQUIS -->  
                     <?php if ($prm) { ?>  
                         <h2>Prérequis</h2>
-                        <pre><?php echo $prm; ?></pre>
+                        <pre><?php echo make_clickable($prm); ?></pre>
                     <?php } ?>
     <!-- 3. CONTENU -->
                     <?php if ($ctn) { ?> 
                         <h2>Contenu</h2>
-                        <pre><?php echo $ctn; ?></pre>
+                        <pre><?php echo make_clickable($ctn); ?></pre>
                     <?php } ?>
     <!-- 4. METHODES PEDAGOGIQUES -->
                     <?php if ($metp) { ?> 
                         <h2>Méthodes pédagogiques</h2>
-                        <pre><?php echo $metp; ?></pre>
+                        <pre><?php echo make_clickable($metp); ?></pre>
                     <?php } ?>
     <!-- 5. MOYENS PEDAGOGIQUES -->
                     <?php if ($mop) { ?> 
                         <h2>Moyens pédagogiques</h2>
-                        <pre><?php echo $mop; ?></pre>
+                        <pre><?php echo make_clickable($mop); ?></pre>
                     <?php } ?>
     <!-- 5. MÉTHODES ADMISSION ET RECRUTEMENT -->
                     <?php if ($mar) { ?> 
                         <h2>Modalités d'admission et de recrutement</h2>
-                        <pre><?php echo $mar; ?></pre>
+                        <pre><?php echo make_clickable($mar); ?></pre>
                     <?php } ?>
     <!-- 6. RECONNAISSANCE DES ACQUIS -->
                     <?php if ($rcac) { ?> 
                         <h2>Reconnaissance des acquis</h2>
-                        <pre><?php echo $rcac; ?></pre>
+                        <pre><?php echo make_clickable($rcac); ?></pre>
                     <?php } ?>
     <!-- 7. INTERVENANT --> 
                     <?php if ($int) { ?>               
                         <h2>Intervenant(e)(s)</h2>
-                        <pre><?php echo $int; ?></pre>
+                        <pre><?php echo make_clickable($int); ?></pre>
                     <?php } ?>
     <!-- 8. CODIFICATION -->
                     <?php if ($forc or $corm) { ?> 

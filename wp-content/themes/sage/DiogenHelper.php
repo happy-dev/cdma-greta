@@ -147,7 +147,7 @@ Class DiogenHelper {
     elseif (isset($s->SSEn1Ou2) && $s->SSEn1Ou2 == 'V') {
       $ds .= 'La formation se fait en 1 an <br/>';
     }
-    elseif (isset($s->SSDureeP) && $s->SSDureeP == 'V') {
+    if (isset($s->SSDureeP) && $s->SSDureeP == 'V') {
       $ds .= 'La durée de la formation est personnalisée <br/>';
     }
     if (isset($s->SSDureeCommentaire) && $s->SSDureeCommentaire != '') {
