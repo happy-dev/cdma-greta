@@ -115,16 +115,20 @@ section.articles {
             color: #5d5d5d;
             font-family: $basic-thick-fonts;
         }
+        
+        &:hover {
+            background-color: #ddd;
+            
+            p, pre {
+                color: black;
+            }
+        }
     }
     
     .see-all {
         font-size: 15px;
         line-height: 20px;
         color: $cdma-brown;
-
-        position: absolute;
-        top: 66px;
-        right: 0;
         font-weight: bold;
     }
 }
@@ -279,6 +283,12 @@ section.articles {
                 padding-bottom: 30px;
             }
         }
+        
+        .see-all {
+            display: block;
+            text-align: center;
+            padding-bottom: 30px;
+        }
     }
     
     .presentation {
@@ -286,6 +296,17 @@ section.articles {
         
         .layer {
             width: 100%;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    section.articles {
+        .see-all {
+            position: absolute;
+            top: 66px;
+            right: 0;
         }
     }
 }

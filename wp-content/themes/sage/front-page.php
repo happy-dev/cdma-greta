@@ -189,7 +189,7 @@ while (have_posts()) : the_post();
 
 <section class="articles container">
     <h2>Actualités</h2>
-    <a class="see-all hidden-md-down" href="/actualite">Voir toute l'actualité</a>
+    <a class="see-all" href="/actualite">Voir toute l'actualité</a>
 
     <div class="content row">
         <!-- THE QUERY -->
