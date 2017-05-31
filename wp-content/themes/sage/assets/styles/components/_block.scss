@@ -70,13 +70,14 @@ section.articles {
     .entry {
         font-size: 14px;
         line-height: 18px;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
 
         a {
             //display: block;
-            padding: 15px 0;
 
             &:hover {
-                background-color: #ddd; //$cdma-light-brown; //#f4f4f4;
+                //background-color: #ddd; //$cdma-light-brown; //#f4f4f4;
                 text-decoration: none;
 
                 h3 {
@@ -268,6 +269,8 @@ section.articles {
         .entry {
             font-size: 18px;
             line-height: 22px;
+            padding-top: 20px;
+            padding-bottom: 20px;
             
             h3 {
                 font-size: 18px;
@@ -278,16 +281,12 @@ section.articles {
             h2 {
                 padding-top: 7vw;
             }
-            
-            article {
-                padding-bottom: 30px;
-            }
         }
         
         .see-all {
             display: block;
             text-align: center;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
         }
     }
     
@@ -307,6 +306,7 @@ section.articles {
             position: absolute;
             top: 66px;
             right: 0;
+            text-align: right;
         }
     }
 }

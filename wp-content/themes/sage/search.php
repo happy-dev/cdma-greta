@@ -142,11 +142,14 @@
       relevanssi_do_query($pq);
     ?>
        <h2><?php echo($pq->post_count); ?> Actualités pour "<?php the_search_query(); ?>"</h2>
+        
+        <div class="row">
     <?php 
        if ($pq->post_count > 3) {
-         echo '<a class="see-all" role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
+         echo '<a class="see-all col-xs-12" role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
        }
     ?>
+        </div>
     <?php else : ?>
                   <h2>Actualités</h2>
     <?php endif; ?>	
