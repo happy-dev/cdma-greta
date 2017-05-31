@@ -188,10 +188,11 @@
                 $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
 
             	// Selecting first session
-	    	$s 	  = $ss[0];
+	    	$s    = $ss[0];
                 $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
                 $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                 $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
+		$l    = DiogenHelper::getLocations($s, true);
 
                 $i++;
             ?>
@@ -218,6 +219,9 @@
                                 <span>
                                 <?php if ($sd) {
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
+				    if (isset($l) AND $l != '') {
+				      echo '&nbsp;&nbsp;'. $l;
+				    }
                                     echo '<br/>';
                                 }
                                 if ($dc) {

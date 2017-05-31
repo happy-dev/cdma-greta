@@ -16,7 +16,12 @@
             <span><?php echo get_the_date() ?><br/>
             <?php $categories = get_the_category();
             if ( ! empty( $categories ) ) {
-                echo esc_html( $categories[0]->name );   
+	      $arr = [];
+	      foreach($categories as $category) {
+		$arr[] = $category->name;
+	      }
+
+              echo implode(', ', $arr );   
             } ?></span>
             <?php the_excerpt(); ?>
         </div>

@@ -80,6 +80,7 @@
                     $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
                     $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
                     $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
+		    $l    = DiogenHelper::getLocations($s, true);
              ?>
                     <article class="entry col-md-12">
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
@@ -99,6 +100,9 @@
                                 <span>
                                 <?php if ($sd) {
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
+				    if (isset($l) AND $l != '') {
+				      echo '&nbsp;&nbsp;'. $l;
+				    }
                                     echo '<br/>';
                                 }
                                 echo $dc ; // commentaire de date

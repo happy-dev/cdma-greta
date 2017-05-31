@@ -1,6 +1,7 @@
 # Folders
 wp-content/themes/*
 !wp-content/themes/sage
+wp-content/upgrade
 wp-content/uploads
 wp-piwik/tmp
 .DS_Store

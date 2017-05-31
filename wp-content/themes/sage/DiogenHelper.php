@@ -266,7 +266,7 @@ Class DiogenHelper {
 
 
   // Get location of the formation
-  public static function getLocations($s) {// Session
+  public static function getLocations($s, $short = false) {// Session
     $lcs = '';// Localtion String
 
     $ls = Diogen::runQuery("	
@@ -292,43 +292,50 @@ Class DiogenHelper {
     ");
 
     if ($ls->rowCount() > 0) {
-      $first = true;
 
-      foreach($ls->fetchAll() as $l) {
-	if (!$first) {
-	  $lcs .= '<br/>';
-        }
+      if ($short) {
+	$l = $ls->fetch();
+	return Diogen::removeApostrophe($l->STNom);
+      }
+      else {
+        $first = true;
 
-        if (isset($l->STNom) AND $l->STNom != '') {
-          $lcs .= Diogen::removeApostrophe($l->STNom);
-          
-          if (isset($l->STLabelLycMet) AND $l->STLabelLycMet != '') {
-            $lcs .= ' : '. Diogen::removeApostrophe($l->STLabelLycMet);
+        foreach($ls->fetchAll() as $l) {
+          if (!$first) {
+            $lcs .= '<br/>';
           }
-          $lcs .= '<br/>';
-        }
-        if (isset($l->STAdresse) AND $l->STAdresse != '') {
-          $lcs .= Diogen::removeApostrophe($l->STAdresse) .'<br/>';
-        }
-        if (isset($l->STCP) AND $l->STCP != '') {
-          $lcs .= Diogen::removeApostrophe($l->STCP);
-          
-          if (isset($l->STVille) AND $l->STVille != '') {
-            $lcs .= ' - '. Diogen::removeApostrophe($l->STVille);
-          }
-          $lcs .= '<br/>';
-        }
-        if (isset($l->STTel) AND $l->STTel != '') {
-          $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
-        }
-        if (isset($l->STFax) AND $l->STFax != '') {
-          $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
-        }
-        if (isset($l->STMel) AND $l->STMel != '') {
-          $lcs .= '<a href="mailto:'. Diogen::removeApostrophe($l->STMel) .'">'. Diogen::removeApostrophe($l->STMel) .'</a><br/>';
-        }
 
-	$first = false;
+          if (isset($l->STNom) AND $l->STNom != '') {
+            $lcs .= Diogen::removeApostrophe($l->STNom);
+            
+            if (isset($l->STLabelLycMet) AND $l->STLabelLycMet != '') {
+              $lcs .= ' : '. Diogen::removeApostrophe($l->STLabelLycMet);
+            }
+            $lcs .= '<br/>';
+          }
+          if (isset($l->STAdresse) AND $l->STAdresse != '') {
+            $lcs .= Diogen::removeApostrophe($l->STAdresse) .'<br/>';
+          }
+          if (isset($l->STCP) AND $l->STCP != '') {
+            $lcs .= Diogen::removeApostrophe($l->STCP);
+            
+            if (isset($l->STVille) AND $l->STVille != '') {
+              $lcs .= ' - '. Diogen::removeApostrophe($l->STVille);
+            }
+            $lcs .= '<br/>';
+          }
+          if (isset($l->STTel) AND $l->STTel != '') {
+            $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
+          }
+          if (isset($l->STFax) AND $l->STFax != '') {
+            $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
+          }
+          if (isset($l->STMel) AND $l->STMel != '') {
+            $lcs .= '<a href="mailto:'. Diogen::removeApostrophe($l->STMel) .'">'. Diogen::removeApostrophe($l->STMel) .'</a><br/>';
+          }
+
+          $first = false;
+        }
       }
     }
 
@@ -435,6 +442,8 @@ Class DiogenHelper {
   public static function getMoyPeda($f, $fID) {
     $mps = Diogen::runQuery("
       SELECT
+        offremoyenpedagogique.MPNo,
+        offremoyenpedagogique.MPCode,
         offremoyenpedagogique.MPIntitule
 
       FROM
@@ -447,7 +456,6 @@ Class DiogenHelper {
         offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPCode	AND
         offreformation.OFNoPermanent = {$fID}
     ");	
-
 
     $o  = '';// Output
     $oa = [];// Output Array
@@ -733,6 +741,8 @@ Class DiogenHelper {
 
     $results = Diogen::runQuery("
       SELECT
+        offreadmission.ADNo,
+        offreadmission.ADCode,
         offreadmission.ADIntitule
 
       FROM
