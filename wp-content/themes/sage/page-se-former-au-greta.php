@@ -62,6 +62,7 @@
             $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
             $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
             $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
+	    $l    = DiogenHelper::getLocations($s, true);
             ?>  
                 <div class="row"> 
                     <article class="entry col-md-12">
@@ -85,6 +86,9 @@
                                 <span>
                                 <?php if ($sd) {
                                     echo 'Du '.$sd.' au '.$ed ; // dates de session
+				    if (isset($l) AND $l != '') {
+				      echo '&nbsp;&nbsp;'. $l;
+				    }
                                     echo '<br/>';
                                 }
                                 if ($dc) {

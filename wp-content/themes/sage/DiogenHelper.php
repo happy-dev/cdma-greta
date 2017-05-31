@@ -324,15 +324,15 @@ Class DiogenHelper {
             }
             $lcs .= '<br/>';
           }
-          if (isset($l->STTel) AND $l->STTel != '') {
-            $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
-          }
-          if (isset($l->STFax) AND $l->STFax != '') {
-            $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
-          }
-          if (isset($l->STMel) AND $l->STMel != '') {
-            $lcs .= '<a href="mailto:'. Diogen::removeApostrophe($l->STMel) .'">'. Diogen::removeApostrophe($l->STMel) .'</a><br/>';
-          }
+          //if (isset($l->STTel) AND $l->STTel != '') {
+          //  $lcs .= 'Tel : '. Diogen::removeApostrophe($l->STTel) .'<br/>';
+          //}
+          //if (isset($l->STFax) AND $l->STFax != '') {
+          //  $lcs .= 'Fax : '. Diogen::removeApostrophe($l->STFax) .'<br/>';
+          //}
+          //if (isset($l->STMel) AND $l->STMel != '') {
+          //  $lcs .= '<a href="mailto:'. Diogen::removeApostrophe($l->STMel) .'">'. Diogen::removeApostrophe($l->STMel) .'</a><br/>';
+          //}
 
           $first = false;
         }
