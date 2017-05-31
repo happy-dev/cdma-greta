@@ -269,7 +269,7 @@ console.log("Actualités");
 
 	// Numbers only
 	$(".numbers-only").on("keypress", function(e) {
-	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8;
+	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8 || e.charCode == 46;
 	});
 
 
@@ -334,7 +334,8 @@ console.log("Actualités");
       init: function() {
 	// Numbers only
 	$(".numbers-only").on("keypress", function(e) {
-	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8;
+	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8 || e.charCode == 46;
+
 	});
 
 

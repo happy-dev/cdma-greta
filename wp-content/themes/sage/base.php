@@ -42,6 +42,42 @@ use Roots\Sage\Extras\Custom_Walker;
                                     'walker'           => new Custom_Walker,
                                     'container'        => '']); ?>
                 </div>
+                <ul class="menu">
+                    <li class="dropdown">
+			<a href="/actualite">Actualités</a>
+		    </li>
+		</ul>
+                <div id="en-dropdown">
+                  <ul class="menu">
+                      <li class="dropdown">
+                          <a id="dropdown-language" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">EN</a>
+                          <div  aria-labelledby="dropdown-language" class="dropdown-menu">
+                              <span class='decoration'></span>
+                              <div class="row">
+                                  <ul class="col-md-4">
+                                      <?php
+                                        $args = array(
+                                          'post_type' 	=> 'page',
+                                          'meta_key'  	=> 'english',
+                                          'meta_value'  	=> true,
+                  			'orderby' 	=> 'date',
+                                        );
+                                        $en_query = new WP_Query( $args );
+                                        while ( $en_query->have_posts()) {
+                                          $en_query->the_post(); 
+                                          echo '<li>';	
+                                          echo   '<a href="'. get_the_permalink() .'">';	
+                                          echo     get_the_title();
+                                          echo   '</a>';	
+                                          echo '</li>';	
+                                        }
+                                      ?>
+                                  </ul>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+                </div>
             </aside>
           </div>
       </div>

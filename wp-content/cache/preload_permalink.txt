@@ -1,1 +1,1 @@
-300 https://cdma.greta.happy-dev.fr/formez-aux-metiers-du-print-au-web/
+post_tag: https://cdma.greta.happy-dev.fr/tag/wordpress-fr/
