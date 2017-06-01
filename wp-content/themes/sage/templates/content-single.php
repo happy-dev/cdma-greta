@@ -18,7 +18,17 @@
                     <button type="button" class="btn hidden-md-up navbar-toggle" data-toggle="offcanvas">Voir les catégories</button>
                 </div>
             </div>
-            <?php if (have_posts()) : the_post(); ?>
+            <?php 
+	      if (have_posts()) : the_post(); 
+	      $cats = get_the_category();
+
+	      if ($cats[0]->slug != "a-la-une") {
+		echo '<span id="single-article-category" class="display-none">'. $cats[0]->name .'</span>';
+	      }
+       	      else {
+		echo '<span id="single-article-category" class="display-none">'. $cats[1]->name .'</span>';
+	      }
+	    ?>
             <div class="content">
                 <article>
                     <header>

@@ -198,6 +198,10 @@
 	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
 	}
 
+	if (ls_html == 'A la une') {
+	  ls_html = $("#single-article-category").html();
+	}
+
 	$("#sidebar a").each(function(idx) {
 	  var el = $(this);
 	  if (el.html() == ls_html) {
