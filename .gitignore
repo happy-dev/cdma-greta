@@ -3,6 +3,7 @@ wp-content/themes/*
 !wp-content/themes/sage
 wp-content/upgrade
 wp-content/uploads
+wp-content/cache
 wp-piwik/tmp
 .DS_Store
 .well-known
