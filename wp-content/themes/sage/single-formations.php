@@ -11,7 +11,6 @@ $fs = DiogenHelper::getFormation($fi);// Formations
 $ss = DiogenHelper::getSessions($fi);// Sessions
 $ms = count($ss) > 1;// Multiple Sessions ? true or false 
 
-print_r($fs);
 
 // Iterating through each session
 $first = true;
@@ -238,7 +237,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
         </div>
 
 	<?php $majDate = new DateTime( $fs->OFMAJDate ); ?>
-        <pre style="text-align:center;">Date de mise à jour : <?php echo $majDate->format('d/m/Y'); ?> | Ce document n'est pas contractuel et peut subir des modifications</pre>
+        <pre style="text-align:center; font-style:italic;">Date de mise à jour : <?php echo $majDate->format('d/m/Y'); ?> | Ce document n'est pas contractuel et peut subir des modifications</pre>
     </div>
 
 <!-- TEMOIGNAGE -->
