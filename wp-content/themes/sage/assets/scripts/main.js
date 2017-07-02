@@ -228,6 +228,20 @@ console.log("Actualités");
     'nous_contacter': {
       init : function() {},
       finalize : function() {
+	// Disable scroll zooming
+	$('#map').addClass('scrolloff');// set the mouse events to none when doc is ready
+        
+        $('#overlay').on("mouseup",function(){          // lock it when mouse up
+            $('#map').addClass('scrolloff'); 
+        });
+        $('#overlay').on("mousedown",function(){// when mouse down, set the mouse events free
+            $('#map').removeClass('scrolloff');
+        });
+        $("#map").mouseleave(function () {// becuase the mouse up doesn't work... 
+            $('#map').addClass('scrolloff');// set the pointer events to none when mouse leaves the map area
+        });
+
+
 	// Coordo email
         var email = getParameterByName("email");
 	if (email) {
