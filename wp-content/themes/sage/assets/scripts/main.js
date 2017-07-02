@@ -194,11 +194,11 @@
 	var ls_href = localStorage.getItem("category_href");
 	var ls_html = localStorage.getItem("category_html");
 
-	if (ls_href !== "undefined" && ls_html !== "undefined") {
+	if (ls_href != "undefined" && ls_href != null) {
 	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
 	}
 
-	if (ls_html == "undefined" || ls_html == 'A la une') {
+	if (ls_html == "undefined" || ls_html == null || ls_html == 'A la une') {
 	  ls_html = $("#single-article-category").html();
 	}
 
