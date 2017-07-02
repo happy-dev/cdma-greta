@@ -100,7 +100,8 @@ function setup() {
               'capability_type'   => 'post',
               'menu_position'   => 5,
               'hierarchical'    => true,
-              'menu_icon'   => 'dashicons-welcome-learn-more'
+              'menu_icon'   => 'dashicons-welcome-learn-more',
+	      'taxonomies'	=> array('post_tag'),
           )
    );
 
