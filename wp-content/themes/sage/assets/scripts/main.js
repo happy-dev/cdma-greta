@@ -171,6 +171,13 @@
 	  }
 	}
 	modifyPrint();
+
+
+	// Pausing video on modal close (actually destroying and cloning it)
+        $("#modalVideoFormation").on("hide.bs.modal", function(e) {               
+          $("#formation-video-wrapper").empty();
+	  $("#video-clone").clone().appendTo("#formation-video-wrapper");
+	});
       },
     },
     'single_domaines': {

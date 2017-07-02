@@ -117,7 +117,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <h4 class="modal-title" id="modalLabel"><?php the_title(); ?></h4>
             </div>
             <div class="modal-body">
-                <div class="embed-responsive embed-responsive-4by3">
+                <div id="formation-video-wrapper" class="embed-responsive embed-responsive-4by3">
                   <?php 
 		      global $wp_embed;
 		      $url = '[embed]'. $url .'[/embed]';
@@ -130,6 +130,11 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             </div>
         </div>
+    </div>
+    <div class="display-none">
+      <div id="video-clone">
+	<?php echo $wp_embed->run_shortcode($url); ?>
+      </div>
     </div>
     <div class="container">
         <ul class="nav nav-tabs sessions-tabs" role="tablist">
