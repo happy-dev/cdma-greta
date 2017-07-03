@@ -457,11 +457,16 @@ Class DiogenHelper {
         offreformation.OFNoPermanent = {$fID}
     ");	
 
-    $o  = '';// Output
-    $oa = [];// Output Array
+    $o  	= '';// Output
+    $oa 	= [];// Output Array
+    $codes	= [];
+
     if ($mps->rowCount() > 0) {
       foreach($mps as $mp) {
-        $oa[] = ucfirst(Diogen::removeApostrophe($mp->MPIntitule));
+	if (!in_array($mp->MPCode, $codes)) {
+          $oa[] 	= ucfirst(Diogen::removeApostrophe($mp->MPIntitule));
+	  $codes[] 	= $mp->MPCode;
+	}
       }
       $o = implode(', ', $oa) .'.<br/>';
     } 
@@ -756,11 +761,15 @@ Class DiogenHelper {
   	offreformation.OFNoPermanent = {$fID}
     ");
 
-    $arr = [];
+    $arr 	= [];
+    $codes	= [];
 
     if ($results->rowCount() > 0) {
       foreach($results as $result) {
-        $arr[] = ucfirst( Diogen::removeApostrophe($result->ADIntitule) );
+	if (!in_array($result->ADCode, $codes)) {
+	  $codes[] 	= $result->ADCode;
+          $arr[] 	= ucfirst( Diogen::removeApostrophe($result->ADIntitule) );
+	}
       }
       $mar = implode(', ', $arr) .'.<br/>';
     } 
