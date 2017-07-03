@@ -15,3 +15,4 @@ wp-content/themes/sage/diogenConfig.php
 wp-config.php
 .htaccess
 *.swp
+*.swo 
