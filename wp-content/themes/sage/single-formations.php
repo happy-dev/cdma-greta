@@ -272,7 +272,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                         <div class="col-md-9">
                             <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?php the_title() ?></h2>
                             <div><?php the_excerpt() ?></div>
-                            <p style="font-weight: bold; color: #0956a1;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
+                            <p style="font-weight: bold; color: #0956a1; cursor: pointer;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
                         </div>
                     </article>
                 </div>
@@ -288,38 +288,45 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                 <h4 class="modal-title" id="modalLabelTemoignage"><?php the_title(); ?></h4>
             </div>
             <div class="modal-body">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <!-- iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe -->
-                    
-                    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                    <div id="playerTemoignage"></div>
+		<?php 
+		  if (!nullOrEmpty(get_field('post_video'))) {
+		?>
+                  <div class="embed-responsive embed-responsive-4by3">
+                      <!-- iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe -->
+                      
+                      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                      <div id="playerTemoignage"></div>
 
-                    <script>
-                      // 2. This code loads the IFrame Player API code asynchronously.
-                      var tag = document.createElement('script');
+                      <script>
+                        // 2. This code loads the IFrame Player API code asynchronously.
+                        var tag = document.createElement('script');
 
-                      tag.src = "https://www.youtube.com/iframe_api";
-                      var firstScriptTag = document.getElementsByTagName('script')[0];
-                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                        tag.src = "https://www.youtube.com/iframe_api";
+                        var firstScriptTag = document.getElementsByTagName('script')[0];
+                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                      // 3. This function creates an <iframe> (and YouTube player)
-                      //    after the API code downloads.
-                      var playerTemoignage;
-                      function onYouTubeIframeAPIReady() {
-                        playerTemoignage = new YT.Player('player', {
-                          height: '390',
-                          width: '640',
-                          videoId: '<?php the_field('post_video'); ?>',
-                        });
-                      }
+                        // 3. This function creates an <iframe> (and YouTube player)
+                        //    after the API code downloads.
+                        var playerTemoignage;
+                        function onYouTubeIframeAPIReady() {
+                          playerTemoignage = new YT.Player('playerTemoignage', {
+                            height: '390',
+                            width: '640',
+                            videoId: '<?php the_field('post_video'); ?>',
+                          });
+                        }
 
-                        function pauseVideo() {
-                        playerTemoignage.pauseVideo();
-                      }
-
-                    </script>
-        
-                </div>
+                          function pauseVideo() {
+                          playerTemoignage.pauseVideo();
+                        }
+                      </script>
+                  </div>
+		<?php
+		  }
+		  else {
+		    echo '<img src="'. $image['sizes']['large'] .'" style="width: 100%;"/>';
+		  }
+		?>
                 <hr/>
                 <div class="container">
                     <h2><?php the_title(); ?></h2><br/>

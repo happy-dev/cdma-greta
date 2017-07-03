@@ -25,7 +25,7 @@ Class Diogen {
         DIOGEN_USERNAME,// Username
         DIOGEN_PASSWORD,// Password
         array(
-          PDO::ATTR_TIMEOUT => 10,// seconds
+          PDO::ATTR_TIMEOUT => 20,// seconds
         )
       );
     }

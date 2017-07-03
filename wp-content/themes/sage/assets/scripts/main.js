@@ -178,6 +178,14 @@
           $("#formation-video-wrapper").empty();
 	  $("#video-clone").clone().appendTo("#formation-video-wrapper");
 	});
+
+
+	// Pausing Temoignages video on modal close
+        $("#modalVideoTemoignage").on("hide.bs.modal", function(e) {               
+	  if (typeof playerTemoignage !== 'undefined') {
+            playerTemoignage.pauseVideo();                                           
+	  }
+        });
       },
     },
     'single_domaines': {
@@ -296,7 +304,7 @@ console.log("Actualités");
 
 	// Numbers only
 	$(".numbers-only").on("keypress", function(e) {
-	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8 || e.charCode == 46;
+	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8 || e.charCode == 46 || e.key == "Backspace";
 	});
 
 
