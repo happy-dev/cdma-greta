@@ -289,37 +289,13 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             <div class="modal-body">
 		<?php 
-		  if (!nullOrEmpty(get_field('post_video'))) {
+                  if ($url = get_field ('video_url') ) {
 		?>
-                  <div class="embed-responsive embed-responsive-4by3">
-                      <!-- iframe class="embed-responsive-item" src="<?php the_field('post_video'); ?>" allowfullscreen></iframe -->
-                      
-                      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                      <div id="playerTemoignage"></div>
-
-                      <script>
-                        // 2. This code loads the IFrame Player API code asynchronously.
-                        var tag = document.createElement('script');
-
-                        tag.src = "https://www.youtube.com/iframe_api";
-                        var firstScriptTag = document.getElementsByTagName('script')[0];
-                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                        // 3. This function creates an <iframe> (and YouTube player)
-                        //    after the API code downloads.
-                        var playerTemoignage;
-                        function onYouTubeIframeAPIReady() {
-                          playerTemoignage = new YT.Player('playerTemoignage', {
-                            height: '390',
-                            width: '640',
-                            videoId: '<?php the_field('post_video'); ?>',
-                          });
-                        }
-
-                          function pauseVideo() {
-                          playerTemoignage.pauseVideo();
-                        }
-                      </script>
+                  <div id="temoignage-video-wrapper" class="embed-responsive embed-responsive-4by3">
+		  <?php
+		    $url = '[embed]'. $url .'[/embed]';
+		    echo $wp_embed->run_shortcode($url); 
+		  ?>
                   </div>
 		<?php
 		  }
@@ -338,5 +314,11 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
             </div>
             </div>
         </div>
+    </div>
+
+    <div class="display-none">
+      <div id="tem-video-clone">
+	<?php echo $wp_embed->run_shortcode($url); ?>
+      </div>
     </div>
 </div>

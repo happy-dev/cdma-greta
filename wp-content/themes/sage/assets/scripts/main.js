@@ -182,9 +182,11 @@
 
 	// Pausing Temoignages video on modal close
         $("#modalVideoTemoignage").on("hide.bs.modal", function(e) {               
-	  if (typeof playerTemoignage !== 'undefined') {
-            playerTemoignage.pauseVideo();                                           
-	  }
+	  //if (typeof playerTemoignage !== 'undefined') {
+          //  playerTemoignage.pauseVideo();                                           
+	  //}
+          $("#temoignage-video-wrapper").empty();
+	  $("#tem-video-clone").clone().appendTo("#temoignage-video-wrapper");
         });
       },
     },
