@@ -3,7 +3,9 @@
 <div class="domaine search-domaine container">
     <!-- FORMATIONS -->
         <?php
+
         $search_txt 	= get_query_var('s');    
+
         $fq         	= new WP_Query('s='.$search_txt);// Posts Query
 
         $fq->query_vars["taxonomy"] 	= null;
@@ -55,8 +57,8 @@
             endwhile;
             ?>
             <section class="articles">
-      <?php if ($_GET['s'] != '') : ?>
-                    <h2><?php echo($fq->found_posts); ?> Formations pour "<?php the_search_query(); ?>"</h2>
+      <?php if ($search_txt != '') : ?>
+                    <h2><?php echo($fq->found_posts); ?> Formations pour "<?php echo $search_txt; ?>"</h2>
       <?php else : ?>
                     <h2>Formations</h2>
       <?php endif; ?>	  
@@ -133,7 +135,7 @@
     <hr/>
  <!-- ACTUALITES -->
     <section class="articles container"> 
-    <?php if ($_GET['s'] != '') : ?>
+    <?php if ($search_txt != '') : ?>
     <?php 
       $pq         = new WP_Query('s='.$search_txt);// Posts Query
       $pq->query_vars['post_type']        = 'post';
@@ -141,7 +143,7 @@
       $pq->query_vars['orderby']          = 'date';
       relevanssi_do_query($pq);
     ?>
-       <h2><?php echo($pq->post_count); ?> Actualités pour "<?php the_search_query(); ?>"</h2>
+       <h2><?php echo($pq->post_count); ?> Actualités pour "<?php echo $search_txt; ?>"</h2>
         
         <div class="row">
     <?php 
