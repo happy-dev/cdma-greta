@@ -151,7 +151,8 @@ p {
 }
 pre {
     font-family: $basic-fonts;
-    white-space: pre-wrap;
+    white-space: normal;
+	overflow: visible;
     line-height: 135%;
     padding-bottom: 1.2vw;
 }
@@ -211,6 +212,13 @@ a { color: $cdma-blue;}
 
 a:focus, a:hover {
     color: black;
+}
+
+iframe {
+    display: block;
+    max-width:100%;
+    margin-top:10px;
+    margin-bottom:10px;
 }
 
 .breadcrumb {

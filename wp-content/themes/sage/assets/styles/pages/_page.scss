@@ -146,7 +146,13 @@
             }
         }
     }
-    
+   
+	.content {
+        a {
+            text-decoration: underline;
+        }
+    }
+
     .navbar-toggle {
         margin-bottom: 25px;
     }
