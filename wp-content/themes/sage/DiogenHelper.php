@@ -454,7 +454,8 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo = offreliaisonformationmoyenpedagogique.LMPFormation				        AND
         offreliaisonformationmoyenpedagogique.LMPMoyenPedagogique = offremoyenpedagogique.MPCode	AND
-        offreformation.OFNoPermanent = {$fID}
+        offreformation.OFNoPermanent = {$fID} AND
+	(offreformation.OFReconduit='V' OR offreformation.OFReconduit='K')
     ");	
 
     $o  	= '';// Output
@@ -758,7 +759,8 @@ Class DiogenHelper {
       WHERE
         offreformation.OFNo=offreliaisonformationadmission.LFAFormation		AND
         offreliaisonformationadmission.LFAAdmission=offreadmission.ADCode	AND
-  	offreformation.OFNoPermanent = {$fID}
+  	offreformation.OFNoPermanent = {$fID} 					AND
+        (offreformation.OFReconduit='V' OR offreformation.OFReconduit='K')
     ");
 
     $arr 	= [];
