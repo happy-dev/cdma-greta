@@ -15,14 +15,16 @@ This installation guide assumes you have either Ngnix or Apache as well as MySQL
     -  define('DB_PASSWORD', 'gretacdma');
     -  define('DB_HOST',     'localhost');
 3.  Install [NodeJS](https://nodejs.org/en/)
-4.  `cd` into the Sage theme folder : `cd wp-content/themes/sage`
-5.  Install Node modules dependencies : `npm install`
-6.  Install Bower components dependencies : `bower install`
-7.  Compile SCSS into CSS and concatenate JS files : `gulp watch`
+4.  Install NPM : `npm install -g npm`
+5.  Install Bower : `npm install -g bower`
+6.  `cd` into the Sage theme folder : `cd wp-content/themes/sage`
+7.  Install Node modules dependencies : `npm install`
+8.  Install Bower components dependencies : `bower install`
+9.  Compile SCSS into CSS and concatenate JS files : `gulp watch`
 
 
 ## Warning
-.  The Wordfence plugin requires the `.user.ini` at the root of the repository. Here is an example of what its content might be : 
+*  The Wordfence plugin requires the `.user.ini` at the root of the repository. Here is an example of what its content might be : 
 ```
 ; Wordfence WAF
 auto_prepend_file = '/var/www/html/cdma_greta/wordfence-waf.php'
