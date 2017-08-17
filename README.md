@@ -21,6 +21,15 @@ This installation guide assumes you have either Ngnix or Apache as well as MySQL
 7.  Compile SCSS into CSS and concatenate JS files : `gulp watch`
 
 
+## Warning
+.  The Wordfence plugin requires the `.user.ini` at the root of the repository. Here is an example of what its content might be : 
+```
+; Wordfence WAF
+auto_prepend_file = '/var/www/html/cdma_greta/wordfence-waf.php'
+; END Wordfence WAF
+```
+
+
 ## Team
 - __Design__
 Pauline Khun [pauline@happy-dev.fr](mailto:pauline@happy-dev.fr)

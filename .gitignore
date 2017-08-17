@@ -14,5 +14,6 @@ wp-piwik/tmp
 wp-content/themes/sage/diogenConfig.php
 wp-config.php
 .htaccess
+.user.ini
 *.swp
 *.swo 
