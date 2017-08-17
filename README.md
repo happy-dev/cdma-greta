@@ -31,6 +31,8 @@ auto_prepend_file = '/var/www/html/cdma_greta/wordfence-waf.php'
 ; END Wordfence WAF
 ```
 
+*  The DIOGEN config file `wp-content/themes/sage/diogenConfig.php` must be present 
+
 *  The back office login page is at https://some.ndd/greta-cdma-login
 
 
