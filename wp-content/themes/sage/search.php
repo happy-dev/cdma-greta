@@ -6,40 +6,9 @@
 
         $search_txt 	= get_query_var('s');    
 
-        $fq         	= new WP_Query('s='.$search_txt);// Posts Query
-
-        $fq->query_vars["taxonomy"] 	= null;
-        $fq->query_vars['post_type']      	= 'formations';
-        $fq->query_vars['posts_per_page'] 	= 9;
-        $fq->query_vars['paged'] 		= $paged;
-        $fq->query_vars['tax_query'] 	= [];   
-
-        if (isset($_GET['taxonomy'])) {
-          switch ($_GET['taxonomy']) {
-            case 'formation-diplomantes-cpf':
-              $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-      $op = 'AND';
-              break;
-
-            case 'toute-formation':
-              break;
-
-            default:
-              $ta = $_GET['taxonomy'];
-      $op = 'IN';
-          }
-
-          if (isset($ta)) {
-            $tq = [[
-              'taxonomy' => 'type_form',
-              'field'    => 'slug',
-              'terms'    => $ta,
-      'operator' => $op,
-            ]];// Tax Query
-
-            $fq->query_vars['tax_query'] = $tq;   
-          }
-        }
+            // la requête principale est la bonne (voir dans le filtre pre_get_posts)
+            global $wp_query;
+            $fq = $wp_query;
 
             relevanssi_do_query($fq);
 

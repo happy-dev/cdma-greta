@@ -142,8 +142,53 @@ add_action('admin_enqueue_scripts', 'admin_assets');
 
 // Modify the search
 function modify_search($wp_query) {
-  if (is_search()) {
-    $wp_query->set('posts_per_page', 1);
+
+  // dans le cas d'une recherche, hijacker la requête pour rechercher les formations
+  if ($wp_query->is_main_query() && $wp_query->is_search()) {
+
+    // récupérer le texte de la recherche
+    $search_txt 	= get_query_var('s');
+
+    $query_params = array(
+      's' => $search_txt,
+      'post_type' => 'formations',
+      'posts_per_page' => 9,
+      'paged' => $wp_query->query_vars['paged'], // conserver le numéro de page de la requête initiale
+    );
+
+    // filtrer suivant la bonne taxonomy
+    if (isset($_GET['taxonomy'])) {
+      switch ($_GET['taxonomy']) {
+        case 'formation-diplomantes-cpf':
+          $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+          $op = 'AND';
+        break;
+
+        case 'toute-formation':
+        break;
+
+        default:
+          $ta = $_GET['taxonomy'];
+          $op = 'IN';
+      }
+
+      if (isset($ta)) {
+        $tq = [[
+          'taxonomy' => 'type_form',
+          'field'    => 'slug',
+          'terms'    => $ta,
+          'operator' => $op,
+        ]];// Tax Query
+
+        $query_params['tax_query'] = $tq;
+      }
+    }
+
+    // éviter de rentrer une deuxième fois dans ce hook
+    remove_action( 'pre_get_posts', 'modify_search' );
+
+    // remplacer la requête initiale par celle qu'on vient de construire
+    query_posts($query_params);
   }
 }
 add_action( 'pre_get_posts', 'modify_search' );
