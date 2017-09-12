@@ -12,6 +12,7 @@ wp-piwik/tmp
 
 # Files
 wp-content/themes/sage/diogenConfig.php
+wp-piwik/config/config.ini.php
 wp-config.php
 .htaccess
 .user.ini
