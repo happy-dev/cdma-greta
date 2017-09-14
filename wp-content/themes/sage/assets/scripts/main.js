@@ -320,9 +320,11 @@ console.log("Actualités");
 	if (ft) {
 	  $("#formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
 	  $("#domains-select").prop("disabled", true).parent().hide();
+ 	  $(".row.row-intro p").hide();
 	}
 	else {
 	  $("#formation-title-input").parent().hide();
+	  $("section.page-greta.article.container").hide();
 	}
 
 
