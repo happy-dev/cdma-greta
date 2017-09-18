@@ -34,7 +34,7 @@
                     </div>
                     <select id="search-bar-select">
                         <option selected="selected">Toutes nos formations</option>
-                        <option>Formations diplomantes</option>
+                        <option>Formations diplômantes</option>
                         <option>Formations éligibles au CPF</option>
                     </select>
                 </div>
@@ -55,9 +55,9 @@
                 </div>
                 <select name="taxonomy" id="search-bar-select">
                     <option value="toute-formation" selected="selected">Toutes nos formations</option>
-                    <option value="formation-diplomante">Formations diplomantes</option>
+                    <option value="formation-diplomante">Formations diplômantes</option>
                     <option value="formation-eligible-au-cpf">Formations éligibles au CPF</option>
-                    <option value="formation-diplomantes-cpf">Formations diplomantes et CPF</option>
+                    <option value="formation-diplomantes-cpf">Formations diplômantes et CPF</option>
                 </select>
             </div>
             <div class="select-input-container">
@@ -85,7 +85,7 @@
       <div class="col-lg-6 col-sm-12">
           <label class="checkbox-inline">
           <input type="checkbox" id="fd-checkbox" value="formation-diplomante">
-          Formations diplomantes
+          Formations diplômantes
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="feac-checkbox" value="formation-eligible-au-cpf">
