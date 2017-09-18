@@ -370,7 +370,7 @@ Class DiogenHelper {
     ");
     
     if ($c->rowCount() > 0) {
-      return self::outputContact($c->fetch());
+      return self::outputContact($c->fetch(), true);
     }
     else {
       $cs = Diogen::runQuery("
