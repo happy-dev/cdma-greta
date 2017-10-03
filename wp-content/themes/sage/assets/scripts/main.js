@@ -314,18 +314,29 @@ console.log("Actualités");
 	$(".datepicker").datepicker({ language: 'fr' });
 
 
-	// Formation title
-        var ft = getParameterByName("formation");
+	// Formation title                                                                     
+        var ft  = getParameterByName("formation");                                              
+        var fti = $("#formation-title-input");                                                 
 
-	if (ft) {
-	  $("#formation-title-input").val( decodeURIComponent(ft) ).prop("readonly", true);
-	  $("#domains-select").prop("disabled", true).parent().hide();
- 	  $(".row.row-intro p").hide();
-	}
-	else {
-	  $("#formation-title-input").parent().hide();
-	  $("section.page-greta.article.container").hide();
-	}
+        if (ft) { 
+          fti.val( decodeURIComponent(ft) ).prop("readonly", true);                            
+          $("#domains-select").prop("disabled", true).parent().hide();                         
+          $(".row.row-intro p").hide();
+        } 
+        else {                                                                                 
+          $("#formation-title-input").parent().hide();                                         
+          $("section.page-greta.article.container").hide();                                    
+        } 
+        
+        fti.change(function(e) {                                                               
+          if (fti.val() == "") {                                                               
+            setTimeout(function(){                                                             
+                fti.parent().hide();                                                           
+                $("section.page-greta.article.container").hide();                              
+                $(".row.row-intro p").show();
+            }, 5000);
+          } 
+        });                          
 
 
         var si  = $("#salarie-input");// Salarie Input
