@@ -330,11 +330,8 @@ console.log("Actualités");
         
         fti.change(function(e) {                                                               
           if (fti.val() == "") {                                                               
-            setTimeout(function(){                                                             
-                fti.parent().hide();                                                           
-                $("section.page-greta.article.container").hide();                              
-                $(".row.row-intro p").show();
-            }, 5000);
+            $("input").prop("disabled", true);                              
+            $(".row.row-intro p").show();
           } 
         });                          
 
