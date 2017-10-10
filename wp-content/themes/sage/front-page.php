@@ -88,11 +88,10 @@ while (have_posts()) : the_post();
             //$ls   = DiogenHelper::getLocations($s);// Locations 
 
             // Iterating through each session
-            foreach ($ss as $s) {
-              $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-              $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-              $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-            }
+            $s 	  = $ss[0];
+            $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
+            $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
+            $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
     ?>
         <article class="entry col-md-4">
             <?php $image = get_field('post_image');
