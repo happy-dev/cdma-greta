@@ -124,22 +124,24 @@
     <?php else : ?>
                   <h2>Actualités</h2>
     <?php endif; ?>	
-        <div class="content row">
             <?php 
             $any_news = false;
             // THE POSTS QUERY
 
 	    $idx = 1;
-            while ($pq->have_posts()) : $pq->the_post(); 
-		if ($idx == 4) {
-		  echo '</div><div class="collapse content row" id="more-news">';
-		}
+	    if (isset($pq)) {
+              echo '<div class="content row">';
+              while ($pq->have_posts()) : $pq->the_post(); 
+	          if ($idx == 4) {
+	            echo '</div><div class="collapse content row" id="more-news">';
+	          }
 
-                get_template_part('templates/content', 'search-news');
-                $any_news = true;
+                  get_template_part('templates/content', 'search-news');
+                  $any_news = true;
 
-		$idx++;
-            endwhile; 
+	          $idx++;
+              endwhile; 
+	    }
 
 	    if ($idx > 3) {
 	      echo '</div>';
