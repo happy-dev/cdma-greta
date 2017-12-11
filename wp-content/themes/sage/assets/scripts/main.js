@@ -245,6 +245,8 @@ console.log("Actualités");
     'nous_contacter': {
       init : function() {},
       finalize : function() {
+	var ei = $("#email-input");
+
 	// Disable scroll zooming
 	$('#map').addClass('scrolloff');// set the mouse events to none when doc is ready
         
@@ -262,7 +264,7 @@ console.log("Actualités");
 	// Coordo email
         var email = getParameterByName("email");
 	if (email) {
-          $("#email-input").val( decodeURIComponent(email) );
+          ei.val( decodeURIComponent(email) );
 	}
 
 
@@ -289,8 +291,16 @@ console.log("Actualités");
           
 
           $('#domain-input').val(domain);
-          $('#email-input').val(email);
+          ei.val(email);
         });
+
+
+	// Disable form on submit
+        $('textarea[name="candidate-message"]').change(function(e) {                                                               
+          if ($('textarea[name="candidate-message"]').val() == "" && $('.wpcf7-response-output.wpcf7-mail-sent-ok.alert-success').length) {                                                               
+            $("input").prop("disabled", true);                          
+          } 
+        });                          
       },
     },
 
@@ -328,6 +338,7 @@ console.log("Actualités");
           $("section.page-greta.article.container").hide();                                    
         } 
         
+	// Disable form on submit
         fti.change(function(e) {                                                               
           if (fti.val() == "") {                                                               
             $("input").prop("disabled", true);                              
