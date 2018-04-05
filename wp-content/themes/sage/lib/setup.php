@@ -217,6 +217,7 @@ function assets() {
   wp_enqueue_script('bootstrap-datepicker', Assets\asset_path('../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'), ['jquery'], null, true);
   wp_enqueue_script('bootstrap-datepicker-fr', Assets\asset_path('../node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js'), ['jquery'], null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  wp_localize_script('sage/js', 'CDMA', array( 'siteurl' => get_option('siteurl') ));
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 

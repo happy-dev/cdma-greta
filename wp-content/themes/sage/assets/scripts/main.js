@@ -244,7 +244,7 @@ console.log("Actualités");
     },
     'nous_contacter': {
       init : function() {},
-      finalize : function() {
+      finalize : function() {  
 	var ei = $("#email-input");
 
 	// Disable scroll zooming
@@ -299,8 +299,9 @@ console.log("Actualités");
         $('textarea[name="candidate-message"]').change(function(e) {                                                               
           if ($('textarea[name="candidate-message"]').val() == "" && $('.wpcf7-response-output.wpcf7-mail-sent-ok.alert-success').length) {                                                               
             $("input").prop("disabled", true);                          
+	    window.location.href = CDMA.siteurl + "/message-bien-envoye";
           } 
-        });                          
+        }); 
       },
     },
 
@@ -343,6 +344,7 @@ console.log("Actualités");
           if (fti.val() == "") {                                                               
             $("input").prop("disabled", true);                              
             $(".row.row-intro p").show();
+	    window.location.href = CDMA.siteurl + "/message-bien-envoye";
           } 
         });                          
 

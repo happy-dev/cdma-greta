@@ -192,3 +192,5 @@ function modify_search($wp_query) {
   }
 }
 add_action( 'pre_get_posts', 'modify_search' );
+
+
