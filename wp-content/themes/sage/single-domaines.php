@@ -198,18 +198,18 @@
             ?>
                 <div class="row <?php if ( $i <= $mea && 0 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
                     <article class="entry col-md-12">
+                        <?php
+                          $image = get_field('post_image');
+                          if( !empty($image) ): 
+                              $url = $image['url'];
+                              $title = $image['title'];
+                              $alt = $image['alt'];
+                              $size = 'single_f';
+                              $thumb = $image['sizes'][ $size ]; 
+                          endif; 
+                        ?>
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
-                            <?php
-                                $image = get_field('post_image');
-                                if( !empty($image) ): 
-                                    $url = $image['url'];
-                                    $title = $image['title'];
-                                    $alt = $image['alt'];
-                                    $size = 'single_f';
-                                    $thumb = $image['sizes'][ $size ]; 
-                                endif; 
-                                ?>
                                 <img src="<?php echo $thumb; ?>"
                                      alt="<?php echo $alt; ?>" />
                        
