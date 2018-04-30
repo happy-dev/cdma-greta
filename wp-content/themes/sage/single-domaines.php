@@ -203,7 +203,7 @@
                           if( !empty($image) ): 
                               $url = $image['url'];
                               $title = $image['title'];
-                              $alt = $image['alt'];
+			      $alt = $image['alt'] ?$image['alt'] : "";
                               $size = 'single_f';
                               $thumb = $image['sizes'][ $size ]; 
                           endif; 

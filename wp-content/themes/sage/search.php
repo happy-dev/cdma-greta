@@ -60,7 +60,7 @@
                                 if( !empty($image) ): 
                                     $url = $image['url'];
                                     $title = $image['title'];
-                                    $alt = $image['alt'];
+                                    $alt = $image['alt'] ?$image['alt'] : "";
                                     $size = 'news';
                                     $thumb = $image['sizes'][ $size ]; ?>
                                                             <?php endif; ?>
