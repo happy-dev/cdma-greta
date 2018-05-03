@@ -54,16 +54,16 @@
 		    $l    = DiogenHelper::getLocations($s, true);
              ?>
                     <article class="entry col-md-12">
+                        <?php $image = get_field('post_image');
+                        if( !empty($image) ): 
+                            $url = $image['url'];
+                            $title = $image['title'] ? $image['title'] : "" ;
+                            $alt = $title;
+                            $size = 'news';
+                            $thumb = $image['sizes'][ $size ];
+			endif; ?>
                         <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
                             <div class="col-md-4">
-                            <?php $image = get_field('post_image');
-                                if( !empty($image) ): 
-                                    $url = $image['url'];
-                                    $title = $image['title'];
-                                    $alt = $image['alt'] ?$image['alt'] : "";
-                                    $size = 'news';
-                                    $thumb = $image['sizes'][ $size ]; ?>
-                                                            <?php endif; ?>
                                     <img style="width:100%;" src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
                             </div>
                             <div class="col-md-8">
