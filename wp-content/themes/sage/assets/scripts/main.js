@@ -390,6 +390,9 @@ console.log("Actualités");
             nsi.prop("disabled", false);
 	  }
         });
+
+	// Inserting privacy agreement label
+	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
       },
     },
 

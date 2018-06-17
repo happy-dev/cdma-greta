@@ -304,6 +304,8 @@
             font-family: $basic-thick-fonts;
 
 	    &[for=privacy-agreement] {
+		display:	block;
+		margin-top:	30px;
 		max-width:	100%;
 	    }
         }
