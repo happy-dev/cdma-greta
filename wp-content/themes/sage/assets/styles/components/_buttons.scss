@@ -76,6 +76,17 @@
     background-color: $cdma-blue;
     border: 0;
     box-shadow: 0px 0px 6px #aaa;
+
+    &.btn-link {
+      color: $cdma-blue;
+      background-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        color: $cdma-blue;
+        background-color: transparent;
+      }
+    }
     
     &.btn-action {
         background-color: orange;

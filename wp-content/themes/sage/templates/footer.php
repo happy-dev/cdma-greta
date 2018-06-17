@@ -59,7 +59,20 @@
                         </a>
                     <?php endwhile; ?>
                 </div>
-                  <?php echo do_shortcode('[contact-form-7 id="1603" title="Newsletter"]'); ?>
+                <?php echo do_shortcode('[contact-form-7 id="1603" title="Newsletter"]'); ?>
+		<div class="modal fade" id="newsletter-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-body">
+			<?php the_field('newsletter_privacy_agreement', 'option'); ?>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-link" data-dismiss="modal">Je refuse</button>
+		        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirm-newsletter-submit">J'accepte</button>
+		      </div>
+		    </div>
+		  </div>
+		</div> 
             </div>
         </div>
     </div>

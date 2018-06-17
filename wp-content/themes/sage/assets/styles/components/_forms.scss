@@ -329,3 +329,18 @@
         }
     }
 }
+
+/** Newsletter **/
+footer {
+    position:	relative;
+    overflow:	hidden;
+
+  .wpcf7-form {
+    .form-group {
+	&.privacy-agreement-newsletter {
+	  position:	absolute;
+	  left:		9999px;
+    	}
+    }
+  }
+}

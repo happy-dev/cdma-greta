@@ -33,7 +33,7 @@
 
       // JavaScript to be fired on all pages
       init: function() {          
-	// Grab a giver GET parameter
+	// Grab a given GET parameter
         function getParameterByName(name, url) {
           if (!url) {
             url = window.location.href;
@@ -72,6 +72,12 @@
 	  localStorage.setItem("category_href", undefined);
 	  localStorage.setItem("category_html", undefined);
 	}
+
+	// Newsletter 
+	$("#confirm-newsletter-submit").click(function() {
+		$("#privacy-agreement-newsletter").prop("checked", true);
+		$("footer .wpcf7-form").submit();
+	});
       },
       finalize: function() {
       }
