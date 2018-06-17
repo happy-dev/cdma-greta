@@ -302,6 +302,10 @@
         label {
             @extend .col-md-4;
             font-family: $basic-thick-fonts;
+
+	    &[for=privacy-agreement] {
+		max-width:	100%;
+	    }
         }
         
         input[type=text],
@@ -315,7 +319,7 @@
         
         .checkbox {
             label {
-                white-space: nowrap;
+		display:	flex;
                 input[type=checkbox] {
                     margin-right: 8px;
                 }

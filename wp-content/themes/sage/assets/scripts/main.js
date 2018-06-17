@@ -259,7 +259,7 @@ console.log("Actualités");
         $("#map").mouseleave(function () {// becuase the mouse up doesn't work... 
             $('#map').addClass('scrolloff');// set the pointer events to none when mouse leaves the map area
         });
-
+	
 
 	// Coordo email
         var email = getParameterByName("email");
@@ -302,6 +302,10 @@ console.log("Actualités");
 	    window.location.href = CDMA.siteurl + "/message-bien-envoye";
           } 
         }); 
+
+	
+	// Inserting privacy agreement label
+	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
       },
     },
 
