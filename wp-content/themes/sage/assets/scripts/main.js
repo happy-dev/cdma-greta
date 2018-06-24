@@ -115,8 +115,7 @@
       }
     },
     'single_formations': {
-      init : function() {},
-      finalize : function() {
+      init : function() {
 	// Coordo email to form
         var ce     	= $("#coordo-email");// Coordo Email
         var cb     	= $(".contact-btn");// Contact Buttons
@@ -135,7 +134,7 @@
         cdt_href += "&formation="+ encodeURIComponent( ft.html() );
 
         cb.attr("href", href);
-        cdtb.attr("href", cdt_href);
+        cdtb.attr("href", cdt_href).css("display", "block");
 
 
 	// Breadcrumbs
@@ -195,6 +194,7 @@
 	  $("#tem-video-clone").clone().appendTo("#temoignage-video-wrapper");
         });
       },
+      finalize : function() {},
     },
     'single_domaines': {
       init : function() {
