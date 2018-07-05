@@ -123,15 +123,15 @@
         var href   	= cb.attr("href");
         var cdt_href  = cdtb.attr("href");
 
-        // href += "?email="+ encodeURIComponent( ce.html() );
-        // cdt_href += "?email="+ encodeURIComponent( ce.html() );
+        href += "?email="+ encodeURIComponent( ce.html() );
+        cdt_href += "?email="+ encodeURIComponent( ce.html() );
 
 
 	// Formation title to form
         var ft    = $("#formation-title");// Formation Title
 
-        href += "?formation="+ encodeURIComponent( ft.html() );
-        cdt_href += "?formation="+ encodeURIComponent( ft.html() );
+        href += "&formation="+ encodeURIComponent( ft.html() );
+        cdt_href += "&formation="+ encodeURIComponent( ft.html() );
 
         cb.attr("href", href);
         cdtb.attr("href", cdt_href).css("display", "block");
@@ -319,10 +319,10 @@ console.log("Actualités");
       init : function() {},
       finalize : function() {
 	// Coordo email
-        //var email = getParameterByName("email");
-	//if (email) {
-        //  $("#email-input").val( decodeURIComponent(email) );
-	//}
+        var email = getParameterByName("email");
+	if (email) {
+          $("#email-input").val( decodeURIComponent(email) );
+	}
 
 
 	// Numbers only
