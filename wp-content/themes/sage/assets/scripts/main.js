@@ -305,7 +305,7 @@ console.log("Actualités");
         $('textarea[name="candidate-message"]').change(function(e) {                                                               
           if ($('textarea[name="candidate-message"]').val() == "" && $('.wpcf7-response-output.wpcf7-mail-sent-ok.alert-success').length) {                                                               
             $("input").prop("disabled", true);                          
-	    window.location.href = CDMA.siteurl + "/message-bien-envoye";
+	    window.location.href = CDMA.siteurl + "/formulaire-bien-envoye";
           } 
         }); 
 
@@ -318,6 +318,7 @@ console.log("Actualités");
     'candidater': {
       init : function() {},
       finalize : function() {
+
 	// Coordo email
         var email = getParameterByName("email");
 	if (email) {
