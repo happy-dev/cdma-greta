@@ -486,19 +486,19 @@ Class DiogenHelper {
     if (isset($f->OFCertification) && $f->OFCertification > 0) {
       $ra = Diogen::runQuery("
         SELECT
-          offrecertificationintitule.CIIntitule
+          offrecertification.CEIntitule
 
         FROM
-          offrecertificationintitule, 
+	  offrecertification,
           offreformation
           
         WHERE
-          offrecertificationintitule.CINo = offreformation.OFCertificationIntitule AND
+	  offrecertification.CENo=offreformation.OFCertification
           offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
         if ($rao = $ra->fetch()) {// Reco Acquis Object
-          $o .= $rao->CIIntitule .'<br/>';
+          $o .= $rao->CEIntitule .'<br/>';
         }
       }
     } 
