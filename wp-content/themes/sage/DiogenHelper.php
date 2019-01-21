@@ -493,7 +493,8 @@ Class DiogenHelper {
           offreformation
           
         WHERE
-	  offrecertification.CENo=offreformation.OFCertification
+	  offrecertification.CENo=offreformation.OFCertification AND
+	  offreformation.OFReconduit IN ('V', 'K') AND
           offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
@@ -513,6 +514,7 @@ Class DiogenHelper {
           
         WHERE
           offresanction.SANo = offreformation.OFSanction AND
+	  offreformation.OFReconduit IN ('V', 'K') AND
           offreformation.OFNoPermanent = {$fID}
       ");
       if ($ra->rowCount() > 0) {					
