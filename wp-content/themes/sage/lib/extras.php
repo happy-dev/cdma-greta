@@ -60,7 +60,7 @@ class Custom_Walker extends Walker_Nav_Menu {
         $output .= "\n$indent<div $attributes>\n";
         $output .= "\n$indent<span class='decoration'></span>\n";
         $output .= "\n$indent<div class=\"row\">\n";
-		$output .= "\n$indent<ul class=\"col-md-4\">\n";
+		$output .= "\n$indent<ul class=\"col-md-3\">\n";
         
         $this->children_cpt = 0;
         $this->children_total = 0;
@@ -71,7 +71,7 @@ class Custom_Walker extends Walker_Nav_Menu {
         if ($depth > 0) {
             if ($this->children_cpt > 5) {
                 $this->children_cpt = 0;
-                $output .= '<ul class="col-md-4">';
+                $output .= '<ul class="col-md-3">';
             }
         }
         
