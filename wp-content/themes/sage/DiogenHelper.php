@@ -356,6 +356,7 @@ Class DiogenHelper {
         personne.PEPrenom,
         personne.PETel1,
         personne.PETel2,
+        personne.PETel2Bloque,
         personne.PEMel1
 
       FROM
@@ -368,9 +369,31 @@ Class DiogenHelper {
         offreliaisonsessioncontact.LSCPersonne = personne.PENo    AND
         offresession.SSNo = {$s->SSNo}
     ");
+
+    // Référent handicap
+    $rh = Diogen::runQuery("
+      SELECT
+        personne.PENom,
+        personne.PEPrenom,
+        personne.PETel1,
+        personne.PETel2,
+        personne.PETel2Bloque,
+        personne.PEMel1
+
+      FROM
+        offresession,
+        personne,
+        offreliaisonsessioncontact
+        
+      WHERE
+        offresession.SSNo = offreliaisonsessioncontact.LSCSession AND
+        offreliaisonsessioncontact.LSCPersonne = personne.PENo    AND
+	offreformation.OFRefHandicap=personne.PENo		  AND
+        offresession.SSNo = {$s->SSNo}
+    ");
     
     if ($c->rowCount() > 0) {
-      return self::outputContact($c->fetch(), true);
+      return self::outputContact($c->fetch(), $rh->fetch(), true, true);
     }
     else {
       $cs = Diogen::runQuery("
@@ -379,6 +402,7 @@ Class DiogenHelper {
           personne.PEPrenom,
           personne.PETel1,
           personne.PETel2,
+	  personne.PETel2Bloque,
           personne.PEMel1
 
         FROM
@@ -392,21 +416,53 @@ Class DiogenHelper {
           offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
           offreformation.OFNoPermanent = {$fID}
       ");
+
+      $rh = Diogen::runQuery("
+        SELECT
+          personne.PENom,
+          personne.PEPrenom,
+          personne.PETel1,
+          personne.PETel2,
+	  personne.PETel2Bloque,
+          personne.PEMel1
+
+        FROM
+          personne, 
+          offreformation,
+          offreliaisonformationcontact
+          
+        WHERE
+          offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
+      	  offreformation.OFReconduit IN ('V', 'K')				AND
+          offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
+	  offreformation.OFRefHandicap=personne.PENo		  		AND
+          offreformation.OFNoPermanent = {$fID}
+      ");
+
+      if ($cs->rowCount() > 0) {
+        $o = '';// Output
+        $first=true;
+        $i=1;
+        foreach ($cs->fetchAll() as $c) {
+          $o .= self::outputContact($c, $rh, $first, $cs->rowCount() == $i);
+          $first=false;
+          $i++;
+        }
+        return $o;
+      }		
     }
-    if ($cs->rowCount() > 0) {
-      $o = '';// Output
-      $first=true;
-      foreach ($cs->fetchAll() as $c) {
-        $o .= self::outputContact($c, $first);
-        $first=false;
-      }
-      return $o;
-    }		
   }
 
   // Output contact info
-  private static function outputContact($c, $first=false) {
+  private static function outputContact($c, $rh, $first=false, $last=false) {
     $o = '';// Output
+
+    function isHandicapReferent($c1, $c2) {
+      if ($c2->PENom && $c2->PEPrenom){
+        return ($c1->PENom == $c2->PENom) && ($c1->PEPrenom == $c2->PEPrenom);
+      }
+      return true;
+    }
 
     if (isset($c->PEPrenom) && $c->PEPrenom != '') {
       $o .= Diogen::removeApostrophe($c->PEPrenom);
@@ -422,7 +478,7 @@ Class DiogenHelper {
       }
       $o .= 'Tel: '. $tel .'<br/>';
     }
-    if (isset($c->PETel2) && $c->PETel2 != '') {
+    if (isset($c->PETel2) && $c->PETel2 != '' && isset($c->PETel2Bloque) && $c->PETel2Bloque == 'F') {
       $tel = trim( Diogen::removeApostrophe($c->PETel2) );
       if (strlen($c->PETel2) < 14) {
         $tel = chunk_split($tel, 2, ' ');
@@ -433,6 +489,11 @@ Class DiogenHelper {
     if ($first) { $idc= 'id="coordo-email"'; }
     if (isset($c->PEMel1) && $c->PEMel1 != '' ) {
       $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a><br/>';
+    }
+
+    if ($last && !isHandicapReferent($c, $rh)) {
+      $o .= '<br/>Référent(e) handicap<br/>';
+      $o .= $rh->PEPrenom .' '. $rh->PENom;
     }
 
     return $o;
