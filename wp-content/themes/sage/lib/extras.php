@@ -69,7 +69,7 @@ class Custom_Walker extends Walker_Nav_Menu {
     function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
         $this->parent_item = $item;
         if ($depth > 0) {
-            if ($this->children_cpt > 5) {
+            if ($this->children_cpt > 4) {
                 $this->children_cpt = 0;
                 $output .= '<ul class="col-md-3">';
             }
@@ -132,7 +132,7 @@ class Custom_Walker extends Walker_Nav_Menu {
 
             if ($this->children_total >= $item->_parent_children_count) {
                 //$output .= "</ul></div>\n";
-            } else if ($this->children_cpt >= 5) {
+            } else if ($this->children_cpt >= 4) {
                 $output .= '</ul>';
             }
 
