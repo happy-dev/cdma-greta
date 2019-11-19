@@ -453,16 +453,16 @@ Class DiogenHelper {
     }
   }
 
+  private static function isHandicapReferent($c1, $c2) {
+    if ($c2->PENom && $c2->PEPrenom){
+      return ($c1->PENom == $c2->PENom) && ($c1->PEPrenom == $c2->PEPrenom);
+    }
+    return true;
+  }
+
   // Output contact info
   private static function outputContact($c, $rh, $first=false, $last=false) {
     $o = '';// Output
-
-    function isHandicapReferent($c1, $c2) {
-      if ($c2->PENom && $c2->PEPrenom){
-        return ($c1->PENom == $c2->PENom) && ($c1->PEPrenom == $c2->PEPrenom);
-      }
-      return true;
-    }
 
     if (isset($c->PEPrenom) && $c->PEPrenom != '') {
       $o .= Diogen::removeApostrophe($c->PEPrenom);
@@ -491,7 +491,7 @@ Class DiogenHelper {
       $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a><br/>';
     }
 
-    if ($last && !isHandicapReferent($c, $rh)) {
+    if ($last && !self::isHandicapReferent($c, $rh)) {
       $o .= '<br/>Référent(e) handicap<br/>';
       $o .= $rh->PEPrenom .' '. $rh->PENom;
     }
