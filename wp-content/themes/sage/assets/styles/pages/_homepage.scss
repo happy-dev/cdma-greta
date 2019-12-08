@@ -194,6 +194,10 @@
     }
     
     .schools {
+	&.container {
+	  padding-left: 30px;
+	  padding-right: 30px;
+	}
         .js-flickity {
             .flickity-prev-next-button, .flickity-prev-next-button {
                 background-color: transparent;
