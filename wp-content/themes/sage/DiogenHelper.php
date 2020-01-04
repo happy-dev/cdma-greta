@@ -381,15 +381,12 @@ Class DiogenHelper {
         personne.PEMel1
 
       FROM
-        offresession,
-        personne,
-        offreliaisonsessioncontact
+        personne, 
+        offreformation
         
       WHERE
-        offresession.SSNo = offreliaisonsessioncontact.LSCSession AND
-        offreliaisonsessioncontact.LSCPersonne = personne.PENo    AND
 	offreformation.OFRefHandicap=personne.PENo		  AND
-        offresession.SSNo = {$s->SSNo}
+  	offreformation.OFNoPermanent = {$fID}
     ");
     
     if ($c->rowCount() > 0) {
@@ -417,34 +414,12 @@ Class DiogenHelper {
           offreformation.OFNoPermanent = {$fID}
       ");
 
-      $rh = Diogen::runQuery("
-        SELECT
-          personne.PENom,
-          personne.PEPrenom,
-          personne.PETel1,
-          personne.PETel2,
-	  personne.PETel2Bloque,
-          personne.PEMel1
-
-        FROM
-          personne, 
-          offreformation,
-          offreliaisonformationcontact
-          
-        WHERE
-          offreformation.OFNo = offreliaisonformationcontact.LFTFormation	AND
-      	  offreformation.OFReconduit IN ('V', 'K')				AND
-          offreliaisonformationcontact.LFTPersonne = personne.PENo		AND
-	  offreformation.OFRefHandicap=personne.PENo		  		AND
-          offreformation.OFNoPermanent = {$fID}
-      ");
-
       if ($cs->rowCount() > 0) {
         $o = '';// Output
         $first=true;
         $i=1;
         foreach ($cs->fetchAll() as $c) {
-          $o .= self::outputContact($c, $rh, $first, $cs->rowCount() == $i);
+          $o .= self::outputContact($c, $rh->fetch(), $first, $cs->rowCount() == $i);
           $first=false;
           $i++;
         }
@@ -492,8 +467,25 @@ Class DiogenHelper {
     }
 
     if ($last && !self::isHandicapReferent($c, $rh)) {
-      $o .= '<br/>Référent(e) handicap<br/>';
-      $o .= $rh->PEPrenom .' '. $rh->PENom;
+      $o .= '<br/><span style="color: black;">Référent(e) handicap</span><br/>';
+      $o .= $rh->PEPrenom .' '. $rh->PENom .'<br/>';
+      if (isset($rh->PETel1) && $rh->PETel1 != '') {
+        $tel = trim( Diogen::removeApostrophe($rh->PETel1) );
+        if (strlen($rh->PETel1) < 14) {
+          $tel = chunk_split($tel, 2, ' ');
+        }
+        $o .= 'Tel: '. $tel .'<br/>';
+      }
+      if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
+        $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
+        if (strlen($rh->PETel2) < 14) {
+          $tel = chunk_split($tel, 2, ' ');
+        }
+        $o .= 'Mob:'. $tel .'<br/>';
+      }
+      if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
+        $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
+      }
     }
 
     return $o;
