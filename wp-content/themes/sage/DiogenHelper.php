@@ -444,47 +444,51 @@ Class DiogenHelper {
       if (isset($c->PENom) && $c->PENom != '') {
         $o .= ' '. Diogen::removeApostrophe($c->PENom);
       }
-      $o .= '<br/>';
     }
     if (isset($c->PETel1) && $c->PETel1 != '') {
       $tel = trim( Diogen::removeApostrophe($c->PETel1) );
       if (strlen($c->PETel1) < 14) {
         $tel = chunk_split($tel, 2, ' ');
       }
-      $o .= 'Tel: '. $tel .'<br/>';
+      $o .= '<br/>Tel: '. $tel;
     }
     if (isset($c->PETel2) && $c->PETel2 != '' && isset($c->PETel2Bloque) && $c->PETel2Bloque == 'F') {
       $tel = trim( Diogen::removeApostrophe($c->PETel2) );
       if (strlen($c->PETel2) < 14) {
         $tel = chunk_split($tel, 2, ' ');
       }
-      $o .= 'Mob:'. $tel .'<br/>';
+      $o .= '<br/>Mob:'. $tel;
     }
     $idc='';
     if ($first) { $idc= 'id="coordo-email"'; }
     if (isset($c->PEMel1) && $c->PEMel1 != '' ) {
-      $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a><br/>';
+      $o .= '<br/><a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($c->PEMel1).'">'. Diogen::removeApostrophe($c->PEMel1) .'</a>';
     }
 
-    if ($last && !self::isHandicapReferent($c, $rh)) {
-      $o .= '<br/><span style="color: black;">Référent(e) handicap</span><br/>';
-      $o .= $rh->PEPrenom .' '. $rh->PENom .'<br/>';
-      if (isset($rh->PETel1) && $rh->PETel1 != '') {
-        $tel = trim( Diogen::removeApostrophe($rh->PETel1) );
-        if (strlen($rh->PETel1) < 14) {
-          $tel = chunk_split($tel, 2, ' ');
+    if ($last) {
+      if (!self::isHandicapReferent($c, $rh)) {
+        $o .= '<br/><br/><h3>Référent(e) handicap</h3>';
+        $o .= $rh->PEPrenom .' '. $rh->PENom .'<br/>';
+        if (isset($rh->PETel1) && $rh->PETel1 != '') {
+          $tel = trim( Diogen::removeApostrophe($rh->PETel1) );
+          if (strlen($rh->PETel1) < 14) {
+            $tel = chunk_split($tel, 2, ' ');
+          }
+          $o .= 'Tel: '. $tel .'<br/>';
         }
-        $o .= 'Tel: '. $tel .'<br/>';
-      }
-      if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
-        $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
-        if (strlen($rh->PETel2) < 14) {
-          $tel = chunk_split($tel, 2, ' ');
+        if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
+          $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
+          if (strlen($rh->PETel2) < 14) {
+            $tel = chunk_split($tel, 2, ' ');
+          }
+          $o .= 'Mob:'. $tel .'<br/>';
         }
-        $o .= 'Mob:'. $tel .'<br/>';
+        if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
+          $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
+        }
       }
-      if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
-        $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
+      else {
+        $o .= '<span">Référent(e) handicap</span>';
       }
     }
 
