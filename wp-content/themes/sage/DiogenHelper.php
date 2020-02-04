@@ -373,22 +373,26 @@ Class DiogenHelper {
     // Référent handicap
     $rh = Diogen::runQuery("
       SELECT
+	personne.PENo,
         personne.PENom,
         personne.PEPrenom,
         personne.PETel1,
         personne.PETel2,
         personne.PETel2Bloque,
-        personne.PEMel1
+        personne.PEMel1,
+	offreformation.OFRefHandicap,
+        offreformation.OFReconduit
 
       FROM
         personne, 
         offreformation
         
       WHERE
-	offreformation.OFRefHandicap=personne.PENo		  AND
-  	offreformation.OFNoPermanent = {$fID}
+	offreformation.OFRefHandicap=personne.PENo		AND
+  	offreformation.OFNoPermanent = {$fID} 				AND
+        (offreformation.OFReconduit='K' OR offreformation.OFReconduit='V')
     ");
-    
+
     if ($c->rowCount() > 0) {
       return self::outputContact($c->fetch(), $rh->fetch(), true, true);
     }
