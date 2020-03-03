@@ -145,7 +145,6 @@ function modify_search($wp_query) {
 
   // dans le cas d'une recherche, hijacker la requête pour rechercher les formations
   if ($wp_query->is_main_query() && $wp_query->is_search()) {
-
     // récupérer le texte de la recherche
     $search_txt 	= get_query_var('s');
 
@@ -184,13 +183,15 @@ function modify_search($wp_query) {
       }
     }
 
-    // éviter de rentrer une deuxième fois dans ce hook
-    remove_action( 'pre_get_posts', 'modify_search' );
-
     // remplacer la requête initiale par celle qu'on vient de construire
+
     query_posts($query_params);
   }
+
+  // éviter de rentrer une deuxième fois dans ce hook
+  remove_action( 'pre_get_posts', 'modify_search' );
 }
-add_action( 'pre_get_posts', 'modify_search' );
+// Conservé pour legacy mais ce code n'est plus appelé car il faisait planter Relevanssi.
+//add_action( 'pre_get_posts', 'modify_search' );
 
 
