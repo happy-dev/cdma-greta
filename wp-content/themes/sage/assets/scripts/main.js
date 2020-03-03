@@ -121,7 +121,7 @@
         var cb     	= $(".contact-btn");// Contact Buttons
         var cdtb   	= $(".btn-candidate");// Candidate Buttons
         var href   	= cb.attr("href");
-        var cdt_href  = cdtb.attr("href");
+        var cdt_href    = cdtb.attr("href");
 
         href += "?email="+ encodeURIComponent( ce.html() );
         cdt_href += "?email="+ encodeURIComponent( ce.html() );
@@ -301,13 +301,10 @@ console.log("Actualités");
         });
 
 
-	// Disable form on submit
-        $('textarea[name="candidate-message"]').change(function(e) {                                                               
-          if ($('textarea[name="candidate-message"]').val() == "" && $('.wpcf7-response-output.wpcf7-mail-sent-ok.alert-success').length) {                                                               
-            $("input").prop("disabled", true);                          
+	// Switch to a dedicated page on submit to track in Matomo
+	document.addEventListener( 'wpcf7mailsent', function( event ) {
 	    window.location.href = CDMA.siteurl + "/formulaire-bien-envoye";
-          } 
-        }); 
+	}, false );
 
 	
 	// Inserting privacy agreement label
@@ -350,14 +347,10 @@ console.log("Actualités");
           $("section.page-greta.article.container").hide();                                    
         } 
         
-	// Disable form on submit
-        fti.change(function(e) {                                                               
-          if (fti.val() == "") {                                                               
-            $("input").prop("disabled", true);                              
-            $(".row.row-intro p").show();
+	// Switch to a dedicated page on submit to track in Matomo
+	document.addEventListener( 'wpcf7mailsent', function( event ) {
 	    window.location.href = CDMA.siteurl + "/message-bien-envoye";
-          } 
-        });                          
+	}, false );
 
 
         var si  = $("#salarie-input");// Salarie Input
