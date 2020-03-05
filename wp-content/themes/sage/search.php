@@ -3,47 +3,8 @@
 <div class="domaine search-domaine container">
     <!-- FORMATIONS -->
         <?php
-            global $wp_query;
             $search_txt = get_query_var('s');    
-            $args = array(
-              's' => $search_txt,
-              'post_type' => 'formations',
-              'posts_per_page' => 9,
-              'paged' => $wp_query->query_vars['paged'], // conserver le numéro de page de la requête initiale
-            );
-
-            // filtrer suivant la bonne taxonomy
-            if (isset($_GET['taxonomy'])) {
-              switch ($_GET['taxonomy']) {
-                case 'formation-diplomantes-cpf':
-                  $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-                  $op = 'AND';
-                break;
-
-                case 'toute-formation':
-                break;
-
-                default:
-                  $ta = $_GET['taxonomy'];
-                  $op = 'IN';
-              }
-
-              if (isset($ta)) {
-                $tq = [[
-                  'taxonomy' => 'type_form',
-                  'field'    => 'slug',
-                  'terms'    => $ta,
-                  'operator' => $op,
-                ]];// Tax Query
-
-                $args['tax_query'] = $tq;
-              }
-            }
-
-            $fq = new WP_Query();
-            $fq->parse_query( $args );
-
-            relevanssi_do_query($fq);
+	    $fq = $wp_query;
 
             $any_formation 	= false;
             $fdia   		= [];// Formations DIOGEN IDs Array
@@ -57,6 +18,7 @@
                 $any_formation 		= true;
               }
             endwhile;
+	    $fq->rewind_posts();
             ?>
             <section class="articles">
       <?php if ($search_txt != '') : ?>

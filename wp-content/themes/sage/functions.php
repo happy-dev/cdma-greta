@@ -121,7 +121,7 @@ add_filter( 'wpcf7_form_tag', 'domains_select_list', 10, 2);
 
 function custom_rewrite_rules( $wp_rewrite ) {
   $wp_rewrite->rules = array(
-    'actualite/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?pagename=actualite&paged=' . $wp_rewrite->preg_index( 1 ),
+    '^actualite/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?pagename=actualite&paged=' . $wp_rewrite->preg_index( 1 ),
  
   ) + $wp_rewrite->rules;
 }
@@ -140,58 +140,42 @@ function admin_assets() {
 add_action('admin_enqueue_scripts', 'admin_assets');
 
 
-// Modify the search
 function modify_search($wp_query) {
+  $wp_query->set('s', get_query_var('s'));// fetch search string
+  $wp_query->set('post_type', 'formations');
+  $wp_query->set('posts_per_page', 9);
+  $wp_query->set('paged', $wp_query->query_vars['paged']);// paging
 
-  // dans le cas d'une recherche, hijacker la requête pour rechercher les formations
-  if ($wp_query->is_main_query() && $wp_query->is_search()) {
-    // récupérer le texte de la recherche
-    $search_txt 	= get_query_var('s');
+  // filtrer suivant la bonne taxonomy
+  if (isset($_GET['taxonomy'])) {
+    switch ($_GET['taxonomy']) {
+      case 'formation-diplomantes-cpf':
+        $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
+        $op = 'AND';
+      break;
 
-    $query_params = array(
-      's' => $search_txt,
-      'post_type' => 'formations',
-      'posts_per_page' => 9,
-      'paged' => $wp_query->query_vars['paged'], // conserver le numéro de page de la requête initiale
-    );
+      case 'toute-formation':
+      break;
 
-    // filtrer suivant la bonne taxonomy
-    if (isset($_GET['taxonomy'])) {
-      switch ($_GET['taxonomy']) {
-        case 'formation-diplomantes-cpf':
-          $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-          $op = 'AND';
-        break;
-
-        case 'toute-formation':
-        break;
-
-        default:
-          $ta = $_GET['taxonomy'];
-          $op = 'IN';
-      }
-
-      if (isset($ta)) {
-        $tq = [[
-          'taxonomy' => 'type_form',
-          'field'    => 'slug',
-          'terms'    => $ta,
-          'operator' => $op,
-        ]];// Tax Query
-
-        $query_params['tax_query'] = $tq;
-      }
+      default:
+        $ta = $_GET['taxonomy'];
+        $op = 'IN';
     }
 
-    // remplacer la requête initiale par celle qu'on vient de construire
+    if (isset($ta)) {
+      $tq = [[
+        'taxonomy' => 'type_form',
+        'field'    => 'slug',
+        'terms'    => $ta,
+        'operator' => $op,
+      ]];// Tax Query
 
-    query_posts($query_params);
+      $wp_query->set('tax_query', $tq);
+    }
   }
 
-  // éviter de rentrer une deuxième fois dans ce hook
-  remove_action( 'pre_get_posts', 'modify_search' );
+  return $wp_query;
 }
-// Conservé pour legacy mais ce code n'est plus appelé car il faisait planter Relevanssi.
-//add_action( 'pre_get_posts', 'modify_search' );
+add_filter('relevanssi_modify_wp_query', 'modify_search');
 
 
