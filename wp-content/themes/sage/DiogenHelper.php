@@ -70,6 +70,7 @@ Class DiogenHelper {
       offresession.SSPublicCommentaire,
       offresession.SSDureeCentre,
       offresession.SSDureeEntreprise,
+      offresession.SSDureeDistance,
       offresession.SSEn2,
       offresession.SSEn1Ou2,
       offresession.SSDureeP,
@@ -140,6 +141,9 @@ Class DiogenHelper {
     }
     if (isset($s->SSDureeEntreprise) && $s->SSDureeEntreprise != '' && $s->SSDureeEntreprise != '0') {
       $ds .= $s->SSDureeEntreprise .'h (en entreprise) <br/>';
+    }
+    if (isset($s->SSDureeDistance) && $s->SSDureeDistance != '' && $s->SSDureeDistance != '0') {
+      $ds .= $s->SSDureeDistance .'h (à distance) <br/>';
     }
     if (isset($s->SSEn2) && $s->SSEn2 == 'V') {
       $ds .= 'La formation se fait en 2 ans <br/>';
