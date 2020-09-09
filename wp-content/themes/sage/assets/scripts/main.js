@@ -27,6 +27,67 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
+  var contactFinalize = function() {
+	var ei = $("#email-input");
+
+	// Disable scroll zooming
+	$('#map').addClass('scrolloff');// set the mouse events to none when doc is ready
+        
+        $('#overlay').on("mouseup",function(){          // lock it when mouse up
+            $('#map').addClass('scrolloff'); 
+        });
+        $('#overlay').on("mousedown",function(){// when mouse down, set the mouse events free
+            $('#map').removeClass('scrolloff');
+        });
+        $("#map").mouseleave(function () {// becuase the mouse up doesn't work... 
+            $('#map').addClass('scrolloff');// set the pointer events to none when mouse leaves the map area
+        });
+	
+
+	// Coordo email
+        var email = getParameterByName("email");
+	if (email) {
+          ei.val( decodeURIComponent(email) );
+	}
+
+
+	// Formation title
+        var ft = getParameterByName("formation");
+
+
+	if (ft) {
+	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
+	  $("#domains-select").prop("disabled", true).parent().hide();
+	}
+	else {
+	  $("#formation-title-input").parent().hide();
+	}
+
+
+        // Fill email input & domain input
+        var ds = $("#domains-select");
+        ds.change(function(e) {
+          var val     = ds.val();
+          var array   = val.split('+!+');
+          var domain  = array[0];
+          var email   = array[1];
+          
+
+          $('#domain-input').val(domain);
+          ei.val(email);
+        });
+
+
+	// Switch to a dedicated page on submit to track in Matomo
+	document.addEventListener( 'wpcf7mailsent', function( event ) {
+	    window.location.href = CDMA.siteurl + "/formulaire-bien-envoye";
+	}, false );
+
+	
+	// Inserting privacy agreement label
+	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
+      };
+
   var Sage = {
     // All pages
     'common': {
@@ -238,7 +299,6 @@
     },
     'category': {
       init : function() {
-console.log("Actualités");
 	var category 	= $("#sidebar li.current-cat a");
 	var href   	= category.attr("href");
 	var html   	= category.html();
@@ -250,66 +310,11 @@ console.log("Actualités");
     },
     'nous_contacter': {
       init : function() {},
-      finalize : function() {  
-	var ei = $("#email-input");
+      finalize : contactFinalize,
+    },
 
-	// Disable scroll zooming
-	$('#map').addClass('scrolloff');// set the mouse events to none when doc is ready
-        
-        $('#overlay').on("mouseup",function(){          // lock it when mouse up
-            $('#map').addClass('scrolloff'); 
-        });
-        $('#overlay').on("mousedown",function(){// when mouse down, set the mouse events free
-            $('#map').removeClass('scrolloff');
-        });
-        $("#map").mouseleave(function () {// becuase the mouse up doesn't work... 
-            $('#map').addClass('scrolloff');// set the pointer events to none when mouse leaves the map area
-        });
-	
-
-	// Coordo email
-        var email = getParameterByName("email");
-	if (email) {
-          ei.val( decodeURIComponent(email) );
-	}
-
-
-	// Formation title
-        var ft = getParameterByName("formation");
-
-
-	if (ft) {
-	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
-	  $("#domains-select").prop("disabled", true).parent().hide();
-	}
-	else {
-	  $("#formation-title-input").parent().hide();
-	}
-
-
-        // Fill email input & domain input
-        var ds = $("#domains-select");
-        ds.change(function(e) {
-          var val     = ds.val();
-          var array   = val.split('+!+');
-          var domain  = array[0];
-          var email   = array[1];
-          
-
-          $('#domain-input').val(domain);
-          ei.val(email);
-        });
-
-
-	// Switch to a dedicated page on submit to track in Matomo
-	document.addEventListener( 'wpcf7mailsent', function( event ) {
-	    window.location.href = CDMA.siteurl + "/formulaire-bien-envoye";
-	}, false );
-
-	
-	// Inserting privacy agreement label
-	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
-      },
+    'plus_information': {
+      finalize : contactFinalize,
     },
 
     'candidater': {
