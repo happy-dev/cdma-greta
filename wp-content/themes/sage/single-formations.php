@@ -76,7 +76,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     <hr/>
                     <div class="row">
                         <div class="col-lg-5">
-                            <a href="/candidater" class="btn btn-action btn-candidate">Candidater</a>
+                            <a href="/candidater" class="btn btn-action btn-candidate">Déposer sa candidature</a>
                         </div>
                         <div class="col-lg-7">
                             <a href="/plus-information" class="btn contact-btn">Demander plus d'informations</a>
@@ -231,7 +231,7 @@ $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
                     
                     <div class="row">
                         <div class="col-lg-7">
-                            <a href="/candidater" class="btn btn-action btn-candidate">Candidater</a>
+                            <a href="/candidater" class="btn btn-action btn-candidate">Déposer sa candidature</a>
                         </div>
                         <div class="col-lg-5">
                             <a href="/nous-contacter" class="btn contact-btn">Demander plus d'informations</a>
