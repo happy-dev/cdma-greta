@@ -774,14 +774,14 @@ Class DiogenHelper {
     }
 
     // 8. COORDONNEES GRETA
-    $html .= '<h2>Coordonnées</h2>';
-    $html .= '<pre>';
-    $html .=   'GRETA CDMA<br/>';
-    $html .=   'Agence administrative et commerciale<br/>';
-    $html .=   '21 rue de Sambre et Meuse<br/>';
-    $html .=   '75010 - PARIS<br/>';
-    $html .=   '<a href="mailto:info@cdma.greta.fr">info@cdma.greta.fr</a>';
-    $html .= '</pre>';
+    // $html .= '<h2>Coordonnées</h2>';
+    // $html .= '<pre>';
+    // $html .=   'GRETA CDMA<br/>';
+    // $html .=   'Agence administrative et commerciale<br/>';
+    // $html .=   '21 rue de Sambre et Meuse<br/>';
+    // $html .=   '75010 - PARIS<br/>';
+    // $html .=   '<a href="mailto:info@cdma.greta.fr">info@cdma.greta.fr</a>';
+    // $html .= '</pre>';
 
     // 9. CONTACT -->
     if ($ct) {
