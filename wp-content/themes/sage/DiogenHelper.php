@@ -482,17 +482,17 @@ Class DiogenHelper {
           if (strlen($rh->PETel1) < 14) {
             $tel = chunk_split($tel, 2, ' ');
           }
-          $o .= 'Tel: '. $tel .'<br/>';
+          //$o .= 'Tel: '. $tel .'<br/>';
         }
         if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
           $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
           if (strlen($rh->PETel2) < 14) {
             $tel = chunk_split($tel, 2, ' ');
           }
-          $o .= 'Mob:'. $tel .'<br/>';
+          //$o .= 'Mob:'. $tel .'<br/>';
         }
         if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
-          $o .= '<a '.$idc.' class="display-none" href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
+          $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
         }
       }
       else {
