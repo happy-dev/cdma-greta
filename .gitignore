@@ -5,13 +5,18 @@ wp-content/upgrade
 wp-content/uploads
 wp-content/wflogs
 wp-content/cache
+wp-content/languages/
+wp-content/plugins/*
+wp-includes/
 wp-piwik/tmp
+wp-admin/
 .DS_Store
 .well-known
 
 
 # Files
 wp-content/themes/sage/diogenConfig.php
+wp-content/themes/sage/package-lock.json
 wp-piwik/config/config.ini.php
 wp-config.php
 .htaccess
