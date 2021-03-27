@@ -474,26 +474,26 @@ Class DiogenHelper {
     }
 
     if ($last) {
-      if (!self::isHandicapReferent($c, $rh)) {
-        $o .= '<br/><br/><h3>Référent(e) handicap</h3>';
-        $o .= $rh->PEPrenom .' '. $rh->PENom .'<br/>';
-        if (isset($rh->PETel1) && $rh->PETel1 != '') {
-          $tel = trim( Diogen::removeApostrophe($rh->PETel1) );
-          if (strlen($rh->PETel1) < 14) {
-            $tel = chunk_split($tel, 2, ' ');
-          }
-          //$o .= 'Tel: '. $tel .'<br/>';
-        }
-        if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
-          $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
-          if (strlen($rh->PETel2) < 14) {
-            $tel = chunk_split($tel, 2, ' ');
-          }
-          //$o .= 'Mob:'. $tel .'<br/>';
-        }
-        if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
-          $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
-        }
+       if (!self::isHandicapReferent($c, $rh)) {
+         $o .= '<br/><br/><h3>Référent(e) handicap</h3>';
+         $o .= $rh->PEPrenom .' '. $rh->PENom .'<br/>';
+    //     if (isset($rh->PETel1) && $rh->PETel1 != '') {
+    //       $tel = trim( Diogen::removeApostrophe($rh->PETel1) );
+    //       if (strlen($rh->PETel1) < 14) {
+    //         $tel = chunk_split($tel, 2, ' ');
+    //       }
+    //       //$o .= 'Tel: '. $tel .'<br/>';
+    //     }
+    //     if (isset($rh->PETel2) && $rh->PETel2 != '' && isset($rh->PETel2Bloque) && $rh->PETel2Bloque == 'F') {
+    //       $tel = trim( Diogen::removeApostrophe($rh->PETel2) );
+    //       if (strlen($rh->PETel2) < 14) {
+    //         $tel = chunk_split($tel, 2, ' ');
+    //       }
+    //       //$o .= 'Mob:'. $tel .'<br/>';
+    //     }
+    //     if (isset($rh->PEMel1) && $rh->PEMel1 != '' ) {
+    //       $o .= '<a '.$idc.' href="mailto:'.Diogen::removeApostrophe($rh->PEMel1).'">'. Diogen::removeApostrophe($rh->PEMel1) .'</a><br/>';
+    //     }
       }
       else {
         $o .= '<span">Référent(e) handicap</span>';
