@@ -16,7 +16,6 @@
 
 .wpcf7-form {
     h2 {
-        margin-top: 5vw;
         margin-bottom: 2vw;
         
         .h2-top {
@@ -35,6 +34,41 @@
     
     label {
         font-family: $basic-thick-fonts;
+    }
+
+    .wpcf7-checkbox {
+	border: none;
+
+	input {
+		cursor: pointer;
+	}
+    }
+
+    .wpcf7-file {
+	border: none;
+    }
+
+    #situation-financement, #info-greta {
+	    & > span {
+		    display: block;
+	    }
+    }
+
+    #privacy-agreement-wrapper {
+	    display: flex;
+
+	    .wpcf7-list-item {
+		    margin: 0 1em 0 0;
+	    }
+
+	    label {
+		    font-style: italic;
+	    }
+    }
+
+    .wpcf7-submit {
+        padding-left: 4vw;
+        padding-right: 4vw;
     }
     
     .form-group {
@@ -130,11 +164,6 @@
                 display: inline-block;
                 width: auto;
             }
-        }
-        
-        .wpcf7-submit {
-            padding-left: 4vw;
-            padding-right: 4vw;
         }
     }
     

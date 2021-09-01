@@ -52,7 +52,11 @@ Class DiogenHelper {
       {$fqp}
     ");
 
-    if (!is_array($formationsIds)) {
+    if (is_string($qr)) {// db connexion error
+      print_r($qr);
+      die();
+    }
+    else if (!is_array($formationsIds)) {
       return $qr->fetch();
     }
     else {

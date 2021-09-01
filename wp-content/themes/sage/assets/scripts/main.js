@@ -57,10 +57,9 @@
 
 	if (ft) {
 	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
-	  $("#domains-select").prop("disabled", true).parent().hide();
 	}
 	else {
-	  $("#formation-title-input").parent().hide();
+	  $("#formation-title-input").parents(".formation-title-wrapper").hide();
 	}
 
 
@@ -82,10 +81,6 @@
 	document.addEventListener( 'wpcf7mailsent', function( event ) {
 	    window.location.href = CDMA.siteurl + "/formulaire-bien-envoye";
 	}, false );
-
-	
-	// Inserting privacy agreement label
-	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
       };
 
   var Sage = {
@@ -136,7 +131,7 @@
 
 	// Newsletter 
 	$("#confirm-newsletter-submit").click(function() {
-		$("#privacy-agreement-newsletter").prop("checked", true);
+		$("#privacy-agreement-newsletter input").prop("checked", true);
 		$("footer .wpcf7-form").submit();
 	});
       },
@@ -395,9 +390,6 @@
             nsi.prop("disabled", false);
 	  }
         });
-
-	// Inserting privacy agreement label
-	$("label[for=privacy-agreement]").append( $("#privacy-agreement-content").html() );
       },
     },
 
