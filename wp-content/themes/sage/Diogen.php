@@ -79,8 +79,9 @@ Class Diogen {
 		} catch(Exception $e) {
 			if (WP_DEBUG) {
 				$error_message = 'DIOGEN connection: ' . $e->getMessage() . '<br/>';
-			} else {
-				$error_message = '<span class="alert">DIOGEN est inaccessible. Veuillez en aviser le webmaster: xavier.bernabeu@ac-paris.fr &nbsp;&nbsp; OU &nbsp;&nbsp; 01.44.62.39.29</span>';
+			} 
+			else {
+				$error_message = ' ';
 			}
 			
 			return $error_message;
