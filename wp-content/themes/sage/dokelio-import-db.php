@@ -16,16 +16,19 @@
       die("Dokelio database connection error : ". $db->connect_error);
     }
     else {// Connected to the database
-      $row = 1;
+      $db->query('TRUNCATE TABLE formation');
 
       if (($handle = fopen($file_name, "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, null, "\t")) !== FALSE) {
-          $fields_count = count($data);
-          $row++;
+	$header = fgetcsv($handle, null, "\t");
 
-          for ($c=0; $c<$fields_count; $c++) {// $c == column
-            echo $data[$c] . "\n";
-          }
+        while (($row = fgetcsv($handle, null, "\t")) !== FALSE) {
+	  foreach($row as &$data) {// Escaping before injecting
+	    $data = $db->real_escape_string($data);
+	  }
+
+	  if (!$db->query("INSERT INTO formation (". implode(", ", $header) .") VALUES ('". implode("', '", $row) ."')")) {
+            die("INSERT query error : ". $db->error);
+	  }
         }
         fclose($handle);
       }
