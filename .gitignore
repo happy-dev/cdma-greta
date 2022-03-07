@@ -1,6 +1,7 @@
 # Folders
 wp-content/themes/*
 !wp-content/themes/sage
+!wp-content/themes/sage/dokelio_db_exports/
 wp-content/upgrade
 wp-content/uploads
 wp-content/wflogs
