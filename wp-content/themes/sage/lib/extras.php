@@ -1,8 +1,10 @@
 <?php
-
 namespace Roots\Sage\Extras;
 
+require_once(__DIR__ .'/../Dokelio/Dokelio.php');
+
 use Roots\Sage\Setup;
+use Dokelio;
 
 /**
  * Add <body> classes
@@ -43,28 +45,26 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
-	$indent = str_repeat("\t", $depth);
-  
-        $atts = array();
-        $atts['aria-labelledby']    = 'dropdown-'.$this->parent_item->ID . $this->_rand;
-        $atts['class']              = 'dropdown-menu';
-        
-        $attributes = '';
-		foreach ( $atts as $attr => $value ) {
-			if ( ! empty( $value ) ) {
-				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
-			}
-		}
-        
-        $output .= "\n$indent<div $attributes>\n";
-        $output .= "\n$indent<span class='decoration'></span>\n";
-        $output .= "\n$indent<div class=\"row\">\n";
-		$output .= "\n$indent<ul class=\"col-md-3\">\n";
-        
-        $this->children_cpt = 0;
-        $this->children_total = 0;
-	}
+      $atts = array();
+      $atts['aria-labelledby']    = 'dropdown-'.$this->parent_item->ID . $this->_rand;
+      $atts['class']              = 'dropdown-menu';
+      $attributes = '';
+
+        foreach ( $atts as $attr => $value ) {
+      	  if ( ! empty( $value ) ) {
+      	    $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+      	    $attributes .= ' ' . $attr . '="' . $value . '"';
+      	  }
+      	}
+      
+      $output .= "<div $attributes>";
+      $output .= "<span class='decoration'></span>";
+      $output .= "<div class=\"row\">";
+      $output .= "<ul class=\"col-md-3\">";
+      
+      $this->children_cpt = 0;
+      $this->children_total = 0;
+    }
 
     function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
         $this->parent_item = $item;
@@ -87,15 +87,12 @@ class Custom_Walker extends Walker_Nav_Menu {
 		$atts['title']            = ! empty( $item->attr_title ) ? $item->attr_title : '';
     
         if ($args->walker->has_children) {
-          //  $href = 'dropdown'. $item->ID;
             $atts['id']         = 'dropdown-'. $item->ID . $this->_rand;
             $atts['class']            = 'dropdown-toggle';
             $atts['data-toggle']      = 'dropdown';
             $atts['aria-haspopup']    = 'true';
             $atts['aria-expanded']    = 'false';
         } else {
-            //$href = $item->url;
-
             if (in_array('current-menu-item', $item->classes) ){
                 $atts['class']        = 'active';
             }
@@ -125,8 +122,8 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
     
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-        $output .= "</li>\n";
-        
+        $output .= "</li>";
+
         if ($depth > 0) {
             $this->children_total++;
 
@@ -141,6 +138,12 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
     
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
+	if ('Dokelio' == $args->walker->parent_item->title) {
+	  foreach(Dokelio::getDomains() as $domain) {
+	    $output .= "<li><a>". $domain ."</a></li>";
+	  }
+	}
+
         $indent = str_repeat("\t", $depth);
         $output .= "$indent</ul></div></div>\n";
     }

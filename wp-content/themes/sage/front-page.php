@@ -1,7 +1,4 @@
 <?php 
-require_once('DiogenHelper.php');
-require_once('Dokelio/Dokelio.php');
-
 while (have_posts()) : the_post(); 
 ?>
 
