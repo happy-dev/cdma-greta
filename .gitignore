@@ -18,6 +18,8 @@ wp-admin/
 # Files
 wp-content/themes/sage/diogenConfig.php
 wp-content/themes/sage/package-lock.json
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
 wp-piwik/config/config.ini.php
 wp-smtp-config.php
 wp-config.php

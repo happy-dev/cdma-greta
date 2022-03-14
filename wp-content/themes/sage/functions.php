@@ -30,20 +30,6 @@ unset($file, $filepath);
 
 // CUSTOM TAXONOMY
 
-add_action( 'init', 'create_formations_tax' );
-
-function create_formations_tax() {
-  register_taxonomy(
-    'domaine',
-    'formations',
-    array(
-      'label' => __( 'Domaine' ),
-      'rewrite' => array( 'slug' => 'domaine' ),
-      'hierarchical' => true,
-    )
-  );
-}
-
 add_action( 'init', 'create_types_form_tax' );
 
 function create_types_form_tax() {
@@ -56,13 +42,6 @@ function create_types_form_tax() {
       'hierarchical' => true,
     )
   );
-}
-
-//manage column custom post type for taxonomies
-add_filter( 'manage_taxonomies_for_formations_columns', 'domaine_columns' );
-function domaine_columns( $taxonomies ) {
-    $taxonomies[] = 'domaine';
-    return $taxonomies;
 }
 
 // OPTIONS
@@ -89,35 +68,6 @@ function custom_disable_redirect_canonical( $redirect_url ) {
     if ( is_paged() && is_singular() ) $redirect_url = false; 
     return $redirect_url; 
 }
-
-// Builds a dropdown list based on Formations CPT
-function domains_select_list($tag, $unused){ 
-    if ( $tag['name'] != 'domaine' )
-        return $tag;
-
-    $args = array (
-        'numberposts'   => -1,
-        'post_type'     => 'domaines',
-        'orderby'       => 'title',
-        'order'         => 'ASC',
-    );
-
-    $domains = get_posts($args);
-
-    if ( ! $domains ) {
-        return $tag;
-    } 
-
-    foreach ( $domains as $domain ) {
-        $tag['raw_values'][]  = $domain->post_title;
-        $tag['values'][]      = $domain->post_title .'+!+'. get_field('coordo_email', $domain->ID);
-        $tag['labels'][]      = $domain->post_title;
-    }
-
-    return $tag;
-}
-add_filter( 'wpcf7_form_tag', 'domains_select_list', 10, 2);
-
 
 function custom_rewrite_rules( $wp_rewrite ) {
   $wp_rewrite->rules = array(

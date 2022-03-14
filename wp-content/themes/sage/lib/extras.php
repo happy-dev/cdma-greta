@@ -140,7 +140,7 @@ class Custom_Walker extends Walker_Nav_Menu {
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
 	if ('Dokelio' == $args->walker->parent_item->title) {
 	  foreach(Dokelio::getDomains() as $domain) {
-	    $output .= "<li><a>". $domain ."</a></li>";
+	    $output .= '<li><a href="/domaines-de-formation/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
 	  }
 	}
 
