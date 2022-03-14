@@ -1,5 +1,7 @@
 <?php 
 require_once('DiogenHelper.php');
+require_once('Dokelio/Dokelio.php');
+
 while (have_posts()) : the_post(); 
 ?>
 
@@ -67,62 +69,7 @@ while (have_posts()) : the_post();
 </section>
 
 <!-- FORMATIONS A LA UNE -->
-
-<section class="articles container">
-    <h2>Formations à la une</h2>
-    <a class="see-all hidden-md-down" href="/se-former-au-greta">Voir toutes les formations</a>
-    <div class="content row">
-    <?php $posts = get_field('formations_une');
-    if( $posts ):
-        foreach( $posts as $post):
-            setup_postdata($post);
-            // DIOGEN 
-            $fdia   = [];// Formations DIOGEN IDs Array
-            $fia    = [];// Formations IDs Array
-            $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
-            $fia[]                  = get_the_ID();
-            $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-            $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
-            $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-            $ft   = get_the_title();// Formation Title
-            //$ls   = DiogenHelper::getLocations($s);// Locations 
-
-            // Iterating through each session
-            $s 	  = $ss[0];
-            $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-            $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-            $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-    ?>
-        <article class="entry col-md-4">
-            <?php $image = get_field('post_image');
-                if( !empty($image) ): 
-                    $url = $image['url'];
-                    $title = $image['title'];
-                    $alt = $image['alt'];
-                    $size = 'news';
-                    $thumb = $image['sizes'][ $size ]; ?>
-                <?php endif; ?>
-            <a href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                <img src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
-                <h3><?php the_title(); ?></h3>
-                <span>
-                <?php if ($sd) {
-                    echo 'Du '.$sd.' au '.$ed ; // dates de session
-                }
-                else {
-                    echo $dc ; // commentaire de date
-                }
-                echo '<br/>';
-                ?>
-                </span>
-                <p><?php //echo $ls; ?></p>
-            </a>
-        </article>
-        <?php endforeach;
-        wp_reset_postdata();
-        endif; ?>
-    </div><!-- row end -->
-</section><!-- container end -->
+<?php include "templates/formations-a-la-une.php"; ?>
 
 <section class="presentation">
     <div class="row">
