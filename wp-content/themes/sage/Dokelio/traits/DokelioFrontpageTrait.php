@@ -8,7 +8,7 @@ Trait DokelioFrontpageTrait {
     DokelioConnectionTrait::getConnection();
 
     $buffer = '';
-    $query_string = "SELECT synth_titre, synth_periode_de_formation FROM formation WHERE flag_une = 1";
+    $query_string = "SELECT DISTINCT code_AF, synth_titre, synth_periode_de_formation FROM formation WHERE flag_une = 1";
 
     if ($highlights = DokelioConnectionTrait::$connection->query($query_string)) {
       while($formation = $highlights->fetch_object()){

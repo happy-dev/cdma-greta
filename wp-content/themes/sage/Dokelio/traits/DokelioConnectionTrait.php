@@ -7,8 +7,8 @@ Trait DokelioConnectionTrait {
     if (self::$connection === null) {
       self::$connection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, 'cdma_dokelio');
 
-      if ($connection->connect_error) {// Database connection issue
-        die("Dokelio database connection error : ". $connection->connect_error);
+      if (self::$connection->connect_error) {// Database connection issue
+        die("Dokelio database connection error : ". self::$connection->connect_error);
       }
     }
 
