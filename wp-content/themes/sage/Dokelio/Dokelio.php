@@ -1,4 +1,5 @@
 <?php
+include_once("traits/DokelioConnectionTrait.php");
 include_once("traits/DokelioFrontpageTrait.php");
 include_once("traits/DokelioDomainsTrait.php");
 
@@ -6,8 +7,13 @@ include_once("traits/DokelioDomainsTrait.php");
  * Handles all interactions between CDMA's website and Dokelio
  */
 Class Dokelio {
+  use DokelioConnectionTrait;
   use DokelioFrontpageTrait;
   use DokelioDomainsTrait;
+
+  public static function __staticConstructor() {
+    self::getConnection();
+  }
 
   public static function toSlug($str, $delimiter = '-'){
     $unwanted_chars = ['à' => 'a', 'ç' => 'c', 'é' => 'e', 'è' => 'e', 'ù' => 'ù'];
@@ -17,3 +23,4 @@ Class Dokelio {
     return $slug;
   }
 }
+Dokelio::__staticConstructor();
