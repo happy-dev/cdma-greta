@@ -1,4 +1,5 @@
 <?php require_once('DiogenHelper.php'); ?>
+<?= //get_query_var('domain'); ?>
 
 <div class="domaine">
     <div class="container">

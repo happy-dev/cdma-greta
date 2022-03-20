@@ -69,13 +69,20 @@ function custom_disable_redirect_canonical( $redirect_url ) {
     return $redirect_url; 
 }
 
-function custom_rewrite_rules( $wp_rewrite ) {
+function cdma_register_query_vars( $vars ) {
+  $vars[] = 'domain';
+  return $vars;
+}
+add_filter( 'query_vars', 'cdma_register_query_vars' );
+
+
+function cdma_rewrite_rules( $wp_rewrite ) {
   $wp_rewrite->rules = array(
     '^actualite/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?pagename=actualite&paged=' . $wp_rewrite->preg_index( 1 ),
- 
+    '^se-former-au-greta/([^/]*)/?$' => $wp_rewrite->index .'?pagename=se-former-au-greta&domain='. $wp_rewrite->preg_index( 1 ),
   ) + $wp_rewrite->rules;
 }
-add_action( 'generate_rewrite_rules', 'custom_rewrite_rules' );
+add_action( 'generate_rewrite_rules', 'cdma_rewrite_rules' );
 
 
 function nullOrEmpty($x) {
