@@ -60,7 +60,13 @@ class Custom_Walker extends Walker_Nav_Menu {
       $output .= "<div $attributes>";
       $output .= "<span class='decoration'></span>";
       $output .= "<div class=\"row\">";
-      $output .= "<ul class=\"col-md-3\">";
+
+      if ('Formations' == $args->walker->parent_item->title) {// Hack to hide "Formation" first submenu
+        $output .= "<ul class=\"col-md-3 display-none\">";
+      }
+      else {
+        $output .= "<ul class=\"col-md-3 boom\">";
+      }
       
       $this->children_cpt = 0;
       $this->children_total = 0;
@@ -138,8 +144,14 @@ class Custom_Walker extends Walker_Nav_Menu {
     }
     
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
-	if ('Dokelio' == $args->walker->parent_item->title) {
-	  foreach(Dokelio::getDomains() as $domain) {
+	if ('Dokelio' == $args->walker->parent_item->title) {// Hack to customize "Formations" submenus
+          $domains = Dokelio::getDomains();
+	  $columns_count = ceil(count($domains)/4);// Compute the items per column in the menu
+
+	  foreach(Dokelio::getDomains() as $idx => $domain) {
+            if ($idx%$columns_count==0) {// Enforce the number of items per column in the menu
+              $output .= '</ul><ul class="col-md-3">';
+            }
 	    $output .= '<li><a href="/domaines-de-formation/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
 	  }
 	}
