@@ -152,7 +152,7 @@ class Custom_Walker extends Walker_Nav_Menu {
             if ($idx%$columns_count==0) {// Enforce the number of items per column in the menu
               $output .= '</ul><ul class="col-md-3">';
             }
-	    $output .= '<li><a href="/se-former-au-greta/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
+	    $output .= '<li><a href="/domaine-offres/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
 	  }
 	}
 

@@ -1,5 +1,6 @@
 <?php 
     require_once('DiogenHelper.php');       
+    echo get_query_var('domain');
     while (have_posts()) : the_post(); 
 ?>
 <div class="domaine">
