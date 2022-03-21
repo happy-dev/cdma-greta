@@ -1,11 +1,13 @@
 <?php 
   date_default_timezone_set('Europe/Paris');
 
+  $file_name = $argv[1];
   $env = explode('/', __FILE__)[3];// Path to prod or staging environment
   include($env .'/wp-config.php');
   chdir($env .'/wp-content/themes/sage/dokelio_db_exports/');
 
-  $file_name = 'dokelio_db_export_'. date('Y-m-d') .'.txt';
+  if (!$file_name) 
+    $file_name = 'dokelio_db_export_'. date('Y-m-d') .'.txt';
 
   if (file_exists($file_name)) {// Today's import file found successfully
     echo 'Importing '. date('d-m-Y') ." data from Dokelio\n";

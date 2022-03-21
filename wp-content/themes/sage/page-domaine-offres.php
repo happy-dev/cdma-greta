@@ -1,5 +1,6 @@
 <?php 
-  $formations = Dokelio::getFormations(get_query_var('domain'));
+  $domain_slug = get_query_var('domain');
+  $formations = Dokelio::getFormations($domain_slug);
   $current_domain = $formations[0];// He he, code needs to be readable
   $word_number = substr_count($current_domain->domaine_accroche, ' ');
   $dom_title = $current_domain->domaine_libelle;
@@ -7,6 +8,7 @@
 ?>
 
 <div class="domaine">
+  <?php if ($domain_slug) : ?>
   <section>
     <div class="presentation">
       <figure>
@@ -41,7 +43,6 @@
       </div>
     <?php } ?>
   </section>
-    
   <div class="modal fade" id="modalVideoDomaine" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -64,7 +65,7 @@
                 playerDomaine = new YT.Player('playerDomaine', {
                   height: '390',
                   width: '640',
-                  videoId: '<?php the_field('post_video'); ?>',
+                  videoId: '<?php $current_domaine->url_video_domaine; ?>',
                 });
               }
 
@@ -80,6 +81,7 @@
       </div>
     </div>
   </div>
+  <?php endif; ?>
 
   <div class="container">
     <div class="row row-offcanvas row-offcanvas-left">
@@ -89,7 +91,8 @@
           <ul>
             <?php 
 	      foreach(Dokelio::getDomains() as $domain) {
-		$current = ($domain == $current_domain->domaine_libelle) ? 'current' : '';
+		if ($current_domain)
+		  $current = ($domain == $current_domain->domaine_libelle) ? 'current' : '';
 	        echo '<li class="'. $current .'"><a href="/domaine-offres/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
 	      }
             ?>

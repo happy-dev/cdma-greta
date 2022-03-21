@@ -52,7 +52,13 @@ if (is_category()) {
 
 // Current page
 if (!$domain && (is_page() || is_single())) {
-  echo '<li class="breadcrumb-item active">'.get_the_title().'</li>';
+  $title = get_the_title();
+  if ($title == 'Domaine offres') {
+    echo '<li class="breadcrumb-item active">Formations</li>';
+  }
+  else {
+    echo '<li class="breadcrumb-item active">'.$title.'</li>';
+  }
 } else {
   echo '<li class="breadcrumb-item active">'.Dokelio::getDomain($domain).'</li>';
 }
