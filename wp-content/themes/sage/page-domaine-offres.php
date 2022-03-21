@@ -89,6 +89,10 @@
       </div>
     </div>
   </div>
+  <?php else: ?>
+    <div class="container">
+      <?php get_template_part('templates/breadcrumb'); ?>
+    </div>
   <?php endif; ?>
 
   <div class="container">
