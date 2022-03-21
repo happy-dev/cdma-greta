@@ -1,10 +1,18 @@
 <?php 
   $domain_slug = get_query_var('domain');
-  $formations = Dokelio::getFormations($domain_slug);
-  $current_domain = $formations[0];// He he, code needs to be readable
-  $word_number = substr_count($current_domain->domaine_accroche, ' ');
-  $dom_title = $current_domain->domaine_libelle;
   $domains = Dokelio::getDomains();
+
+  if ($domain_slug) {// Displaying a specific domain
+    $formations = Dokelio::getFormations($domain_slug);
+    $current_domain = $formations[0];// He he, code needs to be readable
+    $word_number = substr_count($current_domain->domaine_accroche, ' ');
+    $dom_title = $current_domain->domaine_libelle;
+  }
+  else {
+    $formations = Dokelio::getFormations();
+    $current_domain = null;
+    $dom_title = null;
+  }
 ?>
 
 <div class="domaine">
@@ -47,7 +55,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="modalLabel"><?php echo $dom_title; ?></h4>
+          <h4 class="modal-title" id="modalLabel"><?= $dom_title ?></h4>
         </div>
         <div class="modal-body">
           <div class="embed-responsive embed-responsive-4by3">
@@ -90,6 +98,7 @@
           <h3>Domaines</h3>
           <ul>
             <?php 
+              $current = '';
 	      foreach(Dokelio::getDomains() as $domain) {
 		if ($current_domain)
 		  $current = ($domain == $current_domain->domaine_libelle) ? 'current' : '';
@@ -100,15 +109,11 @@
         </div>
       </aside> 
 
-      <?php
-      $mea = get_field('mise_en_avant');
-      $posts = get_field('formations_dom');      
-      ?>
       <section class="articles col-md-8">
         <header class="row">
           <div class="col-md-12">
             <button type="button" class="btn hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Voir la liste des domaines</button>
-            <h2><?= count($formations) ?> Formations <?php echo $dom_title; ?></h2>
+            <h2><?= count($formations) ?> Formations <?= $dom_title ?></h2>
           </div>
         </header>
 

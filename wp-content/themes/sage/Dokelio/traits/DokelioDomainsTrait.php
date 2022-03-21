@@ -22,9 +22,10 @@ Trait DokelioDomainsTrait {
       return $domain->fetch_object()->domaine_libelle;
   }
 
-  public static function getFormations($slug) {
+  public static function getFormations($slug=null) {
     $buffer = array();
-    $query_string = "SELECT DISTINCT domaine_libelle, domaine_accroche, url_video_domaine, code_AF, flag_avant, synth_titre, synth_periode_de_formation, objectif_formation FROM formation WHERE domaine_slug='". $slug ."' ORDER BY flag_avant DESC";
+    $where_str = $slug ?  " WHERE domaine_slug='". $slug ."'" : "";
+    $query_string = "SELECT DISTINCT domaine_libelle, domaine_accroche, url_video_domaine, code_AF, flag_avant, synth_titre, synth_periode_de_formation, objectif_formation FROM formation". $where_str ." ORDER BY flag_avant DESC";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       while($formation = $formations->fetch_object()){
