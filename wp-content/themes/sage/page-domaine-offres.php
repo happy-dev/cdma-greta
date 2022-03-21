@@ -22,11 +22,11 @@
               <?php if ( $word_number > 120 ) { ?>
                 <a class="note" href="#presentation-pannel" data-toggle="collapse" aria-expanded="false" aria-controls="presentation-pannel">Lire l'intégralité </a>
               <?php } ?>
-              <?php if (get_field ('post_video') ) { ?>
+              <?php if ($current_domain->url_video_domaine) { ?>
                 <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?= $dom_title ?></span>
               <?php } ?>
           </div>
-          <?php if (get_field ('post_video') ) { ?>
+          <?php if ($current_domain->url_video_domaine) { ?>
             <div class="video col-md-6 col-sm-12 col-xs-12" data-toggle="modal" data-target="#modalVideoDomaine">
               &nbsp;<span class="icon-play"></span>
             </div>
@@ -119,100 +119,12 @@
                 <div class="col-md-8">
                   <h3><?= $formation->synth_titre ?></h3>
 		  <span><?= $formation->synth_periode_de_formation ?></span>
-                  <p><?= $formation->objectif_formation ?></p>
+                  <p><?= wp_trim_words($formation->objectif_formation, 50, '...') ?></p>
                 </div>
               </a>
             </article>
           </div>
 	<?php endforeach ?>
-        <?php       
-        $i      = 0;
-        $fs     = get_field('formations_dom');// Formations
-        $fdia   = [];// Formations DIOGEN IDs Array
-        $fia    = [];// Formations IDs Array
-
-        foreach($fs as $f) {// Formation
-            $fdia[$f->ID]   = get_field('id_diogen', $f->ID);
-            $fia[]          = $f->ID;
-        }
-        $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-        query_posts( array(
-            'post_type'         => 'formations',
-            'posts_per_page'    => 9,
-            'post__in'          => $fia,
-            'post_status'       => 'any',
-            'orderby'           => 'post__in',
-            'paged'             => $paged
-        )); 
-
-        while ( have_posts()) : the_post(); 
-            $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
-            $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-            $ft   = get_the_title();// Formation Title
-            $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
-
-        	// Selecting first session
-        	$s    = $ss[0];
-            $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-            $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-            $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-        $l    = DiogenHelper::getLocations($s, true);
-
-            $i++;
-        ?>
-        <div class="row <?php if ( $i <= $mea && 0 == $paged ) {echo 'row-mise-en-avant';} ?>"> 
-            <article class="entry col-md-12">
-                <?php
-                  $image = get_field('post_image');
-                  if( !empty($image) ): 
-                      $url = $image['url'];
-                      $title = $image['title'];
-      	    $alt = $image['alt'] ? $image['alt'] : "";
-                      $size = 'single_f';
-                      $thumb = $image['sizes'][ $size ]; 
-                  endif; 
-                ?>
-                <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                    <div class="col-md-4">
-                        <img src="<?php echo $thumb; ?>"
-                             alt="<?php echo $alt; ?>" />
-               
-                    </div>
-                    <div class="col-md-8">
-                        <h3><?php the_title(); ?></h3>
-                        <span>
-                        <?php if ($sd) {
-                            echo 'Du '.$sd.' au '.$ed ; // dates de session
-      	          if (isset($l) AND $l != '') {
-      	            echo '&nbsp;&nbsp;'. $l;
-      	          }
-                            echo '<br/>';
-                        }
-                        if ($dc) {
-                            echo $dc ; // commentaire de date
-                            echo '<br/>';
-                        }
-                        ?>
-                        </span>
-                        <p><?php echo wp_trim_words( $dsc, 50, '...' ); ?></p>
-                    </div>
-                </a>
-            </article>
-        </div>
-        <?php
-        endwhile; 
-        //wp_reset_postdata(); ?>
-        <div class="buttons">
-         <?php
-        $big = 999999999; // need an unlikely integer
-
-        echo paginate_links( array(
-            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-            'format' => '?paged=%#%',
-            'current' => max( 1, get_query_var('paged') ),
-        ) );
-        ?>
-        </div>
       </section>
     </div>
   </div>

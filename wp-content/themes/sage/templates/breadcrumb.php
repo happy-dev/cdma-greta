@@ -1,6 +1,5 @@
 <?php 
 // Breadcrumb navigation
-
 if (is_page() && !is_front_page() || is_single() || is_category()) {
 wp_reset_postdata();
 
@@ -31,12 +30,13 @@ if (is_singular('stages')) {
 	echo '<li class="breadcrumb-item"><a href="/entreprise/offres-de-stage/">Offres de stage</a></li>';
 }
 
-if (is_singular('domaines')) {
-	echo '<li class="breadcrumb-item"><a href="/se-former-au-greta">Formations</a></li>';
+$domain = get_query_var('domain');
+if ($domain) {
+	echo '<li class="breadcrumb-item"><a href="/domaine-offres">Formations</a></li>';
 }
 
 if (is_singular('formations')) {
-	echo '<li class="breadcrumb-item"><a href="/se-former-au-greta">Formations</a></li>';
+	echo '<li class="breadcrumb-item"><a href="/domaine-offres">Formations</a></li>';
 	$category = the_terms('formations', 'domaine');
 	echo $category;
 }
@@ -51,9 +51,12 @@ if (is_category()) {
 
 
 // Current page
-if (is_page() || is_single()) {
-	echo '<li class="breadcrumb-item active">'.get_the_title().'</li>';
+if (!$domain && (is_page() || is_single())) {
+  echo '<li class="breadcrumb-item active">'.get_the_title().'</li>';
+} else {
+  echo '<li class="breadcrumb-item active">'.Dokelio::getDomain($domain).'</li>';
 }
+
 echo '</ol>';
 } elseif (is_page() && !is_front_page()) {
 echo '<ol class="breadcrumb">';
