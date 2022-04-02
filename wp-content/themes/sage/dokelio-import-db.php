@@ -1,7 +1,8 @@
 <?php 
   date_default_timezone_set('Europe/Paris');
 
-  $file_name = $argv[1];
+  if (array_key_exists(1, $argv))
+    $file_name = $argv[1];
   $env = explode('/', __FILE__)[3];// Path to prod or staging environment
   include($env .'/wp-config.php');
   chdir($env .'/wp-content/themes/sage/dokelio_db_exports/');
@@ -18,7 +19,8 @@
       die("Dokelio database connection error : ". $db->connect_error);
     }
     else {// Connected to the database
-      $db->query('TRUNCATE TABLE formation');
+      $db->begin_transaction();
+      $db->query('DELETE FROM formation');
 
       if (($handle = fopen($file_name, "r")) !== FALSE) {
 	$header = fgetcsv($handle, null, "\t");
@@ -29,9 +31,12 @@
 	  }
 
 	  if (!$db->query("INSERT INTO formation (". implode(", ", $header) .") VALUES ('". implode("', '", $row) ."')")) {
-            die("INSERT query error : ". $db->error);
+            echo("INSERT query error : ". $db->error ."\n");
+            $db->rollback();
+	    die();
 	  }
         }
+        $db->commit();
         fclose($handle);
       }
     }
