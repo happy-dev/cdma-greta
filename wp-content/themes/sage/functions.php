@@ -71,6 +71,7 @@ function custom_disable_redirect_canonical( $redirect_url ) {
 
 function cdma_register_query_vars( $vars ) {
   $vars[] = 'domain';
+  $vars[] = 'formation';
   return $vars;
 }
 add_filter( 'query_vars', 'cdma_register_query_vars' );
@@ -80,6 +81,7 @@ function cdma_rewrite_rules( $wp_rewrite ) {
   $wp_rewrite->rules = array(
     '^actualite/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?pagename=actualite&paged=' . $wp_rewrite->preg_index( 1 ),
     '^domaine-offres/([^/]*)/?$' => $wp_rewrite->index .'?pagename=domaine-offres&domain='. $wp_rewrite->preg_index( 1 ),
+    '^fiches/([^/]*)/?$' => $wp_rewrite->index .'?pagename=fiches&formation='. $wp_rewrite->preg_index( 1 ),
   ) + $wp_rewrite->rules;
 }
 add_action( 'generate_rewrite_rules', 'cdma_rewrite_rules' );

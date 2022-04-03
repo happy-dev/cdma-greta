@@ -2,6 +2,7 @@
 include_once("traits/DokelioConnectionTrait.php");
 include_once("traits/DokelioFrontpageTrait.php");
 include_once("traits/DokelioDomainsTrait.php");
+include_once("traits/DokelioFormationTrait.php");
 
 /**
  * Handles all interactions between CDMA's website and Dokelio
@@ -10,6 +11,7 @@ Class Dokelio {
   use DokelioConnectionTrait;
   use DokelioFrontpageTrait;
   use DokelioDomainsTrait;
+  use DokelioFormationTrait;
 
   public static function __staticConstructor() {
     self::getConnection();
@@ -24,7 +26,7 @@ Class Dokelio {
   }
 
   public static function codeAFToId($code_AF) {
-    return substr($code_AF, strpos($code_AF, "_") + 1, strlen($code_AF) - 1);
+    return substr($code_AF, strpos($code_AF, "_") + 1);
   }
 }
 Dokelio::__staticConstructor();

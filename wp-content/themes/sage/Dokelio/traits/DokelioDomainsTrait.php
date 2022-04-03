@@ -6,7 +6,7 @@ Trait DokelioDomainsTrait {
     $query_string = "SELECT DISTINCT domaine_libelle FROM formation ORDER BY domaine_libelle";
 
     if ($domains = Dokelio::$connection->query($query_string)) {
-      while($domain = $domains->fetch_object()){
+      while($domain = $domains->fetch_object()) {
 	$buffer[] = $domain->domaine_libelle;
       }
     }
@@ -28,7 +28,7 @@ Trait DokelioDomainsTrait {
     $query_string = "SELECT DISTINCT domaine_libelle, domaine_accroche, url_video_domaine, code_AF, flag_avant, synth_titre, synth_periode_de_formation, objectif_formation FROM formation". $where_str ." ORDER BY flag_avant DESC";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
-      while($formation = $formations->fetch_object()){
+      while($formation = $formations->fetch_object()) {
         $buffer[] = clone $formation;
       }
     }
