@@ -3,31 +3,6 @@
   $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
   $sessions = Dokelio::getSessions($code_AF);
   $formation = $sessions[0];// To make code readable
-
-//    $sa = [];// Sessions Array
-//    $fi = get_field('id_diogen');// Formation Id
-//    $fs = DiogenHelper::getFormation($fi);// Formations
-//    $ss = DiogenHelper::getSessions($fi);// Sessions
-//    $ms = count($ss) > 1;// Multiple Sessions ? true or false 
-//    
-//    
-//    // Iterating through each session
-//    $first = true;
-//    foreach ($ss as $s) {
-//      $sa[] = DiogenHelper::getLeftColumn($s, $fi, $first);
-//      $first = false;
-//    }
-//    
-//    $ctn    = Diogen::removeApostrophe($fs->OFContenu);// Contenu
-//    $obj    = Diogen::removeApostrophe($fs->OFObjectif);// Objectifs
-//    $prm    = Diogen::removeApostrophe($fs->OFPrerequisMaxi);// Prérequis
-//    $metp   = Diogen::removeApostrophe($fs->OFMethode);// Méthodes pédagogiques
-//    $mop    = DiogenHelper::getMoyPeda($fs, $fi);// Moyens pédagogiques
-//    $mar    = DiogenHelper::getAdmissionMod($fs, $fi);// Méthodes d'Admission et de Recrutement
-//    $rcac   = DiogenHelper::getRecoAcquis($fs, $fi);// Reconnaissance des acquis
-//    $int    = Diogen::removeApostrophe($fs->OFIntervenant);// Intervenant
-//    $forc   = DiogenHelper::getFormacode($fs, $fi);// Formacode
-//    $corm   = DiogenHelper::getCodeROME($fs, $fi);// Code ROME
 ?>
 
 <div class="formation">
@@ -153,7 +128,7 @@
           <?php } ?>
           <?php if ($formation->FRM_contenu_formation) { ?> 
             <h2>Contenu</h2>
-            <pre><?= make_clickable($formation->FRM_contenu_formation) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->FRM_contenu_formation)) ?></pre>
           <?php } ?>
           <?php if ($formation->methodes_pedagogiques) { ?> 
             <h2>Méthodes pédagogiques</h2>
@@ -182,7 +157,7 @@
               if ($formation->codeFORMACODE)
           	echo '<strong>Formacode : </strong><br/>'. $formation->codeFORMACODE .'<br/>';
 
-              if ($corm) { 
+              if ($corm)
           	echo '<strong>ROME : </strong><br/>'. $formation->codeROME; 
 	    ?>
 	    </pre>
@@ -206,78 +181,69 @@
   </div>
 
   <!-- TEMOIGNAGE -->
-  <?php if (get_field ('tem_yes_no') == 'oui' ) {
-    $posts = get_field('temoignage');
-    foreach( $posts as $post): 
-      setup_postdata($post); ?>
+  <?php if (false) {
+    foreach( $posts as $post):
+  ?>
       <aside class="formation-temoignage">
         <div class="container">
           <article class="row">
             <div class="col-md-3">
               <figure class="img-circle" data-toggle="modal" data-target="#modalVideoTemoignage">
-                <?php 
-                  $image = get_field('post_image');
-                  if( !empty($image) ): 
-                    $url = $image['url'];
-                    $title = $image['title'];
-                    $alt = $image['alt'];
-                    $size = 'tem';
-                    $thumb = $image['sizes'][ $size ]; 
-                ?>
-                  <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
-                <?php endif; ?>
+                <img src="https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg" alt="" />
               </figure>
             </div>
             <div class="col-md-9">
-              <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?= $formation->synth_titre ?></h2>
-              <div><?php the_excerpt() ?></div>
+              <h2 data-toggle="modal" data-target="#modalVideoTemoignage"></h2>
+              <div></div>
               <p style="font-weight: bold; color: #0956a1; cursor: pointer;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
             </div>
           </article>
         </div>
       </aside>
-    <?php endforeach;
-  } ?>
+  <?php 
+    endforeach;
+    } 
+  ?>
   
   <!-- Modal -->
   <div class="modal fade" id="modalVideoTemoignage" tabindex="-1" role="dialog" aria-labelledby="modalLabelTemoignage" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title" id="modalLabelTemoignage"><?= $formation->synth_titre ?></h4>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modalLabelTemoignage"></h4>
+        </div>
+        <div class="modal-body">
+        <?php 
+          if (false) {
+        ?>
+          <div id="temoignage-video-wrapper" class="embed-responsive embed-responsive-4by3">
+            <?php
+              $url = '[embed]'. $url .'[/embed]';
+              echo $wp_embed->run_shortcode($url); 
+            ?>
           </div>
-          <div class="modal-body">
-      	<?php 
-                if ($url = get_field ('video_url') ) {
-      	?>
-                <div id="temoignage-video-wrapper" class="embed-responsive embed-responsive-4by3">
-      	  <?php
-      	    $url = '[embed]'. $url .'[/embed]';
-      	    echo $wp_embed->run_shortcode($url); 
-      	  ?>
-                </div>
-      	<?php
-      	  }
-      	  else {
-      	    echo '<img src="'. $image['sizes']['large'] .'" style="width: 100%;"/>';
-      	  }
-      	?>
-              <hr/>
-              <div class="container">
-                  <h2><?= $formation->synth_titre ?></h2><br/>
-                  <div><?php the_content(); ?></div>
-              </div>
+          <?php
+            }
+            else {
+              echo '<img src="'. $image['sizes']['large'] .'" style="width: 100%;"/>';
+            }
+          ?>
+          <hr/>
+          <div class="container">
+              <h2></h2><br/>
+              <div></div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="pauseVideo();">Fermer</button>
-          </div>
-          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="pauseVideo();">Fermer</button>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="display-none">
     <div id="tem-video-clone">
-      <?php echo $wp_embed->run_shortcode($url); ?>
+      <?= $wp_embed->run_shortcode() ?>
     </div>
   </div>
 </div>
