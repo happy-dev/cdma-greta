@@ -105,9 +105,40 @@
         <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content">
           <div class="container">
             <?php 
-            //  foreach($sa as $s) {
-            //    echo $s; 
-            //  }
+              foreach($sessions as $session) :
+              $class = 'in active';
+	    ?>
+		    <div id="session-<?= $session->code_SES ?>'" role="tabpanel" class="tab-pane fade <?= $class ?>">
+      	      <h2>Dates</h2>
+	      <pre><?= $session->periode_session ?></pre>
+	      
+      	      <h2>Public</h2>
+	      <pre><?= $session->Public_vise ?></pre>
+
+      	      <h2>Durée</h2>
+	      <pre><?= $session->detail_duree_de_formation ?></pre>
+
+      	      <h2>Tarif(s)</h2>
+	      <pre><?= $session->prix ?></pre>
+
+      	      <h2>Lieu(x)</h2>
+	      <pre><?= $session->lieu_de_formation ?></pre>
+
+      	      <h2>Modalité de formation</h2>
+	      <pre><?= $session->modalites_pedagogiques ?></pre>
+
+      	      <h2>Effectif</h2>
+	      <pre><?= $session->effectif ?></pre>
+
+      	      <h2>Contact(s)</h2>
+	      <pre><?= $session->contact ?></pre>
+
+      	      <h2>Référent(e) handicap</h2>
+	      <pre><?= $session->referent_handicap ?></pre>
+	    </div>
+            <?php 
+	      $class = '';
+              endforeach;
             ?>
           </div>
         </aside>
@@ -157,7 +188,7 @@
               if ($formation->codeFORMACODE)
           	echo '<strong>Formacode : </strong><br/>'. $formation->codeFORMACODE .'<br/>';
 
-              if ($corm)
+              if ($formation->codeROME)
           	echo '<strong>ROME : </strong><br/>'. $formation->codeROME; 
 	    ?>
 	    </pre>
@@ -176,8 +207,7 @@
       </div>
     </div>
 
-    <?php $majDate = new DateTime( $fs->OFMAJDate ); ?>
-    <!-- pre style="text-align:center; font-style:italic;">Date de mise à jour : <?= $majDate->format('d/m/Y'); ?> | Ce document n'est pas contractuel et peut subir des modifications</pre !-->
+    <pre style="text-align:center; font-style:italic;">Date de mise à jour : <?= '03.04.2022' ?> | Ce document n'est pas contractuel et peut subir des modifications</pre>
   </div>
 
   <!-- TEMOIGNAGE -->
