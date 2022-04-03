@@ -124,7 +124,7 @@
 	<?php foreach($formations as $formation) :?>
           <div class="row <?= $formation->flag_avant ? 'row-mise-en-avant' : '' ?>"> 
             <article class="entry col-md-12">
-              <a class="row row-entry" href="" title="<?= $formation->synth_titre ?>">
+	      <a class="row row-entry" href="/fiches/<?= Dokelio::toSlug($formation->synth_titre) ?>-<?= Dokelio::codeAFToId($formation->code_AF) ?>" title="<?= $formation->synth_titre ?>">
                 <div class="col-md-4">
                   <img src="<?= 'https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg' ?>" alt="<?= $formation->synth_titre ?>" />
                 </div>
