@@ -6,6 +6,10 @@
     p, pre {
         font-size: 16px;
         font-family: $basic-fonts;
+
+	&:first-letter {
+	  text-transform: capitalize;
+  	}
     }
     
     .btn {
