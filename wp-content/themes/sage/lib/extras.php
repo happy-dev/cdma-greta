@@ -148,11 +148,11 @@ class Custom_Walker extends Walker_Nav_Menu {
           $domains = Dokelio::getDomains();
 	  $columns_count = ceil(count($domains)/4);// Compute the items per column in the menu
 
-	  foreach(Dokelio::getDomains() as $idx => $domain) {
+	  foreach($domains as $idx => $domain) {
             if ($idx%$columns_count==0) {// Enforce the number of items per column in the menu
               $output .= '</ul><ul class="col-md-3">';
             }
-	    $output .= '<li><a href="/domaine-offres/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
+	    $output .= '<li><a href="/domaine-offres/'. $domain->slug .'">'. $domain->domaine_libelle .'</a></li>';
 	  }
 	}
 

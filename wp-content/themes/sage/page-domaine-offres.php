@@ -1,6 +1,5 @@
 <?php 
   $domain_slug = get_query_var('domain');
-  $domains = Dokelio::getDomains();
 
   if ($domain_slug) {// Displaying a specific domain
     $formations = Dokelio::getFormations($domain_slug);
@@ -105,8 +104,8 @@
               $current = '';
 	      foreach(Dokelio::getDomains() as $domain) {
 		if ($current_domain)
-		  $current = ($domain == $current_domain->domaine_libelle) ? 'current' : '';
-	        echo '<li class="'. $current .'"><a href="/domaine-offres/'. Dokelio::toSlug($domain) .'">'. $domain .'</a></li>';
+		  $current = ($domain->domaine_libelle == $current_domain->domaine_libelle) ? 'current' : '';
+	        echo '<li class="'. $current .'"><a href="/domaine-offres/'. $domain->slug .'">'. $domain->domaine_libelle .'</a></li>';
 	      }
             ?>
           </ul>

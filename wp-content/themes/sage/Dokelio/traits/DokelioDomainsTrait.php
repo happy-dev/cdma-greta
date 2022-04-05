@@ -3,11 +3,11 @@ Trait DokelioDomainsTrait {
 
   public static function getDomains() {
     $buffer = array();
-    $query_string = "SELECT DISTINCT domaine_libelle FROM formation ORDER BY domaine_libelle";
+    $query_string = "SELECT DISTINCT domaine_libelle, slug FROM formation ORDER BY domaine_libelle";
 
     if ($domains = Dokelio::$connection->query($query_string)) {
       while($domain = $domains->fetch_object()) {
-	$buffer[] = $domain->domaine_libelle;
+	$buffer[] = clone $domain;
       }
     }
     $domains->close();
