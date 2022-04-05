@@ -38,7 +38,7 @@
             </div>
           </div>
           <hr/>
-	  <pre><?= $formation->synth_formation_accroche ?></pre>
+	  <pre><?= Dokelio::lineBreaks($formation->synth_formation_accroche) ?></pre>
           <?php 
 	    if ($formation->taux_reussite)
               echo '<h2 class="introduction-success">Taux de réussite : '. $formation->taux_reussite .'</h2>';
@@ -110,31 +110,31 @@
 	    ?>
 		    <div id="session-<?= $session->code_SES ?>'" role="tabpanel" class="tab-pane fade <?= $class ?>">
       	      <h2>Dates</h2>
-	      <pre><?= $session->periode_session ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->periode_session) ?></pre>
 	      
       	      <h2>Public</h2>
-	      <pre><?= $session->Public_vise ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->Public_vise) ?></pre>
 
       	      <h2>Durée</h2>
-	      <pre><?= $session->detail_duree_de_formation ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->detail_duree_de_formation) ?></pre>
 
       	      <h2>Tarif(s)</h2>
-	      <pre><?= $session->prix ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->prix) ?></pre>
 
       	      <h2>Lieu(x)</h2>
-	      <pre><?= $session->lieu_de_formation ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->lieu_de_formation) ?></pre>
 
       	      <h2>Modalité de formation</h2>
-	      <pre><?= $session->modalites_pedagogiques ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->modalites_pedagogiques) ?></pre>
 
       	      <h2>Effectif</h2>
-	      <pre><?= $session->effectif ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->effectif) ?></pre>
 
       	      <h2>Contact(s)</h2>
-	      <pre><?= $session->contact ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->contact) ?></pre>
 
       	      <h2>Référent(e) handicap</h2>
-	      <pre><?= $session->referent_handicap ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->referent_handicap) ?></pre>
 	    </div>
             <?php 
 	      $class = '';
@@ -151,11 +151,11 @@
           </div>
           <?php if ($formation->objectif_formation) { ?>
             <h2>Objectifs</h2>
-            <pre><?= make_clickable($formation->objectif_formation) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->objectif_formation)) ?></pre>
           <?php } ?>
           <?php if ($formation->Prerequis) { ?>  
               <h2>Prérequis</h2>
-              <pre><?= make_clickable($formation->Prerequis) ?></pre>
+              <pre><?= Dokelio::lineBreaks(make_clickable($formation->Prerequis)) ?></pre>
           <?php } ?>
           <?php if ($formation->FRM_contenu_formation) { ?> 
             <h2>Contenu</h2>
@@ -163,33 +163,33 @@
           <?php } ?>
           <?php if ($formation->methodes_pedagogiques) { ?> 
             <h2>Méthodes pédagogiques</h2>
-            <pre><?= make_clickable($formation->methodes_pedagogiques) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->methodes_pedagogiques)) ?></pre>
           <?php } ?>
           <?php if ($formation->moyens_pedago) { ?> 
             <h2>Moyens pédagogiques</h2>
-            <pre><?= make_clickable($formation->moyens_pedago) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->moyens_pedago)) ?></pre>
           <?php } ?>
           <?php if ($formation->modalites_accueil) { ?> 
             <h2>Modalités d'admission et de recrutement</h2>
-            <pre><?= make_clickable($formation->modalites_accueil) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_accueil)) ?></pre>
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
             <h2>Reconnaissance des acquis</h2>
-            <pre><?= make_clickable($formation->reconnaissance_des_acquis) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->reconnaissance_des_acquis)) ?></pre>
           <?php } ?>
           <?php if ($formation->intervenants) { ?> 
             <h2>Intervenant(e)(s)</h2>
-            <pre><?= make_clickable($formation->intervenants) ?></pre>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->intervenants)) ?></pre>
           <?php } ?>
           <?php if ($formation->codeFORMACODE || $formation->codeROME) { ?> 
             <h2>Codification de l'offre</h2>
 	    <pre>
 	    <?php  
               if ($formation->codeFORMACODE)
-          	echo '<strong>Formacode : </strong><br/>'. $formation->codeFORMACODE .'<br/>';
+          	echo '<strong>Formacode : </strong><br/>'. Dokelio::lineBreaks($formation->codeFORMACODE) .'<br/>';
 
               if ($formation->codeROME)
-          	echo '<strong>ROME : </strong><br/>'. $formation->codeROME; 
+          	echo '<strong>ROME : </strong><br/>'. Dokelio::lineBreaks($formation->codeROME); 
 	    ?>
 	    </pre>
           <?php } ?>
