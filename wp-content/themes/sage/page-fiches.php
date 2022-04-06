@@ -86,7 +86,7 @@
   </div>
 
   <div class="container">
-    <ul class="nav nav-tabs sessions-tabs" role="tablist">
+    <ul class="nav nav-tabs sessions-tabs" id="sessions-tabs" role="tablist">
       <?php
         $class = 'active';
         foreach ($sessions as $session) :
@@ -105,10 +105,10 @@
         <aside class="column col-lg-4 col-md-4 sidebar-offcanvas tab-content">
           <div class="container">
             <?php 
-              foreach($sessions as $session) :
               $class = 'in active';
+              foreach($sessions as $session) :
 	    ?>
-		    <div id="session-<?= $session->code_SES ?>'" role="tabpanel" class="tab-pane fade <?= $class ?>">
+	      <div id="session-<?= $session->code_SES ?>" role="tabpanel" class="tab-pane fade <?= $class ?>">
       	      <h2>Dates</h2>
 	      <pre><?= Dokelio::lineBreaks($session->periode_session) ?></pre>
 	      
@@ -211,7 +211,8 @@
   </div>
 
   <!-- TEMOIGNAGE -->
-  <?php if (false) {
+<?php 
+    if (false) {
     foreach( $posts as $post):
   ?>
       <aside class="formation-temoignage">
@@ -273,7 +274,7 @@
 
   <div class="display-none">
     <div id="tem-video-clone">
-      <?= $wp_embed->run_shortcode() ?>
     </div>
   </div>
 </div>
+

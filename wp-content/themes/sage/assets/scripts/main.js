@@ -170,8 +170,9 @@
         // JavaScript to be fired on the home page, after the init JS
       }
     },
-    'single_formations': {
+    'fiches': {
       init : function() {
+
 	// Coordo email to form
         var ce     	= $("#coordo-email");// Coordo Email
         var cb     	= $(".contact-btn");// Contact Buttons
@@ -206,13 +207,10 @@
         $('#sessions-tabs a').click(function (e) {
           e.preventDefault();
 
-            $('.tab-panel').tab('hide');
-          $(this).tab('show');
+          $('.tab-panel').tab('hide');
+          $(this.getAttribute("href")).tab('show');
             
-            //$id = $(this).attr('ID'); alert('#tab-'+$id);
-          //$('#tab-'+$id).addClass('active');
           $('#sessions-tabs a.active').removeClass('active');
-          // $(this).addClass('active')
         })
 
 	function modifyPrint() {
