@@ -1,18 +1,16 @@
 <?php 
   date_default_timezone_set('Europe/Paris');
 
-
-  if (array_key_exists(1, $argv))// If filename passed as argument of the command line
-    $file_name = $argv[1];
-  else 
-    shell_exec("scp cdma@securesftp.scola.ac-paris.fr:~/export_cdma_". date('Ymd') ."_*[0-9].txt ./dokelio_db_export_". date('Y-m-d') .".txt");
-
   $env = explode('/', __FILE__)[3];// Path to prod or staging environment
   include($env .'/wp-config.php');
   chdir($env .'/wp-content/themes/sage/dokelio_db_exports/');
 
+  if (array_key_exists(1, $argv))// If filename passed as argument of the command line
+    $file_name = $argv[1];
+  else 
+    shell_exec("scp cdma@securesftp.scola.ac-paris.fr:~/../mobil/ecriture/sftp_greta/cdma/export_cdma_". date('Ymd') ."_*[0-9].txt ./dokelio_db_export_". date('Y-m-d') .".txt");
 
-  if (!$file_name) 
+  if (!isset($file_name)) 
     $file_name = 'dokelio_db_export_'. date('Y-m-d') .'.txt';
 
   if (file_exists($file_name)) {// Today's import file found successfully
