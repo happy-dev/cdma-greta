@@ -29,8 +29,13 @@ Class Dokelio {
     return substr($code_AF, strpos($code_AF, "_") + 1);
   }
 
-  public static function lineBreaks($str) {
-    return str_replace('¤', '<br/>', $str);
+  public static function lineBreaks($str, $remove=null) {
+    if ($remove) {
+      return str_replace('¤', ' ', $str);
+    }
+    else {
+      return str_replace('¤', '<br/>', $str);
+    }
   }
 }
 Dokelio::__staticConstructor();
