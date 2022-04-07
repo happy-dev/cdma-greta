@@ -125,10 +125,12 @@
 	      <pre><?= Dokelio::lineBreaks($session->lieu_de_formation) ?></pre>
 
       	      <h2>Modalité de formation</h2>
-	      <pre><?= Dokelio::lineBreaks($session->modalites_pedagogiques) ?></pre>
+	      <pre><?= Dokelio::lineBreaks($session->rythme_formation) ?></pre>
 
+	      <?php if ($session->effectif) :?>
       	      <h2>Effectif</h2>
 	      <pre><?= Dokelio::lineBreaks($session->effectif) ?></pre>
+	      <?php endif; ?>
 
       	      <h2>Contact(s)</h2>
 	      <pre><?= Dokelio::lineBreaks($session->contact) ?></pre>
