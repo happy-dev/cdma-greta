@@ -197,17 +197,6 @@
 	// Breadcrumbs
 	$("#breadcrumb").append($("#formation-breadcrumb").contents());
 
-
-	// Multi Sessions
-        $('#sessions-tabs a').click(function (e) {
-          e.preventDefault();
-
-          $('.tab-panel').tab('hide');
-          $(this.getAttribute("href")).tab('show');
-            
-          $('#sessions-tabs a.active').removeClass('active');
-        })
-
 	function modifyPrint() {
 	  var printBtn = $("#at4-share a.at-svc-print");
 
