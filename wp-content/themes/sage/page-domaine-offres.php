@@ -72,7 +72,7 @@
                 playerDomaine = new YT.Player('playerDomaine', {
                   height: '390',
                   width: '640',
-                  videoId: '<?php $current_domaine->url_video_domaine; ?>',
+                  videoId: '<?= substr($current_domain->url_video_domaine, strrpos($current_domain->url_video_domaine, '=') + 1) ?>'
                 });
               }
 
