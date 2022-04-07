@@ -91,6 +91,19 @@ function nullOrEmpty($x) {
   return (!isset($x) || trim($x) === '');
 }
 
+function domains_select_list($tag, $unused){ 
+  if ( $tag['name'] != 'domaine' )
+    return $tag;
+
+  foreach (Dokelio::getDomains() as $domain ) {
+    $tag['raw_values'][]  = $domain->domaine_libelle;
+    $tag['values'][]      = $domain->domaine_libelle .'+!+'. $domain->referent_domaine;
+    $tag['labels'][]      = $domain->domaine_libelle;
+  }
+
+  return $tag;
+}
+add_filter( 'wpcf7_form_tag', 'domains_select_list', 10, 2);
 
 function admin_assets() {
   wp_register_style('cdma_admin_css', get_template_directory_uri() .'/dist/styles/admin.css', false, null);

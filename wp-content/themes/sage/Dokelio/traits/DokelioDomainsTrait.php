@@ -3,7 +3,7 @@ Trait DokelioDomainsTrait {
 
   public static function getDomains() {
     $buffer = array();
-    $query_string = "SELECT DISTINCT domaine_libelle, slug FROM formation ORDER BY domaine_libelle";
+    $query_string = "SELECT DISTINCT domaine_libelle, slug, referent_domaine FROM formation ORDER BY domaine_libelle";
 
     if ($domains = Dokelio::$connection->query($query_string)) {
       while($domain = $domains->fetch_object()) {
