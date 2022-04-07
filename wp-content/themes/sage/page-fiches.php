@@ -53,7 +53,7 @@
           <hr/>
           <div class="row">
             <div class="col-md-12">
-              <!-- a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?php echo $fi; ?>" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a -->
+              <!-- a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?= $fi; ?>" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a -->
             </div>
           </div>
           <?php if (!$formation->url_video_formation) { ?>
@@ -220,29 +220,54 @@
   </div>
 
   <!-- TEMOIGNAGE -->
-<?php 
-    if (false) {
-    foreach( $posts as $post):
-  ?>
-      <aside class="formation-temoignage">
-        <div class="container">
-          <article class="row">
-            <div class="col-md-3">
-              <figure class="img-circle" data-toggle="modal" data-target="#modalVideoTemoignage">
-                <img src="https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg" alt="" />
-              </figure>
-            </div>
-            <div class="col-md-9">
-              <h2 data-toggle="modal" data-target="#modalVideoTemoignage"></h2>
-              <div></div>
-              <p style="font-weight: bold; color: #0956a1; cursor: pointer;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
-            </div>
-          </article>
-        </div>
-      </aside>
   <?php 
-    endforeach;
-    } 
+  $args = array(  
+    'post_type' => 'temoignages',
+    'post_status' => 'publish',
+    'posts_per_page' => 1, 
+    'meta_query' => array(
+      array(
+        'key' => 'code_AF',
+        'value' => "$code_AF",
+      )
+    ),
+  );
+
+  $loop = new WP_Query( $args ); 
+
+  while ($loop->have_posts()) : $loop->the_post(); 
+  ?>
+    <aside class="formation-temoignage">
+      <div class="container">
+        <article class="row">
+          <div class="col-md-3">
+            <figure class="img-circle" data-toggle="modal" data-target="#modalVideoTemoignage">
+              <?php 
+                $image = get_field('post_image');
+
+                if( !empty($image) ): 
+                  $url = $image['url'];
+                  $title = $image['title'];
+                  $alt = $image['alt'];
+                  $size = 'tem';
+                  $thumb = $image['sizes'][ $size ]; 
+              ?>
+                <img src="<?= $thumb; ?>" alt="<?= $alt; ?>" />
+	      <?php 
+	        endif; 
+	      ?>
+            </figure>
+          </div>
+          <div class="col-md-9">
+            <h2 data-toggle="modal" data-target="#modalVideoTemoignage"><?php the_title() ?></h2>
+            <div><?php the_excerpt() ?></div>
+            <p style="font-weight: bold; color: #0956a1; cursor: pointer;" data-toggle="modal" data-target="#modalVideoTemoignage">Lire la suite</p>
+          </div>
+        </article>
+      </div>
+    </aside>
+  <?php 
+  endwhile;
   ?>
   
   <!-- Modal -->
@@ -250,11 +275,11 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="modalLabelTemoignage"></h4>
+	<h4 class="modal-title" id="modalLabelTemoignage"><?php the_title(); ?></h4>
         </div>
         <div class="modal-body">
         <?php 
-          if (false) {
+          if ($url = get_field ('video_url')) {
         ?>
           <div id="temoignage-video-wrapper" class="embed-responsive embed-responsive-4by3">
             <?php
@@ -270,8 +295,8 @@
           ?>
           <hr/>
           <div class="container">
-              <h2></h2><br/>
-              <div></div>
+	      <h2><?php the_title(); ?></h2><br/>
+	      <div><?php the_content(); ?></div>
           </div>
         </div>
         <div class="modal-footer">
@@ -283,6 +308,7 @@
 
   <div class="display-none">
     <div id="tem-video-clone">
+      <?= $wp_embed->run_shortcode($url); ?>
     </div>
   </div>
 
