@@ -195,12 +195,7 @@
 
 
 	// Breadcrumbs
-	var ls_href = localStorage.getItem("domain_href");
-	var ls_html = localStorage.getItem("domain_html");
-
-	if (ls_href !== "undefined" && ls_html !== "undefined") {
-	  $("#breadcrumb .breadcrumb-item.active").before('<li class="breadcrumb-item"><a href="'+ ls_href +'">'+ ls_html +'</a></li>');
-	}
+	$("#breadcrumb").append($("#formation-breadcrumb").contents());
 
 
 	// Multi Sessions

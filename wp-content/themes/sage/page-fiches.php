@@ -285,5 +285,12 @@
     <div id="tem-video-clone">
     </div>
   </div>
+
+  <div class="display-none" id="formation-breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/domaine-offres/<?= $formation->slug ?>"><?= $formation->domaine_libelle ?></a>
+    </li>
+    <li class="breadcrumb-item active"><?= $formation->synth_titre ?></li>
+  </div>
 </div>
 

@@ -35,12 +35,6 @@ if ($domain) {
 	echo '<li class="breadcrumb-item"><a href="/domaine-offres">Formations</a></li>';
 }
 
-if (is_singular('formations')) {
-	echo '<li class="breadcrumb-item"><a href="/domaine-offres">Formations</a></li>';
-	$category = the_terms('formations', 'domaine');
-	echo $category;
-}
-
 // Actu category
 if (is_category()) {
 	$category = get_category($cat);
@@ -55,6 +49,9 @@ if (!$domain && (is_page() || is_single())) {
   $title = get_the_title();
   if ($title == 'Domaine offres') {
     echo '<li class="breadcrumb-item active">Formations</li>';
+  }
+  if ($title == 'Fiche formation') {
+    echo '<li class="breadcrumb-item"><a href="/domaine-offres">Formations</a></li>';
   }
   else {
     echo '<li class="breadcrumb-item active">'.$title.'</li>';
