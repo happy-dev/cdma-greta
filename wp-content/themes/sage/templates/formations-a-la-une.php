@@ -5,7 +5,7 @@
   <div class="content row">
   <?php foreach(Dokelio::getHighlights() as $formation) : ?>
     <article class="entry col-md-4">
-     <a href="https://cdma.happy-dev.fr/fiches/formation-wordpress-concevoir-un-site-vitrine/" title="'. $formation->synth_titre .'">
+     <a href="/fiches/<?= Dokelio::toSlug($formation->synth_titre) ?>-<?= Dokelio::codeAFToId($formation->code_AF) ?>" title="<?= $formation->synth_titre ?>">
      <img src="/wp-content/uploads/<?= $formation->nom_image ?>" alt="<?= $formation->synth_titre ?>" />
        <h3><?= $formation->synth_titre ?></h3>
        <span><?= $formation->synth_periode_de_formation ?></span>
