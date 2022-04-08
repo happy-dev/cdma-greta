@@ -24,7 +24,7 @@
           <?php   // Get terms for post
             if ($formation->flag_diplomant)
               echo '<span class="introduction-label col-sm-6">Formation diplômante</span>';
-            if ($formation->flag_eligible_cpf)
+            if ($formation->url_mcf)
               echo '<span class="introduction-label col-sm-6">Formation éligible au CPF</span>';
 	  ?>
           </div>
