@@ -40,8 +40,8 @@
           <hr/>
 	  <pre>
 	    <?= Dokelio::lineBreaks($formation->synth_formation_accroche) ?>
-	    <?php if ($formation->flag_eligible_cpf) :?>
-	      <a href="https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/19750681900030_4495/19750681900030_4495_A1" target="_blank" rel="noopener noreferrer">
+	    <?php if ($formation->url_mcf) :?>
+	      <a href="<?= $formation->url_mcf ?>" target="_blank" rel="noopener noreferrer">
 		<img class="alignright size-full" src="https://www.cdma.greta.fr/wp-content/uploads/MonCompteFormation_150x150.jpg" alt="Mon Compte Formation" width="150" height="150">
 	      </a>
 	    <?php endif; ?>

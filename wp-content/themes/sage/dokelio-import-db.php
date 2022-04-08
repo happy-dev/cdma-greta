@@ -7,8 +7,10 @@
 
   if (array_key_exists(1, $argv))// If filename passed as argument of the command line
     $file_name = $argv[1];
-  else 
+  else {
+    echo shell_exec("ip route");
     shell_exec("scp cdma@securesftp.scola.ac-paris.fr:~/../mobil/ecriture/sftp_greta/cdma/export_cdma_". date('Ymd') ."_*[0-9].txt ./dokelio_db_export_". date('Y-m-d') .".txt");
+  }
 
   if (!isset($file_name)) 
     $file_name = 'dokelio_db_export_'. date('Y-m-d') .'.txt';
