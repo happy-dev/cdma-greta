@@ -215,8 +215,6 @@
         </section>
       </div>
     </div>
-
-    <pre style="text-align:center; font-style:italic;">Date de mise à jour : <?= '03.04.2022' ?> | Ce document n'est pas contractuel et peut subir des modifications</pre>
   </div>
 
   <!-- TEMOIGNAGE -->
