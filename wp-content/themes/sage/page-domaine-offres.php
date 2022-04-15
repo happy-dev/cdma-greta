@@ -130,7 +130,7 @@
                 <div class="col-md-8">
                   <h3><?= $formation->synth_titre ?></h3>
 		  <span><?= $formation->synth_periode_de_formation ?></span>
-                  <p><?= wp_trim_words(Dokelio::lineBreaks($formation->objectif_formation, true), 50, '...') ?></p>
+                  <p><?= wp_trim_words(Dokelio::lineBreaks($formation->synth_formation_accroche, true), 50, '...') ?></p>
                 </div>
               </a>
             </article>
