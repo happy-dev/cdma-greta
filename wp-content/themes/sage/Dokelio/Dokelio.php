@@ -3,6 +3,7 @@ include_once("traits/DokelioConnectionTrait.php");
 include_once("traits/DokelioFrontpageTrait.php");
 include_once("traits/DokelioDomainsTrait.php");
 include_once("traits/DokelioFormationTrait.php");
+include_once("traits/DokelioSearchTrait.php");
 
 /**
  * Handles all interactions between CDMA's website and Dokelio
@@ -12,6 +13,7 @@ Class Dokelio {
   use DokelioFrontpageTrait;
   use DokelioDomainsTrait;
   use DokelioFormationTrait;
+  use DokelioSearchTrait;
 
   public static function __staticConstructor() {
     self::getConnection();

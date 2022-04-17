@@ -1,149 +1,79 @@
-<?php require_once('DiogenHelper.php'); ?>
-
 <div class="domaine search-domaine container">
-    <!-- FORMATIONS -->
-        <?php
-            $search_txt = get_query_var('s');    
-	    $fq = $wp_query;
+  <?php
+    $search_txt = get_query_var('s');
+    $formations = Dokelio::search($search_txt);
+  ?>
 
-            $any_formation 	= false;
-            $fdia   		= [];// Formations DIOGEN IDs Array
-            $fia    		= [];// Formations IDs Array
-            $i=0;
-            while ($fq->have_posts()) : $fq->the_post();
-              if ( 'formations' == get_post_type() ) { 
-                $i++;
-                $fdia[get_the_ID()]     = get_field('id_diogen', get_the_ID());
-                $fia[]                  = get_the_ID();
-                $any_formation 		= true;
-              }
-            endwhile;
-	    $fq->rewind_posts();
-            ?>
-            <section class="articles">
-      <?php if ($search_txt != '') : ?>
-                    <h2><?php echo($fq->found_posts); ?> Formations pour "<?php echo $search_txt; ?>"</h2>
-      <?php else : ?>
-                    <h2>Formations</h2>
-      <?php endif; ?>	  
-        <?php
-            if (!$any_formation) {
-                echo '<p>Aucune formation ne correspond à la recherche</p>';
-            }
-            ?>
-        <div class="row">
-            <?php
-            $dfs = DiogenHelper::getFormation($fdia);// Diogen Formations
-            while ($fq->have_posts()) : $fq->the_post(); 
-               if ( 'formations' == get_post_type() ) { 
-                    $df   = DiogenHelper::getMatchingDiogenFormation($fdia[get_the_ID()], $dfs);
-                    $ss   = DiogenHelper::getSessions($fdia[get_the_ID()]);// Sessions
-                $dsc  = DiogenHelper::getDescription(get_the_content(), $df);// Description
+  <section class="articles">
+  <?php 
+    if ($search_txt != '')
+      echo '<h2>'. count($formations) .' Formations pour "'. $search_txt .'"</h2>';
+    else
+      echo '<h2>Formations</h2>';
 
-                // Selecting first session
-            $s 	  = $ss[0];
-                    $sd   = Diogen::dateFromDiogenToHtml($s->SSDateDeb);// Start Date 
-                    $ed   = Diogen::dateFromDiogenToHtml($s->SSDateFin);// End Date
-                    $dc   = Diogen::removeApostrophe($s->SSDateCommentaire);// Date Comment
-                    $ps   = DiogenHelper::getPublics($s->SSNo);// Publics
-		    $l    = DiogenHelper::getLocations($s, true);
-             ?>
-                    <article class="entry col-md-12">
-                        <?php $image = get_field('post_image');
-                        if( !empty($image) ): 
-                            $url = $image['url'];
-                            $title = $image['title'] ? $image['title'] : "" ;
-                            $alt = $title;
-                            $size = 'news';
-                            $thumb = $image['sizes'][ $size ];
-			endif; ?>
-                        <a class="row row-entry" href="<?php the_permalink(); ?>" title="<?php echo $title; ?>">
-                            <div class="col-md-4">
-                                    <img style="width:100%;" src="<?php echo $thumb ?>" alt="<?php echo $alt; ?>" />
-                            </div>
-                            <div class="col-md-8">
-                                <h3><?php the_title(); ?></h3>
-                                <span>
-                                <?php if ($sd) {
-                                    echo 'Du '.$sd.' au '.$ed ; // dates de session
-				    if (isset($l) AND $l != '') {
-				      echo '&nbsp;&nbsp;'. $l;
-				    }
-                                    echo '<br/>';
-                                }
-                                echo $dc ; // commentaire de date
-                                ?>
-                                <br/>
-                                </span>
-                                <p><?php echo wp_trim_words( $dsc, 50, '...' ); ?></p>
-                            </div>
-                        </a>
-                    </article>
-                    <?php $any_formation = true;
-               }
-            endwhile; ?>
-             <div class="buttons">
-             <?php
-            $big = 999999999; // need an unlikely integer
-
-            echo paginate_links( array(
-                'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                'format' => '?paged=%#%',
-                'current' => max( 1, get_query_var('paged') ),
-    'total' => $fq->max_num_pages
-            ) );
-            ?>
+    if (count($formations) == 0) 
+      echo '<p>Aucune formation ne correspond à votre recherche</p>';
+  ?>
+    <div class="row">
+      <?php foreach($formations as $formation) :?>
+        <article class="entry col-md-12">
+          <a class="row row-entry" href="/fiches/<?= Dokelio::toSlug($formation->synth_titre) ?>-<?= Dokelio::codeAFToId($formation->code_AF) ?>" title="<?= $formation->synth_titre ?>">
+            <div class="col-md-4">
+              <img src="<?= 'https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg' ?>" alt="<?= $formation->synth_titre ?>" />
             </div>
-        </div>
-    </section>
-    <hr/>
- <!-- ACTUALITES -->
-    <section class="articles container"> 
-    <?php if ($search_txt != '') : ?>
+            <div class="col-md-8">
+              <h3><?= $formation->synth_titre ?></h3>
+              <span><?= $formation->synth_periode_de_formation ?></span>
+              <p><?= wp_trim_words(Dokelio::lineBreaks($formation->synth_formation_accroche, true), 50, '...') ?></p>
+            </div>
+          </a>
+        </article>
+      <?php endforeach ?>
+    </div>
+  </section>
+  <hr/>
+
+  <!-- ACTUALITES -->
+  <section class="articles container"> 
+  <?php if ($search_txt != '') :
+    $pq = new WP_Query('s='.$search_txt);// Posts Query
+    $pq->query_vars['post_type']        = 'post';
+    $pq->query_vars['posts_per_page']   = 9999;
+    $pq->query_vars['orderby']          = 'date';
+    relevanssi_do_query($pq);
+  ?>
+    <h2><?= $pq->post_count ?> Actualités pour "<?= $search_txt ?>"</h2>
+      
+    <div class="row">
     <?php 
-      $pq         = new WP_Query('s='.$search_txt);// Posts Query
-      $pq->query_vars['post_type']        = 'post';
-      $pq->query_vars['posts_per_page']   = 9999;
-      $pq->query_vars['orderby']          = 'date';
-      relevanssi_do_query($pq);
+      if ($pq->post_count > 3)
+        echo '<a class="see-all col-xs-12" role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
     ?>
-       <h2><?php echo($pq->post_count); ?> Actualités pour "<?php echo $search_txt; ?>"</h2>
-        
-        <div class="row">
-    <?php 
-       if ($pq->post_count > 3) {
-         echo '<a class="see-all col-xs-12" role="button" data-toggle="collapse" href="#more-news" aria-expended="false" aria-controls="more-news">Voir tous les résultats</a>';
-       }
-    ?>
-        </div>
+    </div>
     <?php else : ?>
-                  <h2>Actualités</h2>
-    <?php endif; ?>	
-            <?php 
-            $any_news = false;
-            // THE POSTS QUERY
+      <h2>Actualités</h2>
+    <?php endif;
+      $idx = 1;
 
-	    $idx = 1;
-	    if (isset($pq)) {
-              echo '<div class="content row">';
-              while ($pq->have_posts()) : $pq->the_post(); 
-	          if ($idx == 4) {
-	            echo '</div><div class="collapse content row" id="more-news">';
-	          }
+      if (isset($pq)) {
+        echo '<div class="content row">';
+	
+	while ($pq->have_posts()) { 
+	  $pq->the_post();
 
-                  get_template_part('templates/content', 'search-news');
-                  $any_news = true;
+          if ($idx == 4) {
+            echo '</div><div class="collapse content row" id="more-news">';
+          }
+     
+          get_template_part('templates/content', 'search-news');
+          $idx++;
+	}
 
-	          $idx++;
-              endwhile; 
-	    }
+        echo '</div>';
+      }
 
-	    if ($idx > 3) {
-	      echo '</div>';
-	    }
-        if (!$any_news) {
-            echo '<p>Aucune actualité ne correspond à la recherche</p>';
-        }
-        ?>
-    </section>
+      if (!isset($pq) || $pq->post_count == 0)
+        echo '<p>Aucune actualité ne correspond à la recherche</p>';
+    ?>
+  </section>
 </div>
