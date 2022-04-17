@@ -63,6 +63,13 @@
 	}
 
 
+	// Code AF                                                                     
+        var codeAF  = getParameterByName("codeAF");                                              
+        if (codeAF) { 
+          $("#code-af-input").val(decodeURIComponent(codeAF));
+	}
+
+
         // Fill email input & domain input
         var ds = $("#domains-select");
         ds.change(function(e) {
@@ -185,10 +192,10 @@
 
 
 	// Formation title to form
-        var ft    = $("#formation-title");// Formation Title
+        var formationParam = '&formation='+ $("#formation-title").html() +'&codeAF='+ $('#code_AF').html();// Formation Title
 
-        href += "&formation="+ encodeURIComponent( ft.html() );
-        cdt_href += "&formation="+ encodeURIComponent( ft.html() );
+        href += formationParam;
+        cdt_href += formationParam;
 
         cb.attr("href", href);
         cdtb.attr("href", cdt_href).css("display", "block");
@@ -297,7 +304,6 @@
     'candidater': {
       init : function() {},
       finalize : function() {
-
 	// Coordo email
         var email = getParameterByName("email");
 	if (email) {
@@ -328,6 +334,12 @@
           $("#formation-title-input").parent().hide();                                         
           $("section.page-greta.article.container").hide();                                    
         } 
+
+	// Code AF                                                                     
+        var codeAF  = getParameterByName("codeAF");                                              
+        if (codeAF) { 
+          $("#code-af-input").val(decodeURIComponent(codeAF));
+	}
         
 	// Switch to a dedicated page on submit to track in Matomo
 	document.addEventListener( 'wpcf7mailsent', function( event ) {
