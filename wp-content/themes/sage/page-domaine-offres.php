@@ -1,14 +1,18 @@
 <?php 
   $domain_slug = get_query_var('domain');
+  $index = get_query_var('index');
+  $limit = 20;
 
   if ($domain_slug) {// Displaying a specific domain
-    $formations = Dokelio::getFormations($domain_slug);
+    $formations = Dokelio::getFormations($domain_slug, $index);
+    $formations_count = Dokelio::getFormationsCount($domain_slug);
     $current_domain = $formations[0];// He he, code needs to be readable
     $word_number = substr_count($current_domain->domaine_accroche, ' ');
     $dom_title = $current_domain->domaine_libelle;
   }
   else {
-    $formations = Dokelio::getFormations();
+    $formations = Dokelio::getFormations(null, $index);
+    $formations_count = Dokelio::getFormationsCount();
     $current_domain = null;
     $dom_title = null;
   }
@@ -116,7 +120,7 @@
         <header class="row">
           <div class="col-md-12">
             <button type="button" class="btn hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Voir la liste des domaines</button>
-            <h2><?= count($formations) ?> Formations <?= $dom_title ?></h2>
+            <h2><?= $formations_count ?> Formations <?= $dom_title ?></h2>
           </div>
         </header>
 
@@ -136,6 +140,21 @@
             </article>
           </div>
 	<?php endforeach ?>
+
+	<?php
+	  if ($formations_count > $limit) {
+	    echo '<div class="buttons">';
+	    for($i=1; $i<=(1+$formations_count/20); $i++) {
+	      if ($index == $i)
+                echo '<span aria-current="page" class="page-numbers btn-action current">'. $i .'</span>';
+	      else if ($domain_slug)
+	        echo '<a class="page-numbers" href="/domaine-offres/'. $domain_slug .'/'. $i .'/">'. $i .'</a>';
+	      else
+	        echo '<a class="page-numbers" href="/domaine-offres/'. $i .'/">'. $i .'</a>';
+	    }
+	    echo '</div>';
+	  }
+	?>
       </section>
     </div>
   </div>
