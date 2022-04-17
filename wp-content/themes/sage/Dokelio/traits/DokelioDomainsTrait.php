@@ -25,7 +25,7 @@ Trait DokelioDomainsTrait {
   public static function getFormations($slug=null) {
     $buffer = array();
     $where_str = $slug ?  " WHERE slug='". $slug ."'" : "";
-    $query_string = "SELECT DISTINCT domaine_libelle, domaine_accroche, url_video_domaine, code_AF, flag_avant, synth_titre, synth_periode_de_formation, synth_formation_accroche, nom_image FROM formation". $where_str ." ORDER BY flag_avant DESC";
+    $query_string = "SELECT DISTINCT domaine_libelle, domaine_accroche, url_video_domaine, code_AF, flag_avant, synth_titre, synth_periode_de_formation, synth_formation_accroche, nom_image FROM formation". $where_str ." ORDER BY flag_avant DESC, SES_periode_debut";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       while($formation = $formations->fetch_object()) {
