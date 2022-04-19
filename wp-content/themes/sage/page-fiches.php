@@ -315,6 +315,8 @@
       <a href="/domaine-offres/<?= $formation->slug ?>"><?= $formation->domaine_libelle ?></a>
     </li>
     <li class="breadcrumb-item active"><?= $formation->synth_titre ?></li>
+  </div>
+  <div class="display-none">
     <a id="coordo-email" href="mailto:<?= $formation->contact_mel ?>"><?= $formation->contact_mel ?></a>
     <span id="code_AF"><?= $code_AF ?></span>
   </div>
