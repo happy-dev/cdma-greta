@@ -1,7 +1,27 @@
 <div class="domaine search-domaine container">
   <?php
+    $filter = get_query_var('taxonomy');
+    if ($filter) {
+      switch ($filter) {
+        case 'formation-diplomantes-cpf':
+          $filter = 'AND (formation_flag_diplomant=1 OR formation_flag_eligible_cpf=1)';
+        break;
+
+        case 'formation-diplomante':
+          $filter = 'AND formation_flag_diplomant=1';
+        break;
+
+        case 'formation-eligible-au-cpf':
+          $filter = 'AND formation_flag_eligible_cpf=1';
+        break;
+
+        case 'toute-formation':
+          $filter = '';
+        break;
+      }
+    }
     $search_txt = get_query_var('s');
-    $formations = Dokelio::search($search_txt);
+    $formations = Dokelio::search($search_txt, $filter);
   ?>
 
   <section class="articles">
