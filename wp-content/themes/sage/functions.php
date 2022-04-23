@@ -150,5 +150,3 @@ function modify_search($wp_query) {
   return $wp_query;
 }
 add_filter('relevanssi_modify_wp_query', 'modify_search');
-
-

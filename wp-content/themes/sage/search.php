@@ -4,7 +4,7 @@
     if ($filter) {
       switch ($filter) {
         case 'formation-diplomantes-cpf':
-          $filter = 'AND (formation_flag_diplomant=1 OR formation_flag_eligible_cpf=1)';
+          $filter = 'AND (formation_flag_diplomant=1 OR flag_eligible_cpf=1)';
         break;
 
         case 'formation-diplomante':
@@ -12,7 +12,7 @@
         break;
 
         case 'formation-eligible-au-cpf':
-          $filter = 'AND formation_flag_eligible_cpf=1';
+          $filter = 'AND flag_eligible_cpf=1';
         break;
 
         case 'toute-formation':
