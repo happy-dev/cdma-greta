@@ -3,6 +3,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php 
+    $formation_slug = get_query_var('formation');
+
+    if ($formation_slug) {
+      $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
+      $formation = Dokelio::getMetaTags($code_AF);
+      echo '<title>'. $formation->meta_titre .' - Greta CDMA</title>';
+      echo '<meta name="description" content="'. $formation->meta_description .'">';
+    }
+
     wp_head();
 
     if ($image = get_field('post_image')) {
