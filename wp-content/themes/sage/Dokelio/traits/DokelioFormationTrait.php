@@ -15,7 +15,7 @@ Trait DokelioFormationTrait {
   }
 
   public static function getMetaTags($code_AF) {
-    $query_string = "SELECT meta_titre, meta_description FROM formation WHERE code_AF='IPAF_". $code_AF ."' LIMIT 1";
+    $query_string = "SELECT meta_titre, meta_description, nom_image_formation FROM formation WHERE code_AF='IPAF_". $code_AF ."' LIMIT 1";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       $formation = clone $formations->fetch_object();

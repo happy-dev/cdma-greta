@@ -45,23 +45,9 @@ function create_types_form_tax() {
 }
 
 // OPTIONS
-
 if( function_exists('acf_add_options_page') ) { 
   acf_add_options_page();
 }
-
-// Test if neither null not empty string
-function isNotNull($str) {
-  return isset($s->SSDateCommentaire) AND $s->SSDateCommentaire != '';
-}
-
-function remove_menus(){
-  
-  //remove_menu_page( 'edit.php?post_type=acf-field-group' ); 
-
-}
-add_action( 'admin_menu', 'remove_menus' );
-
 
 add_filter( 'redirect_canonical', 'custom_disable_redirect_canonical' );
 function custom_disable_redirect_canonical( $redirect_url ) {
@@ -73,10 +59,10 @@ function cdma_register_query_vars( $vars ) {
   $vars[] = 'domain';
   $vars[] = 'formation';
   $vars[] = 'index';
+
   return $vars;
 }
 add_filter( 'query_vars', 'cdma_register_query_vars' );
-
 
 function cdma_rewrite_rules( $wp_rewrite ) {
   $wp_rewrite->rules = array(
@@ -86,11 +72,6 @@ function cdma_rewrite_rules( $wp_rewrite ) {
   ) + $wp_rewrite->rules;
 }
 add_action( 'generate_rewrite_rules', 'cdma_rewrite_rules' );
-
-
-function nullOrEmpty($x) {
-  return (!isset($x) || trim($x) === '');
-}
 
 function domains_select_list($tag, $unused){ 
   if ( $tag['name'] != 'domaine' )

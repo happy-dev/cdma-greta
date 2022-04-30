@@ -16,7 +16,7 @@ Trait DokelioDomainsTrait {
   }
 
   public static function getDomain($domain_slug) {
-    $query_string = "SELECT lib_domaine, meta_titre_domaine, meta_description_domaine FROM formation WHERE slug_domaine='". $domain_slug ."' LIMIT 1";
+    $query_string = "SELECT lib_domaine, meta_titre_domaine, meta_description_domaine, image_domaine FROM formation WHERE slug_domaine='". $domain_slug ."' LIMIT 1";
 
     if ($domain = Dokelio::$connection->query($query_string))
       return $domain->fetch_object();

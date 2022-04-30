@@ -11,18 +11,19 @@
       $formation = Dokelio::getMetaTags($code_AF);
       echo '<title>'. $formation->meta_titre .' - Greta CDMA</title>';
       echo '<meta name="description" content="'. $formation->meta_description .'">';
+      echo '<meta property="og:image" content="/wp-content/themes/sage/images/'. $formation->nom_image_formation .'" />';
     }
     elseif ($domain_slug) {
       $formation = Dokelio::getDomain($domain_slug);
       echo '<title>'. $formation->meta_titre_domaine .'</title>';
       echo '<meta name="description" content="'. $formation->meta_description_domaine .'">';
+      echo '<meta property="og:image" content="/wp-content/themes/sage/images/'. $formation->image_domaine .'" />';
+    }
+    elseif ($image = get_field('post_image')) {
+      echo '<meta property="og:image" content="'. $image['url'] .'" />';
     }
 
     wp_head();
-
-    if ($image = get_field('post_image')) {
-      echo '<meta property="og:image" content="'. $image['url'] .'" />';
-    }
   ?>
 
   <!-- Global site tag (gtag.js) - Google Ads: 981902260 -->
