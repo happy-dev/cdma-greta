@@ -23,7 +23,7 @@
   <section>
     <div class="presentation">
       <figure>
-        <img class="image-background" src="https://cdma.greta.fr/wp-content/uploads/art_du_bois_domaine_1-1024x292.jpg" alt="" />
+        <img class="image-background" src="/wp-content/themes/sage/images/<?= $current_domain->image_domaine ?>" alt="<?= $current_domain->lib_domaine ?>" />
       </figure>
       <div class="layer"></div>
       <div class="container">
