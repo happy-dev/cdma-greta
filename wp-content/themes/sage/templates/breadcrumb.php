@@ -57,7 +57,7 @@ if (!$domain && (is_page() || is_single())) {
     echo '<li class="breadcrumb-item active">'.$title.'</li>';
   }
 } else {
-  echo '<li class="breadcrumb-item active">'.Dokelio::getDomain($domain).'</li>';
+  echo '<li class="breadcrumb-item active">'. Dokelio::getDomain($domain)->lib_domaine .'</li>';
 }
 
 echo '</ol>';

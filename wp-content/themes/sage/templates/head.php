@@ -4,12 +4,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php 
     $formation_slug = get_query_var('formation');
+    $domain_slug = get_query_var('domain');
 
     if ($formation_slug) {
       $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
       $formation = Dokelio::getMetaTags($code_AF);
       echo '<title>'. $formation->meta_titre .' - Greta CDMA</title>';
       echo '<meta name="description" content="'. $formation->meta_description .'">';
+    }
+    elseif ($domain_slug) {
+      $formation = Dokelio::getDomain($domain_slug);
+      echo '<title>'. $formation->meta_titre_domaine .'</title>';
+      echo '<meta name="description" content="'. $formation->meta_description_domaine .'">';
     }
 
     wp_head();
