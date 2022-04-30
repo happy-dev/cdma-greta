@@ -145,7 +145,7 @@
 	  if ($formations_count > $limit) {
 	    echo '<div class="buttons">';
 	    for($i=1; $i<=(1+$formations_count/20); $i++) {
-	      if ($index == $i)
+	      if ((!$index && $i==1) || $index == $i)
                 echo '<span aria-current="page" class="page-numbers btn-action current">'. $i .'</span>';
 	      else if ($domain_slug)
 	        echo '<a class="page-numbers" href="/domaine-offres/'. $domain_slug .'/'. $i .'/">'. $i .'</a>';
