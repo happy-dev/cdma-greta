@@ -122,14 +122,30 @@
       	      <h2>Public</h2>
 	      <pre><?= Dokelio::lineBreaks($session->Public_vise) ?></pre>
 
+	      <?php if ($session->detail_duree_de_formation || $session->comment_duree) :?>
       	      <h2>Durée</h2>
+	      <?php if ($session->detail_duree_de_formation) :?>
 	      <pre><?= Dokelio::lineBreaks($session->detail_duree_de_formation) ?></pre>
+	      <?php endif; ?>
+	      <?php if ($session->comment_duree) :?>
+	      <pre><?= Dokelio::lineBreaks($session->comment_duree) ?></pre>
+	      <?php endif; ?>
+	      <?php endif; ?>
 
+	      <?php if ($session->prix || $session->comment_tarif) :?>
       	      <h2>Tarif(s)</h2>
+	      <?php if ($session->prix) :?>
 	      <pre><?= Dokelio::lineBreaks($session->prix) ?></pre>
+	      <?php endif; ?>
+	      <?php if ($session->comment_tarif) :?>
+	      <pre><?= Dokelio::lineBreaks($session->comment_tarif) ?></pre>
+	      <?php endif; ?>
+	      <?php endif; ?>
 
+	      <?php if ($session->lieu_de_formation) :?>
       	      <h2>Lieu(x)</h2>
 	      <pre><?= Dokelio::lineBreaks($session->lieu_de_formation) ?></pre>
+	      <?php endif; ?>
 
       	      <h2>Modalité de formation</h2>
 	      <pre><?= Dokelio::lineBreaks($session->rythme_formation) ?></pre>
