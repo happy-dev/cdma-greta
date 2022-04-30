@@ -12,7 +12,7 @@
       <div class="row">
         <div class="introduction-media col-md-6 col-sm-12">
           <figure>
-            <img src="https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg" alt="<?= $formation->synth_titre ?>" />
+            <img src="/wp-content/themes/sage/images/<?= $formation->nom_image_formation ?>" alt="<?= $formation->synth_titre ?>" />
           </figure>
           <?php if ($formation->url_video_formation) { ?>
             <span class="icon-play" data-toggle="modal" data-target="#modalVideoFormation"></span>
