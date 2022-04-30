@@ -97,9 +97,9 @@ function domains_select_list($tag, $unused){
     return $tag;
 
   foreach (Dokelio::getDomains() as $domain ) {
-    $tag['raw_values'][]  = $domain->domaine_libelle;
-    $tag['values'][]      = $domain->domaine_libelle .'+!+'. $domain->referent_domaine;
-    $tag['labels'][]      = $domain->domaine_libelle;
+    $tag['raw_values'][]  = $domain->lib_domaine;
+    $tag['values'][]      = $domain->lib_domaine .'+!+'. $domain->referent_domaine;
+    $tag['labels'][]      = $domain->lib_domaine;
   }
 
   return $tag;
@@ -111,42 +111,3 @@ function admin_assets() {
   wp_enqueue_style('cdma_admin_css', get_template_directory_uri() .'/dist/styles/admin.css', false, null);
 }
 add_action('admin_enqueue_scripts', 'admin_assets');
-
-
-function modify_search($wp_query) {
-  $wp_query->set('s', get_query_var('s'));// fetch search string
-  $wp_query->set('post_type', 'formations');
-  $wp_query->set('posts_per_page', 9);
-  $wp_query->set('paged', $wp_query->query_vars['paged']);// paging
-
-  // filtrer suivant la bonne taxonomy
-  if (isset($_GET['taxonomy'])) {
-    switch ($_GET['taxonomy']) {
-      case 'formation-diplomantes-cpf':
-        $ta = ['formation-diplomante', 'formation-eligible-au-cpf'];
-        $op = 'AND';
-      break;
-
-      case 'toute-formation':
-      break;
-
-      default:
-        $ta = $_GET['taxonomy'];
-        $op = 'IN';
-    }
-
-    if (isset($ta)) {
-      $tq = [[
-        'taxonomy' => 'type_form',
-        'field'    => 'slug',
-        'terms'    => $ta,
-        'operator' => $op,
-      ]];// Tax Query
-
-      $wp_query->set('tax_query', $tq);
-    }
-  }
-
-  return $wp_query;
-}
-add_filter('relevanssi_modify_wp_query', 'modify_search');

@@ -7,8 +7,8 @@
     $formations = Dokelio::getFormations($domain_slug, $index);
     $formations_count = Dokelio::getFormationsCount($domain_slug);
     $current_domain = $formations[0];// He he, code needs to be readable
-    $word_number = substr_count($current_domain->domaine_accroche, ' ');
-    $dom_title = $current_domain->domaine_libelle;
+    $word_number = substr_count($current_domain->accroche_domaine, ' ');
+    $dom_title = $current_domain->lib_domaine;
   }
   else {
     $formations = Dokelio::getFormations(null, $index);
@@ -31,7 +31,7 @@
         <div class="row">
           <div class="intro col-md-6 col-sm-12 col-xs-12">
             <h1><?= $dom_title ?></h1>
-              <p><?= wp_trim_words($current_domain->domaine_accroche, 120, '...') ?></p>
+              <p><?= wp_trim_words($current_domain->accroche_domaine, 120, '...') ?></p>
               <?php if ( $word_number > 120 ) { ?>
                 <a class="note" href="#presentation-pannel" data-toggle="collapse" aria-expanded="false" aria-controls="presentation-pannel">Lire l'intégralité </a>
               <?php } ?>
@@ -49,7 +49,7 @@
     </div>
     <?php if ( $word_number > 120 ) { ?>
       <div class="presentation-annexe container collapse" id="presentation-pannel">
-        <?= $current_domain->domaine_accroche ?>
+        <?= $current_domain->accroche_domaine ?>
         <a class="note up" href="#presentation-pannel" data-toggle="collapse" aria-expanded="false" aria-controls="presentation-pannel">X Fermer</a>
       </div>
     <?php } ?>
@@ -108,8 +108,8 @@
               $current = '';
 	      foreach(Dokelio::getDomains() as $domain) {
 		if ($current_domain)
-		  $current = ($domain->domaine_libelle == $current_domain->domaine_libelle) ? 'current' : '';
-	        echo '<li class="'. $current .'"><a href="/domaine-offres/'. $domain->slug .'">'. $domain->domaine_libelle .'</a></li>';
+		  $current = ($domain->lib_domaine == $current_domain->lib_domaine) ? 'current' : '';
+	        echo '<li class="'. $current .'"><a href="/domaine-offres/'. $domain->slug_domaine .'">'. $domain->lib_domaine .'</a></li>';
 	      }
             ?>
           </ul>
@@ -127,7 +127,7 @@
 	<?php foreach($formations as $formation) :?>
           <div class="row <?= $formation->flag_avant ? 'row-mise-en-avant' : '' ?>"> 
             <article class="entry col-md-12">
-	      <a class="row row-entry" href="/fiches/<?= Dokelio::toSlug($formation->synth_titre) ?>-<?= Dokelio::codeAFToId($formation->code_AF) ?>" title="<?= $formation->synth_titre ?>">
+	      <a class="row row-entry" href="/fiches/<?= $formation->slug_formation ?>" title="<?= $formation->synth_titre ?>">
                 <div class="col-md-4">
                   <img src="<?= 'https://cdma.happy-dev.fr/wp-content/uploads/Creer_un_site_wordpress-500x282.jpg' ?>" alt="<?= $formation->synth_titre ?>" />
                 </div>

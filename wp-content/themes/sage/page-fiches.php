@@ -312,7 +312,7 @@
 
   <div class="display-none" id="formation-breadcrumb">
     <li class="breadcrumb-item">
-      <a href="/domaine-offres/<?= $formation->slug ?>"><?= $formation->domaine_libelle ?></a>
+      <a href="/domaine-offres/<?= $formation->slug_domaine ?>"><?= $formation->lib_domaine ?></a>
     </li>
     <li class="breadcrumb-item active"><?= $formation->synth_titre ?></li>
   </div>
