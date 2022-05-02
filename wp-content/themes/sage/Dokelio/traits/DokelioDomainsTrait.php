@@ -25,7 +25,7 @@ Trait DokelioDomainsTrait {
   public static function getFormations($domain_slug=null, $page=null) {
     $buffer = array();
     $where_str = $domain_slug ?  " WHERE slug_domaine='". $domain_slug ."'" : "";
-    $limit = 20;
+    $limit = 9;
 
     if ($page)
       $offset = 'OFFSET '. ($limit * ($page - 1)); 
