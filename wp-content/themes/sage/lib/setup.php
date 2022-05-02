@@ -52,59 +52,6 @@ function setup() {
 
 // CUSTOM POST TYPES
 
-  register_post_type( 'domaines',
-
-          array(
-
-              'labels' => array(
-              'name' => __( 'Domaines de formation' ),
-              'singular_name' => __( 'Domaine de formation' ),
-              'add_new' => __( 'Add New Domaine' ),
-              'add_new_item' => __( 'Add New Domaine' ),
-              'edit_item' => __( 'Edit Domaine' ),
-              'new_item' => __( 'Add New Domaine' ),
-              'view_item' => __( 'View Domaine' ),
-              'search_items' => __( 'Search Domaine' ),
-              'not_found' => __( 'No Domaine found' ),
-              'not_found_in_trash' => __( 'No Domaine found in trash' )
-              ),
-
-              'public'      => true,
-              'supports'      => array( 'title','editor','revisions'),
-              'capability_type'   => 'post',
-              'menu_position'   => 4,
-              'hierarchical'    => true,
-              'menu_icon'   => 'dashicons-art'
-          )
-   );
-        
-  register_post_type( 'formations',
-
-          array(
-
-              'labels' => array(
-              'name' => __( 'Formations' ),
-              'singular_name' => __( 'Formation' ),
-              'add_new' => __( 'Add New Formation' ),
-              'add_new_item' => __( 'Add New Formation' ),
-              'edit_item' => __( 'Edit Formation' ),
-              'new_item' => __( 'Add New Formation' ),
-              'view_item' => __( 'View Formation' ),
-              'search_items' => __( 'Search Formation' ),
-              'not_found' => __( 'No Formation found' ),
-              'not_found_in_trash' => __( 'No Formation found in trash' )
-              ),
-
-              'public'      => true,
-              'supports'      => array( 'title','editor','revisions'),
-              'capability_type'   => 'post',
-              'menu_position'   => 5,
-              'hierarchical'    => true,
-              'menu_icon'   => 'dashicons-welcome-learn-more',
-	      'taxonomies'	=> array('post_tag'),
-          )
-   );
-
   register_post_type( 'stages',
 
           array(
