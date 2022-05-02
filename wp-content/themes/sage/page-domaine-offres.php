@@ -1,7 +1,6 @@
 <?php 
   $domain_slug = get_query_var('domain');
   $index = get_query_var('index');
-  $limit = 9;
 
   if ($domain_slug) {// Displaying a specific domain
     $formations = Dokelio::getFormations($domain_slug, $index);
@@ -142,9 +141,9 @@
 	<?php endforeach ?>
 
 	<?php
-	  if ($formations_count > $limit) {
+	  if ($formations_count > CDMA_LIMIT) {
 	    echo '<div class="buttons">';
-	    for($i=1; $i<=(1+$formations_count/$limit); $i++) {
+	    for($i=1; $i<=(1+$formations_count/CDMA_LIMIT); $i++) {
 	      if ((!$index && $i==1) || $index == $i)
                 echo '<span aria-current="page" class="page-numbers btn-action current">'. $i .'</span>';
 	      else if ($domain_slug)

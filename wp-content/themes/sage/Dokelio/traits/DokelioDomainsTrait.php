@@ -25,14 +25,13 @@ Trait DokelioDomainsTrait {
   public static function getFormations($domain_slug=null, $page=null) {
     $buffer = array();
     $where_str = $domain_slug ?  " WHERE slug_domaine='". $domain_slug ."'" : "";
-    $limit = 9;
 
     if ($page)
-      $offset = 'OFFSET '. ($limit * ($page - 1)); 
+      $offset = 'OFFSET '. (CDMA_LIMIT * ($page - 1)); 
     else 
       $offset = '';
 
-    $query_string = "SELECT lib_domaine, accroche_domaine, url_video_domaine, code_AF, flag_avant, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, image_domaine FROM formation". $where_str ." GROUP BY synth_titre ORDER BY flag_avant DESC, SES_periode_debut LIMIT $limit $offset";
+    $query_string = "SELECT lib_domaine, accroche_domaine, url_video_domaine, code_AF, flag_avant, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, image_domaine FROM formation". $where_str ." GROUP BY synth_titre ORDER BY flag_avant DESC, SES_periode_debut LIMIT ". CDMA_LIMIT ." $offset";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       while($formation = $formations->fetch_object()) {

@@ -1,18 +1,20 @@
 <div class="domaine search-domaine container">
   <?php
+    $index = get_query_var('index');
     $filter = get_query_var('taxonomy');
     $search_txt = get_query_var('s');
-    $formations = Dokelio::search($search_txt, $filter);
+    $formations = Dokelio::search($search_txt, $filter, $index);
+    $formations_count = Dokelio::countSearchResults($search_txt, $filter);
   ?>
 
   <section class="articles">
   <?php 
     if ($search_txt != '')
-      echo '<h2>'. count($formations) .' Formations pour "'. $search_txt .'"</h2>';
+      echo '<h2>'. $formations_count .' Formations pour "'. $search_txt .'"</h2>';
     else
-      echo '<h2>'. count($formations) .' Formations</h2>';
+      echo '<h2>'. $formations_count .' Formations</h2>';
 
-    if (count($formations) == 0) 
+    if ($formations_count == 0) 
       echo '<p>Aucune formation ne correspond à votre recherche</p>';
   ?>
     <div class="row">
@@ -31,6 +33,19 @@
         </article>
       <?php endforeach ?>
     </div>
+
+    <?php
+      if ($formations_count > CDMA_LIMIT) {
+        echo '<div class="buttons">';
+        for($i=1; $i<=(1+$formations_count/CDMA_LIMIT); $i++) {
+          if ((!$index && $i==1) || $index == $i)
+            echo '<span aria-current="page" class="page-numbers btn-action current">'. $i .'</span>';
+          else
+            echo '<a class="page-numbers" href="/?s='. $search_txt .'&taxonomy='. $filter .'&index='. $i .'">'. $i .'</a>';
+        }
+        echo '</div>';
+      }
+    ?>
   </section>
   <hr/>
 
