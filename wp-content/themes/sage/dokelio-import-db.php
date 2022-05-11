@@ -8,26 +8,7 @@
   if (array_key_exists(1, $argv))// If filename passed as argument of the command line
     $file_name = $argv[1];
   else {
-    echo('export_cdma_'. date('Ymd') .'_*.txt');
-    $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'));
-
-    $files = array(); 
-
-    foreach ($rii as $file) {
-
-	        if ($file->isDir()){ 
-			        continue;
-				    }
-
-		    $files[] = $file->getPathname(); 
-
-    }
-
-
-
-    var_dump($files);
     $todays_exports = glob('export_cdma_'. date('Ymd') .'_*.txt'); 
-    print_r($todays_exports);
     $file_name = $todays_exports[count($todays_exports)-1];
   }
 

@@ -5,8 +5,9 @@
   <?php 
     $formation_slug = get_query_var('formation');
     $domain_slug = get_query_var('domain');
+    $email = get_query_var('email');
 
-    if ($formation_slug) {
+    if ($formation_slug && !$email) {
       $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
       $formation = Dokelio::getMetaTags($code_AF);
       echo '<title>'. $formation->meta_titre .' - Greta CDMA</title>';

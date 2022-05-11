@@ -59,6 +59,7 @@ function cdma_register_query_vars( $vars ) {
   $vars[] = 'domain';
   $vars[] = 'formation';
   $vars[] = 'index';
+  $vars[] = 'email';
 
   return $vars;
 }
