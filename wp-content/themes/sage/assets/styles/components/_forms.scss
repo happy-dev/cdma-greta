@@ -48,10 +48,10 @@
 	border: none;
     }
 
-    #situation-financement, #info-greta {
-	    & > span {
-		    display: block;
-	    }
+    #situation-financement, #info-greta, #candidate-jobsituation, #candidate-demarche {
+      & > span {
+        display: block;
+      }
     }
 
     #privacy-agreement-wrapper {

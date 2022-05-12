@@ -54,13 +54,8 @@
 	// Formation title
         var ft = getParameterByName("formation");
 
-
-	if (ft) {
+	if (ft)
 	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
-	}
-	else {
-	  $("#formation-title-input").parents(".formation-title-wrapper").hide();
-	}
 
 
 	// Code AF                                                                     
@@ -71,16 +66,9 @@
 
 
         // Fill email input & domain input
-        var ds = $("#domains-select");
+        var ds = $("#topics-select");
         ds.change(function(e) {
-          var val     = ds.val();
-          var array   = val.split('+!+');
-          var domain  = array[0];
-          var email   = array[1];
-          
-
-          $('#domain-input').val(domain);
-          ei.val(email);
+          ei.val(ds.val());
         });
 
 

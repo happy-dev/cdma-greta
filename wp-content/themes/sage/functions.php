@@ -74,19 +74,30 @@ function cdma_rewrite_rules( $wp_rewrite ) {
 }
 add_action( 'generate_rewrite_rules', 'cdma_rewrite_rules' );
 
-function domains_select_list($tag, $unused){ 
-  if ( $tag['name'] != 'domaine' )
+function topics_select_list($tag, $unused){ 
+  if ( $tag['name'] != 'topic' )
     return $tag;
 
-  foreach (Dokelio::getDomains() as $domain ) {
-    $tag['raw_values'][]  = $domain->lib_domaine;
-    $tag['values'][]      = $domain->lib_domaine .'+!+'. $domain->referent_domaine;
-    $tag['labels'][]      = $domain->lib_domaine;
+  $topics = array(
+    "La communication" => "communication@greta-cdma.paris",
+    "Le partenariat" => "partenariat@greta-cdma.paris",
+    "L’international" => "international@greta-cdma.paris",
+    "Le plan de développement des compétences de vos collaborateurs" => "formationentreprise@greta-cdma.paris",
+    "La comptabilité" => "comptabilité@greta-cdma.paris",
+    "Les Ressources Humaines" => "rh@greta-cdma.paris",
+    "La qualité" => "qualité@greta-cdma.paris",
+    "Autre" => "info@greta-cdma.paris"
+  );
+
+  foreach ($topics as $label => $email ) {
+    $tag['raw_values'][]  = $label;
+    $tag['values'][]      = $email;
+    $tag['labels'][]      = $label;
   }
 
   return $tag;
 }
-add_filter( 'wpcf7_form_tag', 'domains_select_list', 10, 2);
+add_filter( 'wpcf7_form_tag', 'topics_select_list', 10, 2);
 
 function admin_assets() {
   wp_register_style('cdma_admin_css', get_template_directory_uri() .'/dist/styles/admin.css', false, null);
