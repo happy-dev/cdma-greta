@@ -45,24 +45,20 @@
 	
 
 	// Coordo email
-        var email = getParameterByName("email");
-	if (email) {
-          ei.val( decodeURIComponent(email) );
-	}
+        var email_addresses = $("#formation-email-addresses").html();
+	if (email_addresses)
+          $("#email-input").val( email_addresses );
 
 
 	// Formation title
-        var ft = getParameterByName("formation");
+        var ft = $("#formation-title").html();
 
 	if (ft)
-	  $("#formation-title-input").prop("readonly", true).val( decodeURIComponent(ft) );
+          $("#formation-title-input").val( ft ).prop("readonly", true);                            
 
 
 	// Code AF                                                                     
-        var codeAF  = getParameterByName("codeAF");                                              
-        if (codeAF) { 
-          $("#code-af-input").val(decodeURIComponent(codeAF));
-	}
+        $("#code-af-input").val( $("#code-AF").html() );
 
 
         // Fill email input & domain input
@@ -167,28 +163,6 @@
     },
     'fiches': {
       init : function() {
-
-	// Coordo email to form
-        var ce     	= $("#coordo-email");// Coordo Email
-        var cb     	= $(".contact-btn");// Contact Buttons
-        var cdtb   	= $(".btn-candidate");// Candidate Buttons
-        var href   	= cb.attr("href");
-        var cdt_href    = cdtb.attr("href");
-
-        href += "?email="+ encodeURIComponent( ce.html() );
-        cdt_href += "?email="+ encodeURIComponent( ce.html() );
-
-
-	// Formation title to form
-        var formationParam = '&formation='+ $("#formation-title").html() +'&codeAF='+ $('#code_AF').html();// Formation Title
-
-        href += formationParam;
-        cdt_href += formationParam;
-
-        cb.attr("href", href);
-        cdtb.attr("href", cdt_href).css("display", "block");
-
-
 	// Breadcrumbs
 	$("#breadcrumb").append($("#formation-breadcrumb").contents());
 
@@ -292,17 +266,14 @@
     'candidater': {
       init : function() {},
       finalize : function() {
-	// Coordo email
-        var email = getParameterByName("email");
-	if (email) {
-          $("#email-input").val( decodeURIComponent(email) );
-	}
-
-
 	// Numbers only
 	$(".numbers-only").on("keypress", function(e) {
 	  return (e.charCode >= 48 && e.charCode <= 57) || e.charCode == 8 || e.charCode == 46 || e.key == "Backspace";
 	});
+
+
+	// Emails
+        $("#email-input").val( $("#formation-email-addresses").html() );
 
 
 	// Datepickers
@@ -310,24 +281,12 @@
 
 
 	// Formation title                                                                     
-        var ft  = getParameterByName("formation");                                              
-        var fti = $("#formation-title-input");                                                 
+        $("#formation-title-input").val( $("#formation-title").html() ).prop("readonly", true);                            
+        $(".row.row-intro p").hide();
 
-        if (ft) { 
-          fti.val( decodeURIComponent(ft) ).prop("readonly", true);                            
-          $("#domains-select").prop("disabled", true).parent().hide();                         
-          $(".row.row-intro p").hide();
-        } 
-        else {                                                                                 
-          $("#formation-title-input").parent().hide();                                         
-          $("section.page-greta.article.container").hide();                                    
-        } 
 
 	// Code AF                                                                     
-        var codeAF  = getParameterByName("codeAF");                                              
-        if (codeAF) { 
-          $("#code-af-input").val(decodeURIComponent(codeAF));
-	}
+        $("#code-af-input").val( $("#code-AF").html() );
         
 	// Switch to a dedicated page on submit to track in Matomo
 	document.addEventListener( 'wpcf7mailsent', function( event ) {

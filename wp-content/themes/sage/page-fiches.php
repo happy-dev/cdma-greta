@@ -31,10 +31,10 @@
           <hr/>
           <div class="row">
             <div class="col-lg-5">
-              <a href="/candidater" class="btn btn-action btn-candidate">Déposer sa candidature</a>
+              <a href="/candidater/?formation=<?= $formation_slug ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
             </div>
             <div class="col-lg-7">
-              <a href="/plus-information" class="btn contact-btn">Demander plus d'informations</a>
+              <a href="/plus-information/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
             </div>
           </div>
           <hr/>
@@ -222,10 +222,10 @@
           <hr/>
           <div class="row">
             <div class="col-lg-7">
-              <a href="/candidater" class="btn btn-action btn-candidate">Déposer sa candidature</a>
+	      <a href="/candidater/?formation=<?= $formation_slug ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
             </div>
             <div class="col-lg-5">
-              <a href="/nous-contacter" class="btn contact-btn">Demander plus d'informations</a>
+              <a href="/nous-contacter/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
             </div>
           </div>
         </section>

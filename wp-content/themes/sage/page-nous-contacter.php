@@ -1,6 +1,24 @@
-<?php $privacy_field = isset($privacy_field) ? $privacy_field : 'contact_privacy_agreement'; ?> 
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/page', 'header'); ?>
-  <span id="privacy-agreement-content" style="display: none;"><?php the_field($privacy_field, 'option'); ?></span>
-  <?php get_template_part('templates/content', 'page'); ?>
-<?php endwhile; ?>
+<?php 
+  $privacy_field = isset($privacy_field) ? $privacy_field : 'contact_privacy_agreement';
+  $formation_slug = get_query_var('formation');
+  $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
+  $formations = Dokelio::getContactsInfo($code_AF);
+  $formation = $formations[0];
+  $email_addresses = array($formations[0]->contact_mel);
+
+  foreach($formations as $formation) {
+    $email_addresses[] = $formation->contact_mel_domaine;
+  }
+
+  while (have_posts()) {
+    the_post();
+    get_template_part('templates/page', 'header');
+    echo '<span id="formation-title" style="display: none;">'. $formation->synth_titre .'</span>';
+    echo '<span id="code-AF" style="display: none;">'. $code_AF .'</span>';
+    echo '<span id="formation-email-addresses" style="display: none;">'. implode(', ', $email_addresses) .'</span>';
+?>
+    <span id="privacy-agreement-content" style="display: none;"><?php the_field($privacy_field, 'option') ?></span>
+
+<?php
+    get_template_part('templates/content', 'page');
+  }
