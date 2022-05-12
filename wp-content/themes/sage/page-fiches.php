@@ -142,9 +142,14 @@
 	      <?php endif; ?>
 	      <?php endif; ?>
 
-	      <?php if ($session->lieu_de_formation) :?>
+	      <?php if ($session->lieu_de_formation || $session->flagFOAD) :?>
       	      <h2>Lieu(x)</h2>
+	      <?php if ($session->lieu_de_formation) :?>
 	      <pre><?= Dokelio::lineBreaks($session->lieu_de_formation) ?></pre>
+	      <?php endif; ?>
+	      <?php if ($session->flagFOAD) :?>
+	      <pre>Formation à distance</pre>
+	      <?php endif; ?>
 	      <?php endif; ?>
 
       	      <h2>Modalité de formation</h2>
