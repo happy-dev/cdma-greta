@@ -163,25 +163,40 @@ pre {
 
 /*******************************************/
 
-
 @font-face {
-	font-family: 'UniversCondensedBold';
-	src: url('../fonts/Univers-CondensedBold.eot');
-	src: url('../fonts/Univers-CondensedBold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Univers-CondensedBold.woff') format('woff'),
-		url('../fonts/Univers-CondensedBold.ttf') format('truetype');
-	font-weight: bold;
-	font-style: normal;
+    font-family: 'Marianne';
+    src: url('../fonts/Marianne-Regular.eot');
+    src: url('../fonts/Marianne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Marianne-Regular.woff2') format('woff2'),
+        url('../fonts/Marianne-Regular.woff') format('woff'),
+        url('../fonts/Marianne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-	font-family: 'UniversCondensed';
-	src: url('../fonts/Univers-Condensed.eot');
-	src: url('../fonts/Univers-Condensed.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Univers-Condensed.woff') format('woff'),
-		url('../fonts/Univers-Condensed.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'MarianneBold';
+    src: url('../fonts/Marianne-Bold.eot');
+    src: url('../fonts/Marianne-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Marianne-Bold.woff2') format('woff2'),
+        url('../fonts/Marianne-Bold.woff') format('woff'),
+        url('../fonts/Marianne-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MarianneExtraBold';
+    src: url('../fonts/Marianne-ExtraBold.eot');
+    src: url('../fonts/Marianne-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Marianne-ExtraBold.woff2') format('woff2'),
+        url('../fonts/Marianne-ExtraBold.woff') format('woff'),
+        url('../fonts/Marianne-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 /*******************************************/
