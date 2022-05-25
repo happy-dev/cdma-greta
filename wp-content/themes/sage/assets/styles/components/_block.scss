@@ -96,7 +96,7 @@ section.articles {
         }
 
         h3 {
-            font-family: $basic-thick-fonts;
+            font-family: $title-thick-fonts;
             font-size: 15px;
             font-weight: bold;
             line-height: 20px;
@@ -108,17 +108,17 @@ section.articles {
 
         span {
             color: $cdma-color2;//#0956a1;
-            font-family: $basic-thick-fonts;
+            font-family: $title-thick-fonts;
             line-height: 18px;
         }
 
         p {
             color: #5d5d5d;
-            font-family: $basic-thick-fonts;
+            font-family: $title-thick-fonts;
         }
         
         &:hover {
-            background-color: #ddd;
+            background-color: $cdma-color3;
             
             p, pre {
                 color: black;
@@ -149,7 +149,7 @@ section.articles {
 }
 
 .note {
-    font-family: $basic-light-fonts;
+    font-family: $title-light-fonts;
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 1px;
@@ -184,7 +184,7 @@ section.articles {
 }
 
 .presentation {
-    background-color: #b3a095;
+    background-color: $cdma-color2;
 
     position: relative;
     overflow: hidden;
@@ -243,7 +243,7 @@ section.articles {
         }
 
         p {
-            font-family: $basic-light-fonts;
+            font-family: $title-light-fonts;
             font-size: 24px;
             line-height: 30px;
             letter-spacing: 1px;

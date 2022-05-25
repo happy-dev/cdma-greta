@@ -24,7 +24,7 @@
         
         p {
             font-size: 18px;
-            font-family: $basic-fonts;
+            font-family: $title-fonts;
             line-height: 24px;
             letter-spacing: 0;
         }
@@ -62,7 +62,7 @@
         .content {
             article {
                 font-size: 16px;
-                font-family: $basic-fonts;
+                font-family: $title-fonts;
                 line-height: 140%;
 
                 ul {
@@ -161,7 +161,7 @@
 .page {
     .article {
         font-size: 16px;
-        font-family: $basic-fonts;
+        font-family: $title-fonts;
         line-height: 140%;
 
         ul {
