@@ -46,7 +46,7 @@
 }
 
 .icon-arrow-up {
-    background-color: $cdma-blue;
+    background-color: $cdma-color2;
     background-image: url(../images/icon-arrow-up.gif);
     background-repeat: no-repeat;
     background-position: center;
@@ -76,17 +76,17 @@
     font-family: $title-fonts;
     padding: .64rem .7rem;
     border-radius: .15rem;
-    background-color: $cdma-blue;
+    background-color: $cdma-color2;
     border: 0;
     box-shadow: 0px 0px 6px #aaa;
 
     &.btn-link {
-      color: $cdma-blue;
+      color: $cdma-color2;
       background-color: transparent;
       box-shadow: none;
 
       &:hover {
-        color: $cdma-blue;
+        color: $cdma-color2;
         background-color: transparent;
       }
     }
@@ -112,7 +112,7 @@
         }
         
         &:hover {
-            background-color: $cdma-blue;
+            background-color: $cdma-color2;
         }
     }
     
@@ -138,7 +138,7 @@
   font-family: $title-fonts;
   padding: .64rem .7rem;
   border-radius: .15rem;
-  background-color: $cdma-blue;
+  background-color: $cdma-color2;
   border: 0;
   box-shadow: 0px 0px 6px #aaa;
   margin-right: 5px;

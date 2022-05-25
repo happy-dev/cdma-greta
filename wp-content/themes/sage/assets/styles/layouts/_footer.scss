@@ -1,7 +1,7 @@
 .footer {
     color: white;
     font-family: $title-fonts;
-    background-color: $cdma-blue;
+    background-color: $cdma-color2;
     padding: 4vw 0 4vw;
     
     img {
@@ -71,7 +71,7 @@
             text-align: left;
             
             button {
-                background-color: #b3a095;
+                background-color: $cdma-color2;
             }
         }
     }

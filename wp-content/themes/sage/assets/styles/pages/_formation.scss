@@ -45,11 +45,11 @@
     
     .introduction {
         color: white;
-        background-color: $cdma-light-brown;
+        background-color: $cdma-color3;
         padding-bottom: 3vw;
         
         h1, h2 {
-            color: white;
+            color: black;
             font-weight: normal;
         }
         
@@ -59,20 +59,20 @@
         }
 
 	pre {
- 	  color: white !important;
+ 	  color: black !important;
 	}
         
         .breadcrumb {
             padding-left: 0;
 
             .breadcrumb-item+.breadcrumb-item {
-                color: white;
+                color: black;
                 &:before {
-                    color: white;
+                    color: black;
                 }
             }
             .breadcrumb-item a {
-                color: white;
+                color: black;
             }
         }
     
@@ -80,7 +80,7 @@
             padding: 0 15px;
             
             .introduction-label {
-                color: $cdma-blue;
+                color: $cdma-color2;
                 font-family: $title-bold-fonts;
                 font-size: 15px;
 
@@ -132,7 +132,7 @@
             
             &.active {
                 font-weight: bold;
-                color: $cdma-blue;
+                color: $cdma-color2;
             }
         }
     }
@@ -150,7 +150,7 @@
             }
             
             p, pre {
-                color: $cdma-blue;
+                color: $cdma-color2;
             }
         }
         
@@ -258,6 +258,6 @@
 
 .stage {
     .presentation {
-        background-color: $cdma-blue;
+        background-color: $cdma-color2;
     }
 }

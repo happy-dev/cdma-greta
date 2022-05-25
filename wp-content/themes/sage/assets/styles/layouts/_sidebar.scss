@@ -1,5 +1,5 @@
 .sidebar-offcanvas-menu {
-    background: $cdma-blue;
+    background: $cdma-color2;
     height: 100%;
     
     .container {
@@ -35,10 +35,10 @@
                 ul {
                     li {
                         a {
-                            color: $cdma-blue;
+                            color: $cdma-color2;
                             //font-family: $title-fonts;
                             background-color: white;
-                            border-bottom: 1px solid $cdma-light-brown;
+                            border-bottom: 1px solid $cdma-color1;
                         }
                     }
                 }
@@ -47,7 +47,7 @@
         
         > li {
             > a:first-letter {
-                color: $cdma-light-brown;
+                color: $cdma-color1;
             }
         }
     }

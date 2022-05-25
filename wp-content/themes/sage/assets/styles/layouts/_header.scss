@@ -49,7 +49,7 @@
     }
     
     .navbar {
-        background-color: $cdma-blue;
+        background-color: $cdma-color2;
         
         ul.menu {
             list-style: none;
@@ -60,14 +60,14 @@
                     font-family: $title-fonts;
                     
                     &.active {
-                        color: $cdma-light-brown;
-                        border-bottom: 3px solid $cdma-light-brown;
+                        color: $cdma-color1;
+                        border-bottom: 3px solid $cdma-color1;
                         padding-left: 1.5vw;
                     }
                 }
                 
                 > a:first-letter {
-                    color: $cdma-light-brown;
+                    color: $cdma-color1;
                     border: 0;
                 }
             }
@@ -113,7 +113,7 @@
                     font-size: 15px;
                     
                     &.active {
-                        color: $cdma-blue;
+                        color: $cdma-color2;
                     }
                 }
                 
@@ -121,7 +121,7 @@
                     position: static;
 
                     &.open {
-                        border-bottom: 3px solid $cdma-blue;
+                        border-bottom: 3px solid $cdma-color2;
                     }
                     
                     .dropdown-menu {
@@ -133,7 +133,7 @@
                                     line-height: 19px;
                                     
                                     &.active {
-                                        color: $cdma-blue;
+                                        color: $cdma-color2;
                                         font-family: $title-bold-fonts;
                                     }
                                 }
@@ -160,7 +160,7 @@
         
         .form-inline {            
             .btn {
-                background-color: $cdma-light-brown;
+                background-color: $cdma-color1;
             }
             
             .row-checkbox {
@@ -202,7 +202,7 @@
         }
         
         .navbar-toggle {
-            background-color: $cdma-blue;
+            background-color: $cdma-color2;
             border-radius: 4px;
             border: none;
 
@@ -236,7 +236,7 @@
             ul {
                 > li {
                     a {
-                        background-color: $cdma-blue;
+                        background-color: $cdma-color2;
                         border-bottom: 1px solid #074d91;
                         display: block;
                         padding: 4.2vh;
@@ -257,7 +257,7 @@
     .home {
         .header {
             .navbar {
-                background-color: $cdma-blue;
+                background-color: $cdma-color2;
             }
         }
     }
@@ -330,7 +330,7 @@
                     background-position: top right;
                     background-repeat: no-repeat;
 
-                    border: 5px solid $cdma-light-brown;
+                    border: 5px solid $cdma-color1;
                     border-top: 0;
                     border-left: 0;
                     border-radius: 0;
@@ -343,7 +343,7 @@
 
                     ul {
                         list-style: none;
-                        border-right: 1px dashed $cdma-light-brown;
+                        border-right: 1px dashed $cdma-color1;
                         
                         li {
 
