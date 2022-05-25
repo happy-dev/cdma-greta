@@ -53,7 +53,7 @@
           <hr/>
           <div class="row">
             <div class="col-md-12">
-              <!-- a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/DIOGEN/PDF/CDMA_PDF.php?PDFNoPForm=<?= $fi; ?>" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a -->
+              <a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/F/PDF/CDMA_Fiche_PDF.php?IdFormation=IPAF_<?= $code_AF; ?>" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a>
             </div>
           </div>
           <?php if (!$formation->url_video_formation) { ?>
