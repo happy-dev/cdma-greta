@@ -33,7 +33,7 @@
     }
     
     label {
-        font-family: $title-thick-fonts;
+        font-family: $title-fonts;
     }
 
     .wpcf7-checkbox {
@@ -330,7 +330,7 @@
         
         label {
             @extend .col-md-4;
-            font-family: $title-thick-fonts;
+            font-family: $title-fonts;
 
 	    &[for=privacy-agreement] {
 		display:	block;

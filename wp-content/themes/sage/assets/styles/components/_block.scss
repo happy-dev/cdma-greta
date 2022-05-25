@@ -96,7 +96,7 @@ section.articles {
         }
 
         h3 {
-            font-family: $title-thick-fonts;
+            font-family: $title-fonts;
             font-size: 15px;
             font-weight: bold;
             line-height: 20px;
@@ -108,13 +108,13 @@ section.articles {
 
         span {
             color: $cdma-color2;//#0956a1;
-            font-family: $title-thick-fonts;
+            font-family: $title-fonts;
             line-height: 18px;
         }
 
         p {
             color: #5d5d5d;
-            font-family: $title-thick-fonts;
+            font-family: $title-fonts;
         }
         
         &:hover {
