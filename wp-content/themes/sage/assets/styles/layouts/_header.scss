@@ -325,11 +325,6 @@
                 }
                 
                 .dropdown-menu {
-                    background-color: white;
-                    background-image: url(../images/menu-decoration-blue.gif);
-                    background-position: top right;
-                    background-repeat: no-repeat;
-
                     border: 5px solid $cdma-color1;
                     border-top: 0;
                     border-left: 0;
@@ -338,7 +333,7 @@
                     position: absolute;
                     width: 100%;
                     z-index: 9999;
-                    padding: 40px 75px 40px 90px;
+                    padding: 40px;
                     margin: 0;
 
                     ul {
@@ -356,19 +351,6 @@
                             }
                         }
                     }
-
-                    .decoration {
-                        background-image: url(../images/menu-decoration-brown.gif);
-                        background-position: top left;
-                        background-repeat: no-repeat;
-                        display: block;
-                        width: 49px;
-                        height: 100%;
-
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                    }
                 }
 
                 &:last-child {
@@ -384,10 +366,6 @@
 @media (min-width: 1226px) {
     .header {
         .navbar {
-            background-image: url(../images/header-decoration.gif);
-            background-position: top left;
-            background-repeat: no-repeat;
-
             ul {
                 list-style: none;
                 >li {

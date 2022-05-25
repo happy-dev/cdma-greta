@@ -80,34 +80,6 @@
         margin-bottom: 2vw;
     }
     
-    .trim {
-        background-image: url(../images/footer-trim.gif);
-        background-repeat: repeat-x;
-        background-position: bottom left;
-        
-        height: 81px;
-        
-        .trim-left {
-            background-image: url(../images/footer-trim-left.gif);
-            background-repeat: no-repeat;
-            background-position: top left;
-
-            width: 149px;
-            height: 81px;
-            float: left;
-        }
-        
-        .trim-right {
-            background-image: url(../images/footer-trim-right.gif);
-            background-repeat: no-repeat;
-            background-position: top left;
-
-            width: 240px;
-            height: 81px;
-            float: right;
-        }
-    }
-    
     .links {
         line-height: 20px;
         text-align: center;
