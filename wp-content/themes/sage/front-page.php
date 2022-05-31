@@ -183,7 +183,7 @@ while (have_posts()) : the_post();
 <h2>Lieux de formation</h2>
 
 <?php if ( have_rows('lieux_formation') ): ?>
-	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": true, "pauseAutoPlayOnHover": false, "wrapAround": true }'>
+	<div class="main-carousel js-flickity" data-flickity='{ "autoPlay": true, "pauseAutoPlayOnHover": false, "wrapAround": true, "prevNextButtons": false }'>
 		<?php while ( have_rows('lieux_formation') ) : the_row(); ?>
      		<?php
 			$image = get_sub_field('logos_lieux');

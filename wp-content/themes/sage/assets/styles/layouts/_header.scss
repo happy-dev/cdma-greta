@@ -56,7 +56,7 @@
             
             > li {
                 a {
-                    color: white;
+                    color: $cdma-color1;
                     font-family: $title-fonts;
                     
                     &.active {
@@ -64,11 +64,6 @@
                         border-bottom: 3px solid $cdma-color1;
                         padding-left: 1.5vw;
                     }
-                }
-                
-                > a:first-letter {
-                    color: $cdma-color1;
-                    border: 0;
                 }
             }
         }
@@ -338,7 +333,7 @@
 
                     ul {
                         list-style: none;
-                        border-right: 1px dashed $cdma-color1;
+                        border-right: 1px solid $cdma-color1;
                         
                         li {
 
