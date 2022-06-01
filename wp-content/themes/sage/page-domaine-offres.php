@@ -24,7 +24,6 @@
       <figure>
         <img class="image-background" src="/wp-content/themes/sage/images/<?= $current_domain->image_domaine ?>" alt="<?= $current_domain->lib_domaine ?>" />
       </figure>
-      <div class="layer"></div>
       <div class="container">
         <?php get_template_part('templates/breadcrumb'); ?>
         <div class="row">
