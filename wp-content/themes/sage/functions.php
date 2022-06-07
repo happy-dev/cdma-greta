@@ -104,3 +104,5 @@ function admin_assets() {
   wp_enqueue_style('cdma_admin_css', get_template_directory_uri() .'/dist/styles/admin.css', false, null);
 }
 add_action('admin_enqueue_scripts', 'admin_assets');
+
+include_once("crm-api.php");
