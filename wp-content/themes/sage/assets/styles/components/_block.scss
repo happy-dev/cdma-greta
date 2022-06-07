@@ -24,29 +24,29 @@ aside.column {
                 }
             }
 
-	    &.current, &.current-cat {
-   	      position:	relative;
-	      display:	inline;
+			&.current, &.current-cat {
+				position:	relative;
+				display:	inline;
 
-   	      &::before {
-            content : 	'→';
-            position:	absolute;
-            left:		-25px;
-            top:		0px;
-          }
+				&::before {
+					content : 	'→';
+					position:	absolute;
+					left:		-25px;
+					top:		0px;
+				}
 
-   	      &::after {
-                // content : 	'<';
-		// position:	absolute;
-		// right:		-15px;
-		// top:		3px;
-              }
+				&::after {
+					// content : 	'<';
+					// position:	absolute;
+					// right:		-15px;
+					// top:		3px;
+				}
 
-	      a {
-                    color: $cdma-color2;
-                    font-weight: bold;
-                    text-decoration: none;
-	      }
+				a {
+					color: $cdma-color1;
+					font-weight: bold;
+					text-decoration: none;
+				}
             }
         }
     }
