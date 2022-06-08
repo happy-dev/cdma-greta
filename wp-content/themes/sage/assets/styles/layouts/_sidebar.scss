@@ -9,13 +9,13 @@
     .menu {
         li {
             a {
-                color: white;
+                color: $cdma-color1;
                 font-family: $title-fonts;
                 
                 
                 display: block;
                 padding: 20px;
-                border-bottom: 1px solid #074d91;
+                border-bottom: 1px solid white;
             }
             
             .dropdown-menu {
