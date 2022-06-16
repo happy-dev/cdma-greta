@@ -14,6 +14,7 @@
     the_post();
     get_template_part('templates/page', 'header');
     echo '<span id="formation-title" style="display: none;">'. $formation->synth_titre .'</span>';
+    echo '<span id="domain-name" style="display: none;">'. $formation->lib_domaine .'</span>';
     echo '<span id="code-AF" style="display: none;">'. $code_AF .'</span>';
     echo '<span id="formation-email-addresses" style="display: none;">'. implode(', ', $email_addresses) .'</span>';
 ?>

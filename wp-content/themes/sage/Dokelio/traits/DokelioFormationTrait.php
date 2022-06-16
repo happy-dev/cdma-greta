@@ -27,7 +27,7 @@ Trait DokelioFormationTrait {
 
   public static function getContactsInfo($code_AF) {
     $buffer = array();
-    $query_string = "SELECT code_AF, synth_titre, contact_mel, contact_mel_domaine FROM formation WHERE code_AF='IPAF_". $code_AF ."'";
+    $query_string = "SELECT code_AF, synth_titre, contact_mel, contact_mel_domaine, lib_domaine FROM formation WHERE code_AF='IPAF_". $code_AF ."'";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       while($formation = $formations->fetch_object()) {

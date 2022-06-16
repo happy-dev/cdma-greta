@@ -52,9 +52,14 @@
 
 	// Formation title
         var ft = $("#formation-title").html();
-
 	if (ft)
           $("#formation-title-input").val( ft ).prop("readonly", true);                            
+
+
+	// Domain title
+        var domainName = $("#domain-name").html();
+	if (domainName)
+          $("#domain-input").val( domainName ).prop("readonly", true);                            
 
 
 	// Code AF                                                                     
