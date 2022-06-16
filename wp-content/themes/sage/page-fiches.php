@@ -230,7 +230,7 @@
 	      <a href="/candidater/?formation=<?= $formation_slug ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
             </div>
             <div class="col-lg-5">
-              <a href="/nous-contacter/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
+              <a href="/plus-information/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
             </div>
           </div>
         </section>
