@@ -9,6 +9,7 @@
   foreach($formations as $formation) {
     $email_addresses[] = $formation->contact_mel_domaine;
   }
+  $email_addresses = array_unique( array_map( 'trim', $email_addresses ) );
 
   while (have_posts()) {
     the_post();

@@ -69,10 +69,6 @@ class CRM_API extends WP_REST_Controller {
       unset( $application_data['privacy-agreement'] );
       unset( $application_data['cf7sr-recaptcha'] );
 
-      $buffer = explode( ', ', $application_data['email-address'] );
-      $buffer = array_unique( array_map( 'trim', $buffer ) );
-      $application_data['email-address'] = implode( ', ', $buffer );
-
       $application_data['formation-title'] = $application_data['candidate-formation'];
       unset( $application_data['candidate-formation'] );
 
