@@ -63,7 +63,7 @@
 
 
 	// Code AF                                                                     
-        $("#code-af-input").val( $("#code-AF").html() );
+        $("#code-af-input").val( $("#code-AF").data("codeaf") );
 
 
         // Fill email input & domain input
