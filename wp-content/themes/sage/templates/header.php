@@ -1,5 +1,16 @@
 <?php use Roots\Sage\Extras\Custom_Walker; ?>
 
+<div class="above-header">
+	<?php 
+		$image = get_field('logo_header_marianne', 'option');
+		if( !empty($image) ): 
+			$alt = $image['alt'];
+			$size = 'large';
+			$thumb = $image['sizes'][ $size ]; ?>
+			<img class="logo_header_marianne" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+	<?php endif; ?>
+</div>
+
 <header class="header">
   <!-- LOGO HEADER -->
   <?php $image = get_field('logo_header', 'option');

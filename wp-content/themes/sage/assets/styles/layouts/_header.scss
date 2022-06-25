@@ -24,6 +24,18 @@
     }
 }
 
+.above-header{
+	background-image: linear-gradient(white 0, white 275px), linear-gradient(90deg, #fbba00 0, transparent 0.1rem, transparent 0.1rem, transparent 1rem);
+	background-size: calc(1vw + 275px) auto, 1rem 1.1rem;
+	background-position: 0 0, 275px 2.8rem;
+	background-repeat: no-repeat, repeat-x;
+	padding-left: calc(1vw - 10px);
+
+	.logo_header_marianne{
+		width: 190px;
+	}
+}
+
 .header {
     background-color: $cdma-color2;
     height: $header-height;
@@ -183,6 +195,12 @@
 }
 
 @media (max-width: 1225px) {
+	.above-header{
+		background-image: linear-gradient(white 0, white 385px), linear-gradient(90deg, #fbba00 0, transparent 0.1rem, transparent 0.1rem, transparent 1rem);
+		background-size: calc(1vw + 385px) auto, 1rem 1.1rem;
+		background-position: 0 0, 385px 2.8rem;
+		padding-left: calc(32px + 8vw);
+	}
     
     .header {
         //sdsdsdbackground-color: #eee;
@@ -201,7 +219,7 @@
 
             position: absolute;
             left: 4vw;
-            top: 20px;
+            top: 95px;
             margin: 0;
             padding: 9px 10px;
             display: block;
