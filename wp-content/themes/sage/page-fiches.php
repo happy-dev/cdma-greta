@@ -56,10 +56,6 @@
               <a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/F/PDF/CDMA_Fiche_PDF.php?IdFormation=IPAF_<?= $code_AF; ?>" target="_blank" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a>
             </div>
           </div>
-          <?php if (!$formation->url_video_formation) { ?>
-            <hr/>
-            <span class="note hidden-sm-down">Cliquez sur le bouton lecture pour découvrir la vidéo de la formation</span>
-          <?php } ?>
         </div>
       </div>
     </div>
