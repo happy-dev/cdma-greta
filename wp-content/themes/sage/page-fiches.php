@@ -339,7 +339,7 @@
   </div>
   <div class="display-none">
     <a id="coordo-email" href="mailto:<?= $formation->contact_mel ?>"><?= $formation->contact_mel ?></a>
-    <span id="code_AF"><?= $code_AF ?></span>
+    <span id="code-AF" data-codeaf="<?= $code_AF ?>"></span>
   </div>
 </div>
 

@@ -16,7 +16,7 @@
     get_template_part('templates/page', 'header');
     echo '<span id="formation-title" style="display: none;">'. $formation->synth_titre .'</span>';
     echo '<span id="domain-name" style="display: none;">'. $formation->lib_domaine .'</span>';
-    echo '<span id="code-AF" style="display: none;" data-codeaf="'. $code_AF .'"></span>';
+    echo '<span id="code-af" style="display: none;" data-codeaf="'. $code_AF .'"></span>';
     echo '<span id="formation-email-addresses" style="display: none;">'. implode(', ', $email_addresses) .'</span>';
 ?>
     <span id="privacy-agreement-content" style="display: none;"><?php the_field($privacy_field, 'option') ?></span>
