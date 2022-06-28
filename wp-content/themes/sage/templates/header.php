@@ -7,7 +7,9 @@
 			$alt = $image['alt'];
 			$size = 'large';
 			$thumb = $image['sizes'][ $size ]; ?>
-			<img class="logo_header_marianne" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+			<a href="https://cdma.greta.fr/">
+				<img class="logo_header_marianne" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+			</a>
 	<?php endif; ?>
 </div>
 
