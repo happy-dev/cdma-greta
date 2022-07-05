@@ -34,7 +34,14 @@ Trait DokelioSearchTrait {
       $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation FROM formation $where $filter GROUP BY synth_titre ORDER BY synth_titre LIMIT ". CDMA_LIMIT ." $offset";
     }
     else {
-      $str = '*'. str_replace(' ', '* *', Dokelio::$connection->real_escape_string($str)) .'*';
+      $str_arr = explode(' ', $str);
+      foreach ($str_arr as $idx => $word) {// Remonving short words
+	if (strlen($word) <= 2)
+	  unset($str_arr[$idx]);
+      }
+      foreach ($str_arr as $idx => $word)
+	$str_arr[$idx] = dokelio::$connection->real_escape_string($word);
+      $str = '*'. implode('* *', $str_arr) .'*';
       $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, MATCH (synth_titre) AGAINST ('$str' IN BOOLEAN MODE) AS titre, MATCH (synth_formation_accroche) AGAINST ('$str' IN BOOLEAN MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN BOOLEAN MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN BOOLEAN MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) AS domaine FROM formation WHERE MATCH (synth_titre, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter GROUP BY synth_titre ORDER BY (titre*4)+(accroche*2)+(coordo*1)+(lieu*1)+(domaine*1) DESC LIMIT ". CDMA_LIMIT ." $offset";
     }
 
