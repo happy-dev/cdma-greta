@@ -336,6 +336,9 @@
             nsi.prop("disabled", false);
 	  }
         });
+	      
+	// Wordaround Contact Form 7 bug
+	$("input[type=checkbox]").addClass("wpcf7-form-control");
       },
     },
 
