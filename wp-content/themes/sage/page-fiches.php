@@ -3,6 +3,8 @@
   $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
   $sessions = Dokelio::getSessions($code_AF);
   $formation = $sessions[0];// To make code readable
+
+  if($formation):
 ?>
 
 <div class="formation">
@@ -339,3 +341,11 @@
   </div>
 </div>
 
+<?php else: ?>
+<div class="formation">
+  <div class="container">
+    <p class="formation-not-found">Cette formation n'est plus proposée actuellement.<br/> Veuillez utiliser la page <a href="nous-contacter">Contact</a> pour trouver la formation qui correspond à vos attentes.</p>
+  </div>
+</div>
+
+<?php endif;
