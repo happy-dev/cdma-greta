@@ -5,7 +5,7 @@
   $formations = Dokelio::getContactsInfo($code_AF);
   $formation = $formations[0];
 
-  if ($formation) :
+  if (!$formation_slug || ($formation_slug && $formation)) :
     $email_addresses = array($formations[0]->contact_mel);
 
     foreach($formations as $formation) {
