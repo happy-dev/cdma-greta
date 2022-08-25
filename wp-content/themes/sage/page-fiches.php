@@ -344,7 +344,7 @@
 <?php else: ?>
 <div class="formation">
   <div class="container">
-    <p class="formation-not-found">Cette formation n'est plus proposée actuellement.<br/> Veuillez utiliser la page <a href="nous-contacter">Contact</a> pour trouver la formation qui correspond à vos attentes.</p>
+    <p class="formation-not-found">Cette formation n'est plus proposée actuellement.<br/> Veuillez utiliser la page <a href="/nous-contacter">Contact</a> pour trouver la formation qui correspond à vos attentes.</p>
   </div>
 </div>
 
