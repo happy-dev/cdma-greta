@@ -34,14 +34,7 @@ Trait DokelioSearchTrait {
       $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation FROM formation $where $filter GROUP BY synth_titre ORDER BY synth_titre LIMIT ". CDMA_LIMIT ." $offset";
     }
     else {
-      $str_arr = explode(' ', $str);
-      foreach ($str_arr as $idx => $word) {// Remonving short words
-	if (strlen($word) <= 3)
-	  unset($str_arr[$idx]);
-      }
-      foreach ($str_arr as $idx => $word)
-	$str_arr[$idx] = dokelio::$connection->real_escape_string($word);
-      $str = implode(' ', $str_arr);
+      $str = self::cleanSearchQuery($str);
       $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, MATCH (synth_titre) AGAINST ('$str' IN NATURAL LANGUAGE MODE) AS titre, MATCH (synth_formation_accroche) AGAINST ('$str' IN NATURAL LANGUAGE MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN NATURAL LANGUAGE MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN NATURAL LANGUAGE MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN NATURAL LANGUAGE MODE) AS domaine FROM formation WHERE MATCH (synth_titre, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN NATURAL LANGUAGE MODE) $and $filter GROUP BY synth_titre ORDER BY titre*4 + accroche DESC LIMIT ". CDMA_LIMIT ." $offset";
     }
 
@@ -53,6 +46,29 @@ Trait DokelioSearchTrait {
     $formations->close();
 
     return $buffer;
+  }
+
+  private static function cleanSearchQuery($str) {
+    $forbidden_words = array('formation', 'initiation', 'stage', 'atelier');
+    $str_arr = explode(' ', $str);
+
+    foreach ($str_arr as $idx => $word) {
+      $str_arr[$idx] = dokelio::$connection->real_escape_string($word);// Escaping
+
+      if (strlen($word) <= 3)// Removing short words
+        unset($str_arr[$idx]);
+    }
+
+    if ( count($str_arr)>1 && array_intersect($str_arr, $forbidden_words) ) {
+      foreach( $forbidden_words as $idx => $word ) {
+	if ( count($str_arr)>1 ) {
+          $offset = array_search($word, $str_arr);
+	  array_splice($str_arr, $offset, 1);
+	}
+      }
+    }
+
+    return implode(' ', $str_arr);
   }
 
   public static function countSearchResults($str, $filter) {
@@ -84,14 +100,7 @@ Trait DokelioSearchTrait {
       $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation $where $filter";
     }
     else {
-      $str_arr = explode(' ', $str);
-      foreach ($str_arr as $idx => $word) {// Remonving short words
-	if (strlen($word) <= 3)
-	  unset($str_arr[$idx]);
-      }
-      foreach ($str_arr as $idx => $word)
-	$str_arr[$idx] = dokelio::$connection->real_escape_string($word);
-      $str = implode(' ', $str_arr);
+      $str = self::cleanSearchQuery($str);
       $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation WHERE MATCH (synth_titre, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN NATURAL LANGUAGE MODE) $and $filter LIMIT ". CDMA_LIMIT;
     }
 
