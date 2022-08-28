@@ -3,6 +3,7 @@
   $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
   $sessions = Dokelio::getSessions($code_AF);
   $formation = $sessions[0];// To make code readable
+  $session_code = Dokelio::cleanSessionCode( $formation->code_SES );
 
   if($formation):
 ?>
@@ -33,10 +34,10 @@
           <hr/>
           <div class="row">
             <div class="col-lg-5">
-              <a href="/candidater/?formation=<?= $formation_slug ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
+	      <a href="/candidater/?formation=<?= $formation_slug ?>&session=<?= $session_code ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
             </div>
             <div class="col-lg-7">
-              <a href="/plus-information/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
+              <a href="/plus-information/?formation=<?= $formation_slug ?>&session=<?= $session_code ?>" class="btn contact-btn">Demander plus d'informations</a>
             </div>
           </div>
           <hr/>
@@ -97,7 +98,7 @@
         foreach ($sessions as $session) :
       ?>
         <li class="nav-item">
-	  <a class="nav-link <?= $class ?>" data-toggle="tab" role="tab" href="#session-<?= $session->code_SES ?>"><?= $session->lib_onglet_session ?></a>
+	  <a class="nav-link <?= $class ?>" data-toggle="tab" role="tab" href="#session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>"><?= $session->lib_onglet_session ?></a>
         </li>
       <?php 
 	$class = ''; 
@@ -113,7 +114,7 @@
               $class = 'in active';
               foreach($sessions as $session) :
 	    ?>
-	      <div id="session-<?= $session->code_SES ?>" role="tabpanel" class="tab-pane fade <?= $class ?>">
+	      <div id="session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>" role="tabpanel" class="tab-pane fade <?= $class ?>">
       	      <h2>Dates</h2>
 	      <pre><?= Dokelio::lineBreaks($session->periode_session) ?></pre>
 	      
@@ -225,10 +226,10 @@
           <hr/>
           <div class="row">
             <div class="col-lg-7">
-	      <a href="/candidater/?formation=<?= $formation_slug ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
+	      <a href="/candidater/?formation=<?= $formation_slug ?>&session=<?= $session_code ?>" class="btn btn-action btn-candidate">Déposer sa candidature</a>
             </div>
             <div class="col-lg-5">
-              <a href="/plus-information/?formation=<?= $formation_slug ?>" class="btn contact-btn">Demander plus d'informations</a>
+              <a href="/plus-information/?formation=<?= $formation_slug ?>&session=<?= $session_code ?>" class="btn contact-btn">Demander plus d'informations</a>
             </div>
           </div>
         </section>

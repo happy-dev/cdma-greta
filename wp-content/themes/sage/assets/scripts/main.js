@@ -64,6 +64,7 @@
 
 	// Code AF                                                                     
         $("#code-af-input").val( $("#code-af").data("codeaf") );
+        $("#code-session-input").val( $("#session-code").data("sessioncode") );
 
 
         // Fill email input & domain input
@@ -292,6 +293,7 @@
 
 	// Code AF                                                                     
         $("#code-af-input").val( $("#code-af").data("codeaf") );
+        $("#code-session-input").val( $("#session-code").data("sessioncode") );
         
 	// Switch to a dedicated page on submit to track in Matomo
 	document.addEventListener( 'wpcf7mailsent', function( event ) {

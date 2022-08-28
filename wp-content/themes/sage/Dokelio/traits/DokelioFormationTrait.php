@@ -38,4 +38,12 @@ Trait DokelioFormationTrait {
 
     return $buffer;
   }
+
+  public static function cleanSessionCode($code_SES) {
+    return substr($code_SES, 5);
+  }
+
+  public static function dirtySessionCode($code_SES) {
+    return 'IPSE_'. $code_SES;
+  }
 }
