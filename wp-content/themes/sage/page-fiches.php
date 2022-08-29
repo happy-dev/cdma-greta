@@ -98,7 +98,7 @@
         foreach ($sessions as $session) :
       ?>
         <li class="nav-item">
-	  <a class="nav-link <?= $class ?>" data-toggle="tab" role="tab" href="#session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>"><?= $session->lib_onglet_session ?></a>
+	  <a class="nav-link <?= $class ?>" data-toggle="tab" data-sessioncode="<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>" role="tab" href="#session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>"><?= $session->lib_onglet_session ?></a>
         </li>
       <?php 
 	$class = ''; 

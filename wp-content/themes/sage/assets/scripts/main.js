@@ -206,6 +206,29 @@
           $("#temoignage-video-wrapper").empty();
 	  $("#tem-video-clone").clone().appendTo("#temoignage-video-wrapper");
         });
+
+
+	// Session switching
+	var tabs = document.querySelectorAll('#sessions-tabs a[data-toggle="tab"]')
+	var observer = new MutationObserver(function(mutations) {
+	  mutations.forEach(function(mutation) {
+            if (mutation.target.classList.contains('active')) {
+	      $(".btn-candidate, .contact-btn").each(function(idx, btn) {
+		var btn = $(btn);
+	        var href = btn.prop("href").split("session=")[0]
+		      console.log(href);
+	    	btn.prop("href", href +"session="+ $(mutation.target).data('sessioncode'))
+	      })
+	    }
+	  })
+	})
+
+	tabs.forEach(function(tab) {
+	  observer.observe(tab, {
+	    attributes: true,
+	    attributeFilter: ['class']
+	  });
+	});
       },
       finalize : function() {},
     },

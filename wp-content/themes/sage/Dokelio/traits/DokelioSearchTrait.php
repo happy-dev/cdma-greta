@@ -55,7 +55,7 @@ Trait DokelioSearchTrait {
     foreach ($str_arr as $idx => $word) {
       $str_arr[$idx] = dokelio::$connection->real_escape_string($word);// Escaping
 
-      if (strlen($word) <= 3)// Removing short words
+      if (strlen($word) <= 2)// Removing short words
         unset($str_arr[$idx]);
     }
 
