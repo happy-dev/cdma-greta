@@ -216,7 +216,6 @@
 	      $(".btn-candidate, .contact-btn").each(function(idx, btn) {
 		var btn = $(btn);
 	        var href = btn.prop("href").split("session=")[0]
-		      console.log(href);
 	    	btn.prop("href", href +"session="+ $(mutation.target).data('sessioncode'))
 	      })
 	    }
