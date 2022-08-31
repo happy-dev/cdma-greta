@@ -9,11 +9,11 @@
 
     echo '<meta property="og:url" content="'. home_url($_SERVER['REQUEST_URI']) .'" />';
     echo '<meta name="twitter:url" content="'. home_url($_SERVER['REQUEST_URI']) .'" />';
-
+    
     if ($formation_slug && !$email) {
       $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
       $formation = Dokelio::getMetaTags($code_AF);
-      echo '<title>'. $formation->meta_titre .' - Greta CDMA</title>';
+      echo '<title>'. $formation->meta_titre .'</title>';
       echo '<meta name="description" content="'. $formation->meta_description .'">';
       echo '<meta property="og:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image_formation .'" />';
       echo '<meta name="twitter:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image_formation .'" />';
