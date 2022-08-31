@@ -80,11 +80,11 @@ function topics_select_list($tag, $unused){
 
   $topics = array(
     "La communication" => "communication@greta-cdma.paris",
-    "Le partenariat" => "partenariat@greta-cdma.paris",
-    "L’international" => "international@greta-cdma.paris",
-    "Le plan de développement des compétences de vos collaborateurs" => "formationentreprise@greta-cdma.paris",
+    "Le partenariat" => "valentine.letellier@greta-cdma.paris",
+    "L’international" => "valentine.letellier@greta-cdma.paris",
+    "Le plan de développement des compétences de vos collaborateurs" => "laura.lupi@greta-cdma.paris",
     "La comptabilité" => "comptabilité@greta-cdma.paris",
-    "Les Ressources Humaines" => "rh@greta-cdma.paris",
+    "Les Ressources Humaines" => "adelaide.belmonte@greta-cdma.paris",
     "La qualité" => "qualité@greta-cdma.paris",
     "Autre" => "info@greta-cdma.paris"
   );
