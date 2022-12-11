@@ -85,7 +85,7 @@ function topics_select_list($tag, $unused){
     "Le plan de développement des compétences de vos collaborateurs" => "laura.lupi@greta-cdma.paris",
     "La comptabilité" => "comptabilité@greta-cdma.paris",
     "Les Ressources Humaines" => "adelaide.belmonte@greta-cdma.paris",
-    "La qualité" => "qualité@greta-cdma.paris",
+    "La qualité" => "qualite@greta-cdma.paris",
     "Autre" => "info@greta-cdma.paris"
   );
 
