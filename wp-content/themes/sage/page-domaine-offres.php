@@ -127,7 +127,7 @@
             <article class="entry col-md-12">
 	      <a class="row row-entry" href="/fiches/<?= $formation->slug_formation ?>" title="<?= $formation->synth_titre ?>">
                 <div class="col-md-4">
-                  <img src="/wp-content/themes/sage/images/<?= $formation->nom_image_formation ?>" alt="<?= $formation->synth_titre ?>" />
+                  <img src="/wp-content/themes/sage/images/<?= $formation->nom_image ?>" alt="<?= $formation->synth_titre ?>" />
                 </div>
                 <div class="col-md-8">
                   <h3><?= $formation->synth_titre ?></h3>
