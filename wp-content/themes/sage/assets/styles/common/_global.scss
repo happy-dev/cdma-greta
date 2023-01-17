@@ -145,6 +145,11 @@ button, input {
         outline: 0;   
     }
 }
+input {
+  &.uppercase {
+    text-transform: uppercase;
+  }
+}
 p {
     line-height: 135%;
     padding-bottom: 1.2vw;
