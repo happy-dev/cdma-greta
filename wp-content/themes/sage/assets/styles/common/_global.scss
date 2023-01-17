@@ -149,6 +149,9 @@ input {
   &.uppercase {
     text-transform: uppercase;
   }
+  &.lowercase {
+    text-transform: lowercase;
+  }
 }
 p {
     line-height: 135%;
