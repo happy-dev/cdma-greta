@@ -323,6 +323,13 @@
 	}, false );
 
 
+	// UX fix: by default, input[type=date] opens its calendar on icon click only
+	// Users rightly demand onfocus, and we give it to them
+	$("#candidate-birthdate").focus(function() {
+	  this.showPicker();
+	});
+	
+
         var si  = $("#salarie-input");// Salarie Input
         var nsi	= $("#non-salarie-input");// Non-Salarie Input
         var se 	= $("#sans-emploi-input");// Sans Emploi Input
