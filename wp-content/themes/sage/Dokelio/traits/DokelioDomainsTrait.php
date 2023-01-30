@@ -31,7 +31,7 @@ Trait DokelioDomainsTrait {
     else 
       $offset = '';
 
-    $query_string = "SELECT lib_domaine, accroche_domaine, url_video_domaine, code_AF, flag_avant, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, image_domaine FROM formation". $where_str ." GROUP BY synth_titre ORDER BY flag_avant DESC, SES_periode_debut LIMIT ". CDMA_LIMIT ." $offset";
+    $query_string = "SELECT lib_domaine, accroche_domaine, url_video_domaine, code_AF, flag_avant, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image_formation, image_domaine FROM formation". $where_str ." GROUP BY synth_titre ORDER BY flag_avant DESC, position_web, SES_periode_debut LIMIT ". CDMA_LIMIT ." $offset";
 
     if ($formations = Dokelio::$connection->query($query_string)) {
       while($formation = $formations->fetch_object()) {
