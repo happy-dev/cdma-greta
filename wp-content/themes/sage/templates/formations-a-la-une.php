@@ -6,7 +6,7 @@
   <?php foreach(Dokelio::getHighlights() as $formation) : ?>
     <article class="entry col-md-4">
      <a href="/fiches/<?= Dokelio::toSlug($formation->synth_titre) ?>-<?= Dokelio::codeAFToId($formation->code_AF) ?>" title="<?= $formation->synth_titre ?>">
-     <img src="/wp-content/themes/sage/images/<?= $formation->nom_image_formation ?>" alt="<?= $formation->synth_titre ?>" />
+     <img src="/wp-content/themes/sage/images/<?= $formation->nom_image ?>" alt="<?= $formation->synth_titre ?>" />
        <h3><?= $formation->synth_titre ?></h3>
        <span><?= $formation->synth_periode_de_formation ?></span>
      </a>

@@ -15,8 +15,8 @@
       $formation = Dokelio::getMetaTags($code_AF);
       echo '<title>'. $formation->meta_titre .'</title>';
       echo '<meta name="description" content="'. $formation->meta_description .'">';
-      echo '<meta property="og:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image_formation .'" />';
-      echo '<meta name="twitter:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image_formation .'" />';
+      echo '<meta property="og:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image .'" />';
+      echo '<meta name="twitter:image" content="'. site_url() .'/wp-content/themes/sage/images/'. $formation->nom_image .'" />';
     }
     elseif ($domain_slug) {
       $formation = Dokelio::getDomain($domain_slug);
