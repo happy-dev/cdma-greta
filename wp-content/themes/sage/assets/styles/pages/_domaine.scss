@@ -31,6 +31,14 @@
                 text-decoration: underline;
                 background-size: 5px;
             }
+
+	    .center {
+	      justify-content: center;
+
+	      #pdf-file {
+	        margin-top: 20px;
+	      }
+            }
         }
     }
     

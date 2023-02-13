@@ -36,6 +36,9 @@
               <?php if ($current_domain->url_video_domaine) { ?>
                 <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?= $dom_title ?></span>
               <?php } ?>
+            <div class="row center">
+              <a class="link-pdf" id="pdf-file" href="http://prfc.scola.ac-paris.fr/F/PDF/CDMA_Catalogue_PDF.php?d=<?= $current_domain->slug_domaine ?>" target="_blank" download="<?= $current_domain->slug_domaine ?>.pdf">Télécharger le catalogue</a>
+            </div>
           </div>
           <?php if ($current_domain->url_video_domaine) { ?>
             <div class="video col-md-6 col-sm-12 col-xs-12" data-toggle="modal" data-target="#modalVideoDomaine">
