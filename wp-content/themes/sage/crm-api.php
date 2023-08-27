@@ -129,6 +129,8 @@ class CRM_API extends WP_REST_Controller {
     }
 
     ksort($application_data);
+    $application_data = array_map('trim', $application_data);
+
     return $application_data;
   }
 
@@ -158,6 +160,8 @@ class CRM_API extends WP_REST_Controller {
     }
 
     ksort($info_request_data);
+    $info_request_data = array_map('trim', $info_request_data);
+
     return $info_request_data;
   }
 
