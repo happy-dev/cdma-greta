@@ -57,7 +57,23 @@ class CRM_API extends WP_REST_Controller {
     $applications_data = array();
 
     foreach( $applications as $application ) {
-      $applications_data[] = $this->prepare_application_for_response( $application, $request );
+      $application_cleaned = $this->prepare_application_for_response( $application, $request );
+      if ($application_cleaned)
+        $applications_data[] = $application_cleaned;
+
+      //$i = count($applications_data) - 1;
+
+      //while(!($application_data[$i]['candidate-projectdescription'] == $application_cleaned['candidate-projectdescription'] AND $application_data[$i]['code-af'] == $application_cleaned['code-af'] AND $application_data[$i]['code-session'] == $application_cleaned['code-session']) AND $i != -1) {
+      //  $i--;
+      //}
+
+      //if($i == -1) {
+      //  $applications_data[] = $application_cleaned;
+      //}
+      //else {
+      //  $application_cleaned["BOOM"] = "DUPLICATED";
+      //  $applications_data[] = $application_cleaned;
+      //}
     }
     
     return new WP_REST_Response( $applications_data, 200 );
