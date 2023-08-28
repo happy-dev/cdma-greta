@@ -109,6 +109,9 @@ class CRM_API extends WP_REST_Controller {
     $application_data = unserialize( $application->form_value );
 
     if ($application_data) {
+      if (!$application_data['code-af'])
+	return null;
+
       unset( $application_data['cfdb7_status'] );
       unset( $application_data['privacy-agreement'] );
       unset( $application_data['cf7sr-recaptcha'] );
@@ -145,6 +148,9 @@ class CRM_API extends WP_REST_Controller {
     $info_request_data = unserialize( $info_request->form_value );
 
     if ($info_request_data) {
+      if (!$info_request_data['code-af'])
+	return null;
+
       unset( $info_request_data['cfdb7_status'] );
       unset( $info_request_data['privacy-agreement'] );
       unset( $info_request_data['cf7sr-recaptcha'] );
