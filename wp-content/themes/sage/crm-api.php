@@ -119,6 +119,8 @@ class CRM_API extends WP_REST_Controller {
       $application_data['candidate-gender'] = $application_data['gender'][0];
       unset( $application_data['gender'] );
 
+      $application_data['candidate-birthdate'] = implode('-', array_reverse(explode('-', $application_data['candidate-birthdate'])));
+
       $application_data['candidate-diploma'] = $application_data['candidate-diploma'][0];
       $application_data['candidate-handicapped'] = $application_data['candidate-handicapped'][0];
       $application_data['candidate-jobsituation'] = $application_data['candidate-jobsituation'][0];
