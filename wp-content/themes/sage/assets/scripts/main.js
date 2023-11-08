@@ -52,8 +52,7 @@
 
 	// Formation title
         var ft = $("#formation-title").html();
-	if (ft)
-          $("#formation-title-input").val( ft ).prop("readonly", true);                            
+        $("#formation-title-input").val( ft ).prop("readonly", true);                            
 
 
 	// Domain title

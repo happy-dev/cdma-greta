@@ -57,7 +57,23 @@ class CRM_API extends WP_REST_Controller {
     $applications_data = array();
 
     foreach( $applications as $application ) {
-      $applications_data[] = $this->prepare_application_for_response( $application, $request );
+      $application_cleaned = $this->prepare_application_for_response( $application, $request );
+      if ($application_cleaned)
+        $applications_data[] = $application_cleaned;
+
+      //$i = count($applications_data) - 1;
+
+      //while(!($application_data[$i]['candidate-projectdescription'] == $application_cleaned['candidate-projectdescription'] AND $application_data[$i]['code-af'] == $application_cleaned['code-af'] AND $application_data[$i]['code-session'] == $application_cleaned['code-session']) AND $i != -1) {
+      //  $i--;
+      //}
+
+      //if($i == -1) {
+      //  $applications_data[] = $application_cleaned;
+      //}
+      //else {
+      //  $application_cleaned["BOOM"] = "DUPLICATED";
+      //  $applications_data[] = $application_cleaned;
+      //}
     }
     
     return new WP_REST_Response( $applications_data, 200 );
@@ -109,6 +125,9 @@ class CRM_API extends WP_REST_Controller {
     $application_data = unserialize( $application->form_value );
 
     if ($application_data) {
+      if (!$application_data['code-af'])
+	return null;
+
       unset( $application_data['cfdb7_status'] );
       unset( $application_data['privacy-agreement'] );
       unset( $application_data['cf7sr-recaptcha'] );
@@ -131,6 +150,8 @@ class CRM_API extends WP_REST_Controller {
     }
 
     ksort($application_data);
+    $application_data = array_map('trim', $application_data);
+
     return $application_data;
   }
 
@@ -145,6 +166,9 @@ class CRM_API extends WP_REST_Controller {
     $info_request_data = unserialize( $info_request->form_value );
 
     if ($info_request_data) {
+      if (!$info_request_data['code-af'])
+	return null;
+
       unset( $info_request_data['cfdb7_status'] );
       unset( $info_request_data['privacy-agreement'] );
       unset( $info_request_data['cf7sr-recaptcha'] );
@@ -160,6 +184,8 @@ class CRM_API extends WP_REST_Controller {
     }
 
     ksort($info_request_data);
+    $info_request_data = array_map('trim', $info_request_data);
+
     return $info_request_data;
   }
 
