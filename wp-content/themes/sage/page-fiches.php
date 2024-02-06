@@ -2,7 +2,7 @@
   $formation_slug = get_query_var('formation');
   $code_AF = substr($formation_slug, strrpos($formation_slug, '-') + 1);
   $sessions = Dokelio::getSessions($code_AF);
-  $formation = $sessions[0];// To make code readable
+  $formation = $sessions[0];// To make code readablereconnaissance_des_acquis
   $session_code = Dokelio::cleanSessionCode( $formation->code_SES );
 
   if($formation):
@@ -201,6 +201,10 @@
           <?php if ($formation->modalites_accueil) { ?> 
             <h2>Modalités d'admission et de recrutement</h2>
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_accueil)) ?></pre>
+          <?php } ?>
+          <?php if ($formation->modalites_evaluation) { ?> 
+            <h2>Modalité(s) d'évaluation</h2>
+            <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_evaluation)) ?></pre>
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
             <h2>Reconnaissance des acquis</h2>
