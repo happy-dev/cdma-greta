@@ -138,6 +138,8 @@ class CRM_API extends WP_REST_Controller {
       $application_data['candidate-gender'] = $application_data['gender'][0];
       unset( $application_data['gender'] );
 
+      $application_data['candidate-surname'] = strtoupper( $application_data['candidate-surname'] );
+
       $application_data['candidate-birthdate'] = implode('-', array_reverse(explode('-', $application_data['candidate-birthdate'])));
 
       $application_data['candidate-diploma'] = $application_data['candidate-diploma'][0];
@@ -179,6 +181,8 @@ class CRM_API extends WP_REST_Controller {
       $info_request_data['candidate-gender'] = $info_request_data['gender'][0];
       unset( $info_request_data['gender'] );
 
+      $info_request_data['candidate-surname'] = strtoupper( $info_request_data['candidate-surname'] );
+
       $info_request_data['application-date'] = $info_request->form_date;
       $info_request_data['application-id'] = $info_request->form_id;
     }
@@ -196,6 +200,7 @@ class CRM_API extends WP_REST_Controller {
    * @return WP_Error|bool
    **/
   public function crm_api_permissions_check( $request ) {
+    // return true;// For debugging purposes only
     return current_user_can( 'read_crm_api' );
   }
 }
