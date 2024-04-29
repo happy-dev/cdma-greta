@@ -138,6 +138,7 @@ class CRM_API extends WP_REST_Controller {
       $application_data['candidate-gender'] = $application_data['gender'][0];
       unset( $application_data['gender'] );
 
+      $application_data['candidate-name'] = ucfirst( $application_data['candidate-name'] );
       $application_data['candidate-surname'] = strtoupper( $application_data['candidate-surname'] );
 
       $application_data['candidate-birthdate'] = implode('-', array_reverse(explode('-', $application_data['candidate-birthdate'])));
@@ -181,6 +182,7 @@ class CRM_API extends WP_REST_Controller {
       $info_request_data['candidate-gender'] = $info_request_data['gender'][0];
       unset( $info_request_data['gender'] );
 
+      $info_request_data['candidate-name'] = ucfirst( $info_request_data['candidate-name'] );
       $info_request_data['candidate-surname'] = strtoupper( $info_request_data['candidate-surname'] );
 
       $info_request_data['application-date'] = $info_request->form_date;
