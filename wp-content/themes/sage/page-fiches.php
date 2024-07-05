@@ -208,7 +208,15 @@
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
             <h2>Reconnaissance des acquis</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->reconnaissance_des_acquis)) ?></pre>
+	    <pre>
+              <?php if ($formation->url_rncp) { ?> 
+	        N° de fiche RNCP : <a href="<?= $formation->url_rncp ?>" target="_blank">RNCP<?= $formation->code_rncp ?></a> <br/>
+              <?php } ?>
+              <?php if ($formation->RS_numero_fiche) { ?> 
+	        N° de fiche RS : <a href="<?= $formation->RS_url_fiche ?>" target="_blank"><?= $formation->RS_numero_fiche ?></a> <br/>
+              <?php } ?>
+	      <?= Dokelio::lineBreaks(make_clickable($formation->reconnaissance_des_acquis)) ?>
+	    </pre>
           <?php } ?>
           <?php if ($formation->intervenants) { ?> 
             <h2>Intervenant(e)(s)</h2>
