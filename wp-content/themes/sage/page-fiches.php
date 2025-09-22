@@ -115,9 +115,6 @@
               foreach($sessions as $session) :
 	    ?>
 	      <div id="session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>" role="tabpanel" class="tab-pane fade <?= $class ?>">
-      	      <h2>Dates</h2>
-	      <pre><?= Dokelio::lineBreaks($session->periode_session) ?></pre>
-	      
       	      <h2>Public</h2>
 	      <pre><?= Dokelio::lineBreaks($session->Public_vise) ?></pre>
 
