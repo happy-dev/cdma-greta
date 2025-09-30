@@ -83,7 +83,7 @@ function topics_select_list($tag, $unused){
     "Le partenariat" => "virginie.gaston@greta-cdma.paris",
     "L’international" => "virginie.gaston@greta-cdma.paris",
     "Le plan de développement des compétences de vos collaborateurs" => "laura.lupi@greta-cdma.paris",
-    "La comptabilité" => "comptabilite@greta-cdma.paris",
+    "La comptabilité" => "karima.verne@greta-cdma.paris",
     "Les Ressources Humaines" => "adelaide.belmonte@greta-cdma.paris",
     "La qualité" => "qualite@greta-cdma.paris",
     "Autre" => "info@greta-cdma.paris"
