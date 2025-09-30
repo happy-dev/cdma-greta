@@ -170,11 +170,6 @@
         </aside>
 
         <section class="content col-lg-8 col-md-8 ">
-          <div class="row">
-            <div class="col-md-12">
-              <button type="button" class="btn btn-more hidden-md-up navbar-toggle navbar-toggle-more" data-toggle="offcanvas">Informations complémentaires</button>
-            </div>
-          </div>
           <?php if ($formation->objectif_formation) { ?>
             <h2>Objectifs</h2>
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->objectif_formation)) ?></pre>
@@ -231,6 +226,65 @@
 	    ?>
 	    </pre>
           <?php } ?>
+
+        <aside class="tab-content hidden-md-up">
+          <?php 
+            $class = 'in active';
+            foreach($sessions as $session) :
+	  ?>
+	    <div id="session-<?= Dokelio::cleanSessionCode( $session->code_SES ) ?>-mobile" role="tabpanel" class="tab-pane fade <?= $class ?>">
+      	    <h2>Public</h2>
+	    <pre><?= Dokelio::lineBreaks($session->Public_vise) ?></pre>
+
+	    <?php if ($session->detail_duree_de_formation || $session->comment_duree) :?>
+      	    <h2>Durée</h2>
+	    <?php if ($session->detail_duree_de_formation) :?>
+	    <pre><?= Dokelio::lineBreaks($session->detail_duree_de_formation) ?></pre>
+	    <?php endif; ?>
+	    <?php if ($session->comment_duree) :?>
+	    <pre><?= Dokelio::lineBreaks($session->comment_duree) ?></pre>
+	    <?php endif; ?>
+	    <?php endif; ?>
+
+	    <?php if ($session->prix || $session->comment_tarif) :?>
+      	    <h2>Tarif(s)</h2>
+	    <?php if ($session->prix) :?>
+	    <pre><?= Dokelio::lineBreaks($session->prix) ?></pre>
+	    <?php endif; ?>
+	    <?php if ($session->comment_tarif) :?>
+	    <pre><?= Dokelio::lineBreaks($session->comment_tarif) ?></pre>
+	    <?php endif; ?>
+	    <?php endif; ?>
+
+	    <?php if ($session->lieu_de_formation || $session->flagFOAD) :?>
+      	    <h2>Lieu(x)</h2>
+	    <?php if ($session->lieu_de_formation) :?>
+	    <pre><?= Dokelio::lineBreaks($session->lieu_de_formation) ?></pre>
+	    <?php endif; ?>
+	    <?php if ($session->flagFOAD) :?>
+	    <pre>Formation à distance</pre>
+	    <?php endif; ?>
+	    <?php endif; ?>
+
+      	    <h2>Modalité de formation</h2>
+	    <pre><?= Dokelio::lineBreaks($session->rythme_formation) ?></pre>
+
+	    <?php if ($session->effectif) :?>
+      	    <h2>Effectif</h2>
+	    <pre><?= Dokelio::lineBreaks($session->effectif) ?></pre>
+	    <?php endif; ?>
+
+      	    <h2>Contact(s)</h2>
+	    <pre><?= Dokelio::lineBreaks($session->contact) ?></pre>
+
+      	    <h2>Référent(e) handicap</h2>
+	    <pre><?= Dokelio::lineBreaks($session->referent_handicap) ?></pre>
+	  </div>
+          <?php 
+	    $class = '';
+            endforeach;
+          ?>
+        </aside>
 
           <hr/>
           <div class="row">

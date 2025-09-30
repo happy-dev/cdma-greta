@@ -227,6 +227,12 @@
 	    attributeFilter: ['class']
 	  });
 	});
+
+	// Session switching on mobile
+	$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+	  $("#session-"+ e.target.dataset.sessioncode +"-mobile").addClass("active in"); // newly activated tab
+	  $("#session-"+ e.relatedTarget.dataset.sessioncode +"-mobile").removeClass("active in"); // previous active tab
+	})
       },
       finalize : function() {},
     },
