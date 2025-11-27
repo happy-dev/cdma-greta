@@ -227,6 +227,14 @@
             
             .introduction-media {
                 margin-bottom: 25px;
+
+                figure {
+                    img {
+                        height: initial;
+			display: block;
+    			width: 100%;
+                    }
+                }
             }
 
             .introduction-success {
