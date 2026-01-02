@@ -195,7 +195,7 @@
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_accueil)) ?></pre>
           <?php } ?>
           <?php if ($formation->modalites_evaluation) { ?> 
-            <h2>Modalité(s) d'évaluation</h2>
+            <h2>Modalités d’évaluation et/ou de certification</h2>
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_evaluation)) ?></pre>
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
