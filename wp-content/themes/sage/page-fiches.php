@@ -53,12 +53,12 @@
 	    if ($formation->taux_reussite)
               echo '<h2 class="introduction-success">Taux de réussite : '. $formation->taux_reussite .'</h2>';
 	  ?>
-          <hr/>
-          <div class="row">
-            <div class="col-md-12">
-              <a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/F/PDF/CDMA_Fiche_PDF.php?IdFormation=IPAF_<?= $code_AF; ?>" target="_blank" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a>
-            </div>
-          </div>
+          <!-- hr/ -->
+          <!-- div class="row" -->
+            <!-- div class="col-md-12" -->
+              <!-- a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/F/PDF/CDMA_Fiche_PDF.php?IdFormation=IPAF_<?= $code_AF; ?>" target="_blank" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a -->
+            <!-- /div -->
+          <!-- /div -->
         </div>
       </div>
     </div>
