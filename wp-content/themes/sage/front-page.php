@@ -178,6 +178,20 @@ while (have_posts()) : the_post();
 </section><!-- container end -->
 
 
+<!-- MACARONS / TAUX -->
+<?php $macarons = get_field('macarons'); ?>
+<?php if ($macarons): ?>
+  <section class="macarons">
+    <?php foreach($macarons as $macaron) : ?>
+      <a target="_blank" class="macaron" href="<?= $macaron['hyperlink'] ?>">
+        <div class="number"><?= $macaron['figure'] ?></div>
+        <div class="text"><?= $macaron['text'] ?></div>
+      </a>
+    <?php endforeach; ?>
+  </section>
+<?php endif; ?>
+
+
 <!-- LIEUX DE FORMATION -->
 <section class="articles container schools">
 <h2>Lieux de formation</h2>
