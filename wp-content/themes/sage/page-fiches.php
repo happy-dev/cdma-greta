@@ -51,7 +51,11 @@
 	  </pre>
           <?php 
 	    if ($formation->taux_reussite)
-              echo '<h2 class="introduction-success">Taux de réussite : '. $formation->taux_reussite .'</h2>';
+              echo '<h2 class="introduction-success">Taux de réussite : <a target="_blank" href="https://cdma.greta.fr/taux-de-reussite-aux-examens/">'. $formation->taux_reussite .'</a></h2>';
+	    if ($formation->taux_insertion)
+              echo '<h2 class="introduction-recruitment">Taux d\'insertion : <a target="_blank" href="https://cdma.greta.fr/taux-dinsertion-professionnelle-des-stagiaires/">'. $formation->taux_insertion .'</a></h2>';
+	    if ($formation->taux_satisfaction)
+              echo '<h2 class="introduction-satisfaction">Taux de satisfaction : <a target="_blank" href="https://cdma.greta.fr/taux-de-satisfaction-des-stagiaires-apres-formation/">'. $formation->taux_satisfaction .'</a></h2>';
 	  ?>
           <!-- hr/ -->
           <!-- div class="row" -->

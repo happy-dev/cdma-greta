@@ -96,15 +96,29 @@
             }
         }
         
-        .introduction-success {
+        .introduction-success, .introduction-recruitment, .introduction-satisfaction {
             font-size: 20px;
             text-indent: 28px;
-            background: transparent url(../images/icon-success.png) top left no-repeat;
-            
-            height: 26px;
-            line-height: 31px;
+      	    background-size: 28px;
+	    background-repeat: no-repeat;
+	    background-position-y: top;
             margin: 1vw 0;
+
+	    a {
+	    	color: #000000;
+	    }
         }
+        .introduction-success {
+            background-image: url(../images/icon-success.png);
+	}
+        .introduction-recruitment {
+            background-image: url(../images/icon-recruitment.png);
+      	    background-size: 25px;
+	}
+        .introduction-satisfaction {
+            background-image: url(../images/icon-satisfaction.png);
+      	    background-size: 22px;
+	}
         
         .introduction-media {
             figure {
@@ -211,10 +225,6 @@
                 padding-bottom: 8px;
             }
             
-            pre~h2, p~h2 {
-                padding-top: 25px;
-            }
-            
             .content, .column {
                 h2 {
                     padding-bottom: 8px;
@@ -235,10 +245,6 @@
     			width: 100%;
                     }
                 }
-            }
-
-            .introduction-success {
-                margin: 20px 0;
             }
         }
         
