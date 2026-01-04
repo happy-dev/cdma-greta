@@ -5,7 +5,7 @@ Trait DokelioConnectionTrait {
   // Singleton pattern to ensure there is only one databse connection at a time
   public static function getConnection() {
     if (self::$connection === null) {
-      self::$connection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, 'cdma_dokelio');
+      self::$connection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DOKELIO_DB_NAME);
 
       if (self::$connection->connect_error) {// Database connection issue
         die("Dokelio database connection error : ". self::$connection->connect_error);

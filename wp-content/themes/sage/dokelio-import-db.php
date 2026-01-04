@@ -15,7 +15,8 @@
   if (file_exists($file_name)) {// Today's import file found successfully
     echo 'Importing '. date('d-m-Y') ." data from Dokelio\n";
 
-    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, 'cdma_dokelio');
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DOKELIO_DB_NAME);
+    $db->set_charset("utf8mb4");
 
     if ($db->connect_error) {// Database connection issue
       die("Dokelio database connection error : ". $db->connect_error);
