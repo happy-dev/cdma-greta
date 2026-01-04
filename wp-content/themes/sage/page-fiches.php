@@ -51,11 +51,12 @@
 	  </pre>
           <?php 
 	    if ($formation->taux_reussite)
-              echo '<h2 class="introduction-success">Taux de réussite : <a target="_blank" href="https://cdma.greta.fr/taux-de-reussite-aux-examens/">'. $formation->taux_reussite .'</a></h2>';
+              echo '<a target="_blank" href="https://cdma.greta.fr/taux-de-reussite-aux-examens/"><h2 class="introduction-success">Taux de réussite : '. $formation->taux_reussite .'</h2></a>';
 	    if ($formation->taux_insertion)
-              echo '<h2 class="introduction-recruitment">Taux d\'insertion : <a target="_blank" href="https://cdma.greta.fr/taux-dinsertion-professionnelle-des-stagiaires/">'. $formation->taux_insertion .'</a></h2>';
+              echo '<a target="_blank" href="https://cdma.greta.fr/taux-dinsertion-professionnelle-des-stagiaires/"><h2 class="introduction-recruitment">Taux d\'insertion : '. $formation->taux_insertion .'</h2></a>';
 	    if ($formation->taux_satisfaction)
-              echo '<h2 class="introduction-satisfaction">Taux de satisfaction : <a target="_blank" href="https://cdma.greta.fr/taux-de-satisfaction-des-stagiaires-apres-formation/">'. $formation->taux_satisfaction .'</a></h2>';
+              // Generic link version echo '<h2 class="introduction-satisfaction">Taux de satisfaction : <a target="_blank" href="https://cdma.greta.fr/taux-de-satisfaction-des-stagiaires-apres-formation/">'. $formation->taux_satisfaction .'</a></h2>';
+              echo '<a data-toggle="tooltip" data-placement="top" title="'. $formation->taux_satisfaction_comment .'"><h2 class="introduction-satisfaction">Taux de satisfaction : '. $formation->taux_satisfaction .'</h2></a>';
 	  ?>
           <!-- hr/ -->
           <!-- div class="row" -->

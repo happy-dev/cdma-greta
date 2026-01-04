@@ -7,6 +7,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.4"
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.4",
+    "popper.js": "^1.12.9"
+  },
+  "overrides": {
+    "popper.js": {
+      "main": [
+        "dist/umd/popper.js"
+      ]
+    }
   }
 }

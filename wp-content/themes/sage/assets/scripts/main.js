@@ -233,6 +233,9 @@
 	  $("#session-"+ e.target.dataset.sessioncode +"-mobile").addClass("active in"); // newly activated tab
 	  $("#session-"+ e.relatedTarget.dataset.sessioncode +"-mobile").removeClass("active in"); // previous active tab
 	})
+	      
+	// Tooltips activation
+  	$('[data-toggle="tooltip"]').tooltip();
       },
       finalize : function() {},
     },
