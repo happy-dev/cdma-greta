@@ -204,7 +204,7 @@
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_evaluation)) ?></pre>
           <?php } ?>
           <?php if ($formation->perspectives_prof) { ?>
-            <h2>Perspectives Profesionnelles</h2>
+            <h2>Perspectives profesionnelles</h2>
             <pre><?= Dokelio::lineBreaks(make_clickable($formation->perspectives_prof)) ?></pre>
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
