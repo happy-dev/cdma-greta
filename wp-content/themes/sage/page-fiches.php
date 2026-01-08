@@ -177,35 +177,35 @@
         <section class="content col-lg-8 col-md-8 ">
           <?php if ($formation->objectif_formation) { ?>
             <h2>Objectifs</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->objectif_formation)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->objectif_formation))) ?></pre>
           <?php } ?>
           <?php if ($formation->Prerequis) { ?>  
               <h2>Prérequis</h2>
-              <pre><?= Dokelio::lineBreaks(make_clickable($formation->Prerequis)) ?></pre>
+              <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->Prerequis))) ?></pre>
           <?php } ?>
           <?php if ($formation->FRM_contenu_formation) { ?> 
             <h2>Contenu</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->FRM_contenu_formation)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->FRM_contenu_formation))) ?></pre>
           <?php } ?>
           <?php if ($formation->methodes_pedagogiques) { ?> 
             <h2>Méthodes pédagogiques</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->methodes_pedagogiques)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->methodes_pedagogiques))) ?></pre>
           <?php } ?>
           <?php if ($formation->moyens_pedago) { ?> 
             <h2>Moyens pédagogiques</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->moyens_pedago)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->moyens_pedago))) ?></pre>
           <?php } ?>
           <?php if ($formation->modalites_accueil) { ?> 
             <h2>Modalités d'admission et de recrutement</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_accueil)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->modalites_accueil))) ?></pre>
           <?php } ?>
           <?php if ($formation->modalites_evaluation) { ?> 
             <h2>Modalités d’évaluation et/ou de certification</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->modalites_evaluation)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->modalites_evaluation))) ?></pre>
           <?php } ?>
           <?php if ($formation->perspectives_prof) { ?>
-            <h2>Perspectives profesionnelles</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->perspectives_prof)) ?></pre>
+            <h2>Perspectives professionnelles</h2>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->perspectives_prof))) ?></pre>
           <?php } ?>
           <?php if ($formation->reconnaissance_des_acquis) { ?> 
             <h2>Reconnaissance des acquis</h2>
@@ -216,12 +216,12 @@
               <?php if ($formation->RS_numero_fiche) { ?> 
 	        N° de fiche RS : <a href="<?= $formation->RS_url_fiche ?>" target="_blank"><?= $formation->RS_numero_fiche ?></a> <br/>
               <?php } ?>
-	      <?= Dokelio::lineBreaks(make_clickable($formation->reconnaissance_des_acquis)) ?>
+	      <?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->reconnaissance_des_acquis))) ?>
 	    </pre>
           <?php } ?>
           <?php if ($formation->intervenants) { ?> 
             <h2>Intervenant(e)(s)</h2>
-            <pre><?= Dokelio::lineBreaks(make_clickable($formation->intervenants)) ?></pre>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->intervenants))) ?></pre>
           <?php } ?>
           <?php if ($formation->codeFORMACODE || $formation->codeROME) { ?> 
             <h2>Codification de l'offre</h2>
