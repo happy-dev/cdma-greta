@@ -97,13 +97,13 @@
         }
         
         .introduction-success, .introduction-recruitment, .introduction-satisfaction {
-            font-size: 20px;
-            text-indent: 28px;
-      	    background-size: 28px;
+            font-size: 16px;
+            text-indent: 20px;
+      	    background-size: 16px;
 	    background-repeat: no-repeat;
-	    background-position-y: top;
-            margin: 1vw 0;
+	    background-position-y: center;
 	    cursor: pointer;
+	    font-weight: normal;
 
 	    a {
 	    	color: #000000;
@@ -114,11 +114,11 @@
 	}
         .introduction-recruitment {
             background-image: url(../images/icon-recruitment.png);
-      	    background-size: 25px;
+      	    background-size: 15px;
 	}
         .introduction-satisfaction {
             background-image: url(../images/icon-satisfaction.png);
-      	    background-size: 22px;
+      	    background-size: 14px;
 	}
         
         .introduction-media {
