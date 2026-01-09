@@ -7,7 +7,7 @@
   if (array_key_exists(1, $argv))// If filename passed as argument of the command line
     $file_name = $argv[1];
   else {
-    chdir('dokelio_db/');
+    chdir('cdma_bo/formations/');
     $todays_exports = glob('export_cdma_'. date('Ymd') .'_*.txt'); 
     $file_name = $todays_exports[count($todays_exports)-1];
   }
