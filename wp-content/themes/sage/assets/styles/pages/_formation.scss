@@ -96,30 +96,46 @@
             }
         }
         
-        .introduction-success, .introduction-recruitment, .introduction-satisfaction {
-            font-size: 16px;
-            text-indent: 20px;
-      	    background-size: 16px;
-	    background-repeat: no-repeat;
-	    background-position-y: center;
-	    cursor: pointer;
-	    font-weight: normal;
+	.rate-line {
+  	  display: flex;
+  	  justify-content: flex-start;
+  	  gap: 8px;
 
-	    a {
-	    	color: #000000;
+          .introduction-success, .introduction-recruitment, .introduction-satisfaction {
+              font-size: 16px;
+              // text-indent: 20px;
+      	      // background-size: 16px;
+	      // background-repeat: no-repeat;
+	      // background-position-y: center;
+	      cursor: pointer;
+	      font-weight: normal;
+
+	      a {
+	      	color: #000000;
+	      }
+          }
+          // .introduction-success {
+          //     background-image: url(../images/icon-success.png);
+	  // }
+          // .introduction-recruitment {
+          //     background-image: url(../images/icon-recruitment.png);
+      	  //     background-size: 15px;
+	  // }
+          // .introduction-satisfaction {
+          //     background-image: url(../images/icon-satisfaction.png);
+      	  //     background-size: 14px;
+	  // }
+
+	  .tooltip-link {
+	    display: inline-flex;
+  	    align-items: center;
+  
+	    .rate-info-icon {
+	      cursor: pointer;
+	      width: 20px;
 	    }
-        }
-        .introduction-success {
-            background-image: url(../images/icon-success.png);
-	}
-        .introduction-recruitment {
-            background-image: url(../images/icon-recruitment.png);
-      	    background-size: 15px;
-	}
-        .introduction-satisfaction {
-            background-image: url(../images/icon-satisfaction.png);
-      	    background-size: 14px;
-	}
+    	  }
+  	}
         
         .introduction-media {
             figure {
