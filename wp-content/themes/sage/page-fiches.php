@@ -58,12 +58,12 @@
               // Generic link version echo '<h2 class="introduction-satisfaction">Taux de satisfaction : <a target="_blank" href="https://cdma.greta.fr/taux-de-satisfaction-des-stagiaires-apres-formation/">'. $formation->taux_satisfaction .'</a></h2>';
               echo '<a data-toggle="tooltip" data-placement="top" title="'. $formation->taux_satisfaction_comment .'"><h2 class="introduction-satisfaction">Taux de satisfaction : '. $formation->taux_satisfaction .'</h2></a>';
 	  ?>
-          <!-- hr/ -->
-          <!-- div class="row" -->
-            <!-- div class="col-md-12" -->
-              <!-- a class="link-pdf" id="pdf-file" href="https://prfc.scola.ac-paris.fr/F/PDF/CDMA_Fiche_PDF.php?IdFormation=IPAF_<?= $code_AF; ?>" target="_blank" download="<?= $formation->synth_titre; ?>.pdf">Télécharger la fiche en format PDF</a -->
-            <!-- /div -->
-          <!-- /div -->
+          <hr/>
+          <div class="row">
+            <div class="col-md-12">
+              <a class="link-pdf" id="pdf-file" href="/pdfs/IPSE_<?= $session_code; ?>_<?= $formation->slug_formation; ?>.pdf" target="_blank">Télécharger la fiche en format PDF</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
