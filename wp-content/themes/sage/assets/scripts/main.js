@@ -212,11 +212,16 @@
 	var observer = new MutationObserver(function(mutations) {
 	  mutations.forEach(function(mutation) {
             if (mutation.target.classList.contains('active')) {
+	      // Déposer sa candidature  &  Demander plus d'information buttons
 	      $(".btn-candidate, .contact-btn").each(function(idx, btn) {
 		var btn = $(btn);
 	        var href = btn.prop("href").split("session=")[0]
 	    	btn.prop("href", href +"session="+ $(mutation.target).data('sessioncode'))
 	      })
+	      // Télécharger la fiche en format PDF
+	      var pdfButton = $("#pdf-file");
+	      var pdfButtonHref = pdfButton.prop("href").split("_IPSE_")[0];
+	      pdfButton.prop("href", pdfButtonHref +"_IPSE_"+ $(mutation.target).data('sessioncode') +"_GRETA_CDMA.pdf");
 	    }
 	  })
 	})

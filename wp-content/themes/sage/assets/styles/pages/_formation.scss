@@ -232,6 +232,16 @@
     }
 }
 
+@media (min-width: 768px) {
+  .formation {
+    .formation-detail {
+      .tab-pane h2:first-child {
+	padding-top: 0px;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
     .formation {
         button {

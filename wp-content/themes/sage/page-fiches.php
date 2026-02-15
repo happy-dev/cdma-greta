@@ -50,26 +50,29 @@
 	    <?php endif; ?>
 	  </pre>
           <?php 
-	    if ($formation->taux_reussite)
+	    if ($formation->taux_reussite) {
               echo '<div class="rate-line"><a target="_blank" href="https://cdma.greta.fr/taux-de-reussite-aux-examens/"><h2 class="introduction-success">Taux de réussite : '. $formation->taux_reussite .'</h2></a>';
 	      if ($formation->taux_reussite_comment)
 		echo '<a class="tooltip-link" data-toggle="tooltip" data-placement="top" title="'. $formation->taux_reussite_comment .'"><img class="rate-info-icon" src="/wp-content/themes/sage/dist/images/icon-info.png" alt="Tooltip d\'information sur le taux de réussite spécifique à cette formation" /></a>';
 	      echo '</div>';
-	    if ($formation->taux_insertion)
+	    }
+	    if ($formation->taux_insertion) {
               echo '<div class="rate-line"><a target="_blank" href="https://cdma.greta.fr/taux-dinsertion-professionnelle-des-stagiaires/"><h2 class="introduction-recruitment">Taux d\'insertion : '. $formation->taux_insertion .'</h2></a>';
 	      if ($formation->taux_insertion_comment)
 		echo '<a class="tooltip-link" data-toggle="tooltip" data-placement="top" title="'. $formation->taux_insertion_comment .'"><img class="rate-info-icon" src="/wp-content/themes/sage/dist/images/icon-info.png" alt="Tooltip d\'information sur le taux de insertion spécifique à cette formation" /></a>';
 	      echo '</div>';
-	    if ($formation->taux_satisfaction)
+	    }
+	    if ($formation->taux_satisfaction) {
 	      echo '<div class="rate-line"><a target="_blank" href="https://cdma.greta.fr/taux-de-satisfaction-des-stagiaires-apres-formation/"><h2 class="introduction-satisfaction">Taux de satisfaction : '. $formation->taux_satisfaction .'</h2></a>';
 	      if ($formation->taux_satisfaction_comment)
 		echo '<a class="tooltip-link" data-toggle="tooltip" data-placement="top" title="'. $formation->taux_satisfaction_comment .'"><img class="rate-info-icon" src="/wp-content/themes/sage/dist/images/icon-info.png" alt="Tooltip d\'information sur le taux de satisfaction spécifique à cette formation" /></a>';
 	      echo '</div>';
+	    }
 	  ?>
           <hr/>
           <div class="row">
             <div class="col-md-12">
-              <a class="link-pdf" id="pdf-file" href="/pdfs/IPSE_<?= $session_code; ?>_<?= $formation->slug_formation; ?>.pdf" target="_blank">Télécharger la fiche en format PDF</a>
+              <a class="link-pdf" id="pdf-file" href="/wp-content/themes/sage/pdfs/<?= $formation->slug_formation; ?>_IPSE_<?= $session_code; ?>_GRETA_CDMA.pdf" target="_blank">Télécharger la fiche en format PDF</a>
             </div>
           </div>
         </div>
