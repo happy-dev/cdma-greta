@@ -36,9 +36,11 @@
               <?php if ($current_domain->url_video_domaine) { ?>
                 <span class="note">Cliquez sur le bouton lecture pour découvrir la vidéo <?= $dom_title ?></span>
               <?php } ?>
-            <div class="row center">
-              <a class="link-pdf" id="pdf-file" href="/wp-content/themes/sage/pdfs/<?= $current_domain->slug_domaine ?>_GRETA_CDMA.pdf" target="_blank">Télécharger le catalogue</a>
-            </div>
+              <?php if ($current_domain->slug_domaine != "creation-d-entreprise") { ?>
+              <div class="row center">
+                <a class="link-pdf" id="pdf-file" href="/wp-content/themes/sage/pdfs/<?= $current_domain->slug_domaine ?>_GRETA_CDMA.pdf" target="_blank">Télécharger le catalogue</a>
+              </div>
+              <?php } ?>
           </div>
           <?php if ($current_domain->url_video_domaine) { ?>
             <div class="video col-md-6 col-sm-12 col-xs-12" data-toggle="modal" data-target="#modalVideoDomaine">
