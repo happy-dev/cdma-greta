@@ -35,14 +35,19 @@ Trait DokelioSearchTrait {
     }
     else {
       $str = self::cleanSearchQuery($str);
-      $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image, MATCH (synth_titre) AGAINST ('$str' IN BOOLEAN MODE) AS titre, MATCH (synth_formation_accroche) AGAINST ('$str' IN BOOLEAN MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN BOOLEAN MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN BOOLEAN MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) AS domaine FROM formation WHERE MATCH (synth_titre, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter GROUP BY synth_titre ORDER BY titre*4 + accroche DESC LIMIT ". CDMA_LIMIT ." $offset";
+      $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image, MATCH (synth_titre) AGAINST ('$str' IN BOOLEAN MODE) AS titre, MATCH (mots_clef) AGAINST ('$str' IN BOOLEAN MODE) AS keywords, MATCH (synth_formation_accroche) AGAINST ('$str' IN BOOLEAN MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN BOOLEAN MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN BOOLEAN MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) AS domaine FROM formation WHERE MATCH (synth_titre, mots_clef, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter GROUP BY synth_titre ORDER BY titre*4 + keywords + accroche DESC LIMIT ". CDMA_LIMIT ." $offset";
     }
 
-    if ($formations = Dokelio::$connection->query($query_string)) {
+    $formations = Dokelio::$connection->query($query_string);
+    if (!$formations) {
+      die("SQL Error: " . Dokelio::$connection->error . "<br>Query: " . $query_string);
+    }
+    else {
       while($formation = $formations->fetch_object()) {
         $buffer[] = clone $formation;
       }
     }
+	    
     $formations->close();
 
     return $buffer;
@@ -101,7 +106,7 @@ Trait DokelioSearchTrait {
     }
     else {
       $str = self::cleanSearchQuery($str);
-      $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation WHERE MATCH (synth_titre, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter LIMIT ". CDMA_LIMIT;
+      $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation WHERE MATCH (synth_titre, mots_clef, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter LIMIT ". CDMA_LIMIT;
     }
 
     if ($counts = Dokelio::$connection->query($query_string)) {
