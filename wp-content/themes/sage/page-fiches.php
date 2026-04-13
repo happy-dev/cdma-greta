@@ -185,7 +185,7 @@
           </div>
         </aside>
 
-        <section class="content col-lg-8 col-md-8 ">
+        <section class="content col-xl-8">
           <?php if ($formation->objectif_formation) { ?>
             <h2>Objectifs</h2>
             <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->objectif_formation))) ?></pre>
@@ -247,7 +247,7 @@
 	    </pre>
           <?php } ?>
 
-        <aside class="tab-content hidden-md-up">
+        <aside class="tab-content hidden-xl-up">
           <?php 
             $class = 'in active';
             foreach($sessions as $session) :
