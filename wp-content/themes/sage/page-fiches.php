@@ -29,6 +29,8 @@
               echo '<span class="introduction-label col-sm-6">Formation diplômante</span>';
             if ($formation->url_mcf)
               echo '<span class="introduction-label col-sm-6">Formation éligible au CPF</span>';
+            if ($formation->flagHTT)
+              echo '<span class="introduction-label col-sm-6">Formation hors temps de travail</span>';
 	  ?>
           </div>
           <hr/>
