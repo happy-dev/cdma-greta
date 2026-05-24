@@ -216,6 +216,10 @@
             <h2>Modalités d’évaluation et/ou de certification</h2>
             <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->modalites_evaluation))) ?></pre>
           <?php } ?>
+          <?php if ($formation->suite_de_parcours) { ?>
+            <h2>Suite de parcours</h2>
+            <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->suite_de_parcours))) ?></pre>
+          <?php } ?>
           <?php if ($formation->perspectives_prof) { ?>
             <h2>Perspectives professionnelles</h2>
             <pre><?= Dokelio::lineBreaks(links_add_target(make_clickable($formation->perspectives_prof))) ?></pre>
