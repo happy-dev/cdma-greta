@@ -35,7 +35,7 @@ Trait DokelioSearchTrait {
     }
     else {
       $str = self::cleanSearchQuery($str);
-      $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image, MATCH (synth_titre) AGAINST ('$str' IN BOOLEAN MODE) AS titre, MATCH (mots_clef) AGAINST ('$str' IN BOOLEAN MODE) AS keywords, MATCH (synth_formation_accroche) AGAINST ('$str' IN BOOLEAN MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN BOOLEAN MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN BOOLEAN MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) AS domaine FROM formation WHERE MATCH (synth_titre, mots_clef, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter GROUP BY synth_titre ORDER BY titre*4 + keywords + accroche DESC LIMIT ". CDMA_LIMIT ." $offset";
+      $query_string = "SELECT code_AF, synth_titre, slug_formation, synth_periode_de_formation, synth_formation_accroche, nom_image, MATCH (synth_titre) AGAINST ('$str' IN BOOLEAN MODE) AS titre, MATCH (mots_clef) AGAINST ('$str' IN BOOLEAN MODE) AS keywords, MATCH (mots_clef_2) AGAINST ('$str' IN BOOLEAN MODE) AS keywords_2, MATCH (synth_formation_accroche) AGAINST ('$str' IN BOOLEAN MODE) AS accroche, MATCH (contact) AGAINST ('$str' IN BOOLEAN MODE) AS coordo, MATCH (lieu_de_formation) AGAINST ('$str' IN BOOLEAN MODE) AS lieu, MATCH (lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) AS domaine FROM formation WHERE MATCH (synth_titre, mots_clef, mots_clef_2, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter GROUP BY synth_titre ORDER BY titre*4 + keywords*2 + accroche*2 + keywords_2 DESC LIMIT ". CDMA_LIMIT ." $offset";
     }
 
     $formations = Dokelio::$connection->query($query_string);
@@ -106,7 +106,7 @@ Trait DokelioSearchTrait {
     }
     else {
       $str = self::cleanSearchQuery($str);
-      $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation WHERE MATCH (synth_titre, mots_clef, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter LIMIT ". CDMA_LIMIT;
+      $query_string = "SELECT COUNT(DISTINCT synth_titre) AS count FROM formation WHERE MATCH (synth_titre, mots_clef, mots_clef_2, synth_formation_accroche, contact, lieu_de_formation, lib_domaine) AGAINST ('$str' IN BOOLEAN MODE) $and $filter LIMIT ". CDMA_LIMIT;
     }
 
     if ($counts = Dokelio::$connection->query($query_string)) {
